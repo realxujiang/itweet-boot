@@ -3,7 +3,7 @@ package cn.itweet.common.security;
 import java.util.Collection;
 import java.util.List;
 
-import cn.itweet.modules.backend.domain.User;
+import cn.itweet.modules.admin.domain.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;

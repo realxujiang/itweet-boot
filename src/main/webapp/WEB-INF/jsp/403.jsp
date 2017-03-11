@@ -16,7 +16,7 @@
 	</div>
 	<div class="lc-block">		
 		<div class="alert-danger">
-			<h3>You do not have permission to access this page!</h3>	
+			<h3>You do not have permission to access this page 403!</h3>
 		</div>
 		<form action="/logout" method="post">
 			<input type="submit" class="button red big" value="Sign in as different user" /> <input

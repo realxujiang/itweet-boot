@@ -38,7 +38,7 @@ public class WebLogAspect {
 
     ThreadLocal<Long> startTime = new ThreadLocal<Long>();
 
-    @Pointcut("execution(public * cn.itweet.modules.front.web..*.*(..))")
+    @Pointcut("execution(public * cn.itweet.modules.admin.web..*.*(..))")
     public void webLog(){}
 
     @Before("webLog()")
