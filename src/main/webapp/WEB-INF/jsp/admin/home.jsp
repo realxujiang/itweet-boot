@@ -10,9 +10,9 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Itweet - 后台管理系统</title>
-
 	<link href="<%=basePath%>/admin/css/bootstrap.min.css" rel="stylesheet">
 	<link href="<%=basePath%>/admin/css/datepicker3.css" rel="stylesheet">
+	<link href="<%=basePath%>/admin/css/bootstrap-table.css" rel="stylesheet">
 	<link href="<%=basePath%>/admin/css/styles.css" rel="stylesheet">
 
 	<!-- 图标库地址 icon: http://holdirbootstrap.de/komponenten/ -->
@@ -111,18 +111,18 @@
 
 		<li class="parent ">
 			<a href="#sub-item-3" data-toggle="collapse">
-				<span class="glyphicon glyphicon-picture"></span>
-				图片管理
+				<span class="glyphicon glyphicon-folder-open"></span>
+				文件管理
 			</a>
 			<ul class="children collapse" id="sub-item-3">
 				<li>
 					<a class="" href="#">
-						<span class="glyphicon glyphicon-share-alt"></span> 图片上传
+						<span class="glyphicon glyphicon-share-alt"></span> 文件上传
 					</a>
 				</li>
 				<li>
 					<a class="" href="#">
-						<span class="glyphicon glyphicon-share-alt"></span> 图片列表
+						<span class="glyphicon glyphicon-share-alt"></span> 文件列表
 					</a>
 				</li>
 			</ul>
@@ -166,6 +166,11 @@
 		<li role="presentation" class="divider"></li>
 		<li><a href="login.html"><span class="glyphicon glyphicon-th-list"></span> 网站设置</a></li>
 		<li><a href="login.html"><span class="glyphicon glyphicon-link"></span> 友情链接</a></li>
+		<li><a href="login.html"><span class="glyphicon glyphicon-link"></span> 关于我们</a></li>
+	</ul>
+
+	<ul class="">
+		<span>© 2017 Github, Inc.</span>
 	</ul>
 </div><!--/.sidebar-->
 
@@ -184,10 +189,25 @@
 		</div>
 	</div><!--/.row-->
 
-	<div>
-		欢迎XXX登陆系统。
-	</div>
-
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">Advanced Table</div>
+				<div class="panel-body">
+					<table data-toggle="table" data-url="tables/data1.json"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
+						<thead>
+						<tr>
+							<th data-field="state" data-checkbox="true" >Item ID</th>
+							<th data-field="id" data-sortable="true">Item ID</th>
+							<th data-field="name"  data-sortable="true">Item Name</th>
+							<th data-field="price" data-sortable="true">Item Price</th>
+						</tr>
+						</thead>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div><!--/.row-->
 </div>	<!--/.main-->
 
 <script src="<%=basePath%>/admin/js/jquery-1.11.1.min.js"></script>
@@ -197,6 +217,7 @@
 <script src="<%=basePath%>/admin/js/easypiechart.js"></script>
 <script src="<%=basePath%>/admin/js/easypiechart-data.js"></script>
 <script src="<%=basePath%>/admin/js/bootstrap-datepicker.js"></script>
+<script src="<%=basePath%>/admin/js/bootstrap-table.js"></script>
 <script>
     $('#calendar').datepicker({
     });
