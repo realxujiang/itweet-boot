@@ -1,4 +1,4 @@
-package cn.itweet.modules.admin.service;
+package cn.itweet.modules.admin.user.service;
 
 /**
  * 说明：

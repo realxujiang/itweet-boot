@@ -1,4 +1,4 @@
-package cn.itweet.modules.admin.domain;
+package cn.itweet.modules.admin.user.domain;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

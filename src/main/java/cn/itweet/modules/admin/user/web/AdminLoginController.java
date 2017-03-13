@@ -1,4 +1,4 @@
-package cn.itweet.modules.admin.web;
+package cn.itweet.modules.admin.user.web;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
