@@ -1,7 +1,9 @@
 package cn.itweet.modules.admin.user.web;
 
+import cn.itweet.common.exception.SystemException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Map;
 
@@ -26,5 +28,9 @@ public class UserController {
         return "admin/user/list";
     }
 
+    @RequestMapping("/json")
+    public String json() throws SystemException {
+        throw new SystemException("发生全局异常测试");
+    }
 
 }

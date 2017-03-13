@@ -2,9 +2,9 @@ package cn.itweet.common.security;
 
 import java.util.List;
 
-import cn.itweet.modules.admin.user.domain.User;
-import cn.itweet.modules.admin.user.domain.UserRepository;
-import cn.itweet.modules.admin.user.domain.UserRolesRepository;
+import cn.itweet.modules.admin.user.entry.User;
+import cn.itweet.modules.admin.user.repository.UserRepository;
+import cn.itweet.modules.admin.user.repository.UserRolesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
