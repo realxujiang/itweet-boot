@@ -24,14 +24,17 @@ public class User implements Serializable {
 
 	@Column(name = "email")
     private String email;
-    
+
+	/**
+	 * int = 0 is disabled user,int = 1 is enabled,default = 1;
+	 */
 	@Column(name ="enabled")
 	private int enabled;
 	
 	public User(){
 		
 	}
-	
+
 	public User(User user) {
 	        this.userId = user.userId;
 	        this.userName = user.userName;
@@ -79,7 +82,15 @@ public class User implements Serializable {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	
-	
-  
+
+	@Override
+	public String toString() {
+		return "User{" +
+				"userId=" + userId +
+				", userName='" + userName + '\'' +
+				", password='" + password + '\'' +
+				", email='" + email + '\'' +
+				", enabled=" + enabled +
+				'}';
+	}
 }

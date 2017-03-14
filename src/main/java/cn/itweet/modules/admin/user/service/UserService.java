@@ -2,6 +2,7 @@ package cn.itweet.modules.admin.user.service;
 
 import cn.itweet.common.exception.SystemException;
 import cn.itweet.modules.admin.user.entry.User;
+import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 import java.util.Optional;
@@ -22,4 +23,6 @@ public interface UserService {
     void updateUser(User user) throws SystemException;
 
     void removeUserById(Long userid);
+
+    void deleteAll();
 }
