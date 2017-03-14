@@ -8,6 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<!-- 图标库地址 icon: http://holdirbootstrap.de/komponenten/ -->
 	<title>Main</title>
 	<meta charset="utf-8">
 	<jsp:include page="../../tools/style/admin_style.jsp"></jsp:include>
@@ -98,6 +99,8 @@
 			</ul>
 		</li>
 
+
+
 		<li class="parent ">
 			<a href="#sub-item-3" data-toggle="collapse">
 				<span class="glyphicon glyphicon-folder-open"></span>
@@ -152,6 +155,26 @@
 				</li>
 			</ul>
 		</li>
+
+		<li class="parent ">
+			<a href="#sub-item-6" data-toggle="collapse">
+				<span class="glyphicon glyphicon-align-justify"></span>
+				授权管理
+			</a>
+			<ul class="children collapse" id="sub-item-6">
+				<li>
+					<a class="" href="<%=basePath%>admin/licence/list" target="main">
+						<span class="glyphicon glyphicon-share-alt"></span> Licence列表
+					</a>
+				</li>
+				<li>
+					<a class="" href="<%=basePath%>admin/licence/add" target="main">
+						<span class="glyphicon glyphicon-share-alt"></span> Licence添加
+					</a>
+				</li>
+			</ul>
+		</li>
+
 		<li role="presentation" class="divider"></li>
 		<li><a href="login.html"><span class="glyphicon glyphicon-th-list"></span> 网站设置</a></li>
 		<li><a href="login.html"><span class="glyphicon glyphicon-link"></span> 友情链接</a></li>
