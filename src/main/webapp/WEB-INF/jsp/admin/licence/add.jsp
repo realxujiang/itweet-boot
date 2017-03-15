@@ -23,13 +23,12 @@
                 <h5>添加授权</h5>
             </div>
             <div class="ibox-content">
-                <form action="<%=basePath%>/admin/licence/add" class="form-horizontal" method="post">
-
+                <form action="<%=basePath%>/admin/licence/add" class="form-horizontal" method="POST">
                     <div class="form-group">
                         <label class="col-sm-2 control-label">公司</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" name="company">
-                            <span class="help-block m-b-none">申请授权的公司</span>
+                            <span class="help-block m-b-none">申请授权的公司&nbsp;&nbsp;<b style="color: red;">*</b></span>
                         </div>
                     </div>
 
@@ -37,7 +36,7 @@
                         <label class="col-sm-2 control-label">项目</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control"  name="project">
-                            <span class="help-block m-b-none">申请授权的项目</span>
+                            <span class="help-block m-b-none">申请授权的项目&nbsp;&nbsp;<b style="color: red;">*</b></span>
                         </div>
                     </div>
 
@@ -45,7 +44,7 @@
                         <label class="col-sm-2 control-label">邮箱</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" name="email">
-                            <span class="help-block m-b-none">接收授权码的邮箱</span>
+                            <span class="help-block m-b-none">接收授权码的邮箱&nbsp;&nbsp;<b style="color: red;">*</b></span>
                         </div>
                     </div>
 
@@ -62,7 +61,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">节点</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="node">
+                            <input type="text" class="form-control" name="node" value="1">
                             <span class="help-block m-b-none">申请授权节点数</span>
                         </div>
                     </div>

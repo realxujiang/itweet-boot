@@ -1,5 +1,7 @@
 package cn.itweet.modules.admin.licence.service;
 
+import cn.itweet.modules.admin.licence.entity.Licence;
+
 /**
  * 说明：
  * 包名：cn.itweet.modules.admin.licence
@@ -8,4 +10,5 @@ package cn.itweet.modules.admin.licence.service;
  * 创建时间：2017/3/14.
  */
 public interface LicenceService {
+    public Licence add(Licence licence);
 }
