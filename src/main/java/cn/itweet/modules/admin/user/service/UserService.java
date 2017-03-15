@@ -1,8 +1,7 @@
 package cn.itweet.modules.admin.user.service;
 
 import cn.itweet.common.exception.SystemException;
-import cn.itweet.modules.admin.user.entry.User;
-import org.springframework.stereotype.Service;
+import cn.itweet.modules.admin.user.entry.SysUser;
 
 import java.util.Collection;
 import java.util.Optional;
@@ -12,15 +11,13 @@ import java.util.Optional;
  */
 public interface UserService {
 
-    Optional<User> getUserById(long userid);
+    Optional<SysUser> getUserById(long userid);
 
-    User getUserByEmail(String email);
+    Collection<SysUser> getAllUsers();
 
-    Collection<User> getAllUsers();
+    SysUser insertUser(SysUser user) throws SystemException;
 
-    User insertUser(User user) throws SystemException;
-
-    void updateUser(User user) throws SystemException;
+    void updateUser(SysUser user) throws SystemException;
 
     void removeUserById(Long userid);
 

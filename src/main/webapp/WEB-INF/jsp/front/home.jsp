@@ -11,32 +11,32 @@
 <title>Effe - Personal Blog</title>
 <link rel="shortcut icon" href="favicon.ico" />
 <!-- Load CSS -->
-<link href="<%=basePath%>/front/css/style.css" rel="stylesheet" type="text/css" />
+<link href="<%=basePath%>style/front/css/style.css" rel="stylesheet" type="text/css" />
 <!-- Load Fonts -->
 <!-- Load jQuery library -->
-<script type="text/javascript" src="<%=basePath%>/front/scripts/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="<%=basePath%>style/front/scripts/jquery-1.6.2.min.js"></script>
 <!-- Load custom js -->
-<script type="text/javascript" src="<%=basePath%>/front/scripts/panelslide.js"></script>
-<script type="text/javascript" src="<%=basePath%>/front/scripts/custom.js"></script>
+<script type="text/javascript" src="<%=basePath%>style/front/scripts/panelslide.js"></script>
+<script type="text/javascript" src="<%=basePath%>style/front/scripts/custom.js"></script>
 <!-- Load topcontrol js -->
-<script type="text/javascript" src="<%=basePath%>/front/scripts/scrolltopcontrol.js"></script>
+<script type="text/javascript" src="<%=basePath%>style/front/scripts/scrolltopcontrol.js"></script>
 <!-- Load NIVO Slider -->
-<link rel="stylesheet" href="<%=basePath%>/front/css/nivo-slider.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="<%=basePath%>/front/css/nivo-theme.css" type="text/css" media="screen" />
-<script src="<%=basePath%>/front/scripts/jquery.nivo.slider.pack.js" type="text/javascript"></script>
-<script src="<%=basePath%>/front/scripts/nivo-options.js" type="text/javascript"></script>
+<link rel="stylesheet" href="<%=basePath%>style/front/css/nivo-slider.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="<%=basePath%>style/front/css/nivo-theme.css" type="text/css" media="screen" />
+<script src="<%=basePath%>style/front/scripts/jquery.nivo.slider.pack.js" type="text/javascript"></script>
+<script src="<%=basePath%>style/front/scripts/nivo-options.js" type="text/javascript"></script>
 <!-- Load fancybox -->
-<script type="text/javascript" src="<%=basePath%>/front/scripts/jquery.fancybox-1.3.4.pack.js"></script>
-<script type="text/javascript" src="<%=basePath%>/front/scripts/jquery.easing-1.3.pack.js"></script>
-<script type="text/javascript" src="<%=basePath%>/front/scripts/jquery.mousewheel-3.0.4.pack.js"></script>
-<link rel="stylesheet" href="<%=basePath%>/front/css/jquery.fancybox-1.3.4.css" type="text/css" media="screen" />
+<script type="text/javascript" src="<%=basePath%>style/front/scripts/jquery.fancybox-1.3.4.pack.js"></script>
+<script type="text/javascript" src="<%=basePath%>style/front/scripts/jquery.easing-1.3.pack.js"></script>
+<script type="text/javascript" src="<%=basePath%>style/front/scripts/jquery.mousewheel-3.0.4.pack.js"></script>
+<link rel="stylesheet" href="<%=basePath%>style/front/css/jquery.fancybox-1.3.4.css" type="text/css" media="screen" />
 </head>
 <body>
 <!--This is the START of the header-->
 <div id="topcontrol" style="position: fixed; bottom: 5px; left: 960px; opacity: 1; cursor: pointer;" title="Go to Top"></div>
 <div id="header-wrapper">
 	<div id="header">
-		<div id="logo"> <a href="index.html"><img src="<%=basePath%>/front/images/logo.png" width="100" height="80" alt="logo" /></a> </div>
+		<div id="logo"> <a href="index.html"><img src="<%=basePath%>style/front/images/logo.png" width="100" height="80" alt="logo" /></a> </div>
 		<div id="header-text">
 			<h4>We make a bunch of cool stuff, have a look around!</h4>
 			<h6><a href="index.html">Home</a></h6>
@@ -48,12 +48,12 @@
 <div id="menu-wrapper">
 	<div id="main-menu">
 		<ul>
-			<li><a class="selected" href="<%=basePath%>/front/index.html">Home →</a></li>
-			<li><a href="<%=basePath%>/front/about.html">About</a></li>
-			<li><a href="<%=basePath%>/front/portfolio.html">Portfolio</a></li>
-			<li><a href="<%=basePath%>/front/blog.html">Blog</a></li>
-			<li><a href="<%=basePath%>/front/contact.html">Contact</a></li>
-			<li><a href="<%=basePath%>/front/features.html">Features</a></li>
+			<li><a class="selected" href="<%=basePath%>style/front/index.html">Home →</a></li>
+			<li><a href="<%=basePath%>style/front/about.html">About</a></li>
+			<li><a href="<%=basePath%>style/front/portfolio.html">Portfolio</a></li>
+			<li><a href="<%=basePath%>style/front/blog.html">Blog</a></li>
+			<li><a href="<%=basePath%>style/front/contact.html">Contact</a></li>
+			<li><a href="<%=basePath%>style/front/features.html">Features</a></li>
 		</ul>
 	</div>
 	<!--This is the START of the footer-->
@@ -80,7 +80,7 @@
 <div id="content">
 	<!--This is the START of the NIVO slider-->
 	<div class="slider-wrapper theme-effe">
-		<div id="slider" class="nivoSlider"> <img src="<%=basePath%>/front/images/slider/slide1.jpg" alt="" title="#img1" /> <img src="<%=basePath%>/front/images/slider/slide2.jpg" alt="" title="#img2" /> <img src="<%=basePath%>/front/images/slider/slide3.jpg" alt="" title="#img3" /> <img src="<%=basePath%>/front/images/slider/slide4.jpg" alt="" title="#img4" /> </div>
+		<div id="slider" class="nivoSlider"> <img src="<%=basePath%>style/front/images/slider/slide1.jpg" alt="" title="#img1" /> <img src="<%=basePath%>style/front/images/slider/slide2.jpg" alt="" title="#img2" /> <img src="<%=basePath%>style/front/images/slider/slide3.jpg" alt="" title="#img3" /> <img src="<%=basePath%>style/front/images/slider/slide4.jpg" alt="" title="#img4" /> </div>
 	</div>
 	<!--END of NIVO Slider-->
 	<!--This is the START of the recent posts-->
@@ -97,11 +97,11 @@
 			<p>Here you can find some of our most recent and fresh content...</p>
 		</div>
 		<div class="recent-summary">
-			<div class="recent-item"> <a class="single_image" href="<%=basePath%>/front/images/blog/large/recent1.jpg"><img src="<%=basePath%>/front/images/blog/thumbs/recent1.jpg" width="250" height="150" alt="recent1" /></a>
+			<div class="recent-item"> <a class="single_image" href="<%=basePath%>style/front/images/blog/large/recent1.jpg"><img src="<%=basePath%>style/front/images/blog/thumbs/recent1.jpg" width="250" height="150" alt="recent1" /></a>
 				<h6>NYC</h6>
 				<p>On a scooter?<a class="readmore" href="blog.html">read more →</a></p>
 			</div>
-			<div class="recent-item-last"> <a class="single_image" href="<%=basePath%>/front/images/blog/large/recent2.jpg"><img src="<%=basePath%>/front/images/blog/thumbs/recent2.jpg" width="250" height="150" alt="recent2" /></a>
+			<div class="recent-item-last"> <a class="single_image" href="<%=basePath%>style/front/images/blog/large/recent2.jpg"><img src="<%=basePath%>style/front/images/blog/thumbs/recent2.jpg" width="250" height="150" alt="recent2" /></a>
 				<h6>Feathers</h6>
 				<p>Could drop some lorem here.<a class="readmore" href="blog.html">read more →</a></p>
 			</div>
@@ -114,13 +114,13 @@
 				<p>These are some of our latest projects, some nice stuff in here...</p>
 			</div>
 			<div class="recent-summary">
-				<div class="recent-item"> <a class="single_image" href="<%=basePath%>/front/images/portfolio/thumbs/recent1.jpg"><img src="<%=basePath%>/front/images/portfolio/thumbs/recent1.jpg" width="250" height="150" alt="recent1" /></a>
+				<div class="recent-item"> <a class="single_image" href="<%=basePath%>style/front/images/portfolio/thumbs/recent1.jpg"><img src="<%=basePath%>style/front/images/portfolio/thumbs/recent1.jpg" width="250" height="150" alt="recent1" /></a>
 					<h6>Moo Minicards</h6>
 					<p>Kinda sweet huh?<a class="readmore" href="portfolio.html">read more →</a></p>
 				</div>
-				<div class="recent-item-last"> <a class="single_image" href="<%=basePath%>/front/images/portfolio/thumbs/recent2.jpg"><img src="<%=basePath%>/front/images/portfolio/thumbs/recent2.jpg" width="250" height="150" alt="recent2" /></a>
+				<div class="recent-item-last"> <a class="single_image" href="<%=basePath%>style/front/images/portfolio/thumbs/recent2.jpg"><img src="<%=basePath%>style/front/images/portfolio/thumbs/recent2.jpg" width="250" height="150" alt="recent2" /></a>
 					<h6>Right off the press!</h6>
-					<p>Could drop some lorem here.<a class="readmore" href="<%=basePath%>/front/portfolio.html">read more →</a></p>
+					<p>Could drop some lorem here.<a class="readmore" href="<%=basePath%>style/front/portfolio.html">read more →</a></p>
 				</div>
 			</div>
 			<!--END of recent projects-->
@@ -139,12 +139,12 @@
 			<p>I do make some awesome freebies for you to use... All of them are FREE and pixel perfect!</p>
 			<p>Thanks for showing me the support by subscribing, and I'll try not to disappoint you...</p>
 		</h5>
-		<img class="star-divider" src="<%=basePath%>/front/images/star_divider.png" /> <a href="http://www.twitter.com/92_five">
-		<div id="follow-twitter"><img src="<%=basePath%>/front/images/tweet_top.png" />
+		<img class="star-divider" src="<%=basePath%>style/front/images/star_divider.png" /> <a href="http://www.twitter.com/92_five">
+		<div id="follow-twitter"><img src="<%=basePath%>style/front/images/tweet_top.png" />
 			<h4>Follow me on twitter</h4>
 		</div>
 		</a><a href="http://eepurl.com/dqtGj">
-		<div id="follow-mail"><img src="<%=basePath%>/front/images/mail_top.png" />
+		<div id="follow-mail"><img src="<%=basePath%>style/front/images/mail_top.png" />
 			<h4>Subscribe to my newsletter</h4>
 		</div>
 		</a>

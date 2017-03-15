@@ -12,7 +12,7 @@ import java.util.Date;
  * 创建时间：2017/3/14.
  */
 @Entity
-@Table(name = "r_licence")
+@Table(name = "licence")
 public class Licence implements Serializable {
 
     @Id

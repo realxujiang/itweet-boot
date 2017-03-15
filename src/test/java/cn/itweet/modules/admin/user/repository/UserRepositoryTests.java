@@ -1,11 +1,10 @@
 package cn.itweet.modules.admin.user.repository;
 
 import cn.itweet.ItweetBootApplication;
-import cn.itweet.modules.admin.user.entry.User;
+import cn.itweet.modules.admin.user.entry.SysUser;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Propagation;
@@ -24,7 +23,7 @@ public class UserRepositoryTests {
 
     @Test
     public void testExample() throws Exception {
-        User user = userRepository.findByUserName("priya");
+        SysUser user = userRepository.findByUserName("admin");
         System.out.println(user.toString());
     }
 }

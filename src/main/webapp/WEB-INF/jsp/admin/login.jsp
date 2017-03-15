@@ -10,13 +10,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Itweet - 后台管理系统</title>
-<link href="<%=basePath%>/admin/css/bootstrap.min.css" rel="stylesheet">
-<link href="<%=basePath%>/admin/css/datepicker3.css" rel="stylesheet">
-<link href="<%=basePath%>/admin/css/styles.css" rel="stylesheet">
+<link href="<%=basePath%>style/admin/css/bootstrap.min.css" rel="stylesheet">
+<link href="<%=basePath%>style/admin/css/datepicker3.css" rel="stylesheet">
+<link href="<%=basePath%>style/admin/css/styles.css" rel="stylesheet">
 
 <!--[if lt IE 9]>
-<script src="<%=basePath%>/admin/js/html5shiv.js"></script>
-<script src="<%=basePath%>/admin/js/respond.min.js"></script>
+<script src="<%=basePath%>style/admin/js/html5shiv.js"></script>
+<script src="<%=basePath%>style/admin/js/respond.min.js"></script>
 <![endif]-->
 
 </head>

@@ -12,8 +12,8 @@
 <head>
     <title>表格</title>
     <meta charset="utf-8">
-    <link href="<%=basePath%>/admin/licence/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
-    <link href="<%=basePath%>/admin/licence/css/style.css?v=4.1.0" rel="stylesheet">
+    <link href="<%=basePath%>/style/admin/licence/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="<%=basePath%>/style/admin/licence/css/style.css?v=4.1.0" rel="stylesheet">
 </head>
 
 <body class="gray-bg">

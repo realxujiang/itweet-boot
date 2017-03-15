@@ -1,7 +1,6 @@
 package cn.itweet.modules.admin.licence.repository;
 
 import cn.itweet.modules.admin.licence.entity.Licence;
-import cn.itweet.modules.admin.user.entry.User;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

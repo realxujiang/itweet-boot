@@ -1,15 +1,13 @@
 package cn.itweet.modules.admin.user.repository;
 
-import cn.itweet.modules.admin.user.entry.User;
+import cn.itweet.modules.admin.user.entry.SysUser;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
 
-@Repository
-public interface UserRepository extends CrudRepository<User, Long> {
-    User findByUserName(String username);
 
-    User getUserByEmail(String email);
+public interface UserRepository extends JpaRepository<SysUser,Long> {
 
+    @Query(value = "select u.*,r.name from User u LEFT JOIN role_user sru on u.id= sru.uid LEFT JOIN Role r on sru.rid=r.id where username=?1",nativeQuery = true)
+    SysUser findByUserName(String username);
 
 }

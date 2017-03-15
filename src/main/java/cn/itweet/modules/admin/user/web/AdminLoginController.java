@@ -21,7 +21,7 @@ public class AdminLoginController {
      * This method handles login GET requests.
      * If users is already logged-in and tries to goto login page again, will be redirected to list page.
      */
-    @GetMapping(value = "/admin/login")
+   /* @GetMapping(value = "/admin/login")
     public String login() {
         return "admin/login";
     }
@@ -31,7 +31,7 @@ public class AdminLoginController {
         System.out.println(username);
         System.out.println(password);
         return "redirect:/admin/home";
-    }
+    }*/
 
     /**
      * This method handles logout requests.
