@@ -23,11 +23,15 @@
                 <h5>添加授权</h5>
             </div>
             <div class="ibox-content">
+                <div style="text-align: center;color: red;margin-bottom: 10px;">
+                    ${errorMessage}
+                </div>
                 <form action="<%=basePath%>/admin/licence/add" class="form-horizontal" method="POST">
+
                     <div class="form-group">
                         <label class="col-sm-2 control-label">公司</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="company">
+                            <input type="text" class="form-control" name="company" value="${form.company}">
                             <span class="help-block m-b-none">申请授权的公司&nbsp;&nbsp;<b style="color: red;">*</b></span>
                         </div>
                     </div>
@@ -35,7 +39,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">项目</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control"  name="project">
+                            <input type="text" class="form-control"  name="project" value="${form.project}">
                             <span class="help-block m-b-none">申请授权的项目&nbsp;&nbsp;<b style="color: red;">*</b></span>
                         </div>
                     </div>
@@ -43,7 +47,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">邮箱</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="email">
+                            <input type="text" class="form-control" name="email" value="${form.email}">
                             <span class="help-block m-b-none">接收授权码的邮箱&nbsp;&nbsp;<b style="color: red;">*</b></span>
                         </div>
                     </div>

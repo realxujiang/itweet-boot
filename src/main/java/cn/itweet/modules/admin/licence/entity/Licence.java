@@ -126,4 +126,14 @@ public class Licence implements Serializable {
     public void setStatus(int status) {
         this.status = status;
     }
+
+    @Override
+    public String toString() {
+        return "company='" + company + '\'' +
+                ", project='" + project + '\'' +
+                ", email='" + email + '\'' +
+                ", products='" + products + '\'' +
+                ", node=" + node +
+                ", version=" + version;
+    }
 }

@@ -40,6 +40,25 @@
                 </tr>
                 </thead>
                 <tbody>
+                <c:forEach items="${list}" var="licence">
+                    <tr>
+                        <td>${licence.id}</td>
+                        <td>${licence.company}</td>
+                        <td>${licence.project}</td>
+                        <td>${licence.email}</td>
+                        <td>${licence.products}</td>
+                        <td>${licence.node}</td>
+                        <td>${licence.date}</td>
+                        <td>${licence.code}</td>
+                        <td>${licence.version}</td>
+                        <td>${licence.status}</td>
+                        <td>
+                            <a href="">删除</a>
+                            <a href="">修改</a>
+                            <a href="">导出</a>
+                        </td>
+                    </tr>
+                </c:forEach>
                 <tr>
                     <td>1</td>
                     <td>红象云腾</td>

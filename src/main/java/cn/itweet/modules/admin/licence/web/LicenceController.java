@@ -1,5 +1,6 @@
 package cn.itweet.modules.admin.licence.web;
 
+import cn.itweet.common.exception.ValidateException;
 import cn.itweet.modules.admin.licence.entity.Licence;
 import cn.itweet.modules.admin.licence.service.LicenceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * 说明：Licence Controller
@@ -30,33 +32,35 @@ public class LicenceController {
      * @return
      */
     @RequestMapping(value="/list", method= RequestMethod.GET)
-    public String list(){
+    public String list(HttpServletRequest request){
+        List<Licence> list = licenceService.list();
+        request.setAttribute("list",list);
         return "admin/licence/list";
     }
 
     /**
      * Licence授权页面
-     * @param model
-     * @param request
      * @return
      */
     @RequestMapping(value="/add", method= RequestMethod.GET)
-    public String add(Model model, HttpServletRequest request){
+    public String add(){
         return "admin/licence/add";
     }
 
     /**
      * 添加Licence授权记录
-     * @param model
      * @param licence
      * @param request
      * @return
      */
     @RequestMapping(value="/add", method = RequestMethod.POST)
-    public String add(Model model,Licence licence, HttpServletRequest request){
-        Licence form = licenceService.add(licence);
-        if(form.getId() == 0){
-            request.setAttribute("form",form);
+    public String add(Licence licence, HttpServletRequest request){
+
+        try{
+            licenceService.add(licence);
+        }catch (ValidateException v){
+            request.setAttribute("errorMessage",v.getMessage());
+            request.setAttribute("form",licence);
             return "admin/licence/add";
         }
         return "redirect:/admin/licence/list";
