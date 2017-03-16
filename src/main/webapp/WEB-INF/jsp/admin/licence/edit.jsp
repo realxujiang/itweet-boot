@@ -10,7 +10,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Licence_Add</title>
+    <title>Licence_Edit</title>
     <link href="<%=basePath%>/style/admin/licence/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
     <link href="<%=basePath%>/style/admin/licence/css/style.css?v=4.1.0" rel="stylesheet">
 </head>
@@ -20,14 +20,14 @@
     <div class="row">
         <div class="ibox float-e-margins">
             <div class="ibox-title">
-                <h5>添加授权</h5>
+                <h5>修改授权</h5>
             </div>
             <div class="ibox-content">
                 <div style="text-align: center;color: red;margin-bottom: 10px;">
                     ${errorMessage}
                 </div>
-                <form action="<%=basePath%>/admin/licence/add" class="form-horizontal" method="POST">
-
+                <form action="<%=basePath%>/admin/licence/edit" class="form-horizontal" method="POST">
+                    <input type="hidden" name="id" value="${form.id}">
                     <div class="form-group">
                         <label class="col-sm-2 control-label">公司</label>
                         <div class="col-sm-10">
@@ -65,7 +65,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">节点</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="node" value="1">
+                            <input type="text" class="form-control" name="node" value="${form.node}">
                             <span class="help-block m-b-none">申请授权节点数</span>
                         </div>
                     </div>

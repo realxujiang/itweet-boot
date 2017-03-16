@@ -1,8 +1,6 @@
 package cn.itweet.modules.admin.user.repository;
-import java.util.List;
 
-import cn.itweet.modules.admin.user.entry.SysRole;
-import org.springframework.data.jpa.repository.Query;
+import cn.itweet.modules.admin.user.entity.SysRole;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

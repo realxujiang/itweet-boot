@@ -2,7 +2,7 @@ package cn.itweet.modules.admin.user.service;
 
 import cn.itweet.ItweetBootApplication;
 import cn.itweet.common.exception.SystemException;
-import cn.itweet.modules.admin.user.entry.SysUser;
+import cn.itweet.modules.admin.user.entity.SysUser;
 import org.junit.*;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

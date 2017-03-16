@@ -1,4 +1,4 @@
-package cn.itweet.modules.admin.user.entry;
+package cn.itweet.modules.admin.user.entity;
 
 import javax.persistence.*;
 

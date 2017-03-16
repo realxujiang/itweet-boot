@@ -1,7 +1,7 @@
 package cn.itweet.modules.admin.user.repository;
 
 import cn.itweet.ItweetBootApplication;
-import cn.itweet.modules.admin.user.entry.SysUser;
+import cn.itweet.modules.admin.user.entity.SysUser;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

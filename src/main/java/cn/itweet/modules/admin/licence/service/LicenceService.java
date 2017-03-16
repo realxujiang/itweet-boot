@@ -26,4 +26,31 @@ public interface LicenceService {
      * @return
      */
     public List<Licence> list();
+
+    /**
+     * Licence授权ID查询
+     * @param id
+     * @return
+     */
+    public Licence get(Integer id);
+
+    /**
+     * Licence授权删除
+     * @param id
+     */
+    public void delete(Integer id);
+
+    /**
+     * Licence授权修改
+     * @param licence
+     * @throws ValidateException
+     */
+    public void edit(Licence licence) throws ValidateException;
+
+    /**
+     * Licence授权按公司查询
+     * @param companyName
+     * @return
+     */
+    public List<Licence> getByCompany(String companyName);
 }
