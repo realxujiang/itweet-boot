@@ -3,7 +3,7 @@
 
 <%
     String path = request.getContextPath();
-    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path;
 %>
 
 <!DOCTYPE html>
@@ -14,14 +14,48 @@
     <meta charset="utf-8">
     <link href="<%=basePath%>/style/admin/licence/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
     <link href="<%=basePath%>/style/admin/licence/css/style.css?v=4.1.0" rel="stylesheet">
+    <script src="<%=basePath%>/style/admin/licence/js/jquery.min.js"></script>
+    <script type="text/javascript">
+        function del() {
+            var msg = "您真的确定要删除吗？\n\n请确认！";
+            if (confirm(msg)==true){
+                return true;
+            }else{
+                return false;
+            }
+        }
+        $(document).ready(function(){
+            $("#sub").click(function(){
+                var companyName = $("#companyName").val();
+                if(companyName != ""){
+                    $("#form").submit
+                }
+            });
+        });
+
+    </script>
 </head>
 
 <body class="gray-bg">
 <div class="wrapper wrapper-content">
     <div class="row">
         <div class="ibox-title">
-            <h5>Licence列表</h5>
+            <h4>Licence列表</h4>
         </div>
+        <div>
+            <div style="float: left;margin-top:8px;margin-bottom: 5px;">
+                <span style="margin: 5px 10px;">授权记录共有: &nbsp;<b style="color: red;">${licenceNumber}</b>&nbsp;条</span>
+            </div>
+
+            <div style="margin-top:8px;margin-bottom: 5px;float: right;">
+                <form id="form" action="<%=basePath%>/admin/licence/select" method="POST">
+                    <span>公司查询:<input type="text" name="companyName" style="width: 100px;" value="${companyName}">
+                        <button id="sub">查询</button>
+                    </span>
+                </form>
+            </div>
+        </div>
+
         <div class="ibox-content">
             <table class="table table-bordered table-striped">
                 <thead>
@@ -50,121 +84,21 @@
                         <td>${licence.node}</td>
                         <td>${licence.date}</td>
                         <td>${licence.code}</td>
-                        <td>${licence.version}</td>
-                        <td>${licence.status}</td>
+                        <c:if test="${licence.version==0}"><td>试用版</td></c:if>
+                        <c:if test="${licence.version==1}"><td>正式版</td></c:if>
+                        <c:if test="${licence.status==0}"><td><a href="#">尚未发送,点击发送</a></td></c:if>
+                        <c:if test="${licence.status==1}"><td>邮件已经发送</td></c:if>
                         <td>
-                            <a href="">删除</a>
-                            <a href="">修改</a>
-                            <a href="">导出</a>
+                            <a href="<%=basePath%>/admin/licence/delete/${licence.id}" onclick="return del()">删除</a>
+                            <a href="<%=basePath%>/admin/licence/edit/${licence.id}">修改</a>
+                            <a href="<%=basePath%>/admin/licence/export/${licence.id}">导出</a>
                         </td>
                     </tr>
                 </c:forEach>
-                <tr>
-                    <td>1</td>
-                    <td>红象云腾</td>
-                    <td>高峰4号</td>
-                    <td>893040831@qq.com</td>
-                    <td>CRH4.9</td>
-                    <td>4</td>
-                    <td>2017-3-14</td>
-                    <td>sdfsderbtyhtntyjytuymhjky</td>
-                    <td>试用版</td>
-                    <td>已发送</td>
-                    <td>
-                        <a href="">删除</a>
-                        <a href="">修改</a>
-                        <a href="">导出</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>红象云腾</td>
-                    <td>高峰4号</td>
-                    <td>893040831@qq.com</td>
-                    <td>CRH4.9</td>
-                    <td>4</td>
-                    <td>2017-3-14</td>
-                    <td>sdfsderbtyhtntyjytuymhjky</td>
-                    <td>试用版</td>
-                    <td>已发送</td>
-                    <td>
-                        <a href="">删除</a>
-                        <a href="">修改</a>
-                        <a href="">导出</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>红象云腾</td>
-                    <td>高峰4号</td>
-                    <td>893040831@qq.com</td>
-                    <td>CRH4.9</td>
-                    <td>4</td>
-                    <td>2017-3-14</td>
-                    <td>sdfsderbtyhtntyjytuymhjky</td>
-                    <td>试用版</td>
-                    <td>已发送</td>
-                    <td>
-                        <a href="">删除</a>
-                        <a href="">修改</a>
-                        <a href="">导出</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>红象云腾</td>
-                    <td>高峰4号</td>
-                    <td>893040831@qq.com</td>
-                    <td>CRH4.9</td>
-                    <td>4</td>
-                    <td>2017-3-14</td>
-                    <td>sdfsderbtyhtntyjytuymhjky</td>
-                    <td>试用版</td>
-                    <td>已发送</td>
-                    <td>
-                        <a href="">删除</a>
-                        <a href="">修改</a>
-                        <a href="">导出</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>红象云腾</td>
-                    <td>高峰4号</td>
-                    <td>893040831@qq.com</td>
-                    <td>CRH4.9</td>
-                    <td>4</td>
-                    <td>2017-3-14</td>
-                    <td>sdfsderbtyhtntyjytuymhjky</td>
-                    <td>试用版</td>
-                    <td>已发送</td>
-                    <td>
-                        <a href="">删除</a>
-                        <a href="">修改</a>
-                        <a href="">导出</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>红象云腾</td>
-                    <td>高峰4号</td>
-                    <td>893040831@qq.com</td>
-                    <td>CRH4.9</td>
-                    <td>4</td>
-                    <td>2017-3-14</td>
-                    <td>sdfsderbtyhtntyjytuymhjky</td>
-                    <td>试用版</td>
-                    <td>已发送</td>
-                    <td>
-                        <a href="">删除</a>
-                        <a href="">修改</a>
-                        <a href="">导出</a>
-                    </td>
-                </tr>
                 </tbody>
             </table>
+            <a href="<%=basePath%>/admin/licence/add" style="border-bottom: 1px solid blue">Licence添加</a>
         </div>
-
     </div>
 
 </div>

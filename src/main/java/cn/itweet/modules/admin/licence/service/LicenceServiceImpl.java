@@ -33,6 +33,30 @@ public class LicenceServiceImpl implements LicenceService{
     }
 
     /**
+     * Licence授权修改
+     * @param licence
+     * @throws ValidateException
+     */
+    @Override
+    public void edit(Licence licence) throws ValidateException {
+        Licence form = licenceRepository.findOne(licence.getId());
+        if(licence.getCompany() == null || "".equals(licence.getCompany())){
+            throw new ValidateException("公司名称不能为空");
+        }
+        if(licence.getProject() == null || "".equals(licence.getProject())){
+            throw new ValidateException("项目名称不能为空");
+        }
+        if(licence.getEmail() == null || "".equals(licence.getEmail())){
+            throw new ValidateException("邮箱不能为空");
+        }
+
+        licence.setStatus(0);
+        licence.setDate(form.getDate());
+        licence.setCode(EncrpptionUtils.encryption(licence.toString()));
+        licenceRepository.save(licence);
+    }
+
+    /**
      * Licence授权添加
      * @param licence
      * @throws ValidateException
@@ -51,9 +75,36 @@ public class LicenceServiceImpl implements LicenceService{
         }
         licence.setDate(new Date());
         licence.setStatus(0);
-        System.out.println(licence.toString());
         licence.setCode(EncrpptionUtils.encryption(licence.toString()));
         licenceRepository.save(licence);
     }
 
+    /**
+     * Licence授权删除
+     * @param id
+     */
+    @Override
+    public void delete(Integer id) {
+        licenceRepository.delete(id);
+    }
+
+    /**
+     * Licence授权ID查询
+     * @param id
+     * @return
+     */
+    @Override
+    public Licence get(Integer id) {
+        return licenceRepository.findOne(id);
+    }
+
+    /**
+     * Licence授权按公司查询
+     * @param companyName
+     * @return
+     */
+    @Override
+    public List<Licence> getByCompany(String companyName) {
+        return licenceRepository.getByCompany(companyName);
+    }
 }
