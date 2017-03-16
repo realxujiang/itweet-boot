@@ -1,6 +1,6 @@
 package cn.itweet.common.security;
 
-import cn.itweet.modules.admin.user.entry.SysPermission;
+import cn.itweet.modules.admin.user.entity.SysPermission;
 import cn.itweet.modules.admin.user.repository.PermissionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.ConfigAttribute;

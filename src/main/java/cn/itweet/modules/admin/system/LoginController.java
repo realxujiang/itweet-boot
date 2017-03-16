@@ -1,4 +1,4 @@
-package cn.itweet.modules.admin.user.web;
+package cn.itweet.modules.admin.system;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
  * Created by whoami on 08/03/2017.
  */
 @Controller
-public class AdminLoginController {
+public class LoginController {
 
     /**
      * This method handles login GET requests.
@@ -45,7 +45,7 @@ public class AdminLoginController {
             //persistentTokenBasedRememberMeServices.logout(request, response, auth);
             SecurityContextHolder.getContext().setAuthentication(null);
         }
-        return "redirect:/login?logout";
+        return "redirect:/admin/login";
     }
 
 }

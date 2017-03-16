@@ -1,6 +1,6 @@
 package cn.itweet.modules.admin.user.repository;
 
-import cn.itweet.modules.admin.user.entry.SysPermission;
+import cn.itweet.modules.admin.user.entity.SysPermission;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

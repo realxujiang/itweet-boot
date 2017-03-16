@@ -97,7 +97,6 @@
                 </c:forEach>
                 </tbody>
             </table>
-            <a href="<%=basePath%>/admin/licence/add" style="border-bottom: 1px solid blue">Licence添加</a>
         </div>
     </div>
 

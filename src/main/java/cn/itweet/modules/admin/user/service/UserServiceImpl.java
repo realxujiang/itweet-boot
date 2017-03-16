@@ -1,7 +1,7 @@
 package cn.itweet.modules.admin.user.service;
 
 import cn.itweet.common.exception.SystemException;
-import cn.itweet.modules.admin.user.entry.SysUser;
+import cn.itweet.modules.admin.user.entity.SysUser;
 import cn.itweet.modules.admin.user.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

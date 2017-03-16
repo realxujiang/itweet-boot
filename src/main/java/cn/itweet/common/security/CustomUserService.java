@@ -1,9 +1,9 @@
 package cn.itweet.common.security;
 
-import cn.itweet.modules.admin.user.entry.SysUser;
+import cn.itweet.modules.admin.user.entity.SysUser;
 import cn.itweet.modules.admin.user.repository.PermissionRepository;
 import cn.itweet.modules.admin.user.repository.UserRepository;
-import cn.itweet.modules.admin.user.entry.SysPermission;
+import cn.itweet.modules.admin.user.entity.SysPermission;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
