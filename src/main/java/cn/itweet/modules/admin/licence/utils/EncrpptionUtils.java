@@ -19,8 +19,12 @@ public class EncrpptionUtils {
         for(int i = 0; i < messageCode.length; i++){
             messageCode[i] = (char)(messageCode[i] ^ 'T'^'g');
         }
-
-        return stringToBase64(messageCode.toString());
+        String code = stringToBase64(new String(messageCode));
+        StringBuilder sb = new StringBuilder(code);
+        for(int i=4;i<code.length();i+=4){
+            sb.insert(i, "-");
+        }
+        return sb.toString();
     }
 
     /*

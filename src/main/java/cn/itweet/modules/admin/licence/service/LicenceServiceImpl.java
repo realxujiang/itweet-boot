@@ -4,6 +4,7 @@ import cn.itweet.common.exception.ValidateException;
 import cn.itweet.modules.admin.licence.entity.Licence;
 import cn.itweet.modules.admin.licence.repository.LicenceRepository;
 import cn.itweet.modules.admin.licence.utils.EncrpptionUtils;
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -50,9 +51,9 @@ public class LicenceServiceImpl implements LicenceService{
             throw new ValidateException("邮箱不能为空");
         }
 
-        licence.setStatus(0);
+        licence.setCode(EncrpptionUtils.encryption(new Gson().toJson(licence)));
         licence.setDate(form.getDate());
-        licence.setCode(EncrpptionUtils.encryption(licence.toString()));
+        licence.setStatus(0);
         licenceRepository.save(licence);
     }
 
@@ -63,7 +64,6 @@ public class LicenceServiceImpl implements LicenceService{
      */
     @Override
     public void add(Licence licence) throws ValidateException{
-
         if(licence.getCompany() == null || "".equals(licence.getCompany())){
             throw new ValidateException("公司名称不能为空");
         }
@@ -73,9 +73,10 @@ public class LicenceServiceImpl implements LicenceService{
         if(licence.getEmail() == null || "".equals(licence.getEmail())){
             throw new ValidateException("邮箱不能为空");
         }
+
+        licence.setCode(EncrpptionUtils.encryption(new Gson().toJson(licence)));
         licence.setDate(new Date());
         licence.setStatus(0);
-        licence.setCode(EncrpptionUtils.encryption(licence.toString()));
         licenceRepository.save(licence);
     }
 

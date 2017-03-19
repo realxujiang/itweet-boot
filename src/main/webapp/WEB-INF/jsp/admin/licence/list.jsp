@@ -15,6 +15,19 @@
     <link href="<%=basePath%>/style/admin/licence/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
     <link href="<%=basePath%>/style/admin/licence/css/style.css?v=4.1.0" rel="stylesheet">
     <script src="<%=basePath%>/style/admin/licence/js/jquery.min.js"></script>
+    <style>
+
+        .code{
+            max-width: 100px;
+            display:block;
+            word-break:keep-all;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            border: none;
+        }
+
+    </style>
     <script type="text/javascript">
         function del() {
             var msg = "您真的确定要删除吗？\n\n请确认！";
@@ -83,11 +96,11 @@
                         <td>${licence.products}</td>
                         <td>${licence.node}</td>
                         <td>${licence.date}</td>
-                        <td>${licence.code}</td>
+                        <td ><span class="code">${licence.code}</span></td>
                         <c:if test="${licence.version==0}"><td>试用版</td></c:if>
                         <c:if test="${licence.version==1}"><td>正式版</td></c:if>
-                        <c:if test="${licence.status==0}"><td><a href="#">尚未发送,点击发送</a></td></c:if>
-                        <c:if test="${licence.status==1}"><td>邮件已经发送</td></c:if>
+                        <c:if test="${licence.status==0}"><td><a href="#">点击发送</a></td></c:if>
+                        <c:if test="${licence.status==1}"><td>邮件已发送</td></c:if>
                         <td>
                             <a href="<%=basePath%>/admin/licence/delete/${licence.id}" onclick="return del()">删除</a>
                             <a href="<%=basePath%>/admin/licence/edit/${licence.id}">修改</a>

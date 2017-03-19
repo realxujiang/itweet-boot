@@ -38,7 +38,7 @@ public class Licence implements Serializable {
     @Column(name = "l_date")
     private Date date;
 
-    @Column(name = "l_code")
+    @Column(name = "l_code",columnDefinition="TEXT")
     private String code;
 
     @Column(name = "l_version")
