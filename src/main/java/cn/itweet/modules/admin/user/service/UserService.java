@@ -4,6 +4,7 @@ import cn.itweet.common.exception.SystemException;
 import cn.itweet.modules.admin.user.entity.SysUser;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -11,15 +12,17 @@ import java.util.Optional;
  */
 public interface UserService {
 
-    Optional<SysUser> getUserById(long userid);
+    SysUser findByUsername(String username);
 
-    Collection<SysUser> getAllUsers();
+    SysUser findByEmail(String email);
 
-    SysUser insertUser(SysUser user) throws SystemException;
+    Collection<SysUser> list();
 
-    void updateUser(SysUser user) throws SystemException;
+    SysUser add(SysUser user) throws SystemException;
 
-    void removeUserById(Long userid);
+    void update(SysUser user,List<Integer> rIds) throws SystemException;
+
+    void deleteById(Integer uid);
 
     void deleteAll();
 }

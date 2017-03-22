@@ -6,7 +6,7 @@ import javax.persistence.*;
  * Created by yangyibo on 17/1/20.
  */
 @Entity
-@Table(name = "permission")
+@Table(name = "sys_permission")
 public class SysPermission {
 
     @Id

@@ -8,7 +8,7 @@ import java.util.List;
  * Created by yangyibo on 17/1/17.
  */
 @Entity
-@Table(name = "role")
+@Table(name = "sys_role")
 public class SysRole implements Serializable{
 
     @Id
@@ -16,14 +16,6 @@ public class SysRole implements Serializable{
     private Integer id;
 
     private String name;
-
-    @ManyToMany(fetch=FetchType.LAZY)
-    @JoinTable(
-            name="permission_role",
-            joinColumns=@JoinColumn(name="rid",referencedColumnName="id"),
-            inverseJoinColumns=@JoinColumn(name="permission_id",referencedColumnName="id")
-    )
-    List<SysPermission> permissions;
 
     public Integer getId() {
         return id;
@@ -36,13 +28,5 @@ public class SysRole implements Serializable{
     }
     public void setName(String name) {
         this.name = name;
-    }
-
-    public List<SysPermission> getPermissions() {
-        return permissions;
-    }
-
-    public void setPermissions(List<SysPermission> permissions) {
-        this.permissions = permissions;
     }
 }

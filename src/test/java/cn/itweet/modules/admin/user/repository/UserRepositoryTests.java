@@ -2,6 +2,7 @@ package cn.itweet.modules.admin.user.repository;
 
 import cn.itweet.ItweetBootApplication;
 import cn.itweet.modules.admin.user.entity.SysUser;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,6 @@ public class UserRepositoryTests {
     @Test
     public void testExample() throws Exception {
         SysUser user = userRepository.findByUserName("admin");
-        System.out.println(user.toString());
+        Assert.assertEquals("admin",user.getUsername());
     }
 }
