@@ -70,11 +70,6 @@
 				</li>
 				<li>
 					<a class="" href="#">
-						<span class="glyphicon glyphicon-share-alt"></span> 菜单管理
-					</a>
-				</li>
-				<li>
-					<a class="" href="#">
 						<span class="glyphicon glyphicon-share-alt"></span> 系统日志
 					</a>
 				</li>

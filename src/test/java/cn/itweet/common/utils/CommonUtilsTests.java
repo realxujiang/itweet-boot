@@ -17,37 +17,34 @@ public class CommonUtilsTests {
         a.add(1);
         a.add(3);
         a.add(4);
-        a.add(5);
-        a.add(6);
 
         List<Integer> b = new ArrayList<>();
-        b.add(2);
         b.add(3);
-        b.add(4);
-        b.add(5);
         b.add(7);
+        b.add(6);
 
         List<Integer> list = CommonUtils.getDeleteElements(a,b);
+        System.out.println(list.toString());
         Assert.assertEquals(2,list.size());
     }
 
     @Test
     public void getAggrandizeElements() {
         List<Integer> a = new ArrayList<>();
-        a.add(1);
         a.add(3);
-        a.add(4);
-        a.add(5);
+        a.add(7);
+        a.add(6);
+        a.add(8);
+        a.add(9);
 
         List<Integer> b = new ArrayList<>();
-        b.add(2);
         b.add(3);
-        b.add(4);
-        b.add(5);
         b.add(7);
+        b.add(6);
 
         List<Integer> list = CommonUtils.getAggrandizeElements(a,b);
-        Assert.assertEquals(1,list.size());
+        System.out.println(list.toString());
+        Assert.assertEquals(2,list.size());
     }
 
 }

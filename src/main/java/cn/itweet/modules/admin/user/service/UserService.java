@@ -16,13 +16,13 @@ public interface UserService {
 
     SysUser findByEmail(String email);
 
-    Collection<SysUser> list();
+    List<SysUser> list();
 
-    SysUser add(SysUser user) throws SystemException;
+    void add(SysUser user,List<Integer> rIds) throws SystemException;
 
     void update(SysUser user,List<Integer> rIds) throws SystemException;
 
-    void deleteById(Integer uid);
+    void deleteById(Integer uid) throws SystemException;
 
     void deleteAll();
 }

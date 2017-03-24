@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
@@ -42,28 +43,47 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Collection<SysUser> list() {
+    public List<SysUser> list() {
         LOGGER.debug("Getting all users");
-        return (Collection<SysUser>) userRepository.findAll();
+        return userRepository.findAll();
     }
 
     @Override
-    public SysUser add(SysUser user) throws SystemException {
-        LOGGER.debug("insert into user by username = {}","none");
+    public void add(SysUser user,List<Integer> rIds) throws SystemException {
+        SysUser su = addUserInfo(user);
+        addRoleUserInfo(rIds, su);
+        LOGGER.debug("insert into user by username = {}",user.getUsername());
+    }
+
+    private SysUser addUserInfo(SysUser user) throws SystemException {
+        if(userRepository.findByUsername(user.getUsername()) != null)
+            throw new SystemException("你要添加的用户名已经存在，不能重复添加！");
+
         return userRepository.save(user);
+    }
+
+    private void addRoleUserInfo(List<Integer> rIds, SysUser su) {
+        List<SysRoleUser> ruList = new ArrayList<>();
+        for (int i=0; i < rIds.size(); i++) {
+            SysRoleUser ru = new SysRoleUser();
+            ru.setRoleId(rIds.get(i));
+            ru.setUserId(su.getId());
+            ruList.add(ru);
+        }
+        roleUserRepository.save(ruList);
     }
 
     @Override
     public void update(SysUser user,List<Integer> rIds) throws SystemException {
-        LOGGER.debug("update user by username = {}", user.getUsername());
         SysUser u1 = userRepository.findOne(user.getId());
-        SysUser u2 = new SysUser();
         if (u1 != null) {
-            updateUserAndUserRoles(user, rIds, u1, u2);
+            updateUserAndUserRoles(user, rIds, u1);
         }
+        LOGGER.debug("update user by username = {}", u1.getUsername());
     }
 
-    private void updateUserAndUserRoles(SysUser user, List<Integer> rIds, SysUser u1, SysUser u2) {
+    private void updateUserAndUserRoles(SysUser user, List<Integer> rIds, SysUser u1) {
+        SysUser u2 = new SysUser();
         List<Integer> roleUserList = roleUserRepository.getRoleUserIdsByUid(u1.getId());
         if (roleUserList.equals(rIds)) {
             updateUser(user, u1, u2);
@@ -74,44 +94,53 @@ public class UserServiceImpl implements UserService {
     }
 
     private void updateRoleUser(List<Integer> rIds, SysUser u1, List<Integer> roleUserList) {
-        List<Integer> aggElems = CommonUtils.getAggrandizeElements(rIds,roleUserList);
-        List<Integer> deleteElems = CommonUtils.getDeleteElements(rIds,roleUserList);
-        if (aggElems != null ) {
-            for (int i=0; i<aggElems.size();i++) {
-                SysRoleUser ru = new SysRoleUser();
-                ru.setUserId(u1.getId());
-                ru.setRoleId(aggElems.get(i));
-                roleUserRepository.save(ru);
+        if (!CommonUtils.compare(rIds,roleUserList)) {
+            List<Integer> deleteElems = CommonUtils.getDeleteElements(rIds, roleUserList);
+            List<Integer> aggElems = CommonUtils.getAggrandizeElements(rIds, roleUserList);
+
+            if (aggElems.size() != 0) {
+                for (int i = 0; i < aggElems.size(); i++) {
+                    System.out.println(aggElems.toString());
+                    SysRoleUser ru = new SysRoleUser();
+                    ru.setUserId(u1.getId());
+                    ru.setRoleId(aggElems.get(i));
+                    roleUserRepository.save(ru);
+                }
             }
-        } else if(deleteElems != null) {
-            for (int i=0; i<deleteElems.size();i++) {
-                roleUserRepository.delete(deleteElems.get(i));
+
+            if (deleteElems.size() != 0) {
+                System.out.println(deleteElems.toString());
+                for (int i = 0; i < deleteElems.size(); i++) {
+                    roleUserRepository.delete(deleteElems.get(i));
+                }
             }
         }
     }
 
     private void updateUser(SysUser user, SysUser u1, SysUser u2) {
         u2.setId(u1.getId());
-        u2.setUsername(user.getUsername());
         u2.setPassword(u1.getPassword());
+        u2.setUsername(user.getUsername());
+        u2.setEmail(user.getEmail());
         userRepository.save(u2);
     }
 
     @Override
-    public void deleteById(Integer uid) {
+    public void deleteById(Integer uid) throws SystemException {
         SysUser u = userRepository.findOne(uid);
         if (u != null && u.getUsername() != "admin") {
             List<Integer> roleUserIds = roleUserRepository.getRoleUserIdsByUid(uid);
             roleUserRepository.deleteByRoleUserId(roleUserIds);
             userRepository.delete(uid);
+        } else {
+            throw new SystemException("你要删除的用户是系统默认超级管理员，不能删除！");
         }
         LOGGER.debug("delete user by username = {}",u.getUsername());
     }
 
     @Override
     public void deleteAll() {
-        LOGGER.debug("delete all users by {}","UserService");
-
+        LOGGER.debug("delete all users by {}","UserServiceImpl");
         userRepository.deleteAll();
     }
 
