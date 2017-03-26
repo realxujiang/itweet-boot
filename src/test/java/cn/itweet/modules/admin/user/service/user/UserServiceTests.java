@@ -1,4 +1,4 @@
-package cn.itweet.modules.admin.user.service;
+package cn.itweet.modules.admin.user.service.user;
 
 import cn.itweet.ItweetBootApplication;
 import cn.itweet.common.exception.SystemException;
@@ -9,8 +9,6 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,24 +34,25 @@ public class UserServiceTests {
     @Test
     public void test() throws SystemException {
 
-        addUserTests();
-
-        deleteUserTests();
-
+//        addUserTests();
+//
+//        deleteUserTests();
+//
         updateUserTests();
-
-        getUserTests();
-
-        getAllUsersTest();
+//
+//        getUserTests();
+//
+//        getAllUsersTest();
     }
 
     private void updateUserTests() throws SystemException {
         SysUser u1 = userService.findByUsername("itweet");
         u1.setUsername("itweet");
-        u1.setEmail("admin@itweet.cn");
+        u1.setEmail("itweet@itweet.cn");
 
         List<Integer> rIds = new ArrayList<>();
         rIds.add(2);
+        rIds.add(1);
 
         userService.update(u1,rIds);
         Assert.assertNotNull(userService.findByUsername("itweet"));

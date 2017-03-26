@@ -1,10 +1,14 @@
 package cn.itweet.modules.admin.user.web;
 
 import cn.itweet.common.exception.SystemException;
+import cn.itweet.modules.admin.user.entity.SysUser;
+import cn.itweet.modules.admin.user.service.user.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -17,6 +21,9 @@ import java.util.Map;
 @Controller
 public class UserController {
 
+    @Autowired
+    private UserService userService;
+
     /**
      * 后台Main
      * @param model
@@ -25,6 +32,8 @@ public class UserController {
     @GetMapping(value = "/admin/user/list")
     public String main(Map<String, Object> model) {
         System.out.println("--------------用户List----------");
+        List<SysUser> userList = userService.list();
+        model.put("userList",userList);
         return "admin/user/list";
     }
 

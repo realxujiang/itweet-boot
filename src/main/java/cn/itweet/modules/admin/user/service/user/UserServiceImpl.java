@@ -1,22 +1,18 @@
-package cn.itweet.modules.admin.user.service;
+package cn.itweet.modules.admin.user.service.user;
 
 import cn.itweet.common.exception.SystemException;
 import cn.itweet.common.utils.CommonUtils;
 import cn.itweet.modules.admin.user.entity.SysRoleUser;
 import cn.itweet.modules.admin.user.entity.SysUser;
-import cn.itweet.modules.admin.user.repository.RoleRepository;
 import cn.itweet.modules.admin.user.repository.RoleUserRepository;
 import cn.itweet.modules.admin.user.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
-import java.util.Optional;
 
 /**
  * Created by whoami on 13/03/2017.
@@ -83,24 +79,25 @@ public class UserServiceImpl implements UserService {
     }
 
     private void updateUserAndUserRoles(SysUser user, List<Integer> rIds, SysUser u1) {
-        SysUser u2 = new SysUser();
-        List<Integer> roleUserList = roleUserRepository.getRoleUserIdsByUid(u1.getId());
-        if (roleUserList.equals(rIds)) {
-            updateUser(user, u1, u2);
+        List<Integer> roleUserList = roleUserRepository.getRoleIdsByUid(u1.getId());
+        System.out.println("roleUserList database --> : " + roleUserList.toString());
+        if (roleUserList.toString().equals(rIds.toString())) {
+            updateUser(user, u1);
         } else {
             updateRoleUser(rIds, u1, roleUserList);
-            updateUser(user, u1, u2);
+            updateUser(user, u1);
         }
     }
 
     private void updateRoleUser(List<Integer> rIds, SysUser u1, List<Integer> roleUserList) {
+        System.out.println("rids: "+rIds.toString());
         if (!CommonUtils.compare(rIds,roleUserList)) {
             List<Integer> deleteElems = CommonUtils.getDeleteElements(rIds, roleUserList);
             List<Integer> aggElems = CommonUtils.getAggrandizeElements(rIds, roleUserList);
 
             if (aggElems.size() != 0) {
                 for (int i = 0; i < aggElems.size(); i++) {
-                    System.out.println(aggElems.toString());
+                    System.out.println("aggElems: "+aggElems.toString());
                     SysRoleUser ru = new SysRoleUser();
                     ru.setUserId(u1.getId());
                     ru.setRoleId(aggElems.get(i));
@@ -109,20 +106,24 @@ public class UserServiceImpl implements UserService {
             }
 
             if (deleteElems.size() != 0) {
-                System.out.println(deleteElems.toString());
+                System.out.println("deleteElems: "+deleteElems.toString());
                 for (int i = 0; i < deleteElems.size(); i++) {
-                    roleUserRepository.delete(deleteElems.get(i));
+                    List<Integer> roleUserIds = roleUserRepository.getRoleUserIdsByRoleIdAndUserId(deleteElems.get(i),u1.getId());
+                    roleUserRepository.deleteByRoleUserId(roleUserIds);
                 }
             }
         }
     }
 
-    private void updateUser(SysUser user, SysUser u1, SysUser u2) {
-        u2.setId(u1.getId());
-        u2.setPassword(u1.getPassword());
-        u2.setUsername(user.getUsername());
-        u2.setEmail(user.getEmail());
-        userRepository.save(u2);
+    private void updateUser(SysUser user, SysUser u1) {
+        SysUser u2 = new SysUser();
+        if (!u1.getUsername().equals(user.getUsername()) || !u1.getEmail().equals(user.getEmail())) {
+            u2.setId(u1.getId());
+            u2.setPassword(u1.getPassword());
+            u2.setUsername(user.getUsername());
+            u2.setEmail(user.getEmail());
+            userRepository.save(u2);
+        }
     }
 
     @Override

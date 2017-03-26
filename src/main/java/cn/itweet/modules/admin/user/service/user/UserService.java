@@ -1,4 +1,4 @@
-package cn.itweet.modules.admin.user.service;
+package cn.itweet.modules.admin.user.service.user;
 
 import cn.itweet.common.exception.SystemException;
 import cn.itweet.modules.admin.user.entity.SysUser;
