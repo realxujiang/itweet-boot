@@ -34,15 +34,15 @@ public class UserServiceTests {
     @Test
     public void test() throws SystemException {
 
-//        addUserTests();
-//
-//        deleteUserTests();
-//
+        addUserTests();
+
+        deleteUserTests();
+
         updateUserTests();
-//
-//        getUserTests();
-//
-//        getAllUsersTest();
+
+        getUserTests();
+
+        getAllUsersTest();
     }
 
     private void updateUserTests() throws SystemException {

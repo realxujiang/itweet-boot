@@ -29,7 +29,7 @@ public class CustomUserService implements UserDetailsService { //自定义UserDe
     PermissionRepository permissionRepository;
 
     public UserDetails loadUserByUsername(String username) {
-        SysUser user = userRepository.findByUserName(username);
+        SysUser user = userRepository.findByUsername(username);
         if (user != null) {
             List<SysPermission> permissions = permissionRepository.findByAdminUserId(user.getId());
             List<GrantedAuthority> grantedAuthorities = new ArrayList <>();

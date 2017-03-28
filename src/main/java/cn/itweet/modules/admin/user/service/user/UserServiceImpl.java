@@ -109,7 +109,7 @@ public class UserServiceImpl implements UserService {
                 System.out.println("deleteElems: "+deleteElems.toString());
                 for (int i = 0; i < deleteElems.size(); i++) {
                     List<Integer> roleUserIds = roleUserRepository.getRoleUserIdsByRoleIdAndUserId(deleteElems.get(i),u1.getId());
-                    roleUserRepository.deleteByRoleUserId(roleUserIds);
+                    roleUserRepository.deleteByRoleUserIds(roleUserIds);
                 }
             }
         }
@@ -131,7 +131,7 @@ public class UserServiceImpl implements UserService {
         SysUser u = userRepository.findOne(uid);
         if (u != null && u.getUsername() != "admin") {
             List<Integer> roleUserIds = roleUserRepository.getRoleUserIdsByUid(uid);
-            roleUserRepository.deleteByRoleUserId(roleUserIds);
+            roleUserRepository.deleteByRoleUserIds(roleUserIds);
             userRepository.delete(uid);
         } else {
             throw new SystemException("你要删除的用户是系统默认超级管理员，不能删除！");
