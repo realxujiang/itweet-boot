@@ -102,8 +102,8 @@
                         <c:if test="${licence.status==0}"><td><a href="#">点击发送</a></td></c:if>
                         <c:if test="${licence.status==1}"><td>邮件已发送</td></c:if>
                         <td>
-                            <a href="<%=basePath%>/admin/licence/delete/${licence.id}" onclick="return del()">删除</a>
                             <a href="<%=basePath%>/admin/licence/edit/${licence.id}">修改</a>
+                            <a href="<%=basePath%>/admin/licence/delete/${licence.id}" onclick="return del()">删除</a>
                             <a href="<%=basePath%>/admin/licence/export/${licence.id}">导出</a>
                         </td>
                     </tr>

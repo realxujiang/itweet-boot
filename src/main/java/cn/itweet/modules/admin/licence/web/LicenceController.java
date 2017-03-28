@@ -121,14 +121,12 @@ public class LicenceController {
     @RequestMapping(value="/export/{id}", method = RequestMethod.GET)
     public void export(@PathVariable Integer id, HttpServletRequest request,HttpServletResponse response){
         Licence licence = licenceService.get(id);
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        String json = gson.toJson(licence.getCode());
         response.setContentType("multipart/form-data");
         response.setHeader("Content-Disposition", "attachment;fileName=Redoop-CRH.rif");
         ServletOutputStream out;
         try {
             out = response.getOutputStream();
-            out.write(json.getBytes());
+            out.write(licence.getCode().getBytes());
             out.flush();
             out.close();
         } catch (Exception e) {
