@@ -45,6 +45,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public SysUser findById(Integer id) {
+        return userRepository.findOne(id);
+    }
+
+    @Override
     public void add(SysUser user,List<Integer> rIds) throws SystemException {
         SysUser su = addUserInfo(user);
         addRoleUserInfo(rIds, su);
@@ -76,6 +81,11 @@ public class UserServiceImpl implements UserService {
             updateUserAndUserRoles(user, rIds, u1);
         }
         LOGGER.debug("update user by username = {}", u1.getUsername());
+    }
+
+    @Override
+    public void update(SysUser user) throws SystemException {
+        userRepository.save(user);
     }
 
     private void updateUserAndUserRoles(SysUser user, List<Integer> rIds, SysUser u1) {
@@ -114,6 +124,8 @@ public class UserServiceImpl implements UserService {
             }
         }
     }
+
+
 
     private void updateUser(SysUser user, SysUser u1) {
         SysUser u2 = new SysUser();
