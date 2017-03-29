@@ -6,7 +6,10 @@ import cn.itweet.modules.admin.user.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -36,9 +39,10 @@ public class UserController {
      */
     @RequestMapping(value = "/list",method = RequestMethod.GET)
     public String main(Model model) {
+        System.out.println("--------------用户List----------");
         List<SysUser> userList = userService.list();
         model.addAttribute("userList",userList);
-        return "admin/user/u_list";
+        return "admin/user/list";
     }
 
     /**
@@ -47,7 +51,7 @@ public class UserController {
      */
     @RequestMapping(value = "/add",method = RequestMethod.GET)
     public String add(){
-        return "admin/user/u_add";
+        return "admin/user/add";
     }
 
     /**
@@ -57,7 +61,13 @@ public class UserController {
      * @return
      */
     @RequestMapping(value = "/add",method = RequestMethod.POST)
-    public String add(@RequestParam List<Integer> rIds, SysUser sysUser, HttpServletRequest request){
+    public String add(SysUser sysUser,HttpServletRequest request){
+        String[] strIds = request.getParameterValues("rIds");
+        Integer[] temp = new Integer[strIds.length];
+        for(int i=0; i<strIds.length; i++){
+            temp[i] = Integer.parseInt(strIds[i]);
+        }
+        List<Integer> rIds = Arrays.asList(temp);
 
         try {
             sysUser.setPassword("123456");
@@ -65,19 +75,19 @@ public class UserController {
         } catch (SystemException e) {
             e.printStackTrace();
         }
+
         return "redirect:/admin/user/list";
     }
 
     /**
      * 修改用户页面
      * @param request
-      * @return
+     * @return
      */
     @RequestMapping(value = "/edit/{id}",method = RequestMethod.GET)
-    public String edit(@PathVariable Integer id,Model model,HttpServletRequest request){
-        SysUser su = userService.findById(id);
-        model.addAttribute("form",su);
-        return "/admin/user/u_edit";
+    public String edit(@PathVariable Integer id,HttpServletRequest request){
+
+        return "/admin/user/edit";
     }
 
     /**
@@ -87,12 +97,7 @@ public class UserController {
      * @return
      */
     @RequestMapping(value = "/edit",method = RequestMethod.POST)
-    public String edit(@RequestParam List<Integer> rIds,SysUser sysUser,HttpServletRequest request){
-        try {
-            userService.update(sysUser,rIds);
-        } catch (SystemException e) {
-            e.printStackTrace();
-        }
+    public String edit(SysUser sysUser,HttpServletRequest request){
 
         return "redirect:/admin/user/list";
     }
@@ -105,29 +110,19 @@ public class UserController {
      */
     @RequestMapping(value = "/delete/{id}",method = RequestMethod.GET)
     public String delete(@PathVariable Integer id, HttpServletRequest request){
-        try {
-            userService.deleteById(id);
-        } catch (SystemException e) {
-            e.printStackTrace();
-        }
+
         return "redirect:/admin/user/list";
     }
 
     /**
-     * 重置用户密码
+     * 删除用户
      * @param id
      * @param request
      * @return
      */
     @RequestMapping(value = "/resetPassword/{id}",method = RequestMethod.GET)
     public String ResetPassword(@PathVariable Integer id, HttpServletRequest request){
-        SysUser su = userService.findById(id);
-        su.setPassword("123456");
-        try {
-            userService.update(su);
-        } catch (SystemException e) {
-            e.printStackTrace();
-        }
+
         return "redirect:/admin/user/list";
     }
 

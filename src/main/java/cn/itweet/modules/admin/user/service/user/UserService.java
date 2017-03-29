@@ -12,8 +12,6 @@ import java.util.Optional;
  */
 public interface UserService {
 
-    SysUser findById(Integer id);
-
     SysUser findByUsername(String username);
 
     SysUser findByEmail(String email);
@@ -23,8 +21,6 @@ public interface UserService {
     void add(SysUser user,List<Integer> rIds) throws SystemException;
 
     void update(SysUser user,List<Integer> rIds) throws SystemException;
-
-    void update(SysUser user) throws SystemException;
 
     void deleteById(Integer uid) throws SystemException;
 
