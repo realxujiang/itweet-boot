@@ -21,5 +21,5 @@ public interface RoleService {
 
     SysRole findByRoleName(String name);
 
-    void roleAuthorization(Integer rid,List<Integer> perissionIds);
+    void setAuthorization(Integer rid,List<Integer> perissionIds);
 }

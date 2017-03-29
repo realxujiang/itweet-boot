@@ -81,18 +81,20 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public void roleAuthorization(Integer rid, List<Integer> perissionIds) {
+    public void setAuthorization(Integer rid, List<Integer> perissionIds) {
         List<Integer> dbPerissionIds = permissionRoleRepository.getPermissionRoleIdsByRoleId(rid);
         List<Integer> delElems = CommonUtils.getDeleteElements(perissionIds,dbPerissionIds);
         List<Integer> aggElems = CommonUtils.getAggrandizeElements(perissionIds,dbPerissionIds);
 
         if (delElems != null) {
-            for (Integer perissionId : delElems) {
-                permissionRoleRepository.deleteByRoleIdAndPermissionId(rid,perissionId);
+            System.out.println("delElems: "+delElems.toString());
+            for (Integer perid : delElems) {
+                permissionRoleRepository.deleteByRoleIdAndPermissionId(rid,perid);
             }
         }
 
         if (aggElems != null) {
+            System.out.println("aggElems: "+aggElems);
             for (Integer perissionId : aggElems) {
                 SysPermissionRole sysPermissionRole = new SysPermissionRole();
                 sysPermissionRole.setRoleId(rid);

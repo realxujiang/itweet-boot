@@ -2,6 +2,7 @@ package cn.itweet.modules.admin.user.repository;
 
 import cn.itweet.modules.admin.user.entity.SysPermissionRole;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,8 +19,9 @@ public interface PermissionRoleRepository extends JpaRepository<SysPermissionRol
     @Query("delete from SysPermissionRole where roleId=?1")
     void deleteByRoleId(Integer roleId);
 
-    @Query("delete from SysPermissionRole where roleId=?1 and permissionId=?2")
-    void deleteByRoleIdAndPermissionId(Integer roleId,Integer permissionId);
+    @Query(value = "delete from Sys_Permission_Role where rid=?1 and permission_id=?2",nativeQuery = true)
+    @Modifying
+    void deleteByRoleIdAndPermissionId(Integer rid,Integer permission_id);
 
     @Query(value = "select permission_id from sys_permission_role where rid=?1",nativeQuery = true)
     List<Integer> getPermissionRoleIdsByRoleId(Integer rid);

@@ -2,6 +2,7 @@ package cn.itweet.modules.admin.user.service.role;
 
 import cn.itweet.ItweetBootApplication;
 import cn.itweet.common.exception.SystemException;
+import cn.itweet.modules.admin.user.entity.SysPermissionRole;
 import cn.itweet.modules.admin.user.entity.SysRole;
 import cn.itweet.modules.admin.user.repository.PermissionRoleRepository;
 import cn.itweet.modules.admin.user.repository.UserRepository;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -32,18 +34,44 @@ public class RoleServiceTests {
 
     @Test
     public void test() throws SystemException {
-        // add();
+        addTest();
 
-        // deleteById();
-        //list();
+        updateTest();
+
+        findTest();
+
+        deleteByIdTest();
+
+        listTest();
+
+        setAuthorizationTest();
     }
 
-    private void deleteById() throws SystemException {
+    private void setAuthorizationTest() {
+        List<Integer> permissionRoleList = new ArrayList<>();
+        permissionRoleList.add(1);
+        roleService.setAuthorization(2,permissionRoleList);
+    }
+
+    private void findTest() {
+        SysRole sysRole = roleService.findByRoleName("ROLE_ARTICLE_UPDATE");
+        Assert.assertNotNull(roleService.findById(sysRole.getId()));
+    }
+
+    private void updateTest() throws SystemException {
         SysRole sysRole = roleService.findByRoleName("ROLE_ARTICLE");
+        sysRole.setName("ROLE_ARTICLE_UPDATE");
+        sysRole.setDescription("Role article manager.");
+        roleService.update(sysRole);
+    }
+
+
+    private void deleteByIdTest() throws SystemException {
+        SysRole sysRole = roleService.findByRoleName("ROLE_ARTICLE_UPDATE");
         roleService.deleteById(sysRole.getId());
     }
 
-    private void add() throws SystemException {
+    private void addTest() throws SystemException {
         SysRole sysRole = new SysRole();
         sysRole.setName("ROLE_ARTICLE");
         sysRole.setDescription("role article manager.");
@@ -51,7 +79,7 @@ public class RoleServiceTests {
         Assert.assertEquals("ROLE_ARTICLE",roleService.findByRoleName("ROLE_ARTICLE").getName());
     }
 
-    private void list() {
+    private void listTest() {
         List<SysRole> sysRoleList = roleService.list();
         for (SysRole sysRole : sysRoleList) {
             System.out.println(sysRole.toString());
