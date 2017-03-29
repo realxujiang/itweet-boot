@@ -1,7 +1,9 @@
 package cn.itweet.modules.admin.user.web;
 
 import cn.itweet.common.exception.SystemException;
+import cn.itweet.modules.admin.user.entity.SysRole;
 import cn.itweet.modules.admin.user.entity.SysUser;
+import cn.itweet.modules.admin.user.service.role.RoleService;
 import cn.itweet.modules.admin.user.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,6 +30,8 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private RoleService roleService;
 
     /**
      * 用户列表
@@ -46,7 +50,9 @@ public class UserController {
      * @return
      */
     @RequestMapping(value = "/add",method = RequestMethod.GET)
-    public String add(){
+    public String add(Model model){
+        List<SysRole> roleList = roleService.list();
+        model.addAttribute("roleList",roleList);
         return "admin/user/u_add";
     }
 
@@ -76,10 +82,16 @@ public class UserController {
     public String edit(@PathVariable Integer id,Model model,HttpServletRequest request){
         SysUser su = userService.findById(id);
         model.addAttribute("form",su);
-        List<Integer> rIds = new ArrayList<Integer>();
-        rIds.add(1);
-        rIds.add(3);
-        model.addAttribute("rIds",rIds);
+
+        List<SysRole> roleList = roleService.list();
+        model.addAttribute("roleList",roleList);
+
+        System.out.println("取出所有RoleIDS：" + roleList.toString());
+        List<Integer> roleIds = roleService.getRoleIdsByUid(id);
+        model.addAttribute("rids",roleIds);
+
+        System.out.println("取出roleIds:" + roleIds.toString());
+
         return "/admin/user/u_edit";
     }
 
@@ -92,11 +104,12 @@ public class UserController {
     @RequestMapping(value = "/edit",method = RequestMethod.POST)
     public String edit(@RequestParam List<Integer> rIds,SysUser sysUser,HttpServletRequest request){
         try {
+            System.out.println("RoleIds:"+rIds.toString());
+            System.out.println("UserId:"+sysUser.getId());
             userService.update(sysUser,rIds);
         } catch (SystemException e) {
             e.printStackTrace();
         }
-
         return "redirect:/admin/user/list";
     }
 

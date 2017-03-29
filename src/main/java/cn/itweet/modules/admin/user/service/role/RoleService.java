@@ -9,6 +9,9 @@ import java.util.List;
  * Created by whoami on 26/03/2017.
  */
 public interface RoleService {
+
+    List<Integer> getRoleIdsByUid(Integer uid);
+
     List<SysRole> list();
 
     void update(SysRole role) throws SystemException;

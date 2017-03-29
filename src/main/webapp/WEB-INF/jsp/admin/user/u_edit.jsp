@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <%
     String path = request.getContextPath();
@@ -70,14 +71,24 @@
                         <div class="col-sm-10">
 
                             <select name="rIds" id="my-select" multiple="multiple" data-placeholder="选定角色" multiple class="chosen-select-width" style="width: 100%;" tabindex="18">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
+                                <c:forEach items="${rids}" var="ids">
+                                <c:forEach items="${roleList}" var="role">
+
+                                        <c:if test="${ids eq role.id}">
+                                            <option value="${role.id}" selected="true">${role.name}</option>
+                                        </c:if>
+                                        <c:if test="${ids ne role.id}">
+                                            <option value="${role.id}">${role.name}</option>
+                                        </c:if>
+                                    </c:forEach>
+
+                                    <%--<c:forEach items="${rids}" var="ids">
+                                        <c:if test="${ids ne role.id}">
+                                            <option value="${role.id}">${role.name}</option>
+                                        </c:if>
+                                    </c:forEach>--%>
+                                </c:forEach>
+
                             </select>
                             <span class="help-block m-b-none">可以多选</span>
                         </div>

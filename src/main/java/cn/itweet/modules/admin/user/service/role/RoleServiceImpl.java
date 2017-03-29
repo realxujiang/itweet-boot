@@ -29,6 +29,11 @@ public class RoleServiceImpl implements RoleService {
     private RoleUserRepository roleUserRepository;
 
     @Override
+    public List<Integer> getRoleIdsByUid(Integer uid) {
+        return roleUserRepository.getRoleIdsByUid(uid);
+    }
+
+    @Override
     public List<SysRole> list() {
         return roleRepository.findAll();
     }
