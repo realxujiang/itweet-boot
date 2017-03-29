@@ -59,7 +59,7 @@
 					</a>
 				</li>
 				<li>
-					<a class="" href="#">
+					<a class="" href="<%=basePath%>admin/role/list" target="main">
 						<span class="glyphicon glyphicon-share-alt"></span> 角色管理
 					</a>
 				</li>
