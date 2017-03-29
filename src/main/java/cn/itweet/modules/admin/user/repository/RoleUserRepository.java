@@ -23,12 +23,15 @@ public interface RoleUserRepository extends JpaRepository<SysRoleUser,Integer> {
     List<Integer> getRoleIdsByUid(Integer uid);
 
     @Modifying
-    @Query("delete from SysRoleUser ru where id in :ids")
+    @Query("delete from SysRoleUser where id in :ids")
     void deleteByRoleUserIds(@Param("ids") List<Integer> roleUserIds);
 
-    @Query("delete from SysRoleUser where roleId=?1")
-    void deleteByRoleId(Integer roleId);
+    @Query(value = "delete from Sys_Role_User where rid=?1",nativeQuery = true)
+    void deleteByRoleId(Integer rid);
 
     @Query(value = "select id from sys_role_user where rid=?1 and uid=?2",nativeQuery = true)
     List<Integer> getRoleUserIdsByRoleIdAndUserId(Integer rid,Integer uid);
+
+    @Query(value = "select id from sys_role_user where rid=?1",nativeQuery = true)
+    List<Integer> getRoleUserIdsyRoleId(Integer rid);
 }

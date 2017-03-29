@@ -9,7 +9,7 @@ import java.util.List;
  */
 @Entity
 @Table(name = "sys_role")
-public class SysRole implements Serializable{
+public class SysRole {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -38,5 +38,14 @@ public class SysRole implements Serializable{
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return "SysRole{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                '}';
     }
 }

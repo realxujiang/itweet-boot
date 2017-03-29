@@ -11,11 +11,11 @@ import java.util.List;
 public interface RoleService {
     List<SysRole> list();
 
-    void update(SysRole role);
+    void update(SysRole role) throws SystemException;
 
     SysRole add (SysRole role) throws SystemException;;
 
-    void deleteById(Integer id);
+    void deleteById(Integer id) throws SystemException;
 
     SysRole findById(Integer id);
 

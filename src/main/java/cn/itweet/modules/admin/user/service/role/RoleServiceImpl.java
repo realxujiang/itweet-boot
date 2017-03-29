@@ -34,30 +34,39 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public void update(SysRole role) {
+    public void update(SysRole role) throws SystemException {
         SysRole sysRole = roleRepository.findOne(role.getId());
         if (role != null && sysRole != null) {
             roleRepository.save(role);
+        } else {
+            throw new SystemException("角色更新失败！");
         }
     }
 
     @Override
     public SysRole add(SysRole role) throws SystemException {
         SysRole sysRole = roleRepository.findByRoleName(role.getName());
-        if(role != null && sysRole == null) {
-            return roleRepository.save(role);
-        } else {
+        if (sysRole != null && sysRole.getName().equals(role.getName()))
             throw new SystemException("角色名称已经存在，不可重复添加！");
-        }
+        return roleRepository.save(role);
     }
 
     @Override
-    public void deleteById(Integer id) {
+    public void deleteById(Integer id) throws SystemException {
         SysRole sysRole = roleRepository.findOne(id);
-        if (sysRole != null) {
+
+        if (roleUserRepository.getRoleUserIdsyRoleId(id).size() > 0) {
             roleUserRepository.deleteByRoleId(id);
+        }
+
+        if (permissionRoleRepository.getPermissionRoleIdsByRoleId(id).size() > 0) {
             permissionRoleRepository.deleteByRoleId(id);
+        }
+
+        if (sysRole != null) {
             roleRepository.delete(id);
+        } else {
+            throw new SystemException("要删除的用户不存在！");
         }
     }
 

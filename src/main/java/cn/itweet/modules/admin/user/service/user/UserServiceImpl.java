@@ -46,8 +46,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void add(SysUser user,List<Integer> rIds) throws SystemException {
-        SysUser su = addUserInfo(user);
-        addRoleUserInfo(rIds, su);
+        if (user != null) {
+            SysUser su = addUserInfo(user);
+            if (rIds != null)
+                addRoleUserInfo(rIds, su);
+        }
         LOGGER.debug("insert into user by username = {}",user.getUsername());
     }
 

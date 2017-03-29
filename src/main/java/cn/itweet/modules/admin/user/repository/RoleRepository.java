@@ -12,4 +12,5 @@ public interface RoleRepository extends JpaRepository<SysRole, Integer> {
 
     @Query("from SysRole where name=?1")
     SysRole findByRoleName(String roleName);
+
 }
