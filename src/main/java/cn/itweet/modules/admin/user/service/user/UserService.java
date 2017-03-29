@@ -12,6 +12,10 @@ import java.util.Optional;
  */
 public interface UserService {
 
+    SysUser findById(Integer id);
+
+    void update(SysUser user) throws SystemException;
+
     SysUser findByUsername(String username);
 
     SysUser findByEmail(String email);

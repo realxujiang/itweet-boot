@@ -17,6 +17,7 @@ import java.util.List;
 public interface PermissionRoleRepository extends JpaRepository<SysPermissionRole,Integer> {
 
     @Query("delete from SysPermissionRole where roleId=?1")
+    @Modifying
     void deleteByRoleId(Integer roleId);
 
     @Query(value = "delete from Sys_Permission_Role where rid=?1 and permission_id=?2",nativeQuery = true)

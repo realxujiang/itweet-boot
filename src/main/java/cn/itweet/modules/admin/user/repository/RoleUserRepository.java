@@ -27,6 +27,7 @@ public interface RoleUserRepository extends JpaRepository<SysRoleUser,Integer> {
     void deleteByRoleUserIds(@Param("ids") List<Integer> roleUserIds);
 
     @Query(value = "delete from Sys_Role_User where rid=?1",nativeQuery = true)
+    @Modifying
     void deleteByRoleId(Integer rid);
 
     @Query(value = "select id from sys_role_user where rid=?1 and uid=?2",nativeQuery = true)

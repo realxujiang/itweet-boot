@@ -20,6 +20,7 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
 
+
     private static final Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.class);
 
     @Autowired
@@ -36,6 +37,16 @@ public class UserServiceImpl implements UserService {
     @Override
     public SysUser findByUsername(String username) {
         return userRepository.findByUsername(username);
+    }
+
+    @Override
+    public void update(SysUser user) throws SystemException {
+        userRepository.save(user);
+    }
+
+    @Override
+    public SysUser findById(Integer id) {
+        return userRepository.findOne(id);
     }
 
     @Override

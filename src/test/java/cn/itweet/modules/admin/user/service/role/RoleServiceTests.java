@@ -40,9 +40,9 @@ public class RoleServiceTests {
 
         findTest();
 
-        deleteByIdTest();
-
         listTest();
+
+        deleteByIdTest();
 
         setAuthorizationTest();
     }
@@ -80,11 +80,8 @@ public class RoleServiceTests {
     }
 
     private void listTest() {
-        List<SysRole> sysRoleList = roleService.list();
-        for (SysRole sysRole : sysRoleList) {
-            System.out.println(sysRole.toString());
-        }
-        Assert.assertEquals(2,sysRoleList.size());
+        SysRole sysRoleList = roleService.findByRoleName("ROLE_ARTICLE_UPDATE");
+        Assert.assertNotNull(sysRoleList);
     }
 
 }
