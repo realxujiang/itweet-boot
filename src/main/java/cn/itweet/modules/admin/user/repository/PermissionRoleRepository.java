@@ -13,15 +13,15 @@ import java.util.List;
  * Created by whoami on 22/03/2017.
  */
 @Repository
-@Transactional
+@Transactional //因为默认是readOnly=true的，这里必须自己进行声明
 public interface PermissionRoleRepository extends JpaRepository<SysPermissionRole,Integer> {
 
     @Query("delete from SysPermissionRole where roleId=?1")
-    @Modifying
+    @Modifying //说明该操作是修改类型操作，删除或者修改
     void deleteByRoleId(Integer roleId);
 
     @Query(value = "delete from Sys_Permission_Role where rid=?1 and permission_id=?2",nativeQuery = true)
-    @Modifying
+    @Modifying //说明该操作是修改类型操作，删除或者修改
     void deleteByRoleIdAndPermissionId(Integer rid,Integer permission_id);
 
     @Query(value = "select permission_id from sys_permission_role where rid=?1",nativeQuery = true)
