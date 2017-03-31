@@ -1,5 +1,6 @@
 package cn.itweet.modules.admin.user.service.permission;
 
+import cn.itweet.common.exception.SystemException;
 import cn.itweet.modules.admin.user.entity.SysPermission;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,7 +13,7 @@ import java.util.List;
 public interface PermissionService {
 
     /**
-     * 获取所有的权限列表信息，带分页
+     * 获取所有的权限列表信息，分页
      * @param pageable
      * @return
      */
@@ -35,11 +36,11 @@ public interface PermissionService {
      * 更新权限信息
      * @param sysPermission
      */
-    void update(SysPermission sysPermission);
+    void update(SysPermission sysPermission) throws SystemException;
 
     /**
      * 删除资源信息通过资源信息ID
      * @param parmissionId
      */
-    void deleteById(Integer parmissionId);
+    void deleteByParmissionId(Integer parmissionId) throws SystemException;
 }

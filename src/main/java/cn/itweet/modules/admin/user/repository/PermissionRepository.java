@@ -30,4 +30,7 @@ public interface PermissionRepository extends PagingAndSortingRepository<SysPerm
     @Query(value = "select distinct p.* from Sys_User u LEFT JOIN sys_role_user sru on u.id= sru.uid LEFT JOIN Sys_Role r on sru.rid=r.id LEFT JOIN sys_permission_role spr on spr.rid=r.id LEFT JOIN Sys_Permission p on p.id =spr.permission_id where u.id=?1",nativeQuery = true)
     List<SysPermission> findByAdminUserId(int userId);
 
+    @Query(nativeQuery = true,value = "select * from sys_permission where pid=?1")
+    List<SysPermission> getPermissionEntityByParentId(Integer parentId);
+
 }
