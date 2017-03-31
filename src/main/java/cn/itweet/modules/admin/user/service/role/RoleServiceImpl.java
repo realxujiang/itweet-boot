@@ -40,19 +40,24 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public void update(SysRole role) throws SystemException {
+        if (role.getName() == null || "" == role.getName())
+            throw new SystemException("更新失败，要更新的角色名称不能为空！");
+
         SysRole sysRole = roleRepository.findOne(role.getId());
-        if (role != null && sysRole != null) {
+        if (!sysRole.getName().equals(role.getName()) && role.getId() != null)
             roleRepository.save(role);
-        } else {
-            throw new SystemException("角色更新失败！");
-        }
     }
 
     @Override
     public SysRole add(SysRole role) throws SystemException {
         SysRole sysRole = roleRepository.findByRoleName(role.getName());
-        if (sysRole != null && sysRole.getName().equals(role.getName()))
-            throw new SystemException("角色名称已经存在，不可重复添加！");
+
+        if (sysRole.getName() != null)
+            throw new SystemException("添加失败，角色名称已经存在，不能重复添加！");
+
+        if (role.getName() == null || "" == role.getName())
+            throw new SystemException("添加失败，角色名称不能为空！");
+
         return roleRepository.save(role);
     }
 

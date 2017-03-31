@@ -56,7 +56,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void add(SysUser user,List<Integer> rIds) throws SystemException {
-        if (user != null) {
+        if (("" == user.getUsername() || user.getUsername() == null) && ("" == user.getUsername() || user.getEmail() == null))
+            throw new SystemException("用户名和用户邮箱不能为空！");
+
+        if (user.getUsername() != null && user.getEmail() != null) {
             SysUser su = addUserInfo(user);
             if (rIds != null)
                 addRoleUserInfo(rIds, su);
@@ -66,7 +69,7 @@ public class UserServiceImpl implements UserService {
 
     private SysUser addUserInfo(SysUser user) throws SystemException {
         if(userRepository.findByUsername(user.getUsername()) != null)
-            throw new SystemException("你要添加的用户名已经存在，不能重复添加！");
+            throw new SystemException("添加失败，要添加的用户名已经存在，不能重复添加！");
 
         return userRepository.save(user);
     }
@@ -84,8 +87,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void update(SysUser user,List<Integer> rIds) throws SystemException {
+        if (("" == user.getUsername() || user.getUsername() == null) && ("" == user.getUsername() || user.getEmail() == null))
+            throw new SystemException("更新失败，要更新的用户名和用户邮箱不能为空！");
+        if (user.getId() == null)
+            throw new SystemException("更新失败，要更新的用户ID不能为空！");
         SysUser u1 = userRepository.findOne(user.getId());
-        if (u1 != null) {
+        if (u1 != null && rIds != null) {
             updateUserAndUserRoles(user, rIds, u1);
         }
         LOGGER.debug("update user by username = {}", u1.getUsername());
@@ -142,7 +149,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deleteById(Integer uid) throws SystemException {
         SysUser u = userRepository.findOne(uid);
-        if (u != null && u.getUsername() != "admin") {
+        if (u != null && u.getUsername() != "sadmin") {
             List<Integer> roleUserIds = roleUserRepository.getRoleUserIdsByUid(uid);
             roleUserRepository.deleteByRoleUserIds(roleUserIds);
             userRepository.delete(uid);
