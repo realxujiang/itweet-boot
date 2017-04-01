@@ -33,4 +33,7 @@ public interface PermissionRepository extends PagingAndSortingRepository<SysPerm
     @Query(nativeQuery = true,value = "select * from sys_permission where pid=?1")
     List<SysPermission> getPermissionEntityByParentId(Integer parentId);
 
+    @Query("delete from SysPermission where pid=?1")
+    void deletePermissionByPermissionId(Integer permissionId);
+
 }

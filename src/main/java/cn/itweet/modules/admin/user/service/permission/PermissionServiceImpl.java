@@ -54,7 +54,9 @@ public class PermissionServiceImpl implements PermissionService{
     }
 
     @Override
-    public void deleteByParmissionId(Integer parmissionId) throws SystemException{
-
+    public void deleteByParmissionId(Integer permissionId) throws SystemException{
+        if (permissionId != null) {
+            permissionRepository.deletePermissionByPermissionId(permissionId);
+        }
     }
 }
