@@ -14,10 +14,17 @@
 
     <script src="<%=basePath%>style/admin/backstage/js/jquery.js"></script>
     <script src="<%=basePath%>style/admin/backstage/js/pintuer.js"></script>
+    <script>
+        function escapeFrame(){
+            if (window.top.location.href != window.location.href) {
+                window.top.location.reload();
+            }
+        }
+    </script>
 
 </head>
 
-<body>
+<body onload="escapeFrame()">
 <div class="bg"></div>
 <div class="container">
     <div class="line bouncein">
