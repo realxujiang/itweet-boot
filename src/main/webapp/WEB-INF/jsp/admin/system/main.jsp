@@ -21,10 +21,10 @@
 <body style="background-color:#f2f9fd;">
 <div class="header bg-main">
 	<div class="logo margin-big-left fadein-top">
-		<h1><img src="<%=basePath%>style/admin/backstage/images/y.jpg" class="radius-circle rotate-hover" height="50" alt="" />后台管理中心</h1>
+		<h1><img src="<%=basePath%>style/admin/backstage/images/y.jpg" class="radius-circle rotate-hover" height="50" alt="" />Itweet管理中心</h1>
 	</div>
 	<div class="head-l">
-		<a class="button button-little bg-green" href="" target="_blank"><span class="icon-home"></span> 前台首页</a> &nbsp;&nbsp;
+		<a class="button button-little bg-green" href="http://www.itweet.cn" target="_blank"><span class="icon-home"></span> 前台首页</a> &nbsp;&nbsp;
 		<a class="button button-little bg-red" href="<%=basePath%>admin/logout"><span class="icon-power-off"></span> 退出登录</a>
 	</div>
 </div>
@@ -36,6 +36,8 @@
 		<li><a href="<%=basePath%>admin/user/list" target="right"><span class="icon-caret-right"></span>用户管理</a></li>
 		<li><a href="<%=basePath%>admin/role/list" target="right"><span class="icon-caret-right"></span>角色管理</a></li>
 		<li><a href="page.html" target="right"><span class="icon-caret-right"></span>权限管理</a></li>
+		<li><a href="adv.html" target="right"><span class="icon-caret-right"></span>系统信息</a></li>
+		<li><a href="adv.html" target="right"><span class="icon-caret-right"></span>首页轮播</a></li>
 		<li><a href="adv.html" target="right"><span class="icon-caret-right"></span>系统日志</a></li>
 	</ul>
 
@@ -72,7 +74,7 @@
 	<h2><span class="icon-pencil-square-o"></span>周报管理</h2>
 	<ul>
 		<li><a href="list.html" target="right"><span class="icon-caret-right"></span>我的周报</a></li>
-		<li><a href="add.html" target="right"><span class="icon-caret-right"></span>评论统计</a></li>
+		<li><a href="add.html" target="right"><span class="icon-caret-right"></span>周报设置</a></li>
 	</ul>
 
 

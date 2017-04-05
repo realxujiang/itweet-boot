@@ -27,7 +27,7 @@ public class MappingController {
 
     @RequestMapping(value = "/api/list")
     @ResponseBody
-    public String list(Model model) {
+    public List<HashMap<String, String>> list(Model model) {
 
         List<HashMap<String, String>> urlList = new ArrayList<HashMap<String, String>>();
 
@@ -53,6 +53,6 @@ public class MappingController {
         System.out.println(urlList.toString());
         model.addAttribute("list", urlList);
 
-        return "system/mappingList";
+        return urlList;
     }
 }
