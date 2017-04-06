@@ -59,7 +59,11 @@ public class RoleController {
         try {
             roleService.add(sysRole);
         } catch (SystemException e) {
-            e.printStackTrace();
+
+            String temp = "toastr.error(\"角色添加失败\",\"管理员角色添加失败\")";
+
+            request.setAttribute("message",temp);
+            return "admin/user/r_add";
         }
         return "redirect:/admin/role/list";
     }
@@ -87,6 +91,7 @@ public class RoleController {
         try {
             roleService.update(sysRole);
         } catch (SystemException e) {
+            request.setAttribute("message","");
             e.printStackTrace();
         }
 

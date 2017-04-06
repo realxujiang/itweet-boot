@@ -13,12 +13,32 @@
     <meta charset="utf-8">
     <link href="<%=basePath%>style/admin/backstage/css/pintuer.css" rel="stylesheet">
     <link href="<%=basePath%>style/admin/backstage/css/admin.css" rel="stylesheet">
+    <link href="<%=basePath%>style/admin/backstage/css/toastr.min.css" rel="stylesheet">
 
     <script src="<%=basePath%>style/admin/backstage/js/jquery.js"></script>
     <script src="<%=basePath%>style/admin/backstage/js/pintuer.js"></script>
+    <script src="<%=basePath%>style/admin/backstage/js/toastr.min.js"></script>
+
 </head>
 
 <body>
+<script>
+    toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "progressBar": true,
+        "positionClass": "toast-top-right",
+        "showDuration": "400",
+        "hideDuration": "1000",
+        "timeOut": "7000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    }
+    ${message}
+</script>
 <div class="panel admin-panel">
     <div class="panel-head" id="add"><strong><span class="icon-pencil-square-o"></span>添加角色</strong></div>
     <div class="body-content">
