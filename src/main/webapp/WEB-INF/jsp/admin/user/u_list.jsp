@@ -24,7 +24,7 @@
 <div class="panel admin-panel">
     <div class="panel-head"><strong class="icon-reorder">用户列表</strong></div>
     <div class="padding border-bottom">
-        <button type="button" class="button border-yellow" onclick="window.location.href='<%=basePath%>/admin/user/add'"><span class="icon-plus-square-o"></span> 添加用户</button>
+        <button type="button" class="button border-yellow" onclick="window.location.href='<%=basePath%>/admin/user/add'"><span class="icon-plus-square-o"></span> 用户添加</button>
     </div>
     <table class="table table-hover text-center">
         <tr>

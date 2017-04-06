@@ -50,13 +50,14 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public SysRole add(SysRole role) throws SystemException {
-        SysRole sysRole = roleRepository.findByRoleName(role.getName());
-
-        if (sysRole.getName() != null)
-            throw new SystemException("添加失败，角色名称已经存在，不能重复添加！");
 
         if (role.getName() == null || "" == role.getName())
             throw new SystemException("添加失败，角色名称不能为空！");
+
+        SysRole sysRole = roleRepository.findByRoleName(role.getName());
+
+        if(sysRole != null)
+            throw new SystemException("添加失败，角色名称已经存在，不能重复添加！");
 
         return roleRepository.save(role);
     }
