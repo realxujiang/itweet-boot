@@ -65,5 +65,14 @@ public class SysPermission {
         this.pid = pid;
     }
 
-
+    @Override
+    public String toString() {
+        return "SysPermission{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", descritpion='" + descritpion + '\'' +
+                ", url='" + url + '\'' +
+                ", pid=" + pid +
+                '}';
+    }
 }

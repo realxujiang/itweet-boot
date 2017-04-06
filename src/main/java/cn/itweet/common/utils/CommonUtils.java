@@ -1,5 +1,9 @@
 package cn.itweet.common.utils;
 
+import cn.itweet.modules.admin.user.entity.SysPermission;
+import org.springframework.web.bind.annotation.*;
+
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -9,6 +13,48 @@ import java.util.List;
  * Created by whoami on 22/03/2017.
  */
 public class CommonUtils {
+
+    /**
+     * 左边栏菜单初始化到权限资源表
+     * @param c
+     * @return
+     */
+    public static List<SysPermission> addLeftMenu(Class c) {
+        String path = null;
+        if(c.isAnnotationPresent(RequestMapping.class)) {
+            path = ((RequestMapping)c.getAnnotation(RequestMapping.class)).value()[0];
+        }
+        Method[] ms = c.getDeclaredMethods();
+        List<SysPermission> list = new ArrayList<>();
+        SysPermission mr = null;
+        for (Method m : ms) {
+            //添加left菜单
+            if (m.isAnnotationPresent(LeftMenu.class)) {
+                String url = null;
+                if (m.isAnnotationPresent(GetMapping.class)) {
+                    url = path + ((GetMapping)m.getAnnotation(GetMapping.class)).value()[0];
+                }
+                if (m.isAnnotationPresent(PostMapping.class)) {
+                    url = path + ((PostMapping)m.getAnnotation(PostMapping.class)).value()[0];
+                }
+                if (m.isAnnotationPresent(PutMapping.class)) {
+                    url = path + ((PutMapping)m.getAnnotation(PutMapping.class)).value()[0];
+                }
+                if (m.isAnnotationPresent(DeleteMapping.class)) {
+                    url = path + ((DeleteMapping)m.getAnnotation(DeleteMapping.class)).value()[0];
+                }
+                LeftMenu nm = m.getAnnotation(LeftMenu.class);
+                mr = new SysPermission();
+                mr.setName(nm.pname());
+                mr.setDescritpion(nm.remark());
+                mr.setUrl(nm.href());
+                mr.setPid(0);
+                list.add(mr);
+            }
+        }
+        System.out.println(list.toString());
+        return list;
+    }
 
     /**
      * 比较两个List元素是否相同

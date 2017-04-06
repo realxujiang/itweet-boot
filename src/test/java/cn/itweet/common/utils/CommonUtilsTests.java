@@ -1,5 +1,6 @@
 package cn.itweet.common.utils;
 
+import cn.itweet.modules.admin.user.web.UserController;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -10,6 +11,11 @@ import java.util.List;
  * Created by whoami on 22/03/2017.
  */
 public class CommonUtilsTests {
+
+    @Test
+    public void addLeftMenuTest() {
+        CommonUtils.addLeftMenu(UserController.class);
+    }
 
     @Test
     public void getDeleteElementsTest() {

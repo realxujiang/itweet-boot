@@ -1,6 +1,7 @@
 package cn.itweet.modules.admin.user.web;
 
 import cn.itweet.common.exception.SystemException;
+import cn.itweet.common.utils.LeftMenu;
 import cn.itweet.modules.admin.user.entity.SysRole;
 import cn.itweet.modules.admin.user.entity.SysUser;
 import cn.itweet.modules.admin.user.service.role.RoleService;
@@ -30,6 +31,7 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
     @Autowired
     private RoleService roleService;
 
@@ -38,8 +40,9 @@ public class UserController {
      * @param model
      * @return
      */
+    @LeftMenu(value = "user_list",remark = "用户列表",pname = "user",pcname = "0",href = "/user/list")
     @RequestMapping(value = "/list",method = RequestMethod.GET)
-    public String main(Model model) {
+    public String list(Model model) {
         List<SysUser> userList = userService.list();
         model.addAttribute("userList",userList);
         return "admin/user/u_list";
