@@ -32,6 +32,7 @@
             <div style="height:150px;"></div>
             <div class="media media-y margin-big-bottom">
             </div>
+            <div>${message}</div>
             <form role="form" action="/admin/login" method="post">
                 <div class="panel loginbox">
                     <div class="text-center margin-big padding-big-top"><h1>后台管理中心</h1></div>

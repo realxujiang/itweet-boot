@@ -33,7 +33,7 @@ public class RoleController {
      * @return
      */
     @RequestMapping(value = "/list",method = RequestMethod.GET)
-    public String main(Model model) {
+    public String list(Model model) {
         List<SysRole> roleList = roleService.list();
         model.addAttribute("roleList",roleList);
         return "admin/user/r_list";
@@ -51,18 +51,16 @@ public class RoleController {
     /**
      * 添加角色
      * @param sysRole
-     * @param request
+     * @param model
      * @return
      */
     @RequestMapping(value = "/add",method = RequestMethod.POST)
-    public String add(SysRole sysRole, HttpServletRequest request){
+    public String add(SysRole sysRole, Model model){
         try {
             roleService.add(sysRole);
         } catch (SystemException e) {
-
-            String temp = "toastr.error(\"角色添加失败\",\"管理员角色添加失败\")";
-
-            request.setAttribute("message",temp);
+            model.addAttribute("form",sysRole);
+            model.addAttribute("message","<script>toastr.error(\"" + e.getMessage() + "\")</script>");
             return "admin/user/r_add";
         }
         return "redirect:/admin/role/list";
@@ -70,11 +68,11 @@ public class RoleController {
 
     /**
      * 修改角色页面
-     * @param request
+     * @param model
      * @return
      */
     @RequestMapping(value = "/edit/{id}",method = RequestMethod.GET)
-    public String edit(@PathVariable Integer id, Model model, HttpServletRequest request){
+    public String edit(@PathVariable Integer id,Model model){
         SysRole sr = roleService.findById(id);
         model.addAttribute("form",sr);
         return "/admin/user/r_edit";
@@ -83,16 +81,17 @@ public class RoleController {
     /**
      * 修改角色
      * @param sysRole
-     * @param request
+     * @param model
      * @return
      */
     @RequestMapping(value = "/edit",method = RequestMethod.POST)
-    public String edit(SysRole sysRole,HttpServletRequest request){
+    public String edit(SysRole sysRole,Model model){
         try {
             roleService.update(sysRole);
         } catch (SystemException e) {
-            request.setAttribute("message","");
-            e.printStackTrace();
+            model.addAttribute("form",sysRole);
+            model.addAttribute("message","<script>toastr.error(\"" + e.getMessage() + "\")</script>");
+            return "/admin/user/r_edit";
         }
 
         return "redirect:/admin/role/list";
@@ -101,22 +100,21 @@ public class RoleController {
     /**
      * 删除角色
      * @param id
-     * @param request
+     * @param model
      * @return
      */
     @RequestMapping(value = "/delete/{id}",method = RequestMethod.GET)
-    public String delete(@PathVariable Integer id, HttpServletRequest request){
+    public String delete(@PathVariable Integer id,Model model){
         try {
             roleService.deleteById(id);
         } catch (SystemException e) {
-            e.printStackTrace();
+            model.addAttribute("message","<script>toastr.error(\"" + e.getMessage() + "\")</script>");
         }
-
         return "redirect:/admin/role/list";
     }
 
     /**
-     * 角色授权
+     * 角色授权页面
      * @param id
      * @param request
      * @return

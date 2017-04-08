@@ -10,38 +10,16 @@
 
 <head>
     <title>角色添加</title>
-    <meta charset="utf-8">
-    <link href="<%=basePath%>style/admin/backstage/css/pintuer.css" rel="stylesheet">
-    <link href="<%=basePath%>style/admin/backstage/css/admin.css" rel="stylesheet">
-    <link href="<%=basePath%>style/admin/backstage/css/toastr.min.css" rel="stylesheet">
 
-    <script src="<%=basePath%>style/admin/backstage/js/jquery.js"></script>
-    <script src="<%=basePath%>style/admin/backstage/js/pintuer.js"></script>
-    <script src="<%=basePath%>style/admin/backstage/js/toastr.min.js"></script>
+    <jsp:include page="../../tools/style/admin_style.jsp"></jsp:include>
 
 </head>
 
 <body>
-<script>
-    toastr.options = {
-        "closeButton": true,
-        "debug": false,
-        "progressBar": true,
-        "positionClass": "toast-top-right",
-        "showDuration": "400",
-        "hideDuration": "1000",
-        "timeOut": "7000",
-        "extendedTimeOut": "1000",
-        "showEasing": "swing",
-        "hideEasing": "linear",
-        "showMethod": "fadeIn",
-        "hideMethod": "fadeOut"
-    }
-    ${message}
-</script>
 <div class="panel admin-panel">
     <div class="panel-head" id="add"><strong><span class="icon-pencil-square-o"></span>添加角色</strong></div>
     <div class="body-content">
+        <div>${message}</div>
         <form method="post" class="form-x" action="<%=basePath%>/admin/role/add">
 
             <div class="form-group">
@@ -49,7 +27,7 @@
                     <label>名称：</label>
                 </div>
                 <div class="field">
-                    <input type="text" class="input w50" value="" name="name" data-validate="required:请输入角色名称" value="${form.name}"/>
+                    <input type="text" class="input w50" name="name" data-validate="required:请输入角色名称" value="${form.name}"/>
                     <div class="tips"></div>
                 </div>
             </div>
@@ -59,7 +37,7 @@
                     <label>描述：</label>
                 </div>
                 <div class="field">
-                    <input type="text" class="input w50" value="" name="description" data-validate="required:请输入角色描述" value="${form.description}" />
+                    <input type="text" class="input w50" name="description" data-validate="required:请输入角色描述" value="${form.description}" />
                     <div class="tips"></div>
                 </div>
             </div>

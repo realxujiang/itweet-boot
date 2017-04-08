@@ -24,7 +24,7 @@
 <div class="panel admin-panel">
     <div class="panel-head"><strong class="icon-reorder">用户列表</strong></div>
     <div class="padding border-bottom">
-        <button type="button" class="button border-yellow" onclick="window.location.href='<%=basePath%>/admin/user/add'"><span class="icon-plus-square-o"></span> 用户添加</button>
+        <button type="button" class="button border-main" onclick="window.location.href='<%=basePath%>/admin/user/add'"><span class="icon-plus-square-o"></span> 用户添加</button>
     </div>
     <table class="table table-hover text-center">
         <tr>
@@ -42,7 +42,7 @@
             <td>
                 <div class="button-group">
                     <a class="button border-main" href="<%=basePath%>/admin/user/edit/${user.id}"><span class="icon-edit"></span> 修改</a>
-                    <a class="button border-main" href="<%=basePath%>/admin/user/resetPassword/${user.id}"><span class="icon-edit"></span>重置密码</a>
+                    <a class="button border-yellow" href="<%=basePath%>/admin/user/resetPassword/${user.id}"><span class="icon-edit"></span>重置密码</a>
                     <a class="button border-red" href="<%=basePath%>/admin/user/delete/${user.id}" onclick="return del(1,1)"><span class="icon-trash-o"></span> 删除</a>
                 </div>
             </td>

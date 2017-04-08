@@ -11,12 +11,7 @@
 
 <head>
     <title>角色列表</title>
-    <meta charset="utf-8">
-    <link href="<%=basePath%>style/admin/backstage/css/pintuer.css" rel="stylesheet">
-    <link href="<%=basePath%>style/admin/backstage/css/admin.css" rel="stylesheet">
-
-    <script src="<%=basePath%>style/admin/backstage/js/jquery.js"></script>
-    <script src="<%=basePath%>style/admin/backstage/js/pintuer.js"></script>
+    <jsp:include page="../../tools/style/admin_style.jsp"></jsp:include>
 
 </head>
 
@@ -29,7 +24,7 @@
     <table class="table table-hover text-center">
         <tr>
             <th width="10%">编号</th>
-            <th width="30%">姓名</th>
+            <th width="30%">名称</th>
             <th width="35%">描述</th>
             <th width="25%">操作</th>
         </tr>

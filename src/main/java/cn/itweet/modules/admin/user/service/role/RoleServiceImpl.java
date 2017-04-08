@@ -43,9 +43,13 @@ public class RoleServiceImpl implements RoleService {
         if (role.getName() == null || "" == role.getName())
             throw new SystemException("更新失败，要更新的角色名称不能为空！");
 
-        SysRole sysRole = roleRepository.findOne(role.getId());
-        if (!sysRole.getName().equals(role.getName()) && role.getId() != null)
-            roleRepository.save(role);
+        SysRole sr1 = roleRepository.findByRoleName(role.getName());
+        SysRole sr2 = roleRepository.findOne(role.getId());
+
+        if(sr1 != null && sr2 != null && sr1.getId() != sr2.getId())
+            throw new SystemException("更新失败，要更新的角色名称已存在！");
+
+        roleRepository.save(role);
     }
 
     @Override
