@@ -10,12 +10,12 @@
 
 <head>
     <title>用户添加</title>
-    <meta charset="utf-8">
-    <link href="<%=basePath%>style/admin/backstage/css/pintuer.css" rel="stylesheet">
-    <link href="<%=basePath%>style/admin/backstage/css/admin.css" rel="stylesheet">
-
-    <script src="<%=basePath%>style/admin/backstage/js/jquery.js"></script>
-    <script src="<%=basePath%>style/admin/backstage/js/pintuer.js"></script>
+    <jsp:include page="../../tools/style/admin_style.jsp"></jsp:include>
+    <script>
+        $(function() {
+            $('#my-select').chosen();
+        });
+    </script>
 </head>
 
 <body>
@@ -28,7 +28,7 @@
                     <label>用户名：</label>
                 </div>
                 <div class="field">
-                    <input type="text" class="input w50" value="" name="username" data-validate="required:请输入用户名" value="${form.username}"/>
+                    <input type="text" class="input w50" name="username" data-validate="required:请输入用户名" value="${form.username}"/>
                     <div class="tips"></div>
                 </div>
             </div>
@@ -38,7 +38,7 @@
                     <label>邮箱：</label>
                 </div>
                 <div class="field">
-                    <input type="text" class="input w50" value="" name="email" data-validate="required:请输入邮箱" value="${form.email}" />
+                    <input type="text" class="input w50" name="email" data-validate="required:请输入邮箱" value="${form.email}" />
                     <div class="tips"></div>
                 </div>
             </div>
@@ -58,7 +58,7 @@
                     <label>角色：</label>
                 </div>
                 <div class="field">
-                    <select name="rIds" class="input w50">
+                    <select name="rIds" id="my-select" multiple="multiple" data-placeholder="选定角色" multiple class="chosen-select-width" style="width: 212px;" tabindex="18">
                         <c:forEach items="${roleList}" var="role">
                             <option value="${role.id}">${role.name}</option>
                         </c:forEach>

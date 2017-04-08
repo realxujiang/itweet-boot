@@ -109,6 +109,7 @@ public class UserController {
         try {
             System.out.println("RoleIds:"+rIds.toString());
             System.out.println("UserId:"+sysUser.getId());
+            System.out.println(sysUser.getPassword());
             userService.update(sysUser,rIds);
         } catch (SystemException e) {
             e.printStackTrace();

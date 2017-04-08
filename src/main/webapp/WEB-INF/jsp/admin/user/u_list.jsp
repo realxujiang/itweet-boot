@@ -11,12 +11,7 @@
 
 <head>
     <title>用户列表</title>
-    <meta charset="utf-8">
-    <link href="<%=basePath%>style/admin/backstage/css/pintuer.css" rel="stylesheet">
-    <link href="<%=basePath%>style/admin/backstage/css/admin.css" rel="stylesheet">
-
-    <script src="<%=basePath%>style/admin/backstage/js/jquery.js"></script>
-    <script src="<%=basePath%>style/admin/backstage/js/pintuer.js"></script>
+    <jsp:include page="../../tools/style/admin_style.jsp"></jsp:include>
 
 </head>
 
@@ -54,9 +49,7 @@
 
     <script type="text/javascript">
         function del(id,mid){
-            if(confirm("您确定要删除吗?")){
-
-            }
+            if(confirm("您确定要删除吗?")){}
         }
     </script>
 </div>
