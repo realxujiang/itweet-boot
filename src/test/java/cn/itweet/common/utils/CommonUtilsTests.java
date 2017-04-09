@@ -1,5 +1,7 @@
 package cn.itweet.common.utils;
 
+import cn.itweet.modules.admin.user.entity.SysPermission;
+import cn.itweet.modules.admin.user.web.RoleController;
 import cn.itweet.modules.admin.user.web.UserController;
 import org.junit.Assert;
 import org.junit.Test;
@@ -14,7 +16,14 @@ public class CommonUtilsTests {
 
     @Test
     public void addLeftMenuTest() {
-        CommonUtils.addLeftMenu(UserController.class);
+        List<SysPermission> sysPermissionList_1 = CommonUtils.addLeftMenu(UserController.class);
+        List<SysPermission> sysPermissionList_2 = CommonUtils.addLeftMenu(RoleController.class);
+        for (SysPermission sp : sysPermissionList_1) {
+            System.out.println(sp.getName());
+        }
+        for (SysPermission sp : sysPermissionList_2) {
+            System.out.println(sp.getName());
+        }
     }
 
     @Test

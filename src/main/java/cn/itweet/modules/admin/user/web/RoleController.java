@@ -1,6 +1,7 @@
 package cn.itweet.modules.admin.user.web;
 
 import cn.itweet.common.exception.SystemException;
+import cn.itweet.common.utils.LeftMenu;
 import cn.itweet.modules.admin.user.entity.SysRole;
 import cn.itweet.modules.admin.user.service.role.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,7 @@ public class RoleController {
      * @return
      */
     @RequestMapping(value = "/list",method = RequestMethod.GET)
+    @LeftMenu(name = "角色列表",descritpion = "admin_role_list",pname = "角色管理",url = "/admin/role/list",operation = "list")
     public String list(Model model) {
         List<SysRole> roleList = roleService.list();
         model.addAttribute("roleList",roleList);
@@ -44,6 +46,7 @@ public class RoleController {
      * @return
      */
     @RequestMapping(value = "/add",method = RequestMethod.GET)
+    @LeftMenu(name = "角色添加",descritpion = "admin_role_add",pname = "角色管理",url = "/admin/role/add",operation = "add")
     public String add(){
         return "admin/user/r_add";
     }
@@ -72,6 +75,7 @@ public class RoleController {
      * @return
      */
     @RequestMapping(value = "/edit/{id}",method = RequestMethod.GET)
+    @LeftMenu(name = "角色更新",descritpion = "admin_role_update",pname = "角色管理",url = "/admin/role/edit/*",operation = "update")
     public String edit(@PathVariable Integer id,Model model){
         SysRole sr = roleService.findById(id);
         model.addAttribute("form",sr);
@@ -104,6 +108,7 @@ public class RoleController {
      * @return
      */
     @RequestMapping(value = "/delete/{id}",method = RequestMethod.GET)
+    @LeftMenu(name = "角色删除",descritpion = "admin_role_delete",pname = "角色管理",url = "/admin/role/delete/*",operation = "delete")
     public String delete(@PathVariable Integer id,Model model){
         try {
             roleService.deleteById(id);
@@ -120,6 +125,7 @@ public class RoleController {
      * @return
      */
     @RequestMapping(value = "/authorization/{id}",method = RequestMethod.GET)
+    @LeftMenu(name = "角色授权",descritpion = "admin_role_authorization",pname = "角色管理",url = "/admin/role/authorization/*",operation = "update")
     public String authorization(@PathVariable Integer id, HttpServletRequest request){
         return "/admin/user/r_edit";
     }

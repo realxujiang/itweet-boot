@@ -40,7 +40,7 @@ public class UserController {
      * @param model
      * @return
      */
-    @LeftMenu(value = "user_list",remark = "用户列表",pname = "user",pcname = "0",href = "/user/list")
+    @LeftMenu(name = "用户列表",descritpion = "admin_user_list",pname = "用户管理",url = "/admin/user/list",operation = "list")
     @RequestMapping(value = "/list",method = RequestMethod.GET)
     public String list(Model model) {
         List<SysUser> userList = userService.list();
@@ -52,6 +52,7 @@ public class UserController {
      * 添加用户页面
      * @return
      */
+    @LeftMenu(name = "用户添加",descritpion = "admin_user_add",pname = "用户管理",url = "/admin/user/add",operation = "add")
     @RequestMapping(value = "/add",method = RequestMethod.GET)
     public String add(Model model){
         List<SysRole> roleList = roleService.list();
@@ -82,6 +83,7 @@ public class UserController {
      * @return
      */
     @RequestMapping(value = "/edit/{id}",method = RequestMethod.GET)
+    @LeftMenu(name = "用户修改",descritpion = "admin_user_edit",pname = "用户管理",url = "/admin/user/edit/*",operation = "update")
     public String edit(@PathVariable Integer id,Model model,HttpServletRequest request){
         SysUser su = userService.findById(id);
         model.addAttribute("form",su);
@@ -124,13 +126,13 @@ public class UserController {
      * @return
      */
     @RequestMapping(value = "/delete/{id}",method = RequestMethod.GET)
+    @LeftMenu(name = "用户删除",descritpion = "admin_user_delete",pname = "用户管理",url = "/admin/user/delete",operation = "delete")
     public String delete(@PathVariable Integer id, HttpServletRequest request){
         try {
             userService.deleteById(id);
         } catch (SystemException e) {
             e.printStackTrace();
         }
-
         return "redirect:/admin/user/list";
     }
 
@@ -141,6 +143,7 @@ public class UserController {
      * @return
      */
     @RequestMapping(value = "/resetPassword/{id}",method = RequestMethod.GET)
+    @LeftMenu(name = "重置密码",descritpion = "admin_user_resetPassword",pname = "用户管理",url = "/admin/user/resetPassword/*",operation = "update")
     public String ResetPassword(@PathVariable Integer id, HttpServletRequest request){
         SysUser su = userService.findById(id);
         su.setPassword("123456");

@@ -45,14 +45,14 @@ public class CommonUtils {
                 }
                 LeftMenu nm = m.getAnnotation(LeftMenu.class);
                 mr = new SysPermission();
-                mr.setName(nm.pname());
-                mr.setDescritpion(nm.remark());
-                mr.setUrl(nm.href());
-                mr.setPid(0);
+                mr.setPid(nm.pname().length());
+                mr.setUrl(nm.url());
+                mr.setDescritpion(nm.descritpion());
+                mr.setName(nm.name());
+                mr.setOperation(nm.operation());
                 list.add(mr);
             }
         }
-        System.out.println(list.toString());
         return list;
     }
 
