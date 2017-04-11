@@ -19,6 +19,15 @@ public class SysRole {
 
     private String description;
 
+    public SysRole() {
+
+    }
+
+    public SysRole(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+
     public Integer getId() {
         return id;
     }

@@ -14,16 +14,16 @@ public interface PermissionService {
 
     /**
      * 获取所有的权限列表信息，分页
-     * @param pageable
+     * @param
      * @return
      */
-    Page<SysPermission> getPermissionEntry(Pageable pageable);
+    Page<SysPermission> list(Integer page);
 
     /**
      * 刷新权限控制信息
      * @return  返回0表示成功，返回1表示失败
      */
-    Integer refreshPermission();
+    Integer refreshPermission() throws SystemException;
 
     /**
      * 通过父ID获取下面的子权限列表
@@ -43,4 +43,6 @@ public interface PermissionService {
      * @param parmissionId
      */
     void deleteByParmissionId(Integer parmissionId) throws SystemException;
+
+    SysPermission findByParmissionId(Integer parmissionId);
 }

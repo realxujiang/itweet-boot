@@ -25,7 +25,10 @@ public class SysPermission {
     //父节点id
     private Integer pid;
 
-    //权限的操作，默认值：add开头表示添加，update表示更新，list开头表示列表，delete开头表示删除
+    //父节点的 - 权限名称
+    private String pname;
+
+    //权限的操作，默认值：add开头表示添加，update表示更新，list开头表示列表，delete开头表示删除,manager表示管理
     private String operation;
 
     public Integer getId() {
@@ -76,6 +79,14 @@ public class SysPermission {
         this.operation = operation;
     }
 
+    public String getPname() {
+        return pname;
+    }
+
+    public void setPname(String pname) {
+        this.pname = pname;
+    }
+
     @Override
     public String toString() {
         return "SysPermission{" +
@@ -84,6 +95,7 @@ public class SysPermission {
                 ", descritpion='" + descritpion + '\'' +
                 ", url='" + url + '\'' +
                 ", pid=" + pid +
+                ", pname='" + pname + '\'' +
                 ", operation='" + operation + '\'' +
                 '}';
     }

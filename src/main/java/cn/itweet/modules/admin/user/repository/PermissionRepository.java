@@ -36,4 +36,10 @@ public interface PermissionRepository extends PagingAndSortingRepository<SysPerm
     @Query("delete from SysPermission where pid=?1")
     void deletePermissionByPermissionId(Integer permissionId);
 
+    @Query("select id from SysPermission where name=?1")
+    Integer findPidByPname(String pname);
+
+    @Query("select distinct id from SysPermission")
+    List<Integer> getPermissionIds();
+
 }

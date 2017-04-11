@@ -133,6 +133,7 @@ public class UserController {
         } catch (SystemException e) {
             e.printStackTrace();
         }
+
         return "redirect:/admin/user/list";
     }
 
@@ -143,7 +144,7 @@ public class UserController {
      * @return
      */
     @RequestMapping(value = "/resetPassword/{id}",method = RequestMethod.GET)
-    @LeftMenu(name = "重置密码",descritpion = "admin_user_resetPassword",pname = "用户管理",url = "/admin/user/resetPassword/*",operation = "update")
+    @LeftMenu(name = "重置密码",descritpion = "admin_user_delete",pname = "用户管理",url = "/admin/user/delete",operation = "delete")
     public String ResetPassword(@PathVariable Integer id, HttpServletRequest request){
         SysUser su = userService.findById(id);
         su.setPassword("123456");

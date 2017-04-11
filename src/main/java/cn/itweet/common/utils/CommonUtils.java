@@ -1,6 +1,8 @@
 package cn.itweet.common.utils;
 
 import cn.itweet.modules.admin.user.entity.SysPermission;
+import cn.itweet.modules.admin.user.repository.PermissionRepository;
+import cn.itweet.modules.admin.user.repository.PermissionRoleRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.lang.reflect.Method;
@@ -14,46 +16,37 @@ import java.util.List;
  */
 public class CommonUtils {
 
-    /**
-     * 左边栏菜单初始化到权限资源表
-     * @param c
-     * @return
-     */
-    public static List<SysPermission> addLeftMenu(Class c) {
-        String path = null;
-        if(c.isAnnotationPresent(RequestMapping.class)) {
-            path = ((RequestMapping)c.getAnnotation(RequestMapping.class)).value()[0];
-        }
-        Method[] ms = c.getDeclaredMethods();
-        List<SysPermission> list = new ArrayList<>();
-        SysPermission mr = null;
-        for (Method m : ms) {
-            //添加left菜单
-            if (m.isAnnotationPresent(LeftMenu.class)) {
-                String url = null;
-                if (m.isAnnotationPresent(GetMapping.class)) {
-                    url = path + ((GetMapping)m.getAnnotation(GetMapping.class)).value()[0];
-                }
-                if (m.isAnnotationPresent(PostMapping.class)) {
-                    url = path + ((PostMapping)m.getAnnotation(PostMapping.class)).value()[0];
-                }
-                if (m.isAnnotationPresent(PutMapping.class)) {
-                    url = path + ((PutMapping)m.getAnnotation(PutMapping.class)).value()[0];
-                }
-                if (m.isAnnotationPresent(DeleteMapping.class)) {
-                    url = path + ((DeleteMapping)m.getAnnotation(DeleteMapping.class)).value()[0];
-                }
-                LeftMenu nm = m.getAnnotation(LeftMenu.class);
-                mr = new SysPermission();
-                mr.setPid(nm.pname().length());
-                mr.setUrl(nm.url());
-                mr.setDescritpion(nm.descritpion());
-                mr.setName(nm.name());
-                mr.setOperation(nm.operation());
-                list.add(mr);
-            }
-        }
-        return list;
+    public static void initRootMenu(PermissionRepository permissionRepository) {
+        List<SysPermission> sysPermissionList = new ArrayList<>();
+        SysPermission userSysPermission = new SysPermission();
+        userSysPermission.setPid(0);
+        userSysPermission.setPname("root");
+        userSysPermission.setUrl("/admin/user");
+        userSysPermission.setName("用户管理");
+        userSysPermission.setOperation("manager");
+        userSysPermission.setDescritpion("user_manager");
+        sysPermissionList.add(userSysPermission);
+
+        SysPermission roleSysPermission = new SysPermission();
+        roleSysPermission.setPid(0);
+        roleSysPermission.setPname("root");
+        roleSysPermission.setUrl("/admin/role");
+        roleSysPermission.setName("角色管理");
+        roleSysPermission.setOperation("manager");
+        roleSysPermission.setDescritpion("role_manager");
+        sysPermissionList.add(roleSysPermission);
+
+        SysPermission permissionSysPermission = new SysPermission();
+        permissionSysPermission.setPid(0);
+        permissionSysPermission.setPname("root");
+        permissionSysPermission.setUrl("/admin/permission");
+        permissionSysPermission.setName("权限管理");
+        permissionSysPermission.setOperation("manager");
+        permissionSysPermission.setDescritpion("permission_manager");
+        sysPermissionList.add(permissionSysPermission);
+
+        permissionRepository.deleteAll();
+        permissionRepository.save(sysPermissionList);
     }
 
     /**

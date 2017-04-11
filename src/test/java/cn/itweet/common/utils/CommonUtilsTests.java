@@ -1,11 +1,16 @@
 package cn.itweet.common.utils;
 
-import cn.itweet.modules.admin.user.entity.SysPermission;
-import cn.itweet.modules.admin.user.web.RoleController;
-import cn.itweet.modules.admin.user.web.UserController;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import com.google.gson.stream.JsonReader;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,18 +18,6 @@ import java.util.List;
  * Created by whoami on 22/03/2017.
  */
 public class CommonUtilsTests {
-
-    @Test
-    public void addLeftMenuTest() {
-        List<SysPermission> sysPermissionList_1 = CommonUtils.addLeftMenu(UserController.class);
-        List<SysPermission> sysPermissionList_2 = CommonUtils.addLeftMenu(RoleController.class);
-        for (SysPermission sp : sysPermissionList_1) {
-            System.out.println(sp.getName());
-        }
-        for (SysPermission sp : sysPermissionList_2) {
-            System.out.println(sp.getName());
-        }
-    }
 
     @Test
     public void getDeleteElementsTest() {
