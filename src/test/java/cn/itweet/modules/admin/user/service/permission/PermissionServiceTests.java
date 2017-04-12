@@ -26,31 +26,31 @@ public class PermissionServiceTests {
     @Test
     public void test() {
         //refreshPermissionTest();
-        getPermissionChildNodeByParentIdTest();
+        // getPermissionChildNodeByParentIdTest();
 
-        listTest();
+        //listTest();
 
-        updateTest();
+        //updateTest();
 
         DeleteByParmissionIdTest();
     }
 
     private void updateTest() {
-        SysPermission sysPermission1 = permissionService.findByParmissionId(1);
+        SysPermission sysPermission1 = permissionService.findByParmissionId(40);
         sysPermission1.setName("测试权限修改Name信息");
         try {
             permissionService.update(sysPermission1);
         } catch (SystemException e) {
             e.printStackTrace();
         }
-        SysPermission sysPermission2 = permissionService.findByParmissionId(1);
+        SysPermission sysPermission2 = permissionService.findByParmissionId(40);
         Assert.assertEquals("测试权限修改Name信息",sysPermission2.getName());
     }
 
     private void DeleteByParmissionIdTest() {
         try {
-            permissionService.deleteByParmissionId(1);
-            SysPermission sysPermission = permissionService.findByParmissionId(1);
+            permissionService.deleteByParmissionId(40);
+            SysPermission sysPermission = permissionService.findByParmissionId(40);
             Assert.assertNull(sysPermission);
         } catch (SystemException e) {
             e.printStackTrace();
@@ -66,8 +66,8 @@ public class PermissionServiceTests {
         List<SysPermission> sysPermissionList = permissionService.getPermissionChildNodeByParentId(0);
         Assert.assertEquals(3,sysPermissionList.size());
 
-        List<SysPermission> userSysPermissionList = permissionService.getPermissionChildNodeByParentId(1);
-        Assert.assertEquals(3,userSysPermissionList.size());
+        List<SysPermission> userSysPermissionList = permissionService.getPermissionChildNodeByParentId(40);
+        Assert.assertEquals(5,userSysPermissionList.size());
     }
 
     private void refreshPermissionTest() {

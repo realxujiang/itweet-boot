@@ -151,7 +151,7 @@ public class PermissionServiceImpl implements PermissionService{
         if (StringUtils.isEmpty(sysPermission.getName()) && StringUtils.isEmpty(sysPermission.getPid()) && StringUtils.isEmpty(sysPermission.getUrl()))
             throw new SystemException("更新失败，要更新的权限名称,资源PID,资源URL不能为空！");
 
-        if (sysPermission.getId() != null)
+        if (sysPermission.getId() == null)
             throw new SystemException("更新失败，需要更新的资源ID不能为空！");
 
         SysPermission sp = permissionRepository.findOne(sysPermission.getId());
@@ -164,6 +164,7 @@ public class PermissionServiceImpl implements PermissionService{
     public void deleteByParmissionId(Integer permissionId) throws SystemException{
         if (permissionId != null) {
             permissionRepository.deletePermissionByPermissionId(permissionId);
+            permissionRoleRepository.deleteByPermissionId(permissionId);
         }
     }
 

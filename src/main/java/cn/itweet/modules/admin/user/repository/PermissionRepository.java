@@ -2,6 +2,7 @@ package cn.itweet.modules.admin.user.repository;
 
 import cn.itweet.modules.admin.user.entity.SysPermission;
 import org.springframework.data.domain.Page;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
@@ -33,7 +34,8 @@ public interface PermissionRepository extends PagingAndSortingRepository<SysPerm
     @Query(nativeQuery = true,value = "select * from sys_permission where pid=?1")
     List<SysPermission> getPermissionEntityByParentId(Integer parentId);
 
-    @Query("delete from SysPermission where pid=?1")
+    @Query("delete from SysPermission where id=?1")
+    @Modifying
     void deletePermissionByPermissionId(Integer permissionId);
 
     @Query("select id from SysPermission where name=?1")

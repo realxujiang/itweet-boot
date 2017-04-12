@@ -26,4 +26,8 @@ public interface PermissionRoleRepository extends JpaRepository<SysPermissionRol
 
     @Query(value = "select permission_id from sys_permission_role where rid=?1",nativeQuery = true)
     List<Integer> getPermissionRoleIdsByRoleId(Integer rid);
+
+    @Query(value = "delete from Sys_Permission_Role where permission_id=?1",nativeQuery = true)
+    @Modifying
+    void deleteByPermissionId(Integer permission_id);
 }
