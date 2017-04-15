@@ -82,7 +82,6 @@ public class PermissionServiceImpl implements PermissionService{
         } else {
             savePermissionRole(permissionIds, sysRole);
         }
-
     }
 
     private void savePermissionRole(List<Integer> permissionIds, SysRole sr) {

@@ -91,6 +91,10 @@ public class UserServiceImpl implements UserService {
             throw new SystemException("更新失败，要更新的用户名和用户邮箱不能为空！");
         if (user.getId() == null)
             throw new SystemException("更新失败，要更新的用户ID不能为空！");
+
+        if (userRepository.findByUsername(user.getUsername()) == null)
+            throw new SystemException("更新失败，要更新的用户名已经存在！");
+
         SysUser u1 = userRepository.findOne(user.getId());
         if (u1 != null && rIds != null) {
             updateUserAndUserRoles(user, rIds, u1);
@@ -149,7 +153,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deleteById(Integer uid) throws SystemException {
         SysUser u = userRepository.findOne(uid);
-        if (u != null && u.getUsername() != "sadmin") {
+        if (u != null && u.getUsername() != "admin") {
             List<Integer> roleUserIds = roleUserRepository.getRoleUserIdsByUid(uid);
             roleUserRepository.deleteByRoleUserIds(roleUserIds);
             userRepository.delete(uid);
