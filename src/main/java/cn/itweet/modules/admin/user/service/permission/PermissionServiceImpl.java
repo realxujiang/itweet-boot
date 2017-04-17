@@ -18,6 +18,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -48,9 +49,10 @@ public class PermissionServiceImpl implements PermissionService{
 
     @Override
     public Page<SysPermission> list(Integer page) {
+        System.out.println(permissionRepository.findAll(new PageRequest(page, 5)).getContent().toString());
         Page<SysPermission> sysPermissionPage = permissionRepository.findAll
                 (SimplePageBuilder.generate(page, SimpleSortBuilder.generateSort("id")));
-        return sysPermissionPage;
+        return permissionRepository.findAll(new PageRequest(page, 10));
     }
 
     @Override

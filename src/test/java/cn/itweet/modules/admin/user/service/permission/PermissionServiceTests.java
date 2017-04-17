@@ -28,11 +28,11 @@ public class PermissionServiceTests {
         //refreshPermissionTest();
         // getPermissionChildNodeByParentIdTest();
 
-        //listTest();
+        listTest();
 
         //updateTest();
 
-        DeleteByParmissionIdTest();
+        //DeleteByParmissionIdTest();
     }
 
     private void updateTest() {
@@ -58,8 +58,9 @@ public class PermissionServiceTests {
     }
 
     private void listTest() {
-        Page<SysPermission> sysPermissionPage = permissionService.list(1);
-        Assert.assertEquals(15,sysPermissionPage.getSize());
+        Page<SysPermission> sysPermissionPage = permissionService.list(2);
+        System.out.println(sysPermissionPage.getContent().toString());
+        Assert.assertEquals(10,sysPermissionPage.getSize());
     }
 
     private void getPermissionChildNodeByParentIdTest() {
