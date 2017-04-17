@@ -13,8 +13,8 @@ public class ArticleCategories {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @Column(name = "tag_id")
-    private Integer tagId;
+    @Column(name = "categories_id")
+    private Integer categoriesId;
 
     @Column(name = "article_id")
     private Integer articleId;
@@ -27,12 +27,12 @@ public class ArticleCategories {
         this.id = id;
     }
 
-    public Integer getTagId() {
-        return tagId;
+    public Integer getCategoriesId() {
+        return categoriesId;
     }
 
-    public void setTagId(Integer tagId) {
-        this.tagId = tagId;
+    public void setCategoriesId(Integer categoriesId) {
+        this.categoriesId = categoriesId;
     }
 
     public Integer getArticleId() {
