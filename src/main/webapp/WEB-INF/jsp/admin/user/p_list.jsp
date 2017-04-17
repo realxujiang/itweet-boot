@@ -48,18 +48,8 @@
         </tr>
 
         </c:forEach>
-        <tr>
-            <td colspan="8">
-                <div class="pagelist">
-                    第${pb.pc}页/共${permission.total/permission.pageable.size}页
-                    <a href="">上一页</a> <span class="current">1</span>
-                    <a href="">2</a>
-                    <a href="">3</a>
-                    <a href="">下一页</a>
-                    <a href="">尾页</a>
-                </div>
-            </td>
-        </tr>
+        <jsp:include page="../../tools/page/page.jsp"></jsp:include>
+
     </table>
 
     <script type="text/javascript">

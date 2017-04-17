@@ -25,7 +25,7 @@ public class PermissionServiceTests {
 
     @Test
     public void test() {
-        //refreshPermissionTest();
+        refreshPermissionTest();
         // getPermissionChildNodeByParentIdTest();
 
         listTest();
