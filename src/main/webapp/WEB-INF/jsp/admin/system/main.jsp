@@ -35,6 +35,7 @@
 	<ul style="display:block">
 		<li><a href="<%=basePath%>admin/user/list" target="right"><span class="icon-caret-right"></span>用户管理</a></li>
 		<li><a href="<%=basePath%>admin/role/list" target="right"><span class="icon-caret-right"></span>角色管理</a></li>
+		<li><a href="<%=basePath%>admin/permission/list" target="right"><span class="icon-caret-right"></span>资源管理</a></li>
 		<li><a href="page.html" target="right"><span class="icon-caret-right"></span>权限管理</a></li>
 		<li><a href="adv.html" target="right"><span class="icon-caret-right"></span>系统设置</a></li>
 		<li><a href="adv.html" target="right"><span class="icon-caret-right"></span>首页轮播</a></li>
