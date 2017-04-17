@@ -24,7 +24,7 @@
     <table class="table table-hover text-center">
         <tr>
             <th width="10%">编号</th>
-            <th width="10%">上级菜单名称</th>
+            <th width="10%">上级菜单</th>
             <th width="10%">菜单名称</th>
             <th width="20%">链接</th>
             <th width="25%">描述</th>
@@ -36,8 +36,8 @@
             <td>${permission.id}</td>
             <td>${permission.pname}</td>
             <td>${permission.name}</td>
-            <td>${permission.url}</td>
-            <td>${permission.descritpion}</td>
+            <td style="text-align: left;">${permission.url}</td>
+            <td style="text-align: left;">${permission.descritpion}</td>
             <td>
                 <div class="button-group">
                     <a class="button border-main" href="<%=basePath%>/admin/permission/edit/${permission.id}"><span class="icon-edit"></span> 修改</a>
@@ -51,6 +51,7 @@
         <tr>
             <td colspan="8">
                 <div class="pagelist">
+                    第${pb.pc}页/共${permission.total/permission.pageable.size}页
                     <a href="">上一页</a> <span class="current">1</span>
                     <a href="">2</a>
                     <a href="">3</a>

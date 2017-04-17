@@ -48,6 +48,11 @@ public class PermissionServiceImpl implements PermissionService{
     private RoleRepository roleRepository;
 
     @Override
+    public Page<SysPermission> list(Pageable pageable) {
+        return permissionRepository.findAll(pageable);
+    }
+
+    @Override
     public Page<SysPermission> list(Integer page) {
         System.out.println(permissionRepository.findAll(new PageRequest(page, 5)).getContent().toString());
         Page<SysPermission> sysPermissionPage = permissionRepository.findAll
