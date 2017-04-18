@@ -41,7 +41,6 @@
             <td>
                 <div class="button-group">
                     <a class="button border-main" href="<%=basePath%>/admin/permission/edit/${permission.id}"><span class="icon-edit"></span> 修改</a>
-                    <a class="button border-yellow" href="<%=basePath%>/admin/permission/reset/${permission.id}"><span class="icon-edit"></span>重置资源</a>
                     <a class="button border-red" href="<%=basePath%>/admin/permission/delete/${permission.id}" onclick="return del(1,1)"><span class="icon-trash-o"></span> 删除</a>
                 </div>
             </td>
