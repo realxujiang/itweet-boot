@@ -16,39 +16,6 @@ import java.util.List;
  */
 public class CommonUtils {
 
-    public static void initRootMenu(PermissionRepository permissionRepository) {
-        List<SysPermission> sysPermissionList = new ArrayList<>();
-        SysPermission userSysPermission = new SysPermission();
-        userSysPermission.setPid(0);
-        userSysPermission.setPname("root");
-        userSysPermission.setUrl("/admin/user");
-        userSysPermission.setName("用户管理");
-        userSysPermission.setOperation("manager");
-        userSysPermission.setDescritpion("user_manager");
-        sysPermissionList.add(userSysPermission);
-
-        SysPermission roleSysPermission = new SysPermission();
-        roleSysPermission.setPid(0);
-        roleSysPermission.setPname("root");
-        roleSysPermission.setUrl("/admin/role");
-        roleSysPermission.setName("角色管理");
-        roleSysPermission.setOperation("manager");
-        roleSysPermission.setDescritpion("role_manager");
-        sysPermissionList.add(roleSysPermission);
-
-        SysPermission permissionSysPermission = new SysPermission();
-        permissionSysPermission.setPid(0);
-        permissionSysPermission.setPname("root");
-        permissionSysPermission.setUrl("/admin/permission");
-        permissionSysPermission.setName("权限管理");
-        permissionSysPermission.setOperation("manager");
-        permissionSysPermission.setDescritpion("permission_manager");
-        sysPermissionList.add(permissionSysPermission);
-
-        permissionRepository.deleteAll();
-        permissionRepository.save(sysPermissionList);
-    }
-
     /**
      * 比较两个List元素是否相同
      * @param a

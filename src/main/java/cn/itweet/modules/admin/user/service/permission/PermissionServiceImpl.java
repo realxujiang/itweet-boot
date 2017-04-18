@@ -61,7 +61,6 @@ public class PermissionServiceImpl implements PermissionService{
     @Override
     public Integer refreshPermission() throws SystemException{
         try {
-            CommonUtils.initRootMenu(permissionRepository);
             RootMenu(RootController.class);
             addLeftMenu(UserController.class);
             addLeftMenu(RoleController.class);
