@@ -70,17 +70,8 @@
 		<li><a href="<%=basePath%>admin/licence/list" target="right"><span class="icon-caret-right"></span>Licence列表</a></li>
 		<li><a href="<%=basePath%>admin/licence/add" target="right"><span class="icon-caret-right"></span>Licence添加</a></li>
 	</ul>
-
-	<h2><span class="icon-pencil-square-o"></span>周报管理</h2>
-	<ul>
-		<li><a href="list.html" target="right"><span class="icon-caret-right"></span>我的周报</a></li>
-		<li><a href="add.html" target="right"><span class="icon-caret-right"></span>周报设置</a></li>
-	</ul>
-
-
-
-
 </div>
+
 <script type="text/javascript">
     $(function(){
         $(".leftnav h2").click(function(){

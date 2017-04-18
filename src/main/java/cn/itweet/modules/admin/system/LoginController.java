@@ -18,22 +18,6 @@ import javax.servlet.http.HttpServletResponse;
 public class LoginController {
 
     /**
-     * This method handles login GET requests.
-     * If users is already logged-in and tries to goto login page again, will be redirected to list page.
-     */
-   /* @GetMapping(value = "/admin/login")
-    public String login() {
-        return "admin/login";
-    }
-
-    @RequestMapping(value = "/admin/login", method = RequestMethod.POST)
-    public String login(String username,String password) {
-        System.out.println(username);
-        System.out.println(password);
-        return "redirect:/admin/home";
-    }*/
-
-    /**
      * This method handles logout requests.
      * Toggle the handlers if you are RememberMe functionality is useless in your app.
      */

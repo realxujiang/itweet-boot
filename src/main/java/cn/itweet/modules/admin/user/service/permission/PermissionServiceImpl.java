@@ -1,10 +1,8 @@
 package cn.itweet.modules.admin.user.service.permission;
 
 import cn.itweet.common.exception.SystemException;
-import cn.itweet.common.utils.CommonUtils;
-import cn.itweet.common.utils.LeftMenu;
-import cn.itweet.common.utils.SimplePageBuilder;
-import cn.itweet.common.utils.SimpleSortBuilder;
+import cn.itweet.common.utils.*;
+import cn.itweet.modules.admin.system.RootController;
 import cn.itweet.modules.admin.user.entity.SysPermission;
 import cn.itweet.modules.admin.user.entity.SysPermissionRole;
 import cn.itweet.modules.admin.user.entity.SysRole;
@@ -54,9 +52,9 @@ public class PermissionServiceImpl implements PermissionService{
 
     @Override
     public Page<SysPermission> list(Integer page) {
-        System.out.println(permissionRepository.findAll(new PageRequest(page, 5)).getContent().toString());
         Page<SysPermission> sysPermissionPage = permissionRepository.findAll
                 (SimplePageBuilder.generate(page, SimpleSortBuilder.generateSort("id")));
+        System.out.println(sysPermissionPage.getContent().toString());
         return permissionRepository.findAll(new PageRequest(page, 10));
     }
 
@@ -64,6 +62,7 @@ public class PermissionServiceImpl implements PermissionService{
     public Integer refreshPermission() throws SystemException{
         try {
             CommonUtils.initRootMenu(permissionRepository);
+            RootMenu(RootController.class);
             addLeftMenu(UserController.class);
             addLeftMenu(RoleController.class);
             initRolePermission();
@@ -100,6 +99,51 @@ public class PermissionServiceImpl implements PermissionService{
             sysPermissionRole.setPermissionId(permissionId);
             permissionRoleRepository.save(sysPermissionRole);
         }
+    }
+
+    /**
+     * 左边根菜单，初始化到权限资源表
+     * @param c
+     * @return
+     */
+    private void RootMenu(Class c) {
+        String path = null;
+        if(c.isAnnotationPresent(RequestMapping.class)) {
+            path = ((RequestMapping)c.getAnnotation(RequestMapping.class)).value()[0];
+        }
+        Method[] ms = c.getDeclaredMethods();
+        List<SysPermission> list = new ArrayList<>();
+        SysPermission mr = null;
+        for (Method m : ms) {
+            //添加left菜单
+            if (m.isAnnotationPresent(RootMenu.class)) {
+                String url = null;
+                if (m.isAnnotationPresent(GetMapping.class)) {
+                    url = path + ((GetMapping)m.getAnnotation(GetMapping.class)).value()[0];
+                }
+                if (m.isAnnotationPresent(PostMapping.class)) {
+                    url = path + ((PostMapping)m.getAnnotation(PostMapping.class)).value()[0];
+                }
+                if (m.isAnnotationPresent(PutMapping.class)) {
+                    url = path + ((PutMapping)m.getAnnotation(PutMapping.class)).value()[0];
+                }
+                if (m.isAnnotationPresent(DeleteMapping.class)) {
+                    url = path + ((DeleteMapping)m.getAnnotation(DeleteMapping.class)).value()[0];
+                }
+                RootMenu nm = m.getAnnotation(RootMenu.class);
+                mr = new SysPermission();
+                mr.setPname(nm.pname());
+                mr.setPid(Integer.valueOf(nm.pid()));
+                mr.setUrl(nm.url());
+                mr.setDescritpion(nm.descritpion());
+                mr.setName(nm.name());
+                mr.setOperation(nm.operation());
+                list.add(mr);
+            }
+        }
+        if (list.size() <= 0)
+            new SystemException("初始化权限失败,需要初始化的权限集合不能为空!");
+        permissionRepository.save(list);
     }
 
     /**
