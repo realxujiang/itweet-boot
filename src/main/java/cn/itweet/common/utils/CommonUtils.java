@@ -14,17 +14,6 @@ import java.util.*;
  */
 public class CommonUtils {
 
-    public static SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm");
-
-    /**
-     * 格式化时间
-     * @param time
-     * @return
-     */
-    public static String parseToTime(Date time) {
-        return sdf.format(time);
-    }
-
     /**
      * 比较两个List元素是否相同
      * @param a

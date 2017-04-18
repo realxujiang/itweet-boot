@@ -1,11 +1,11 @@
 package cn.itweet.modules.admin.article.service.article;
 
 import cn.itweet.common.exception.SystemException;
-import cn.itweet.common.utils.CommonUtils;
 import cn.itweet.modules.admin.article.entity.Article;
 import cn.itweet.modules.admin.article.repository.ArticleCategoriesRepository;
 import cn.itweet.modules.admin.article.repository.ArticleRepository;
 import cn.itweet.modules.admin.article.repository.ArticleTagRepository;
+import cn.itweet.modules.admin.article.utils.ArticleUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -103,7 +103,7 @@ public class ArticleServiceImpl implements ArticleService {
         List<Article> articles = (List<Article>) articleRepository.findAll();
         Map<String,Article> articleMap = new HashMap<>();
         for (Article article:articles) {
-            articleMap.put(CommonUtils.parseToTime(article.getCreateDate()),article);
+            articleMap.put(ArticleUtils.parseToTime(article.getCreateDate()),article);
         }
         return articleMap;
     }
