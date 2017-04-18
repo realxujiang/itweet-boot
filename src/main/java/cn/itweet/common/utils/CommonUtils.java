@@ -6,15 +6,24 @@ import cn.itweet.modules.admin.user.repository.PermissionRoleRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * Created by whoami on 22/03/2017.
  */
 public class CommonUtils {
+
+    public static SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+
+    /**
+     * 格式化时间
+     * @param time
+     * @return
+     */
+    public static String parseToTime(Date time) {
+        return sdf.format(time);
+    }
 
     /**
      * 比较两个List元素是否相同
