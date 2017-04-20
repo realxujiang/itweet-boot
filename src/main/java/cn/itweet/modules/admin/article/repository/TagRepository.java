@@ -13,6 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public interface TagRepository extends PagingAndSortingRepository<Tag,Integer> {
 
-    @Query("select * from Tag where name=?1")
+    @Query("from Tag where name=?1")
     Tag getTagByName(String name);
 }

@@ -13,11 +13,23 @@ public class ArticleCategories {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    /**
+     * 如果分类信息没有填写，默认文章的分类值  -1，其他情况都是大于0的整数
+     */
     @Column(name = "categories_id")
     private Integer categoriesId;
 
     @Column(name = "article_id")
     private Integer articleId;
+
+    public ArticleCategories() {
+
+    }
+
+    public ArticleCategories(Integer categoriesId, Integer articleId) {
+        this.categoriesId = categoriesId;
+        this.articleId = articleId;
+    }
 
     public Integer getId() {
         return id;

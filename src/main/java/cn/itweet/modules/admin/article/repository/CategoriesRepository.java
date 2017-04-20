@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public interface CategoriesRepository extends JpaRepository<Categories,Integer> {
 
-    @Query("select * from Categories where name=?1")
+    @Query("from Categories where name=?1")
     Categories getCategoriesByName(String name);
 
 }

@@ -18,9 +18,9 @@ import java.util.List;
 @Transactional
 public interface ArticleRepository extends PagingAndSortingRepository<Article,Integer> {
 
-    @Query("select * from Article where title=?1")
+    @Query("from Article where title=?1")
     Article getArticleByTitle(String title);
 
-    @Query("select a from Article a where a.title like '%' + ?1 + '%'")
-    List<Article> findByTitle(String string);
+    @Query(value = "select a from Article a where a.title like CONCAT('%',:title,'%')",nativeQuery = true)
+    List<Article> findByTitle(String title);
 }

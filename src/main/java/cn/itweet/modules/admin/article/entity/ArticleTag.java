@@ -20,6 +20,14 @@ public class ArticleTag {
     @Column(name = "article_id")
     private Integer articleId;
 
+    public ArticleTag() {
+    }
+
+    public ArticleTag(Integer tagId, Integer articleId) {
+        this.tagId = tagId;
+        this.articleId = articleId;
+    }
+
     public Integer getId() {
         return id;
     }
