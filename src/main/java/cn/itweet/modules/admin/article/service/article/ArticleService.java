@@ -14,17 +14,19 @@ import java.util.Map;
 public interface ArticleService {
     Page<Article> list(Pageable pageable);
 
+    Page<Article> searchByTitle(Pageable pageable,String title);
+
     Article getArticleByTitle(String title);
 
     Article getArticleById(Integer id);
-
-    List<Article> searchByTitle(String string);
 
     void deleteById(Integer id);
 
     void deleteByTitle(String title);
 
     void update(Article article,List<Integer> tagIds,Integer categoriesId) throws SystemException;
+
+    void update(Article article) throws SystemException;
 
     Article addArticle(Article article,List<Integer> tagIds,Integer categoriesId) throws SystemException;
 

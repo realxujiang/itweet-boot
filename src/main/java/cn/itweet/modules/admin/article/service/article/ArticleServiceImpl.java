@@ -47,8 +47,8 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public List<Article> searchByTitle(String string) {
-        return articleRepository.searchByTitle(string);
+    public void update(Article article) throws SystemException {
+        articleRepository.save(article);
     }
 
     @Override
@@ -118,6 +118,11 @@ public class ArticleServiceImpl implements ArticleService {
         oldArt.setTitle(article.getTitle());
         oldArt.setUpdateDate(new Date());
         articleRepository.save(oldArt);
+    }
+
+    @Override
+    public Page<Article> searchByTitle(Pageable pageable, String title) {
+        return articleRepository.searchByTitle(pageable,title);
     }
 
     @Override

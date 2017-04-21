@@ -31,13 +31,7 @@
                     <li><label>文章标题<b>*</b></label><input name="title" type="text" class="dfinput" value="${title}" placeholder="标题" style="width:618px;" /></li>
                     <li><label>文章标题<b>*</b></label><input name="title" type="text" class="dfinput" value="${title}" placeholder="标题" style="width:618px;" /></li>
                     <li><label>文章标题<b>*</b></label><input name="title" type="text" class="dfinput" value="${title}" placeholder="标题" style="width:618px;" /></li>
-
-
-
                     <li><label>图片名称<b>*</b></label><input name="picpath" type="text" class="dfinput" value="${description}" placeholder="描述" style="width:618px;" /></li>
-
-
-
                     <li><label>&nbsp;</label><input type="submit" class="btn" value="确定" /></li>
                 </form>
             </ul>

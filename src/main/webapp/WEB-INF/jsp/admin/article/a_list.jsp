@@ -8,9 +8,7 @@
 <html>
 <head>
     <title>List</title>
-    <meta charset="utf-8">
-    <link href="<%=basePath%>style/admin/backstage/css/style.css" rel="stylesheet">
-    <script src="<%=basePath%>style/admin/backstage/js/jquery.js"></script>
+    <jsp:include page="../../tools/style/admin_style.jsp"></jsp:include>
 
     <script type="text/javascript">
         KE.show({
@@ -45,7 +43,7 @@
     <div id="usual1" class="usual">
         <div id="tab2" class="tabson">
             <ul class="seachform">
-                <form action="<%=basePath%>/admin/article/select" method="post">
+                <form action="<%=basePath%>/admin/article/select" method="get">
                     <li><label>标题查询</label><input name="title" type="text" class="scinput" value="${title}" /></li>
                     <li><label>&nbsp;</label><input type="submit" class="scbtn" value="查询" /></li>
                 </form>
@@ -64,7 +62,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach items="${articleList}" var="article">
+                <c:forEach items="${articleList.content}" var="article">
                     <tr>
                         <td>${article.id}</td>
                         <td>${article.title}</td>
@@ -73,10 +71,9 @@
                         <td>${article.updateDate}</td>
                         <td>${article.description}</td>
                         <td>
+                            <a href="<%=basePath%>/admin/article/addContent/${article.id}" class="tablelink">编辑正文</a>
                             <a href="<%=basePath%>/admin/article/view/${article.id}" target="_blank" class="tablelink">预览</a>
                             <a href="<%=basePath%>/admin/article/edit/${article.id}" class="tablelink">修改</a>
-                            <c:if test="${article.state eq 1}"><a href="<%=basePath%>/admin/article/cancelRelease/${article.id}" class="tablelink">取消发布</a></c:if>
-                            <c:if test="${article.state eq 0}"><a href="<%=basePath%>/admin/article/release/${article.id}" class="tablelink">发布</a></c:if>
                             <a href="<%=basePath%>/admin/article/delete/${article.id}" class="tablelink" onclick="return del()"> 删除</a>
                         </td>
                     </tr>

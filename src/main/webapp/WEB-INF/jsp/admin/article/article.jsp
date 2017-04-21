@@ -8,20 +8,22 @@
 <html>
 <head>
     <title>Article</title>
-    <meta charset="utf-8">
+    <jsp:include page="../../tools/style/admin_style.jsp"></jsp:include>
 
     <link href="<%=basePath%>style/admin/makedown/css/editormd.min.css" rel="stylesheet">
-
-    <script src="<%=basePath%>style/admin/makedown/js/jquery.min.js"></script>
     <script src="<%=basePath%>style/admin/makedown/js/editormd.min.js"></script>
 
 </head>
 <body>
 
-<div id="editormd-content">
-    <textarea class="editormd-markdown-textarea" name="editormd-makedown-doc"></textarea>
-    <textarea class="editormd-html-textarea" name="content"></textarea>
-</div>
+<form action="<%=basePath%>/admin/article/addContent/${form.id}" method="post">
+    <input type="hidden" name="id" value="${form.id}">
+    <div id="editormd-content">
+        <textarea class="editormd-markdown-textarea" name="editormd-makedown-doc"></textarea>
+        <textarea class="editormd-html-textarea" name="content"></textarea>
+    </div>
+    <input type="submit" class="btn" value="确定" />
+</form>
 
 <script>
 
