@@ -8,9 +8,7 @@
 <html>
 <head>
     <title>List</title>
-    <meta charset="utf-8">
-    <link href="<%=basePath%>style/admin/backstage/css/style.css" rel="stylesheet">
-    <script src="<%=basePath%>style/admin/backstage/js/jquery.js"></script>
+    <jsp:include page="../../tools/style/admin_style.jsp"></jsp:include>
 
     <script type="text/javascript">
         KE.show({
@@ -45,11 +43,11 @@
     <div id="usual1" class="usual">
         <div id="tab2" class="tabson">
             <ul class="seachform">
-                <form action="<%=basePath%>/admin/tag/select" method="post">
-                    <li><label>名称查询</label><input name="name" type="text" class="scinput" value="${title}" /></li>
+                <form action="<%=basePath%>/admin/tag/select" method="get">
+                    <li><label>名称查询</label><input name="name" id="condition" type="text" class="scinput" value="${name}" /></li>
                     <li><label>&nbsp;</label><input type="submit" class="scbtn" value="查询" /></li>
+                    <li><label>&nbsp;</label><a href="<%=basePath%>/admin/tag/add"><input name="" type="button" class="scbtn" value="添加标签" /></a></li>
                 </form>
-                <li><label>&nbsp;</label><a href="<%=basePath%>/admin/tag/add"><input name="" type="button" class="scbtn" value="添加标签" /></a></li>
             </ul>
             <table class="tablelist">
                 <thead>

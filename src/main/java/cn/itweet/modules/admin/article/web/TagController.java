@@ -46,9 +46,29 @@ public class TagController {
         Page<Tag> tagList = tagService.list(new PageRequest(page, pageSize));
         model.addAttribute("tagList",tagList);
 
-        PageUtils pageUtils = new PageUtils("/admin/tag",page,tagList.getTotalPages(),tagList.getTotalElements(),pageSize);
+        PageUtils pageUtils = new PageUtils("/admin/tag/list?",page,tagList.getTotalPages(),tagList.getTotalElements(),pageSize);
         model.addAttribute("pb",pageUtils);
 
+        return "admin/article/t_list";
+    }
+
+    /**
+     * 文章标签按Name查询
+     * @param page
+     * @param pageSize
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/select",method = RequestMethod.GET)
+    public String select(@RequestParam(value = "name") String name, @RequestParam(value = "page", defaultValue = "0") Integer page, @RequestParam(value = "pageSize", defaultValue = "10") Integer pageSize,Model model) {
+        if(page !=0)page = page -1;
+        Page<Tag> tagList = tagService.selectByName(new PageRequest(page, pageSize),name);
+        model.addAttribute("tagList",tagList);
+
+        PageUtils pageUtils = new PageUtils("/admin/tag/select?name="+ name+"&",page,tagList.getTotalPages(),tagList.getTotalElements(),pageSize);
+        model.addAttribute("pb",pageUtils);
+
+        model.addAttribute("name",name);
         return "admin/article/t_list";
     }
 
@@ -70,7 +90,6 @@ public class TagController {
      */
     @RequestMapping(value = "/add",method = RequestMethod.POST)
     public String add(Model model,HttpServletRequest request,Tag tag) {
-        //TODO  接着这里做   先做标签 之后做分类   再做文章管理
         try {
             tag.setDate(new Date());
             tagService.addTag(tag);
@@ -79,7 +98,7 @@ public class TagController {
             model.addAttribute("message","<script>toastr.error(\"" + e.getMessage() + "\")</script>");
             return "admin/article/t_add";
         }
-        return "redirect:/admin/article/t_list";
+        return "redirect:/admin/tag/list";
     }
 
     /**
@@ -111,7 +130,7 @@ public class TagController {
             model.addAttribute("message","<script>toastr.error(\"" + e.getMessage() + "\")</script>");
             return "admin/article/t_edit";
         }
-        return "redirect:/admin/article/t_list";
+        return "redirect:/admin/tag/list";
     }
 
     /**
@@ -123,7 +142,7 @@ public class TagController {
     @RequestMapping(value = "/delete/{id}",method = RequestMethod.GET)
     public String delete(Model model,@PathVariable Integer id) {
         tagService.deleteById(id);
-        return "redirect:/admin/article/t_list";
+        return "redirect:/admin/tag/list";
     }
 
 }

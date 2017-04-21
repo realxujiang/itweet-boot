@@ -12,10 +12,10 @@
     <div class="message">共<i class="blue">${pb.totalRecored}</i>条,<i class="blue">${pb.currentPage}</i>页，当前显示第&nbsp;<i class="blue">${pb.currentPage}&nbsp;</i>页</div>
     <ul class="paginList">
 
-        <li class="paginItem"><a href="<%=basePath%>${pb.url}/list?page=1"><span>首</span></a></li>
+        <li class="paginItem"><a href="<%=basePath%>${pb.url}page=1"><span>首</span></a></li>
 
         <c:if test="${pb.currentPage > 1}">
-            <li class="paginItem"><a href="<%=basePath%>/${pb.url}/list?page=${pb.currentPage-1}"><span class="pagepre"></span></a></li>
+            <li class="paginItem"><a href="<%=basePath%>/${pb.url}page=${pb.currentPage-1}"><span class="pagepre"></span></a></li>
         </c:if>
 
         <c:choose>
@@ -45,15 +45,15 @@
                     <li class="paginItem current"><a>${i}</a></li>
                 </c:when>
                 <c:otherwise>
-                    <li class="paginItem"><a href="<%=basePath%>${pb.url}/list?page=${i}">${i}</a></li>
+                    <li class="paginItem"><a href="<%=basePath%>${pb.url}page=${i}">${i}</a></li>
                 </c:otherwise>
             </c:choose>
         </c:forEach>
 
         <c:if test="${pb.currentPage < pb.totalPages}">
-            <li class="paginItem"><a href="<%=basePath%>${pb.url}/list?page=${pb.currentPage+1}"><span class="pagenxt"></span></a></li>
+            <li class="paginItem"><a href="<%=basePath%>${pb.url}page=${pb.currentPage+1}"><span class="pagenxt"></span></a></li>
         </c:if>
 
-        <li class="paginItem"><a href="<%=basePath%>${pb.url}/list?page=${pb.totalPages}"><span>尾</span></a></li>
+        <li class="paginItem"><a href="<%=basePath%>${pb.url}page=${pb.totalPages}"><span>尾</span></a></li>
     </ul>
 </div>

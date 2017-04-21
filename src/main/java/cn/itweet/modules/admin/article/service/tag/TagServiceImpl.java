@@ -24,6 +24,11 @@ public class TagServiceImpl implements TagService {
     private ArticleTagRepository articleTagRepository;
 
     @Override
+    public Page<Tag> selectByName(Pageable pageable, String name) {
+        return tagRepository.selectByName(pageable,name);
+    }
+
+    @Override
     public Page<Tag> list(Pageable pageable) {
         return tagRepository.findAll(pageable);
     }

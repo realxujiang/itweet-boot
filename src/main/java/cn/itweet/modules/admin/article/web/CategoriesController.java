@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 说明：文章类别Controller
@@ -33,22 +34,27 @@ public class CategoriesController {
 
     /**
      * 文章类别列表
-     * @param page
-     * @param pageSize
      * @param model
      * @return
      */
     @RequestMapping(value = "/list",method = RequestMethod.GET)
-    public String list(@RequestParam(value = "page", defaultValue = "0") Integer page, @RequestParam(value = "pageSize", defaultValue = "10") Integer pageSize, Model model) {
+    public String list(Model model) {
 
-        if(page !=0)page = page -1;
+        List<Categories> categoriesList =  categoriesService.list();
+        model.addAttribute("categoriesList",categoriesList);
+        return "admin/article/c_list";
+    }
 
-        //Page<Categories> categoriesList = categoriesService.list(new PageRequest(page, pageSize));
-        //model.addAttribute("categoriesList",categoriesList);
-
-        //PageUtils pageUtils = new PageUtils("/admin/categories",page,categoriesList.getTotalPages(),categoriesList.getTotalElements(),pageSize);
-        //model.addAttribute("pb",pageUtils);
-
+    /**
+     * 文章类别按Name查询
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/select",method = RequestMethod.GET)
+    public String select(@RequestParam(value = "name") String name,Model model) {
+        List<Categories> categoriesList = categoriesService.selectByName(name);
+        model.addAttribute("categoriesList",categoriesList);
+        model.addAttribute("name",name);
         return "admin/article/c_list";
     }
 
@@ -79,7 +85,7 @@ public class CategoriesController {
             model.addAttribute("message","<script>toastr.error(\"" + e.getMessage() + "\")</script>");
             return "admin/article/c_add";
         }
-        return "redirect:/admin/article/c_list";
+        return "redirect:/admin/categories/list";
     }
 
     /**
@@ -111,7 +117,7 @@ public class CategoriesController {
             model.addAttribute("message","<script>toastr.error(\"" + e.getMessage() + "\")</script>");
             return "admin/article/c_edit";
         }
-        return "redirect:/admin/article/c_list";
+        return "redirect:/admin/categories/list";
     }
 
     /**
@@ -123,6 +129,6 @@ public class CategoriesController {
     @RequestMapping(value = "/delete/{id}",method = RequestMethod.GET)
     public String delete(Model model,@PathVariable Integer id) {
         categoriesService.deleteById(id);
-        return "redirect:/admin/article/c_list";
+        return "redirect:/admin/categories/list";
     }
 }

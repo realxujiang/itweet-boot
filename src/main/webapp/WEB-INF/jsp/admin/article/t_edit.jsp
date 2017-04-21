@@ -8,9 +8,7 @@
 <html>
 <head>
     <title>Edit</title>
-    <meta charset="utf-8">
-
-    <link href="<%=basePath%>style/admin/backstage/css/style.css" rel="stylesheet">
+    <jsp:include page="../../tools/style/admin_style.jsp"></jsp:include>
 
 </head>
 <body>

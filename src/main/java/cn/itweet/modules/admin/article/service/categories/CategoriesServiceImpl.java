@@ -30,6 +30,11 @@ public class CategoriesServiceImpl implements CategoriesService {
     }
 
     @Override
+    public List<Categories> selectByName(String name) {
+        return categoriesRepository.selectByName(name);
+    }
+
+    @Override
     public Categories getCategoriesByName(String name) {
         return categoriesRepository.getCategoriesByName(name);
     }

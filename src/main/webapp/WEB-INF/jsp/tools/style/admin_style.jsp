@@ -12,6 +12,8 @@
 <link href="<%=basePath%>/style/admin/backstage/css/amazeui.chosen.css" rel="stylesheet">
 <link href="<%=basePath%>/style/admin/backstage/css/amazeui.min.css" rel="stylesheet">
 
+<link href="<%=basePath%>style/admin/backstage/css/style.css" rel="stylesheet">
+
 
 
 

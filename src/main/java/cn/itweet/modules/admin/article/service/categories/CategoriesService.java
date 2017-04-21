@@ -12,6 +12,8 @@ public interface CategoriesService {
 
     List<Categories> list();
 
+    List<Categories> selectByName(String name);
+
     Categories getCategoriesByName(String name);
 
     void deleteById(Integer id);

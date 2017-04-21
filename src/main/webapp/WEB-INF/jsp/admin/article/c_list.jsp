@@ -8,9 +8,7 @@
 <html>
 <head>
     <title>List</title>
-    <meta charset="utf-8">
-    <link href="<%=basePath%>style/admin/backstage/css/style.css" rel="stylesheet">
-    <script src="<%=basePath%>style/admin/backstage/js/jquery.js"></script>
+    <jsp:include page="../../tools/style/admin_style.jsp"></jsp:include>
 
     <script type="text/javascript">
         KE.show({
@@ -45,8 +43,8 @@
     <div id="usual1" class="usual">
         <div id="tab2" class="tabson">
             <ul class="seachform">
-                <form action="<%=basePath%>/admin/categories/select" method="post">
-                    <li><label>名称查询</label><input name="name" type="text" class="scinput" value="${title}" /></li>
+                <form action="<%=basePath%>/admin/categories/select" method="get">
+                    <li><label>名称查询</label><input name="name" type="text" class="scinput" value="${name}" /></li>
                     <li><label>&nbsp;</label><input type="submit" class="scbtn" value="查询" /></li>
                 </form>
                 <li><label>&nbsp;</label><a href="<%=basePath%>/admin/categories/add"><input name="" type="button" class="scbtn" value="添加类别" /></a></li>
@@ -61,7 +59,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach items="${categoriesList.content}" var="categories">
+                <c:forEach items="${categoriesList}" var="categories">
                     <tr>
                         <td>${categories.id}</td>
                         <td>${categories.name}</td>
@@ -74,7 +72,6 @@
                 </c:forEach>
                 </tbody>
             </table>
-            <jsp:include page="../../tools/page/page2.jsp"></jsp:include>
         </div>
     </div>
     <script type="text/javascript">
