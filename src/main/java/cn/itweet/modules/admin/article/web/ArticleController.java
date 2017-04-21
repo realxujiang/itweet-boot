@@ -17,11 +17,11 @@ public class ArticleController {
 
     @RequestMapping(value = "/list",method = RequestMethod.GET)
     public String list(Model model) {
-        return "admin/article/list";
+        return "admin/article/a_list";
     }
 
     @RequestMapping(value = "/add",method = RequestMethod.GET)
     public String add(Model model) {
-        return "admin/article/add";
+        return "admin/article/a_add";
     }
 }

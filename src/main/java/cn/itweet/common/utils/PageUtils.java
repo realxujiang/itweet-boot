@@ -9,17 +9,28 @@ package cn.itweet.common.utils;
  */
 public class PageUtils {
 
+    private String url;
+
     private int currentPage;    //当前页码
     private int totalPages;      //总页数
 
     private long totalRecored;   //总记录数
     private int pageSize;        //每页记录数
 
-    public PageUtils(int currentPage, int totalPages, long totalRecored, int pageSize) {
+    public PageUtils(String url,int currentPage, int totalPages, long totalRecored, int pageSize) {
+        this.url = url;
         this.currentPage = currentPage + 1;
         this.totalPages = totalPages;
         this.totalRecored = totalRecored;
         this.pageSize = pageSize;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public int getTotalPages() {

@@ -45,7 +45,7 @@ public class PermissionController {
         Page<SysPermission> permissionList = permissionService.list(new PageRequest(page, pageSize));
         model.addAttribute("permissionList",permissionList);
 
-        PageUtils pageUtils = new PageUtils(page,permissionList.getTotalPages(),permissionList.getTotalElements(),pageSize);
+        PageUtils pageUtils = new PageUtils("/admin/permission",page,permissionList.getTotalPages(),permissionList.getTotalElements(),pageSize);
         model.addAttribute("pb",pageUtils);
 
         return "admin/user/p_list";
