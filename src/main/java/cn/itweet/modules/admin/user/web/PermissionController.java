@@ -50,11 +50,4 @@ public class PermissionController {
 
         return "admin/user/p_list";
     }
-
-
-
-
-
-
-
 }

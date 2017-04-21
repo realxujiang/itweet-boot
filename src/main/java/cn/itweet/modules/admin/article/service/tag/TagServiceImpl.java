@@ -33,7 +33,7 @@ public class TagServiceImpl implements TagService {
         if ("" == tag.getName() || tag.getName() == null)
             throw new SystemException("添加失败，要添加的标签名称不能为空！");
         if (tagRepository.getTagByName(tag.getName()) != null)
-            return tagRepository.getTagByName(tag.getName());
+            throw new SystemException("添加失败，要添加的标签名称已经存在！");
         return tagRepository.save(tag);
     }
 
@@ -46,10 +46,12 @@ public class TagServiceImpl implements TagService {
     @Override
     public void update(Tag tag) throws SystemException {
         if ("" == tag.getName() || tag.getName() == null)
-            throw new SystemException("添加失败，要添加的标签名称不能为空！");
-        Tag t = tagRepository.getTagByName(tag.getName());
-        t.setDate(new Date());
+            throw new SystemException("更新失败，要更新的标签名称不能为空！");
+        if (tagRepository.getTagByName(tag.getName()) != null)
+            throw new SystemException("更新失败，要更新的标签名称已经存在！");
+        Tag t = tagRepository.findOne(tag.getId());
         t.setName(tag.getName());
+        t.setDate(new Date());
         tagRepository.save(t);
     }
 

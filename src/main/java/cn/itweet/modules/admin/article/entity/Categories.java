@@ -18,6 +18,14 @@ public class Categories {
 
     private Date date;
 
+    public Categories() {
+    }
+
+    public Categories(String name, Date date) {
+        this.name = name;
+        this.date = date;
+    }
+
     public Integer getId() {
         return id;
     }

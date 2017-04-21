@@ -18,6 +18,14 @@ public class Tag {
 
     private Date date;
 
+    public Tag() {
+    }
+
+    public Tag(String name, Date date) {
+        this.name = name;
+        this.date = date;
+    }
+
     public Integer getId() {
         return id;
     }

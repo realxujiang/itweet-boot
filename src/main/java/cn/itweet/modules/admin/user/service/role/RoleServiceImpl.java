@@ -101,14 +101,14 @@ public class RoleServiceImpl implements RoleService {
         List<Integer> delElems = CommonUtils.getDeleteElements(perissionIds,dbPerissionIds);
         List<Integer> aggElems = CommonUtils.getAggrandizeElements(perissionIds,dbPerissionIds);
 
-        if (delElems != null) {
+        if (delElems.size() > 0) {
             System.out.println("delElems: "+delElems.toString());
             for (Integer perid : delElems) {
                 permissionRoleRepository.deleteByRoleIdAndPermissionId(rid,perid);
             }
         }
 
-        if (aggElems != null) {
+        if (aggElems.size() > 0) {
             System.out.println("aggElems: "+aggElems);
             for (Integer perissionId : aggElems) {
                 SysPermissionRole sysPermissionRole = new SysPermissionRole();

@@ -119,7 +119,7 @@ public class UserServiceImpl implements UserService {
             List<Integer> deleteElems = CommonUtils.getDeleteElements(rIds, roleUserList);
             List<Integer> aggElems = CommonUtils.getAggrandizeElements(rIds, roleUserList);
 
-            if (aggElems.size() != 0) {
+            if (aggElems.size() > 0) {
                 for (int i = 0; i < aggElems.size(); i++) {
                     System.out.println("aggElems: "+aggElems.toString());
                     SysRoleUser ru = new SysRoleUser();
@@ -129,7 +129,7 @@ public class UserServiceImpl implements UserService {
                 }
             }
 
-            if (deleteElems.size() != 0) {
+            if (deleteElems.size() > 0) {
                 System.out.println("deleteElems: "+deleteElems.toString());
                 for (int i = 0; i < deleteElems.size(); i++) {
                     List<Integer> roleUserIds = roleUserRepository.getRoleUserIdsByRoleIdAndUserId(deleteElems.get(i),u1.getId());

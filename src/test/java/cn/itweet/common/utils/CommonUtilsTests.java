@@ -17,49 +17,23 @@ import java.util.List;
 public class CommonUtilsTests {
 
     @Test
-    public void testRootMenu() {
-        RootMenu(RootController.class);
-    }
+    public void getDeleteElementsTest1() {
+        List<Integer> a = new ArrayList<>();
+        a.add(2);
+        a.add(4);
+        a.add(5);
 
-    private void RootMenu(Class c) {
-        String path = null;
-        if(c.isAnnotationPresent(RequestMapping.class)) {
-            path = ((RequestMapping)c.getAnnotation(RequestMapping.class)).value()[0];
-        }
-        Method[] ms = c.getDeclaredMethods();
-        List<SysPermission> list = new ArrayList<>();
-        SysPermission mr = null;
-        for (Method m : ms) {
-            //添加left菜单
-            if (m.isAnnotationPresent(RootMenu.class)) {
-                String url = null;
-                if (m.isAnnotationPresent(GetMapping.class)) {
-                    url = path + ((GetMapping)m.getAnnotation(GetMapping.class)).value()[0];
-                }
-                if (m.isAnnotationPresent(PostMapping.class)) {
-                    url = path + ((PostMapping)m.getAnnotation(PostMapping.class)).value()[0];
-                }
-                if (m.isAnnotationPresent(PutMapping.class)) {
-                    url = path + ((PutMapping)m.getAnnotation(PutMapping.class)).value()[0];
-                }
-                if (m.isAnnotationPresent(DeleteMapping.class)) {
-                    url = path + ((DeleteMapping)m.getAnnotation(DeleteMapping.class)).value()[0];
-                }
-                RootMenu nm = m.getAnnotation(RootMenu.class);
-                mr = new SysPermission();
-                mr.setPname(nm.pname());
-                mr.setPid(Integer.valueOf(nm.pid()));
-                mr.setUrl(nm.url());
-                mr.setDescritpion(nm.descritpion());
-                mr.setName(nm.name());
-                mr.setOperation(nm.operation());
-                list.add(mr);
-            }
-        }
-        if (list.size() <= 0)
-            new SystemException("初始化权限失败,需要初始化的权限集合不能为空!");
+
+        List<Integer> b = new ArrayList<>();
+        b.add(6);
+        b.add(2);
+        b.add(4);
+        b.add(5);
+
+        List<Integer> list = CommonUtils.getDeleteElements(a,b);
         System.out.println(list.toString());
     }
+
 
     @Test
     public void getDeleteElementsTest() {

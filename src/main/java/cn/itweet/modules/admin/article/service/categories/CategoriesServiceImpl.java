@@ -45,8 +45,8 @@ public class CategoriesServiceImpl implements CategoriesService {
         if ("" == categories.getName() || categories.getName() == null)
             throw new SystemException("更新失败，要更新的分类名称不能为空！");
         if (categoriesRepository.getCategoriesByName(categories.getName()) != null)
-            throw new SystemException("添加失败，要更新的分类名称已经存在！");
-        Categories c = categoriesRepository.getCategoriesByName(categories.getName());
+            throw new SystemException("更新失败，要更新的分类名称已经存在！");
+        Categories c = categoriesRepository.findOne(categories.getId());
         c.setName(categories.getName());
         c.setDate(new Date());
         categoriesRepository.save(c);

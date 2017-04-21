@@ -23,6 +23,6 @@ public interface ArticleCategoriesRepository extends JpaRepository<ArticleCatego
     @Modifying
     List<Integer> deleteByArticleId(Integer articleId);
 
-    @Query("select id from ArticleCategories where articleId=?1")
-    List<Integer> getCategoriesIdsByArticleId(Integer articleId);
+    @Query("select categoriesId from ArticleCategories where articleId=?1")
+    Integer getCategoriesIdByArticleId(Integer articleId);
 }

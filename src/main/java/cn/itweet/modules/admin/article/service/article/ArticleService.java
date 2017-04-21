@@ -18,7 +18,7 @@ public interface ArticleService {
 
     Article getArticleById(Integer id);
 
-    List<Article> findByTitle(String string);
+    List<Article> searchByTitle(String string);
 
     void deleteById(Integer id);
 

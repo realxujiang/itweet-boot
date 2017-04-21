@@ -47,8 +47,8 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public List<Article> findByTitle(String string) {
-        return articleRepository.findByTitle(string);
+    public List<Article> searchByTitle(String string) {
+        return articleRepository.searchByTitle(string);
     }
 
     @Override
@@ -67,32 +67,53 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public void update(Article article,List<Integer> tagIds,Integer categoriesId) throws SystemException {
-        Article oldArt = checkArticleInfo(article, "更新失败，要更新的文章名称不能为空！", "更新失败，要更新的文章名称已经存在！", "更新失败，要更新的文章作者不能为空！", "更新失败，要更新的文章内容不能为空！");
+        Article oldArt = articleRepository.getArticleByTitle(article.getTitle());
+        if ("" == article.getTitle() || article.getTitle() == null)
+            throw new SystemException("更新失败，要更新的文章名称不能为空！");
+        if ("" == article.getAuthor() || article.getAuthor() == null)
+            throw new SystemException("更新失败，要更新的文章作者不能为空！");
+        if ("" == article.getContent() || article.getContent() == null)
+            throw new SystemException("更新失败，要更新的文章内容不能为空！");
+
         updateArticle(article, oldArt);
         updateArticleTagInfo(tagIds, oldArt);
         updateCategoriesInfo(categoriesId, oldArt);
     }
 
     private void updateCategoriesInfo(Integer categoriesId, Article oldArt) {
-        if (categoriesId != null)
-            articleCategoriesRepository.delete(categoriesId);
-        addArticleCategories(categoriesId, oldArt.getId());
+        Integer oldCategoriesId = articleCategoriesRepository.getCategoriesIdByArticleId(oldArt.getId());
+        if (categoriesId != null && oldCategoriesId != categoriesId)
+            articleCategoriesRepository.deleteByCategoriesId(oldCategoriesId);
+            addArticleCategories(categoriesId, oldArt.getId());
     }
 
     private void updateArticleTagInfo(List<Integer> tagIds, Article oldArt) {
-        List<Integer> delTags = CommonUtils.getDeleteElements(tagIds,articleTagRepository.getTagIdsByArticleId(oldArt.getId()));
-        List<Integer> aggTags = CommonUtils.getAggrandizeElements(tagIds,articleTagRepository.getTagIdsByArticleId(oldArt.getId()));
-        if (delTags.size() > 0)
-            for (Integer tagId : delTags) {
-                articleTagRepository.deleteByArticleIdAndTagId(oldArt.getId(),tagId);
-            }
-        if (aggTags.size() > 0)
-            addArticleTag(tagIds, oldArt.getId());
+        System.out.println("tagIds:"+tagIds);
+        List<Integer> tagIdsDB =articleTagRepository.getTagIdsByArticleId(oldArt.getId());
+        System.out.println("tagIdsDB:"+tagIdsDB);
+        if (!CommonUtils.compare(tagIds,tagIdsDB)) {
+            List<Integer> delTags = CommonUtils.getDeleteElements(tagIds,tagIdsDB);
+            List<Integer> aggTags = CommonUtils.getAggrandizeElements(tagIds,tagIdsDB);
+            System.out.println("delTags:"+delTags);
+            System.out.println("aggTags:"+aggTags);
+//        if (delTags.size() > 0)
+//            for (Integer tagId : delTags) {
+//                articleTagRepository.deleteByArticleIdAndTagId(oldArt.getId(),tagId);
+//            }
+//        if (aggTags.size() > 0)
+//            addArticleTag(aggTags, oldArt.getId());
+        }
+
     }
 
     private void updateArticle(Article article, Article oldArt) {
         oldArt.setAuthor(article.getAuthor());
         oldArt.setContent(article.getContent());
+        if (article.getContent().length() > 20) {
+            oldArt.setDescription(article.getContent().substring(0,20));
+        } else {
+            oldArt.setDescription(article.getContent());
+        }
         oldArt.setCreateDate(oldArt.getCreateDate());
         oldArt.setTitle(article.getTitle());
         oldArt.setUpdateDate(new Date());
@@ -101,8 +122,8 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public Article addArticle(Article article,List<Integer> tagIds,Integer categoriesId) throws SystemException {
-        Article art = checkArticleInfo(article, "添加失败，要添加的文章名称不能为空！", "添加失败，要添加的文章名称已经存在，不可重复添加！", "添加失败，要添加的文章作者不能为空！", "添加失败，要添加的文章内容不能为空！");
-        Article a = articleRepository.save(art);
+        checkArticleInfo(article, "添加失败，要添加的文章名称不能为空！", "添加失败，要添加的文章名称已经存在，不可重复添加！", "添加失败，要添加的文章作者不能为空！", "添加失败，要添加的文章内容不能为空！");
+        Article a = articleRepository.save(article);
         addArticleCategories(categoriesId, a.getId());
         addArticleTag(tagIds, a.getId());
         return a;
