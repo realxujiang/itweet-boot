@@ -55,8 +55,8 @@
 
 	<h2><span class="icon-pencil-square-o"></span>标签管理</h2>
 	<ul>
-		<li><a href="list.html" target="right"><span class="icon-caret-right"></span>标签列表</a></li>
-		<li><a href="add.html" target="right"><span class="icon-caret-right"></span>标签统计</a></li>
+		<li><a href="<%=basePath%>admin/tag/list" target="right"><span class="icon-caret-right"></span>标签列表</a></li>
+		<li><a href="<%=basePath%>admin/categories/list" target="right"><span class="icon-caret-right"></span>类别列表</a></li>
 	</ul>
 
 	<h2><span class="icon-pencil-square-o"></span>评论管理</h2>
