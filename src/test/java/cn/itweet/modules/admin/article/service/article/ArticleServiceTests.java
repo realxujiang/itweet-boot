@@ -41,6 +41,18 @@ public class ArticleServiceTests {
         // searchByTitileTest();
 
         // updateTest();
+
+        // deleteByTitleTest();
+        // deleteByIdTest();
+    }
+
+    private void deleteByIdTest() throws SystemException {
+        addArticleTest();
+        articleService.deleteById(articleService.getArticleByTitle("First blog test").getId());
+    }
+
+    private void deleteByTitleTest() {
+        articleService.deleteByTitle("First blog test");
     }
 
     private void updateTest() throws SystemException {

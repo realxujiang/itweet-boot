@@ -20,9 +20,9 @@ public interface ArticleTagRepository extends JpaRepository<ArticleTag,Integer> 
     @Modifying
     void deleteByTagId(Integer tagId);
 
-    @Query("delete from ArticleTag where articleId=?1")
+    @Query(value = "delete from Article_Tag where article_id=?1",nativeQuery = true)
     @Modifying
-    List<Integer> deleteByArticleId(Integer articleId);
+    void deleteByArticleId(Integer articleId);
 
     @Query("delete from ArticleTag where articleId=?1 and tagId=?2")
     @Modifying

@@ -19,9 +19,9 @@ public interface ArticleCategoriesRepository extends JpaRepository<ArticleCatego
     @Modifying
     void deleteByCategoriesId(Integer categoriesId);
 
-    @Query("delete from ArticleCategories where articleId=?1")
+    @Query(value = "delete from Article_Categories where article_id=?1",nativeQuery = true)
     @Modifying
-    List<Integer> deleteByArticleId(Integer articleId);
+    void deleteByArticleId(Integer articleId);
 
     @Query("select categoriesId from ArticleCategories where articleId=?1")
     Integer getCategoriesIdByArticleId(Integer articleId);

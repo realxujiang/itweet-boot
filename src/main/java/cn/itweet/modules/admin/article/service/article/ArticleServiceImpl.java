@@ -104,7 +104,6 @@ public class ArticleServiceImpl implements ArticleService {
             if (aggTags.size() > 0)
                 addArticleTag(aggTags, oldArt.getId());
             }
-
     }
 
     private void updateArticle(Article article, Article oldArt) {
@@ -123,24 +122,19 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public Article addArticle(Article article,List<Integer> tagIds,Integer categoriesId) throws SystemException {
-        checkArticleInfo(article, "添加失败，要添加的文章名称不能为空！", "添加失败，要添加的文章名称已经存在，不可重复添加！", "添加失败，要添加的文章作者不能为空！", "添加失败，要添加的文章内容不能为空！");
+        Article art = articleRepository.getArticleByTitle(article.getTitle());
+        if ("" == article.getTitle() || article.getTitle() == null)
+            throw new SystemException("添加失败，要添加的文章名称不能为空！");
+        if (art != null)
+            throw new SystemException("添加失败，要添加的文章名称已经存在，不可重复添加！");
+        if ("" == article.getAuthor() || article.getAuthor() == null)
+            throw new SystemException("添加失败，要添加的文章作者不能为空！");
+        if ("" == article.getContent() || article.getContent() == null)
+            throw new SystemException("添加失败，要添加的文章内容不能为空！");
         Article a = articleRepository.save(article);
         addArticleCategories(categoriesId, a.getId());
         addArticleTag(tagIds, a.getId());
         return a;
-    }
-
-    private Article checkArticleInfo(Article article, String message, String message2, String message3, String message4) throws SystemException {
-        Article art = articleRepository.getArticleByTitle(article.getTitle());
-        if ("" == article.getTitle() || article.getTitle() == null)
-            throw new SystemException(message);
-        if (art != null)
-            throw new SystemException(message2);
-        if ("" == article.getAuthor() || article.getAuthor() == null)
-            throw new SystemException(message3);
-        if ("" == article.getContent() || article.getContent() == null)
-            throw new SystemException(message4);
-        return art;
     }
 
     private void addArticleCategories(Integer categoriesId, Integer articleId) {
