@@ -41,8 +41,12 @@ public class CommonUtils {
      */
     public static List<Integer> getDeleteElements(List<Integer> obj1,List<Integer> obj2) {
         List<Integer> intersectionElements = getIntersectionElements(obj1, obj2);
-        List<Integer> delElems = getDelElems(obj2, intersectionElements);
-        return delElems;
+        Collection<Integer> delElems = CollectionUtil.getDiffentNoDuplicate(intersectionElements,obj2);
+        List<Integer> delE = new ArrayList<>();
+        for (Integer del : delElems) {
+            delE.add(del);
+        }
+        return delE;
     }
 
     private static List<Integer> getDelElems(List<Integer> obj2, List<Integer> intersectionElements) {
@@ -88,29 +92,4 @@ public class CommonUtils {
         return intersectionElements;
     }
 
-    public static void main(String[] args) {
-        List<Integer> a = new ArrayList<>();
-        a.add(2);
-        a.add(3);
-        a.add(1);
-        a.add(4);
-
-        List<Integer> b = new ArrayList<>();
-        b.add(2);
-        b.add(19);
-
-        List<Integer> list = getDeleteElements(a,b);
-        for (Integer i: list) {
-            System.out.println("getDeleteElements: "+i);
-        }
-
-        List<Integer> list2 = getAggrandizeElements(a,b);
-        for (Integer i: list2) {
-            System.out.println("getAggrandizeElements: "+i);
-        }
-
-        List<Integer> c = Arrays.asList(1,2,3,4);
-        List<Integer> d = Arrays.asList(4,3,2,1);
-        System.out.println(compare(c, d));
-    }
 }

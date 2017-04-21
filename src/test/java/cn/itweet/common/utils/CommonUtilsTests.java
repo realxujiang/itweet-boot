@@ -17,25 +17,6 @@ import java.util.List;
 public class CommonUtilsTests {
 
     @Test
-    public void getDeleteElementsTest1() {
-        List<Integer> a = new ArrayList<>();
-        a.add(2);
-        a.add(4);
-        a.add(5);
-
-
-        List<Integer> b = new ArrayList<>();
-        b.add(6);
-        b.add(2);
-        b.add(4);
-        b.add(5);
-
-        List<Integer> list = CommonUtils.getDeleteElements(a,b);
-        System.out.println(list.toString());
-    }
-
-
-    @Test
     public void getDeleteElementsTest() {
         List<Integer> a = new ArrayList<>();
         a.add(1);

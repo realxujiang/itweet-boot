@@ -82,9 +82,10 @@ public class ArticleServiceImpl implements ArticleService {
 
     private void updateCategoriesInfo(Integer categoriesId, Article oldArt) {
         Integer oldCategoriesId = articleCategoriesRepository.getCategoriesIdByArticleId(oldArt.getId());
-        if (categoriesId != null && oldCategoriesId != categoriesId)
-            articleCategoriesRepository.deleteByCategoriesId(oldCategoriesId);
-            addArticleCategories(categoriesId, oldArt.getId());
+        if (categoriesId != null && oldCategoriesId.equals(categoriesId))
+            return;
+        articleCategoriesRepository.deleteByCategoriesId(oldCategoriesId);
+        articleCategoriesRepository.save(new ArticleCategories(categoriesId, oldArt.getId()));
     }
 
     private void updateArticleTagInfo(List<Integer> tagIds, Article oldArt) {
@@ -96,13 +97,13 @@ public class ArticleServiceImpl implements ArticleService {
             List<Integer> aggTags = CommonUtils.getAggrandizeElements(tagIds,tagIdsDB);
             System.out.println("delTags:"+delTags);
             System.out.println("aggTags:"+aggTags);
-//        if (delTags.size() > 0)
-//            for (Integer tagId : delTags) {
-//                articleTagRepository.deleteByArticleIdAndTagId(oldArt.getId(),tagId);
-//            }
-//        if (aggTags.size() > 0)
-//            addArticleTag(aggTags, oldArt.getId());
-        }
+            if (delTags.size() > 0)
+                for (Integer tagId : delTags) {
+                    articleTagRepository.deleteByArticleIdAndTagId(oldArt.getId(),tagId);
+                }
+            if (aggTags.size() > 0)
+                addArticleTag(aggTags, oldArt.getId());
+            }
 
     }
 

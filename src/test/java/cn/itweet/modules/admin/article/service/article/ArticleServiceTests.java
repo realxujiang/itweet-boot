@@ -40,15 +40,20 @@ public class ArticleServiceTests {
         // listTest();
         // searchByTitileTest();
 
+        // updateTest();
+    }
+
+    private void updateTest() throws SystemException {
         Article article = articleService.getArticleByTitle("First blog test");
         article.setAuthor("super_admin");
 
         List<Integer> tagIds = new ArrayList<>();
         tagIds.add(tagService.getTagByName("hawq").getId());
         tagIds.add(tagService.getTagByName("DeepGreen").getId());
-        tagIds.add(tagService.getTagByName("Itweet").getId());
+        tagIds.add(tagService.getTagByName("drill").getId());
+        tagIds.add(tagService.getTagByName("BlueData").getId());
 
-        articleService.update(article,tagIds,categoriesService.getCategoriesByName("ambari").getId());
+        articleService.update(article,tagIds,categoriesService.getCategoriesByName("cloud").getId());
     }
 
     private void searchByTitileTest() {
