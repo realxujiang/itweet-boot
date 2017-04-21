@@ -9,6 +9,7 @@
 <head>
     <title>List</title>
     <jsp:include page="../../tools/style/admin_style.jsp"></jsp:include>
+    <link href="<%=basePath%>style/admin/backstage/css/style.css" rel="stylesheet">
 
     <script type="text/javascript">
         KE.show({

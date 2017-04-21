@@ -9,6 +9,7 @@
 <head>
     <title>Add</title>
     <jsp:include page="../../tools/style/admin_style.jsp"></jsp:include>
+    <link href="<%=basePath%>style/admin/backstage/css/style.css" rel="stylesheet">
 
 </head>
 <body>

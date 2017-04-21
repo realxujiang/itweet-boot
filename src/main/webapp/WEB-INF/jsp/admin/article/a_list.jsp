@@ -9,6 +9,7 @@
 <head>
     <title>List</title>
     <jsp:include page="../../tools/style/admin_style.jsp"></jsp:include>
+    <link href="<%=basePath%>style/admin/backstage/css/style.css" rel="stylesheet">
 
     <script type="text/javascript">
         KE.show({
@@ -47,7 +48,7 @@
                     <li><label>标题查询</label><input name="title" type="text" class="scinput" value="${title}" /></li>
                     <li><label>&nbsp;</label><input type="submit" class="scbtn" value="查询" /></li>
                 </form>
-                <li><label>&nbsp;</label><a href="<%=basePath%>/admin/article/add"><input name="" type="button" class="scbtn" value="发布文章" /></a></li>
+                <li><label>&nbsp;</label><a href="<%=basePath%>/admin/article/add"><input type="button" class="scbtn" value="发布文章" /></a></li>
             </ul>
             <table class="tablelist">
                 <thead>
@@ -72,9 +73,11 @@
                         <td>${article.description}</td>
                         <td>
                             <a href="<%=basePath%>/admin/article/addContent/${article.id}" class="tablelink">编辑正文</a>
-                            <a href="<%=basePath%>/admin/article/view/${article.id}" target="_blank" class="tablelink">预览</a>
+                            <a href="<%=basePath%>/admin/article/view/${article.id}" target="right" class="tablelink">预览</a>
                             <a href="<%=basePath%>/admin/article/edit/${article.id}" class="tablelink">修改</a>
                             <a href="<%=basePath%>/admin/article/delete/${article.id}" class="tablelink" onclick="return del()"> 删除</a>
+                            <c:if test="${article.state eq 1}"><a href="<%=basePath%>/admin/article/cancelRelease/${article.id}" class="tablelink">取消发布</a></c:if>
+                            <c:if test="${article.state eq 0}"><a href="<%=basePath%>/admin/article/release/${article.id}" class="tablelink">发布</a></c:if>
                         </td>
                     </tr>
                 </c:forEach>

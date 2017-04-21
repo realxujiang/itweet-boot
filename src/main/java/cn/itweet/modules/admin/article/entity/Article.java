@@ -18,6 +18,8 @@ public class Article {
 
     private String title;
 
+    private Integer state;
+
     /**
      * 博客文章描述，一般截取文章正文的前15个字段
      */
@@ -32,7 +34,10 @@ public class Article {
     /**
      * 文章的正文内容
      */
+    @Column(name = "content",columnDefinition="TEXT")
     private String content;
+    @Column(name = "htmlContent",columnDefinition="TEXT")
+    private String htmlContent;
 
     /**
      * 文章的作者
@@ -93,6 +98,22 @@ public class Article {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getHtmlContent() {
+        return htmlContent;
+    }
+
+    public void setHtmlContent(String htmlContent) {
+        this.htmlContent = htmlContent;
+    }
+
+    public Integer getState() {
+        return state;
+    }
+
+    public void setState(Integer state) {
+        this.state = state;
     }
 
     @Override

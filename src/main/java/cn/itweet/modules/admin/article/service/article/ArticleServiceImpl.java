@@ -74,6 +74,8 @@ public class ArticleServiceImpl implements ArticleService {
             throw new SystemException("更新失败，要更新的文章作者不能为空！");
         if ("" == article.getContent() || article.getContent() == null)
             throw new SystemException("更新失败，要更新的文章内容不能为空！");
+        if ("" == article.getHtmlContent() || article.getHtmlContent() == null)
+            throw new SystemException("更新失败，要更新的文章内容不能为空！");
 
         updateArticle(article, oldArt);
         updateArticleTagInfo(tagIds, oldArt);
@@ -135,6 +137,8 @@ public class ArticleServiceImpl implements ArticleService {
         if ("" == article.getAuthor() || article.getAuthor() == null)
             throw new SystemException("添加失败，要添加的文章作者不能为空！");
         if ("" == article.getContent() || article.getContent() == null)
+            throw new SystemException("添加失败，要添加的文章内容不能为空！");
+        if ("" == article.getHtmlContent() || article.getHtmlContent() == null)
             throw new SystemException("添加失败，要添加的文章内容不能为空！");
         Article a = articleRepository.save(article);
         addArticleCategories(categoriesId, a.getId());

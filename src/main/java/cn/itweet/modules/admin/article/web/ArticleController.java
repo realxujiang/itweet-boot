@@ -4,10 +4,13 @@ import cn.itweet.common.exception.SystemException;
 import cn.itweet.common.utils.PageUtils;
 import cn.itweet.modules.admin.article.entity.Article;
 import cn.itweet.modules.admin.article.service.article.ArticleService;
+import cn.itweet.modules.admin.article.service.tag.TagService;
 import cn.itweet.modules.admin.user.entity.SysUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,6 +31,8 @@ public class ArticleController {
 
     @Autowired
     private ArticleService articleService;
+    @Autowired
+    private TagService tagService;
 
     /**
      *文章列表
@@ -38,7 +43,6 @@ public class ArticleController {
      */
     @RequestMapping(value = "/list",method = RequestMethod.GET)
     public String list(@RequestParam(value = "page", defaultValue = "0") Integer page, @RequestParam(value = "pageSize", defaultValue = "10") Integer pageSize, Model model) {
-
         if(page !=0)page = page -1;
 
         Page<Article> articleList = articleService.list(new PageRequest(page, pageSize));
@@ -60,10 +64,10 @@ public class ArticleController {
     @RequestMapping(value = "/select",method = RequestMethod.GET)
     public String select(@RequestParam(value = "title") String title, @RequestParam(value = "page", defaultValue = "0") Integer page, @RequestParam(value = "pageSize", defaultValue = "10") Integer pageSize,Model model) {
         if(page !=0)page = page -1;
-        Page<Article> tagList = articleService.searchByTitle(new PageRequest(page, pageSize),title);
-        model.addAttribute("tagList",tagList);
+        Page<Article> articleList = articleService.searchByTitle(new PageRequest(page, pageSize),title);
+        model.addAttribute("articleList",articleList);
 
-        PageUtils pageUtils = new PageUtils("/admin/article/select?title="+ title+"&",page,tagList.getTotalPages(),tagList.getTotalElements(),pageSize);
+        PageUtils pageUtils = new PageUtils("/admin/article/select?title="+ title+"&",page,articleList.getTotalPages(),articleList.getTotalElements(),pageSize);
         model.addAttribute("pb",pageUtils);
 
         model.addAttribute("title",title);
@@ -77,18 +81,22 @@ public class ArticleController {
      */
     @RequestMapping(value = "/add",method = RequestMethod.GET)
     public String add(Model model) {
+        //TODO 获取Tag列表 和分类列表
         return "admin/article/a_add";
     }
 
     /**
-     * 文章标签添加
+     * 文章添加
      * @param model
      * @return
      */
     @RequestMapping(value = "/add",method = RequestMethod.POST)
     public String add(@RequestParam List<Integer> tagIds,@RequestParam(value = "categoriesId") Integer categoriesId,Model model,Article article) {
+        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         try {
             article.setCreateDate(new Date());
+            article.setAuthor(userDetails.getUsername());
+            article.setState(0);
             articleService.addArticle(article,tagIds,categoriesId);
         } catch (SystemException e) {
             model.addAttribute("form",article);
@@ -130,7 +138,7 @@ public class ArticleController {
     }
 
     /**
-     * 文章标签按ID删除
+     * 文章按ID删除
      * @param model
      * @param id
      * @return
@@ -154,7 +162,6 @@ public class ArticleController {
         return "admin/article/article";
     }
 
-
     /**
      * 编辑文章内容
      * @param model
@@ -162,11 +169,9 @@ public class ArticleController {
      * @return
      */
     @RequestMapping(value = "/addContent/{id}",method = RequestMethod.POST)
-    public String addContent(@RequestParam(value = "content") String content,Model model,@PathVariable Integer id) {
-
-        System.out.println("AAAAAAAAAAAA:"+content);
-        System.out.println("ID:"+ id);
+    public String addContent(@RequestParam(value = "content") String content,@RequestParam(value = "htmlContent") String htmlContent,Model model,@PathVariable Integer id) {
         Article article = articleService.getArticleById(id);
+        article.setHtmlContent(htmlContent);
         article.setContent(content);
         article.setUpdateDate(new Date());
         try {
@@ -176,7 +181,54 @@ public class ArticleController {
             model.addAttribute("message","<script>toastr.error(\"" + "正文编辑失败" + "\")</script>");
             return "admin/article/article";
         }
-        return "redirect:/admin/article/article";
+        return "redirect:/admin/article/list";
+    }
+
+    /**
+     * 文章按ID预览
+     * @param model
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = "/view/{id}",method = RequestMethod.GET)
+    public String view(Model model,@PathVariable Integer id) {
+        Article article = articleService.getArticleById(id);
+        model.addAttribute("form",article);
+        return "admin/article/view";
+    }
+
+    /**
+     * 文章发布
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/release/{id}",method = RequestMethod.GET)
+    public String release(@PathVariable Integer id,Model model) {
+        Article article = articleService.getArticleById(id);
+        article.setState(1);
+        try {
+            articleService.update(article);
+        } catch (SystemException e) {
+            model.addAttribute("message","<script>toastr.error(\"" + "文章发布失败" + "\")</script>");
+        }
+        return "redirect:/admin/article/list";
+    }
+
+    /**
+     * 取消文章发布
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/cancelRelease/{id}",method = RequestMethod.GET)
+    public String cancelRelease(@PathVariable Integer id,Model model) {
+        Article article = articleService.getArticleById(id);
+        article.setState(0);
+        try {
+            articleService.update(article);
+        } catch (SystemException e) {
+            model.addAttribute("message","<script>toastr.error(\"" + "文章取消发布失败" + "\")</script>");
+        }
+        return "redirect:/admin/article/list";
     }
 
 }

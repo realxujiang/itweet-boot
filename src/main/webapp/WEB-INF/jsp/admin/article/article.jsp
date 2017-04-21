@@ -17,10 +17,9 @@
 <body>
 
 <form action="<%=basePath%>/admin/article/addContent/${form.id}" method="post">
-    <input type="hidden" name="id" value="${form.id}">
     <div id="editormd-content">
-        <textarea class="editormd-markdown-textarea" name="editormd-makedown-doc"></textarea>
-        <textarea class="editormd-html-textarea" name="content"></textarea>
+        <textarea class="editormd-markdown-textarea" name="content">${form.content}</textarea>
+        <textarea class="editormd-html-textarea" name="htmlContent">${form.htmlContent}</textarea>
     </div>
     <input type="submit" class="btn" value="确定" />
 </form>
@@ -30,8 +29,8 @@
     $(function(){
         editormd({
             id:"editormd-content",
-            width:"93%",
-            height  : 550,
+            width:"100%",
+            height  : 600,
             syncScrolling : "single",
             path: "<%=basePath%>style/admin/makedown/lib/",
             imageUpload : true,
