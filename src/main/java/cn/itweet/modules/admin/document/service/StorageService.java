@@ -1,5 +1,6 @@
 package cn.itweet.modules.admin.document.service;
 
+import cn.itweet.common.exception.SystemException;
 import org.springframework.core.io.Resource;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -12,7 +13,7 @@ import java.util.stream.Stream;
 public interface StorageService {
     void init();
 
-    void store(MultipartFile file,String path);
+    void store(MultipartFile file,String path) throws SystemException;
 
     Stream<Path> loadAll();
 

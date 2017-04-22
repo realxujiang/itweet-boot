@@ -1,5 +1,6 @@
 package cn.itweet.modules.admin.document.web;
 
+import cn.itweet.common.exception.SystemException;
 import cn.itweet.modules.admin.document.service.StorageFileNotFoundException;
 import cn.itweet.modules.admin.document.service.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,13 +31,13 @@ public class DocumentController {
 
     @RequestMapping(value = "/upload",method = RequestMethod.GET)
     public String listUploadedFiles(Model model) throws IOException {
-        model.addAttribute("files", storageService
-                .loadAll()
-                .map(path ->
-                        MvcUriComponentsBuilder
-                                .fromMethodName(DocumentController.class, "serveFile", path.getFileName().toString())
-                                .build().toString())
-                .collect(Collectors.toList()));
+//        model.addAttribute("files", storageService
+//                .loadAll()
+//                .map(path ->
+//                        MvcUriComponentsBuilder
+//                                .fromMethodName(DocumentController.class, "serveFile", path.getFileName().toString())
+//                                .build().toString())
+//                .collect(Collectors.toList()));
 
         return "admin/document/uploadForm";
     }
@@ -44,7 +45,11 @@ public class DocumentController {
     @RequestMapping(value = "/upload",method = RequestMethod.POST)
     public String handleFileUpload(@RequestParam("file") MultipartFile file,RedirectAttributes redirectAttributes, HttpServletRequest request) {
         String rootPath = request.getSession().getServletContext().getRealPath("/upload/files/");
-        storageService.store(file,rootPath);
+        try {
+            storageService.store(file,rootPath);
+        } catch (SystemException e) {
+            e.printStackTrace();
+        }
         redirectAttributes.addFlashAttribute("message", "You successfully uploaded " + file.getOriginalFilename() + "!");
 
         return "redirect:/admin/document/upload";

@@ -1,5 +1,9 @@
 package cn.itweet.modules.admin.document.service;
 
+import cn.itweet.common.exception.SystemException;
+import cn.itweet.common.utils.TimeMillisUtils;
+import cn.itweet.modules.admin.document.entiry.Document;
+import cn.itweet.modules.admin.document.repository.DocumentRepository;
 import cn.itweet.modules.admin.document.utils.StorageProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -14,6 +18,7 @@ import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Date;
 import java.util.stream.Stream;
 
 /**
@@ -21,6 +26,9 @@ import java.util.stream.Stream;
  */
 @Service
 public class StorageServiceImpl implements StorageService {
+
+    @Autowired
+    private DocumentRepository documentRepository;
 
     private final Path rootLocation;
 
@@ -30,7 +38,7 @@ public class StorageServiceImpl implements StorageService {
     }
 
     @Override
-    public void store(MultipartFile file,String path) {
+    public void store(MultipartFile file,String path) throws SystemException {
 
         File f = new File(path);
 
@@ -38,17 +46,29 @@ public class StorageServiceImpl implements StorageService {
             f.mkdirs();
         }
 
+        String filename = file.getOriginalFilename();
+
+        String suffix = filename.substring(filename.lastIndexOf(".")+1,filename.length());
+        String ruleFilename = TimeMillisUtils.getTimeMillis()+"."+suffix;
+
         Path rootLocation = Paths.get(path);
 
         try {
             if (file.isEmpty()) {
-                throw new StorageException("Failed to store empty file " + file.getOriginalFilename());
+                throw  new SystemException("Failed to store empty file " + filename);
             }
-            Files.copy(file.getInputStream(), rootLocation.resolve(file.getOriginalFilename()));
+            Files.copy(file.getInputStream(), rootLocation.resolve(ruleFilename));
         } catch (IOException e) {
-            e.printStackTrace();
-            throw new StorageException("Failed to store file " + file.getOriginalFilename(), e);
+            throw new SystemException("Failed to store file " + filename, e);
         }
+
+        Document document = new Document();
+        document.setDate(new Date());
+        document.setFilename(filename);
+        document.setRuleFilename(ruleFilename);
+        document.setType(suffix);
+
+        documentRepository.save(document);
     }
 
     @Override

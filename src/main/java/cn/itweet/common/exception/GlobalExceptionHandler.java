@@ -28,14 +28,14 @@ public class GlobalExceptionHandler {
         r.setData("Some Data");
         r.setUrl(req.getRequestURL().toString());
 
-        LOGGER.error("---JsonErrorHandler Handler---Host {} invokes url {} ERROR: {}", req.getRemoteHost(), req.getRequestURL(), e.getMessage());
+        LOGGER.error("JsonErrorHandler Handler---Host {} invokes url {} ERROR: {}", req.getRemoteHost(), req.getRequestURL(), e.getMessage());
         return r;
     }
 
     @ExceptionHandler(value = Exception.class)
     @ResponseBody
     public Object defaultErrorHandler(HttpServletRequest req, Exception e) throws Exception {
-        LOGGER.error("---DefaultException Handler---Host {} invokes url {} ERROR: {}", req.getRemoteHost(), req.getRequestURL(), e.getMessage());
+        LOGGER.error("DefaultException Handler---Host {} invokes url {} ERROR: {}", req.getRemoteHost(), req.getRequestURL(), e.getMessage());
         return e.getMessage();
     }
 
