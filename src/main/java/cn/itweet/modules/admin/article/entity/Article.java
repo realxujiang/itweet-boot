@@ -1,7 +1,5 @@
 package cn.itweet.modules.admin.article.entity;
 
-import com.sun.istack.internal.Nullable;
-
 import javax.persistence.*;
 import java.util.Date;
 

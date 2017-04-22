@@ -8,6 +8,7 @@ import cn.itweet.modules.admin.article.service.article.ArticleService;
 import cn.itweet.modules.admin.article.service.categories.CategoriesService;
 import cn.itweet.modules.admin.article.service.tag.TagService;
 import cn.itweet.modules.admin.user.entity.SysUser;
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -19,8 +20,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
@@ -244,6 +249,43 @@ public class ArticleController {
             model.addAttribute("message","<script>toastr.error(\"" + "文章取消发布失败" + "\")</script>");
         }
         return "redirect:/admin/article/list";
+    }
+
+
+    /**
+     * 文章图片上传
+     * @param request
+     * @param response
+     * @param attach
+     */
+    @RequestMapping(value="/uploadfile",method=RequestMethod.POST)
+    public void hello(HttpServletRequest request, HttpServletResponse response, @RequestParam(value = "editormd-image-file", required = false) MultipartFile attach){
+        try {
+            request.setCharacterEncoding( "utf-8" );
+            response.setHeader( "Content-Type" , "text/html" );
+            String rootPath = request.getSession().getServletContext().getRealPath("/upload/mkimgs/");
+
+            /**
+             * 文件路径不存在则需要创建文件路径
+             */
+            File filePath=new File(rootPath);
+            if(!filePath.exists()){
+                filePath.mkdirs();
+            }
+
+            //最终文件名
+            File realFile=new File(rootPath+File.separator+attach.getOriginalFilename());
+            FileUtils.copyInputStreamToFile(attach.getInputStream(), realFile);
+
+            //下面response返回的json格式是editor.md所限制的，规范输出就OK
+            response.getWriter().write( "{\"success\": 1, \"message\":\"上传成功\",\"url\":\"/upload/mkimgs/" + attach.getOriginalFilename() + "\"}" );
+        } catch (Exception e) {
+            try {
+                response.getWriter().write( "{\"success\":0}" );
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+        }
     }
 
 }

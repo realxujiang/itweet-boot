@@ -35,6 +35,7 @@
             path: "<%=basePath%>style/admin/makedown/lib/",
             imageUpload : true,
             imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+            imageUploadURL : "<%=basePath%>/admin/article/uploadfile",
             emoji:true,
             previewTheme : "dark",
             saveHTMLToTextarea : true

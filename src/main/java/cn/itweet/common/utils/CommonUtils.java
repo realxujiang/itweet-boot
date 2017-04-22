@@ -1,12 +1,5 @@
 package cn.itweet.common.utils;
 
-import cn.itweet.modules.admin.user.entity.SysPermission;
-import cn.itweet.modules.admin.user.repository.PermissionRepository;
-import cn.itweet.modules.admin.user.repository.PermissionRoleRepository;
-import org.springframework.web.bind.annotation.*;
-
-import java.lang.reflect.Method;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
