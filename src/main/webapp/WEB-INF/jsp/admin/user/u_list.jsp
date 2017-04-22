@@ -36,7 +36,7 @@
                         <td>${user.email}</td>
                         <td>
                             <a href="<%=basePath%>/admin/user/edit/${user.id}" class="tablelink">修改</a>
-                            <a href="<%=basePath%>/admin/user/resetPassword/${user.id}" class="tablelink">修改</a>
+                            <a href="<%=basePath%>/admin/user/resetPassword/${user.id}" class="tablelink">重置密码</a>
                             <a href="<%=basePath%>/admin/user/delete/${user.id}" class="tablelink" onclick="return del()"> 删除</a>
                         </td>
                     </tr>

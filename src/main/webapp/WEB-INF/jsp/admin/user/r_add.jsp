@@ -1,57 +1,44 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 <!DOCTYPE html>
 <html>
-
 <head>
-    <title>角色添加</title>
-
+    <title>Add</title>
     <jsp:include page="../../tools/style/admin_style.jsp"></jsp:include>
+    <link href="<%=basePath%>style/admin/backstage/css/style.css" rel="stylesheet">
+
+    <script>
+        $(function() {
+            $('#user').chosen();
+        });
+    </script>
 
 </head>
-
 <body>
-<div class="panel admin-panel">
-    <div class="panel-head" id="add"><strong><span class="icon-pencil-square-o"></span>添加角色</strong></div>
-    <div class="body-content">
-        <div>${message}</div>
-        <form method="post" class="form-x" action="<%=basePath%>/admin/role/add">
 
-            <div class="form-group">
-                <div class="label">
-                    <label>名称：</label>
-                </div>
-                <div class="field">
-                    <input type="text" class="input w50" name="name" data-validate="required:请输入角色名称" value="${form.name}"/>
-                    <div class="tips"></div>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="label">
-                    <label>描述：</label>
-                </div>
-                <div class="field">
-                    <input type="text" class="input w50" name="description" data-validate="required:请输入角色描述" value="${form.description}" />
-                    <div class="tips"></div>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="label">
-                    <label></label>
-                </div>
-                <div class="field">
-                    <button class="button bg-main icon-check-square-o" type="submit"> 提交</button>
-                </div>
-            </div>
-        </form>
+<div class="formbody">
+    <div id="usual1" class="usual">
+        <div id="tab1" class="tabson">
+            <ul class="forminfo">
+                <form action="<%=basePath%>/admin/role/add" method="post">
+                    <li style="color: red;">${message}</li>
+                    <li><label>名称<b>*</b></label><input name="name" type="text" class="dfinput" value="${form.name}" placeholder="角色名称" style="width:618px;" /></li>
+                    <li><label>描述<b>*</b></label><input name="description" type="text" class="dfinput" value="${form.description}" placeholder="角色描述" style="width:618px;" /></li>
+                    <li><label>&nbsp;</label><input type="submit" class="btn" value="确定" /></li>
+                </form>
+            </ul>
+        </div>
     </div>
 </div>
 
-</body></html>
+
+</body>
+</html>
+
+
+
+

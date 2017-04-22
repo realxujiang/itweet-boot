@@ -14,10 +14,6 @@
 
 <%--<link href="<%=basePath%>style/admin/backstage/css/style.css" rel="stylesheet">--%>
 
-
-
-
-
 <script src="<%=basePath%>style/admin/backstage/js/jquery.js"></script>
 <script src="<%=basePath%>style/admin/backstage/js/pintuer.js"></script>
 <script src="<%=basePath%>style/admin/backstage/js/toastr.min.js"></script>
