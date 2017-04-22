@@ -21,4 +21,6 @@ public interface TagService {
     void update(Tag tag) throws SystemException;
 
     Tag getTagByName(String name);
+
+    String findTagNamesByArticleId(Integer id);
 }

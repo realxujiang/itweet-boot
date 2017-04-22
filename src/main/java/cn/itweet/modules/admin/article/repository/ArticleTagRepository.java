@@ -30,4 +30,7 @@ public interface ArticleTagRepository extends JpaRepository<ArticleTag,Integer> 
 
     @Query("select tagId from ArticleTag where articleId=?1")
     List<Integer> getTagIdsByArticleId(Integer articleId);
+
+    @Query(value = "select group_concat(c.name) from (select b.name from (select tag_id from article_tag where article_id = ?1) a left join tag b on a.tag_id=b.id) c",nativeQuery = true)
+    String findTagNamesByArticleId(Integer articleId);
 }

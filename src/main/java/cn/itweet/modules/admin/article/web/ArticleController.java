@@ -3,7 +3,9 @@ package cn.itweet.modules.admin.article.web;
 import cn.itweet.common.exception.SystemException;
 import cn.itweet.common.utils.PageUtils;
 import cn.itweet.modules.admin.article.entity.Article;
+import cn.itweet.modules.admin.article.entity.Categories;
 import cn.itweet.modules.admin.article.service.article.ArticleService;
+import cn.itweet.modules.admin.article.service.categories.CategoriesService;
 import cn.itweet.modules.admin.article.service.tag.TagService;
 import cn.itweet.modules.admin.user.entity.SysUser;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +33,10 @@ public class ArticleController {
 
     @Autowired
     private ArticleService articleService;
+
+    @Autowired
+    private CategoriesService categoriesService;
+
     @Autowired
     private TagService tagService;
 
@@ -81,7 +87,8 @@ public class ArticleController {
      */
     @RequestMapping(value = "/add",method = RequestMethod.GET)
     public String add(Model model) {
-        //TODO 获取Tag列表 和分类列表
+        List<Categories> categoriesList =  categoriesService.list();
+        model.addAttribute("categoriesList",categoriesList);
         return "admin/article/a_add";
     }
 
@@ -91,13 +98,12 @@ public class ArticleController {
      * @return
      */
     @RequestMapping(value = "/add",method = RequestMethod.POST)
-    public String add(@RequestParam List<Integer> tagIds,@RequestParam(value = "categoriesId") Integer categoriesId,Model model,Article article) {
+    public String add(@RequestParam String tagNames,@RequestParam(value = "categoriesId") Integer categoriesId,Model model,Article article) {
         UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         try {
-            article.setCreateDate(new Date());
             article.setAuthor(userDetails.getUsername());
             article.setState(0);
-            articleService.addArticle(article,tagIds,categoriesId);
+            articleService.addArticle(article,tagNames,categoriesId);
         } catch (SystemException e) {
             model.addAttribute("form",article);
             model.addAttribute("message","<script>toastr.error(\"" + e.getMessage() + "\")</script>");
@@ -116,6 +122,16 @@ public class ArticleController {
     public String edit(Model model,@PathVariable Integer id) {
         Article article = articleService.getArticleById(id);
         model.addAttribute("form",article);
+
+        List<Categories> categoriesList =  categoriesService.list();
+        model.addAttribute("categoriesList",categoriesList);
+
+        Integer categoriesId = categoriesService.findCategoriesIdByArticleId(id);
+        model.addAttribute("categoriesId",categoriesId);
+
+        String tagNames = tagService.findTagNamesByArticleId(id);
+        model.addAttribute("tagNames",tagNames);
+
         return "admin/article/a_edit";
     }
 
@@ -125,10 +141,9 @@ public class ArticleController {
      * @return
      */
     @RequestMapping(value = "/edit",method = RequestMethod.POST)
-    public String edit(@RequestParam List<Integer> tagIds,@RequestParam(value = "categoriesId") Integer categoriesId,Model model,Article article) {
+    public String edit(@RequestParam  String tagNames,@RequestParam(value = "categoriesId") Integer categoriesId,Model model,Article article) {
         try {
-            article.setUpdateDate(new Date());
-            articleService.update(article,tagIds,categoriesId);
+            articleService.update(article,tagNames,categoriesId);
         } catch (SystemException e) {
             model.addAttribute("form",article);
             model.addAttribute("message","<script>toastr.error(\"" + e.getMessage() + "\")</script>");

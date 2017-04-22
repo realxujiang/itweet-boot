@@ -64,4 +64,11 @@ public class TagServiceImpl implements TagService {
     public Tag getTagByName(String name) {
         return tagRepository.getTagByName(name);
     }
+
+
+
+    @Override
+    public String findTagNamesByArticleId(Integer articleId) {
+        return articleTagRepository.findTagNamesByArticleId(articleId);
+    }
 }

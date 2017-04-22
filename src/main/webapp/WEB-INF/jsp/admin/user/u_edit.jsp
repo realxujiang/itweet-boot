@@ -69,6 +69,7 @@
                                 <c:if test="${ids ne role.id}">
                                     <option value="${role.id}">${role.name}</option>
                                 </c:if>
+
                             </c:forEach>
 
                             <%--<c:forEach items="${rids}" var="ids">

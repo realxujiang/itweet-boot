@@ -18,6 +18,7 @@ import java.util.List;
 @Service
 public class CategoriesServiceImpl implements CategoriesService {
 
+
     @Autowired
     private CategoriesRepository categoriesRepository;
 
@@ -65,5 +66,10 @@ public class CategoriesServiceImpl implements CategoriesService {
             throw new SystemException("添加失败，要添加的分类名称已经存在！");
 
         return categoriesRepository.save(categories);
+    }
+
+    @Override
+    public Integer findCategoriesIdByArticleId(Integer articleId) {
+        return articleCategoriesRepository.getCategoriesIdByArticleId(articleId);
     }
 }

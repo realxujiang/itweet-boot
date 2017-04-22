@@ -65,11 +65,6 @@
 		<li><a href="add.html" target="right"><span class="icon-caret-right"></span>评论统计</a></li>
 	</ul>
 
-	<h2><span class="icon-pencil-square-o"></span>授权管理</h2>
-	<ul>
-		<li><a href="<%=basePath%>admin/licence/list" target="right"><span class="icon-caret-right"></span>Licence列表</a></li>
-		<li><a href="<%=basePath%>admin/licence/add" target="right"><span class="icon-caret-right"></span>Licence添加</a></li>
-	</ul>
 </div>
 
 <script type="text/javascript">

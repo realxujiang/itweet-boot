@@ -21,4 +21,6 @@ public interface CategoriesService {
     void update(Categories categories) throws SystemException;
 
     Categories addCategories(Categories categories) throws SystemException;
+
+    Integer findCategoriesIdByArticleId(Integer articleId);
 }
