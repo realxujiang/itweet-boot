@@ -24,11 +24,11 @@ public interface ArticleService {
 
     void deleteByTitle(String title);
 
-    void update(Article article,List<Integer> tagIds,Integer categoriesId) throws SystemException;
+    void update(Article article,String tagNames,Integer categoriesId) throws SystemException;
 
     void update(Article article) throws SystemException;
 
-    Article addArticle(Article article,List<Integer> tagIds,Integer categoriesId) throws SystemException;
+    Article addArticle(Article article,String tagNames,Integer categoriesId) throws SystemException;
 
     Map<String,Article> archives();
 }

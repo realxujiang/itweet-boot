@@ -10,6 +10,9 @@ import java.util.Date;
 @Table(name = "categories")
 public class Categories {
 
+    /**
+     * 默认分类ID为0，即default
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
@@ -19,6 +22,7 @@ public class Categories {
     private Date date;
 
     public Categories() {
+
     }
 
     public Categories(String name, Date date) {

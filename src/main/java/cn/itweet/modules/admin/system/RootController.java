@@ -24,4 +24,9 @@ public class RootController {
     public String permissionManager() {
         return "permissionManager";
     }
+
+    @RootMenu(pid = "0",name = "文章管理",operation = "manager",pname = "root",descritpion = "article_manager",url = "/admin/article")
+    public String articleManager() {
+        return "articleManager";
+    }
 }

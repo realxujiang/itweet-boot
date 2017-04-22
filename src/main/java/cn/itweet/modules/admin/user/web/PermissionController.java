@@ -30,7 +30,6 @@ public class PermissionController {
     @Autowired
     private PermissionService permissionService;
 
-
     /**
      * 资源列表
      * @param model

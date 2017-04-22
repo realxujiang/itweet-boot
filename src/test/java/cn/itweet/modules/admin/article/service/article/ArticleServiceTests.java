@@ -40,7 +40,7 @@ public class ArticleServiceTests {
         // listTest();
         // searchByTitileTest();
 
-        // updateTest();
+        updateTest();
 
         // deleteByTitleTest();
         // deleteByIdTest();
@@ -59,13 +59,9 @@ public class ArticleServiceTests {
         Article article = articleService.getArticleByTitle("First blog test");
         article.setAuthor("super_admin");
 
-        List<Integer> tagIds = new ArrayList<>();
-        tagIds.add(tagService.getTagByName("hawq").getId());
-        tagIds.add(tagService.getTagByName("DeepGreen").getId());
-        tagIds.add(tagService.getTagByName("drill").getId());
-        tagIds.add(tagService.getTagByName("BlueData").getId());
+        String tagNames = "DeepGreen,drill,BlueData";
 
-        articleService.update(article,tagIds,categoriesService.getCategoriesByName("cloud").getId());
+        articleService.update(article,tagNames,categoriesService.getCategoriesByName("cloud").getId());
     }
 
     private void searchByTitileTest() {
@@ -92,11 +88,9 @@ public class ArticleServiceTests {
         article.setDescription("To transfer an Ambari Server that uses the default, embedded, PostgreSQL database from one host to a new host, use the following instructions:".substring(0,20));
         article.setAuthor("admin");
 
-        List<Integer> tagIds = new ArrayList<>();
-        tagIds.add(tagService.getTagByName("hawq").getId());
-        tagIds.add(tagService.getTagByName("Itweet").getId());
+        String tagNames = "DeepGreen,drill,BlueData";
 
-        Article ar = articleService.addArticle(article,tagIds,categoriesService.getCategoriesByName("cloud").getId());
+        Article ar = articleService.addArticle(article,tagNames,categoriesService.getCategoriesByName("cloud").getId());
         Assert.assertNotNull(ar);
     }
 }
