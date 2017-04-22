@@ -11,33 +11,6 @@
     <jsp:include page="../../tools/style/admin_style.jsp"></jsp:include>
     <link href="<%=basePath%>style/admin/backstage/css/style.css" rel="stylesheet">
 
-    <script type="text/javascript">
-        KE.show({
-            id: 'content7',
-            cssPath: './index.css'
-        });
-    </script>
-    <script type="text/javascript">
-        $(document).ready(function(e) {
-            $(".select1").uedSelect({
-                width: 345
-            });
-            $(".select2").uedSelect({
-                width: 167
-            });
-            $(".select3").uedSelect({
-                width: 100
-            });
-        });
-        function del() {
-            var msg = "您真的确定要删除吗？\n\n请确认！";
-            if (confirm(msg)==true){
-                return true;
-            }else{
-                return false;
-            }
-        }
-    </script>
 </head>
 <body>
 <div class="formbody">
@@ -76,12 +49,7 @@
             <jsp:include page="../../tools/page/page2.jsp"></jsp:include>
         </div>
     </div>
-    <script type="text/javascript">
-        $("#usual1 ul").idTabs();
-    </script>
-    <script type="text/javascript">
-        $('.tablelist tbody tr:odd').addClass('odd');
-    </script>
+
 </div>
 </body>
 </html>

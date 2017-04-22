@@ -2,6 +2,7 @@ package cn.itweet.modules.admin.article.web;
 
 import cn.itweet.common.exception.SystemException;
 import cn.itweet.common.utils.PageUtils;
+import cn.itweet.common.utils.TimeMillisUtils;
 import cn.itweet.modules.admin.article.entity.Article;
 import cn.itweet.modules.admin.article.entity.Categories;
 import cn.itweet.modules.admin.article.service.article.ArticleService;
@@ -273,12 +274,15 @@ public class ArticleController {
                 filePath.mkdirs();
             }
 
+            String temp = attach.getOriginalFilename();
+            String timeStr = TimeMillisUtils.getTimeMillis() + temp.substring(temp.lastIndexOf(".")-1,temp.length());
+
             //最终文件名
-            File realFile=new File(rootPath+File.separator+attach.getOriginalFilename());
+            File realFile=new File(rootPath+File.separator + timeStr);
             FileUtils.copyInputStreamToFile(attach.getInputStream(), realFile);
 
             //下面response返回的json格式是editor.md所限制的，规范输出就OK
-            response.getWriter().write( "{\"success\": 1, \"message\":\"上传成功\",\"url\":\"/upload/mkimgs/" + attach.getOriginalFilename() + "\"}" );
+            response.getWriter().write( "{\"success\": 1, \"message\":\"上传成功\",\"url\":\"/upload/mkimgs/" + timeStr + "\"}" );
         } catch (Exception e) {
             try {
                 response.getWriter().write( "{\"success\":0}" );
