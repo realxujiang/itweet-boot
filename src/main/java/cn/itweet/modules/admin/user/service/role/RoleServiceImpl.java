@@ -98,23 +98,25 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public void setAuthorization(Integer rid, List<Integer> perissionIds) {
         List<Integer> dbPerissionIds = permissionRoleRepository.getPermissionRoleIdsByRoleId(rid);
-        List<Integer> delElems = CommonUtils.getDeleteElements(perissionIds,dbPerissionIds);
-        List<Integer> aggElems = CommonUtils.getAggrandizeElements(perissionIds,dbPerissionIds);
+        if (!CommonUtils.compare(dbPerissionIds,perissionIds)) {
+            List<Integer> delElems = CommonUtils.getDeleteElements(perissionIds,dbPerissionIds);
+            List<Integer> aggElems = CommonUtils.getAggrandizeElements(perissionIds,dbPerissionIds);
 
-        if (delElems.size() > 0) {
-            System.out.println("delElems: "+delElems.toString());
-            for (Integer perid : delElems) {
-                permissionRoleRepository.deleteByRoleIdAndPermissionId(rid,perid);
+            if (delElems.size() > 0) {
+                System.out.println("delElems: "+delElems.toString());
+                for (Integer perid : delElems) {
+                    permissionRoleRepository.deleteByRoleIdAndPermissionId(rid,perid);
+                }
             }
-        }
 
-        if (aggElems.size() > 0) {
-            System.out.println("aggElems: "+aggElems);
-            for (Integer perissionId : aggElems) {
-                SysPermissionRole sysPermissionRole = new SysPermissionRole();
-                sysPermissionRole.setRoleId(rid);
-                sysPermissionRole.setPermissionId(perissionId);
-                permissionRoleRepository.save(sysPermissionRole);
+            if (aggElems.size() > 0) {
+                System.out.println("aggElems: "+aggElems);
+                for (Integer perissionId : aggElems) {
+                    SysPermissionRole sysPermissionRole = new SysPermissionRole();
+                    sysPermissionRole.setRoleId(rid);
+                    sysPermissionRole.setPermissionId(perissionId);
+                    permissionRoleRepository.save(sysPermissionRole);
+                }
             }
         }
     }

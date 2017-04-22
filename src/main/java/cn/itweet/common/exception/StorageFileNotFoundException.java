@@ -1,9 +1,9 @@
-package cn.itweet.modules.admin.document.service;
+package cn.itweet.common.exception;
 
 /**
  * Created by whoami on 22/04/2017.
  */
-public class StorageFileNotFoundException extends StorageException {
+public class StorageFileNotFoundException extends RuntimeException {
 
     public StorageFileNotFoundException(String message) {
         super(message);

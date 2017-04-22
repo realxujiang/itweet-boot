@@ -4,22 +4,18 @@ import cn.itweet.common.exception.SystemException;
 import cn.itweet.common.utils.TimeMillisUtils;
 import cn.itweet.modules.admin.document.entiry.Document;
 import cn.itweet.modules.admin.document.repository.DocumentRepository;
-import cn.itweet.modules.admin.document.utils.StorageProperties;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.UrlResource;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
-import org.springframework.util.FileSystemUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Date;
-import java.util.stream.Stream;
 
 /**
  * Created by whoami on 22/04/2017.
@@ -30,17 +26,10 @@ public class StorageServiceImpl implements StorageService {
     @Autowired
     private DocumentRepository documentRepository;
 
-    private final Path rootLocation;
-
-    @Autowired
-    public StorageServiceImpl(StorageProperties properties) {
-        this.rootLocation = Paths.get(properties.getLocation());
-    }
-
     @Override
-    public void store(MultipartFile file,String path) throws SystemException {
+    public void store(MultipartFile file,String filePath) throws SystemException {
 
-        File f = new File(path);
+        File f = new File(filePath);
 
         if (!f.exists()) {
             f.mkdirs();
@@ -51,7 +40,7 @@ public class StorageServiceImpl implements StorageService {
         String suffix = filename.substring(filename.lastIndexOf(".")+1,filename.length());
         String ruleFilename = TimeMillisUtils.getTimeMillis()+"."+suffix;
 
-        Path rootLocation = Paths.get(path);
+        Path rootLocation = Paths.get(filePath);
 
         try {
             if (file.isEmpty()) {
@@ -66,57 +55,41 @@ public class StorageServiceImpl implements StorageService {
         document.setDate(new Date());
         document.setFilename(filename);
         document.setRuleFilename(ruleFilename);
+        document.setPath(filePath);
         document.setType(suffix);
+        System.out.println(file.getContentType());
 
         documentRepository.save(document);
     }
 
     @Override
-    public Stream<Path> loadAll() {
-        try {
-            return Files.walk(this.rootLocation, 1)
-                    .filter(path -> !path.equals(this.rootLocation))
-                    .map(path -> this.rootLocation.relativize(path));
-        } catch (IOException e) {
-            throw new StorageException("Failed to read stored files", e);
-        }
-
+    public Page<Document> loadAll(Integer page) {
+        return documentRepository.findAll(new PageRequest(page,10));
     }
 
     @Override
-    public Path load(String filename) {
-        return rootLocation.resolve(filename);
+    public Document loadById(Integer id) {
+        return documentRepository.findOne(id);
     }
 
     @Override
-    public Resource loadAsResource(String filename) {
-        try {
-            Path file = load(filename);
-            Resource resource = new UrlResource(file.toUri());
-            if(resource.exists() || resource.isReadable()) {
-                return resource;
-            }
-            else {
-                throw new StorageFileNotFoundException("Could not read file: " + filename);
+    public String loadRuleFilenameByImageName(Integer id) {
+        return documentRepository.loadRuleFilenameById(id);
+    }
 
-            }
-        } catch (MalformedURLException e) {
-            throw new StorageFileNotFoundException("Could not read file: " + filename, e);
-        }
+    @Override
+    public void deleteById(Integer id) {
+        documentRepository.delete(id);
+    }
+
+    @Override
+    public void deleteByRuleFilename(String ruleFilename) {
+        documentRepository.deleteByRuleFilename(ruleFilename);
     }
 
     @Override
     public void deleteAll() {
-        FileSystemUtils.deleteRecursively(rootLocation.toFile());
-    }
-
-    @Override
-    public void init() {
-        try {
-            Files.createDirectory(rootLocation);
-        } catch (IOException e) {
-            throw new StorageException("Could not initialize storage", e);
-        }
+        documentRepository.deleteAll();
     }
 
 }
