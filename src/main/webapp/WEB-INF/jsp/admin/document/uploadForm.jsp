@@ -1,39 +1,18 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-
 <head>
-    <meta charset="utf-8">
-    <title>文件上传</title>
+    <title>upload</title>
 </head>
-
 <body>
-
-    <div th:if="${message}">
-        <h2 th:text="${message}"/>
-    </div>
-
-    <div>
-        ${upload_files_type}
-        ${upload_image_type}
-    </div>
-
-    <div>
-        <form method="POST" enctype="multipart/form-data" action="/admin/document/upload">
-            <table>
-                <tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
-                <tr><td></td><td><input type="submit" value="Upload" /></td></tr>
-            </table>
-        </form>
-    </div>
-
-    <div>
-        <ul>
-            <li th:each="file : ${files}">
-                <a th:href="${file}" th:text="${file}" />
-            </li>
-        </ul>
-    </div>
-
+ <div>
+    <form method="POST" enctype="multipart/form-data" action="/admin/document/upload">
+        <table>
+            <tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
+            <tr><td></td><td><input type="submit" value="Upload" /></td></tr>
+        </table>
+    </form>
+ </div>
 </body>
-
 </html>

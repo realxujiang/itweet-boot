@@ -149,6 +149,7 @@ public class ArticleController {
     @RequestMapping(value = "/edit",method = RequestMethod.POST)
     public String edit(@RequestParam  String tagNames,@RequestParam(value = "categoriesId") Integer categoriesId,Model model,Article article) {
         try {
+            System.out.println(article.getCoverPicture());
             articleService.update(article,tagNames,categoriesId);
         } catch (SystemException e) {
             model.addAttribute("form",article);

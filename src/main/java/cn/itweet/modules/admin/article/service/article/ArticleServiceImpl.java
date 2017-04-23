@@ -141,6 +141,8 @@ public class ArticleServiceImpl implements ArticleService {
         oldArt.setTitle(article.getTitle());
         oldArt.setDescription(article.getDescription());
         oldArt.setUpdateDate(new Date());
+        System.out.println(article.getCoverPicture());
+        oldArt.setCoverPicture(article.getCoverPicture());
         articleRepository.save(oldArt);
     }
 

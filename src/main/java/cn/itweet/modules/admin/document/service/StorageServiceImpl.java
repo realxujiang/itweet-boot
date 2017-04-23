@@ -1,6 +1,7 @@
 package cn.itweet.modules.admin.document.service;
 
 import cn.itweet.common.exception.SystemException;
+import cn.itweet.common.utils.CommonUtils;
 import cn.itweet.common.utils.TimeMillisUtils;
 import cn.itweet.modules.admin.document.entiry.Document;
 import cn.itweet.modules.admin.document.repository.DocumentRepository;
@@ -43,6 +44,20 @@ public class StorageServiceImpl implements StorageService {
 
         Path rootLocation = Paths.get(filePath);
 
+        storeFile(file, filename, ruleFilename, rootLocation);
+
+        Document document = new Document();
+        document.setDate(new Date());
+        document.setFilename(filename);
+        document.setRuleFilename(ruleFilename);
+        document.setColumnd("article");
+        document.setType(suffix);
+        documentRepository.save(document);
+
+        return ruleFilename;
+    }
+
+    private void storeFile(MultipartFile file, String filename, String ruleFilename, Path rootLocation) throws SystemException {
         try {
             if (file.isEmpty()) {
                 throw  new SystemException("Failed to store empty file " + filename);
@@ -51,11 +66,35 @@ public class StorageServiceImpl implements StorageService {
         } catch (IOException e) {
             throw new SystemException("Failed to store file " + filename, e);
         }
+    }
+
+    @Override
+    public String store(MultipartFile file,String filePath,String columnd) throws SystemException {
+
+        File f = new File(filePath);
+
+        if (!f.exists()) {
+            f.mkdirs();
+        }
+
+        String filename = file.getOriginalFilename();
+
+        String suffix = filename.substring(filename.lastIndexOf(".")+1,filename.length());
+        String ruleFilename = TimeMillisUtils.getTimeMillis()+"."+suffix;
+
+        Path rootLocation = Paths.get(filePath);
+
+        storeFile(file, filename, ruleFilename, rootLocation);
 
         Document document = new Document();
         document.setDate(new Date());
         document.setFilename(filename);
         document.setRuleFilename(ruleFilename);
+        if ("".equals(columnd) || columnd == null) {
+            document.setColumnd("article");
+        } else {
+            document.setColumnd(columnd);
+        }
         document.setType(suffix);
         documentRepository.save(document);
 

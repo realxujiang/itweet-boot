@@ -44,7 +44,7 @@
                     <c:forEach items="${articleList.content}" var="article">
                         <tr>
                             <td>${article.id}</td>
-                            <td  class="imgtd"><img src="<%=basePath%>/upload/files/${article.coverPicture}"/></td>
+                            <td  class="imgtd"><img src="<%=basePath%>/upload/files/${article.coverPicture}" width="50" height="30"/></td>
                             <td>${article.title}</td>
                             <td>${article.author}</td>
                             <td>${article.createDate}</td>
