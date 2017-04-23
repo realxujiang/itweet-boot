@@ -52,9 +52,6 @@ public class PermissionServiceImpl implements PermissionService{
 
     @Override
     public Page<SysPermission> list(Integer page) {
-        Page<SysPermission> sysPermissionPage = permissionRepository.findAll
-                (SimplePageBuilder.generate(page, SimpleSortBuilder.generateSort("id")));
-        System.out.println(sysPermissionPage.getContent().toString());
         return permissionRepository.findAll(new PageRequest(page, 10));
     }
 

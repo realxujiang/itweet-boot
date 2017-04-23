@@ -1,5 +1,6 @@
 package cn.itweet.modules.admin.document.web;
 
+import cn.itweet.common.config.ItweetProperties;
 import cn.itweet.common.exception.SystemException;
 import cn.itweet.modules.admin.document.entiry.Document;
 import cn.itweet.modules.admin.document.service.StorageService;
@@ -25,14 +26,19 @@ public class DocumentController {
     @Autowired
     private StorageService storageService;
 
+    @Autowired
+    private ItweetProperties itweetProperties;
+
     @RequestMapping(value = "/upload",method = RequestMethod.GET)
     public String uploadFiles(Model model) throws IOException {
+        model.addAttribute("upload_files_type",itweetProperties.getUploadTypeFiles());
+        model.addAttribute("upload_image_type",itweetProperties.getUploadTypeImage());
         return "admin/document/uploadForm";
     }
 
     @RequestMapping(value = "/upload",method = RequestMethod.POST)
     public String uploadFiles(@RequestParam("file") MultipartFile file,Model model, HttpServletRequest request) {
-        String rootPath = request.getSession().getServletContext().getRealPath("/upload/files/");
+        String rootPath = request.getSession().getServletContext().getRealPath("/")+itweetProperties.getUploadSuffix();
         try {
             storageService.store(file,rootPath);
         } catch (SystemException e) {

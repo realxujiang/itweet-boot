@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.util.FileSystemUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -27,7 +28,7 @@ public class StorageServiceImpl implements StorageService {
     private DocumentRepository documentRepository;
 
     @Override
-    public void store(MultipartFile file,String filePath) throws SystemException {
+    public String store(MultipartFile file,String filePath) throws SystemException {
 
         File f = new File(filePath);
 
@@ -55,11 +56,10 @@ public class StorageServiceImpl implements StorageService {
         document.setDate(new Date());
         document.setFilename(filename);
         document.setRuleFilename(ruleFilename);
-        document.setPath(filePath);
         document.setType(suffix);
-        System.out.println(file.getContentType());
-
         documentRepository.save(document);
+
+        return ruleFilename;
     }
 
     @Override
@@ -73,22 +73,36 @@ public class StorageServiceImpl implements StorageService {
     }
 
     @Override
-    public String loadRuleFilenameByImageName(Integer id) {
+    public String loadRuleFilenameById(Integer id) {
         return documentRepository.loadRuleFilenameById(id);
     }
 
     @Override
-    public void deleteById(Integer id) {
+    public void deleteById(Integer id,String filePath) {
+        String ruleFilename = this.loadRuleFilenameById(id);
+        try {
+            System.out.println(Paths.get(filePath).resolve(ruleFilename));
+            Files.deleteIfExists(Paths.get(filePath).resolve(ruleFilename));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         documentRepository.delete(id);
     }
 
     @Override
-    public void deleteByRuleFilename(String ruleFilename) {
+    public void deleteByRuleFilename(String ruleFilename,String filePath) {
+        try {
+            System.out.println(Paths.get(filePath).resolve(ruleFilename));
+            Files.deleteIfExists(Paths.get(filePath).resolve(ruleFilename));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         documentRepository.deleteByRuleFilename(ruleFilename);
     }
 
     @Override
-    public void deleteAll() {
+    public void deleteAll(String filePath) {
+        FileSystemUtils.deleteRecursively(new File(filePath));
         documentRepository.deleteAll();
     }
 

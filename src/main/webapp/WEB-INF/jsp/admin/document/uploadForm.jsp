@@ -13,6 +13,11 @@
     </div>
 
     <div>
+        ${upload_files_type}
+        ${upload_image_type}
+    </div>
+
+    <div>
         <form method="POST" enctype="multipart/form-data" action="/admin/document/upload">
             <table>
                 <tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>

@@ -11,7 +11,7 @@ import java.util.Date;
  */
 public class TimeMillisUtils {
 
-    private static SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
+    private static SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd-HHmmss");
 
     /**
      * 以当前时间为时间戳

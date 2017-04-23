@@ -14,8 +14,6 @@ public class Document {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    private String path;
-
     private String filename;
 
     @Column(name = "rule_filename")
@@ -31,14 +29,6 @@ public class Document {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getPath() {
-        return path;
-    }
-
-    public void setPath(String path) {
-        this.path = path;
     }
 
     public String getFilename() {
@@ -71,5 +61,16 @@ public class Document {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    @Override
+    public String toString() {
+        return "Document{" +
+                "id=" + id +
+                ", filename='" + filename + '\'' +
+                ", ruleFilename='" + ruleFilename + '\'' +
+                ", type='" + type + '\'' +
+                ", date=" + date +
+                '}';
     }
 }
