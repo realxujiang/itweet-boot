@@ -16,7 +16,7 @@ public interface RoleService {
 
     void update(SysRole role) throws SystemException;
 
-    SysRole add (SysRole role) throws SystemException;;
+    SysRole add(SysRole role) throws SystemException;;
 
     void deleteById(Integer id) throws SystemException;
 
@@ -24,5 +24,5 @@ public interface RoleService {
 
     SysRole findByRoleName(String name);
 
-    void setAuthorization(Integer rid,List<Integer> perissionIds);
+    void setAuthorization(Integer rid, List<Integer> perissionIds);
 }

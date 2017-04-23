@@ -26,6 +26,7 @@
                 <thead>
                 <tr>
                     <th>编号</th>
+                    <th>栏目</th>
                     <th>图片名称</th>
                     <th>图片别名</th>
                     <th>图片类型</th>
@@ -37,6 +38,7 @@
                 <c:forEach items="${documentList}" var="document">
                     <tr>
                         <td>${document.id}</td>
+                        <td>${document.columnd}</td>
                         <td>${document.filename}</td>
                         <td>${document.ruleFilename}</td>
                         <td>${document.type}</td>

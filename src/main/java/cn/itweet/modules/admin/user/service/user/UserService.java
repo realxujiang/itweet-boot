@@ -22,9 +22,9 @@ public interface UserService {
 
     List<SysUser> list();
 
-    void add(SysUser user,List<Integer> rIds) throws SystemException;
+    void add(SysUser user, List<Integer> rIds) throws SystemException;
 
-    void update(SysUser user,List<Integer> rIds) throws SystemException;
+    void update(SysUser user, List<Integer> rIds) throws SystemException;
 
     void deleteById(Integer uid) throws SystemException;
 

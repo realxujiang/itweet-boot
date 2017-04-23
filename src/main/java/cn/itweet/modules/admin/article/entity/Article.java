@@ -42,6 +42,9 @@ public class Article {
      */
     private String author;
 
+    @Column(name = "cover_picture")
+    private String coverPicture;
+
     public Integer getId() {
         return id;
     }
@@ -114,16 +117,27 @@ public class Article {
         this.state = state;
     }
 
+    public String getCoverPicture() {
+        return coverPicture;
+    }
+
+    public void setCoverPicture(String coverPicture) {
+        this.coverPicture = coverPicture;
+    }
+
     @Override
     public String toString() {
         return "Article{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
+                ", state=" + state +
                 ", description='" + description + '\'' +
                 ", createDate=" + createDate +
                 ", updateDate=" + updateDate +
                 ", content='" + content + '\'' +
+                ", htmlContent='" + htmlContent + '\'' +
                 ", author='" + author + '\'' +
+                ", coverPicture='" + coverPicture + '\'' +
                 '}';
     }
 }

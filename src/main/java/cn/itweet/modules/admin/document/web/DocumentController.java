@@ -47,7 +47,7 @@ public class DocumentController {
 
         model.addAttribute("message","<script>toastr.error(\"" + "You successfully uploaded" + file.getOriginalFilename() + "!" + "\")</script>");
 
-        return "redirect:/admin/document/upload";
+        return "redirect:/admin/document/list";
     }
 
     @RequestMapping(value = "/list",method = RequestMethod.GET)

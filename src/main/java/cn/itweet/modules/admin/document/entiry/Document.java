@@ -23,6 +23,19 @@ public class Document {
 
     private Date date;
 
+    /**
+     * 图片所属栏目
+     */
+    private String columnd;
+
+    public String getColumnd() {
+        return columnd;
+    }
+
+    public void setColumnd(String columnd) {
+        this.columnd = columnd;
+    }
+
     public Integer getId() {
         return id;
     }

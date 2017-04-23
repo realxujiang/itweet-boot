@@ -22,7 +22,7 @@ public interface PermissionRoleRepository extends JpaRepository<SysPermissionRol
 
     @Query(value = "delete from Sys_Permission_Role where rid=?1 and permission_id=?2",nativeQuery = true)
     @Modifying //说明该操作是修改类型操作，删除或者修改
-    void deleteByRoleIdAndPermissionId(Integer rid,Integer permission_id);
+    void deleteByRoleIdAndPermissionId(Integer rid, Integer permission_id);
 
     @Query(value = "select permission_id from sys_permission_role where rid=?1",nativeQuery = true)
     List<Integer> getPermissionRoleIdsByRoleId(Integer rid);

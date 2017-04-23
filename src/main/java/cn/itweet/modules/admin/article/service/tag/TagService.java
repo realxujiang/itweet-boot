@@ -12,7 +12,7 @@ public interface TagService {
 
     Page<Tag> list(Pageable pageable);
 
-    Page<Tag> selectByName(Pageable pageable,String name);
+    Page<Tag> selectByName(Pageable pageable, String name);
 
     Tag addTag(Tag tag) throws SystemException;
 

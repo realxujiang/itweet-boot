@@ -44,6 +44,11 @@
                         <input name="tagNames" type="text" class="dfinput" value="${tagNames}" placeholder="以英文逗号分隔的标签, 如：A,B" style="width:618px;" />
                     </li>
 
+                    <li>
+                        <label>封面<b>*</b></label>
+                        <input name="tagNames" type="text" class="dfinput" value="${tagNames}" placeholder="选择图片" style="width:618px;" />
+                    </li>
+
                     <li><label>&nbsp;</label><input type="submit" class="btn" value="确定" /></li>
                 </form>
             </ul>

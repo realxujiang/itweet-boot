@@ -9,7 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
  * Created by whoami on 22/04/2017.
  */
 public interface StorageService {
-    String store(MultipartFile file,String path) throws SystemException;
+    String store(MultipartFile file, String path) throws SystemException;
 
     Page<Document> loadAll(Integer page);
 
@@ -17,9 +17,9 @@ public interface StorageService {
 
     String loadRuleFilenameById(Integer id);
 
-    void deleteById(Integer id,String filePath);
+    void deleteById(Integer id, String filePath);
 
-    void deleteByRuleFilename(String ruleFilename,String filePath);
+    void deleteByRuleFilename(String ruleFilename, String filePath);
 
     void deleteAll(String filePath);
 }

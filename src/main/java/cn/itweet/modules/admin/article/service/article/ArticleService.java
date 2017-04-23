@@ -14,7 +14,7 @@ import java.util.Map;
 public interface ArticleService {
     Page<Article> list(Pageable pageable);
 
-    Page<Article> searchByTitle(Pageable pageable,String title);
+    Page<Article> searchByTitle(Pageable pageable, String title);
 
     Article getArticleByTitle(String title);
 
@@ -24,11 +24,11 @@ public interface ArticleService {
 
     void deleteByTitle(String title);
 
-    void update(Article article,String tagNames,Integer categoriesId) throws SystemException;
+    void update(Article article, String tagNames, Integer categoriesId) throws SystemException;
 
     void update(Article article) throws SystemException;
 
-    Article addArticle(Article article,String tagNames,Integer categoriesId) throws SystemException;
+    Article addArticle(Article article, String tagNames, Integer categoriesId) throws SystemException;
 
     Map<String,Article> archives();
 }

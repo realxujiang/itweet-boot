@@ -36,8 +36,6 @@
 		<li><a href="<%=basePath%>admin/user/list" target="right"><span class="icon-caret-right"></span>用户管理</a></li>
 		<li><a href="<%=basePath%>admin/role/list" target="right"><span class="icon-caret-right"></span>角色管理</a></li>
 		<li><a href="<%=basePath%>admin/permission/list" target="right"><span class="icon-caret-right"></span>资源管理</a></li>
-		<li><a href="adv.html" target="right"><span class="icon-caret-right"></span>系统设置</a></li>
-		<li><a href="adv.html" target="right"><span class="icon-caret-right"></span>首页轮播</a></li>
 		<li><a href="adv.html" target="right"><span class="icon-caret-right"></span>系统日志</a></li>
 	</ul>
 
@@ -49,7 +47,7 @@
 
 	<h2><span class="icon-file-o"></span>文件管理</h2>
 	<ul>
-		<li><a href="list.html" target="right"><span class="icon-caret-right"></span>文件上传</a></li>
+		<li><a href="<%=basePath%>admin/document/upload" target="right"><span class="icon-caret-right"></span>文件上传</a></li>
 		<li><a href="<%=basePath%>admin/document/list" target="right"><span class="icon-caret-right"></span>文件列表</a></li>
 	</ul>
 

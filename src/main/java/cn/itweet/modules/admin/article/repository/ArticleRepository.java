@@ -23,6 +23,6 @@ public interface ArticleRepository extends PagingAndSortingRepository<Article,In
     Article getArticleByTitle(String title);
 
     @Query(value = "select a from Article a where a.title like %:title%")
-    Page<Article> searchByTitle(@Param("pageable") Pageable pageable,@Param("title") String title);
+    Page<Article> searchByTitle(@Param("pageable") Pageable pageable, @Param("title") String title);
 
 }
