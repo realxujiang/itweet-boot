@@ -50,7 +50,7 @@
 	<h2><span class="icon-file-o"></span>文件管理</h2>
 	<ul>
 		<li><a href="list.html" target="right"><span class="icon-caret-right"></span>文件上传</a></li>
-		<li><a href="add.html" target="right"><span class="icon-caret-right"></span>文件列表</a></li>
+		<li><a href="<%=basePath%>admin/document/list" target="right"><span class="icon-caret-right"></span>文件列表</a></li>
 	</ul>
 
 	<h2><span class="icon-pencil-square-o"></span>标签管理</h2>

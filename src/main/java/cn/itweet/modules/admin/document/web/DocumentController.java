@@ -50,6 +50,13 @@ public class DocumentController {
         return "redirect:/admin/document/upload";
     }
 
+    @RequestMapping(value = "/list",method = RequestMethod.GET)
+    public String list(Model model,Integer page) {
+        Page<Document> documentPage = storageService.loadAll(0);
+        model.addAttribute("documentList",documentPage.getContent());
+        return "admin/document/d_list";
+    }
+
     @RequestMapping(value = "/files",method = RequestMethod.GET)
     @ResponseBody
     public List<Document> loadAll(Integer page) {
