@@ -64,4 +64,11 @@ public class DocumentController {
         return documentPage.getContent();
     }
 
+    @RequestMapping(value = "/delete/{id}",method = RequestMethod.GET)
+    public String delete(@PathVariable Integer id,HttpServletRequest request) {
+        String rootPath = request.getSession().getServletContext().getRealPath("/")+itweetProperties.getUploadSuffix();
+        storageService.deleteById(id,rootPath);
+        return "redirect:/admin/document/list";
+    }
+
 }
