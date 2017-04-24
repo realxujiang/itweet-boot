@@ -13,7 +13,9 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 /**
@@ -37,11 +39,16 @@ public class DocumentController {
     }
 
     @RequestMapping(value = "/upload",method = RequestMethod.POST)
-    public String uploadFiles(@RequestParam("file") MultipartFile file,Model model, HttpServletRequest request) {
-        String rootPath = request.getSession().getServletContext().getRealPath("/")+itweetProperties.getUploadSuffix();
+    public String uploadFiles(@RequestParam("file") MultipartFile file,Model model,HttpServletRequest request, HttpServletResponse response) {
+
         try {
+            request.setCharacterEncoding( "utf-8" );
+            response.setHeader( "Content-Type" , "text/html" );
+            String rootPath = request.getSession().getServletContext().getRealPath("/")+itweetProperties.getUploadSuffix();
             storageService.store(file,rootPath);
         } catch (SystemException e) {
+            e.printStackTrace();
+        } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
 
