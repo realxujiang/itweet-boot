@@ -1,5 +1,6 @@
 package cn.itweet.modules.admin.article.web;
 
+import cn.itweet.common.config.ItweetProperties;
 import cn.itweet.common.exception.SystemException;
 import cn.itweet.common.utils.PageUtils;
 import cn.itweet.common.utils.TimeMillisUtils;
@@ -8,6 +9,7 @@ import cn.itweet.modules.admin.article.entity.Categories;
 import cn.itweet.modules.admin.article.service.article.ArticleService;
 import cn.itweet.modules.admin.article.service.categories.CategoriesService;
 import cn.itweet.modules.admin.article.service.tag.TagService;
+import cn.itweet.modules.admin.document.service.StorageService;
 import cn.itweet.modules.admin.user.entity.SysUser;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +47,12 @@ public class ArticleController {
 
     @Autowired
     private TagService tagService;
+
+    @Autowired
+    private StorageService storageService;
+
+    @Autowired
+    private ItweetProperties itweetProperties;
 
     /**
      *文章列表
@@ -261,29 +269,15 @@ public class ArticleController {
      * @param attach
      */
     @RequestMapping(value="/uploadfile",method=RequestMethod.POST)
-    public void hello(HttpServletRequest request, HttpServletResponse response, @RequestParam(value = "editormd-image-file", required = false) MultipartFile attach){
+    public void uploadfile(HttpServletRequest request, HttpServletResponse response, @RequestParam(value = "editormd-image-file", required = false) MultipartFile attach){
+
         try {
             request.setCharacterEncoding( "utf-8" );
             response.setHeader( "Content-Type" , "text/html" );
-            String rootPath = request.getSession().getServletContext().getRealPath("/upload/mkimgs/");
+            String rootPath = request.getSession().getServletContext().getRealPath("/")+itweetProperties.getUploadSuffix();
+            String ruleFilename = storageService.store(attach,rootPath);
 
-            /**
-             * 文件路径不存在则需要创建文件路径
-             */
-            File filePath=new File(rootPath);
-            if(!filePath.exists()){
-                filePath.mkdirs();
-            }
-
-            String temp = attach.getOriginalFilename();
-            String timeStr = TimeMillisUtils.getTimeMillis() + temp.substring(temp.lastIndexOf(".")-1,temp.length());
-
-            //最终文件名
-            File realFile=new File(rootPath+File.separator + timeStr);
-            FileUtils.copyInputStreamToFile(attach.getInputStream(), realFile);
-
-            //下面response返回的json格式是editor.md所限制的，规范输出就OK
-            response.getWriter().write( "{\"success\": 1, \"message\":\"上传成功\",\"url\":\"/upload/mkimgs/" + timeStr + "\"}" );
+            response.getWriter().write( "{\"success\": 1, \"message\":\"上传成功\",\"url\":\"/" + itweetProperties.getUploadSuffix() + "/" + ruleFilename + "\"}" );
         } catch (Exception e) {
             try {
                 response.getWriter().write( "{\"success\":0}" );
