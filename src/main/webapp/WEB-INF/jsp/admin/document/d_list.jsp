@@ -20,7 +20,7 @@
                     <li><label>名称查询</label><input name="name" type="text" class="scinput" value="${name}" /></li>
                     <li><label>&nbsp;</label><input type="submit" class="scbtn" value="查询" /></li>
                 </form>
-                <li><label>&nbsp;</label><a href="<%=basePath%>/admin/document/upload"><input name="" type="button" class="scbtn" value="上传图片" /></a></li>
+                <li><label>&nbsp;</label><a href="<%=basePath%>/admin/document/add"><input name="" type="button" class="scbtn" value="上传图片" /></a></li>
             </ul>
             <table class="tablelist">
                 <thead>

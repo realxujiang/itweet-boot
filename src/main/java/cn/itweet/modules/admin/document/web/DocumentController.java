@@ -31,21 +31,20 @@ public class DocumentController {
     @Autowired
     private ItweetProperties itweetProperties;
 
-    @RequestMapping(value = "/upload",method = RequestMethod.GET)
+    @RequestMapping(value = "/add",method = RequestMethod.GET)
     public String uploadFiles(Model model) throws IOException {
         model.addAttribute("upload_files_type",itweetProperties.getUploadTypeFiles());
         model.addAttribute("upload_image_type",itweetProperties.getUploadTypeImage());
-        return "admin/document/uploadForm";
+        return "admin/document/d_add";
     }
 
-    @RequestMapping(value = "/upload",method = RequestMethod.POST)
-    public String uploadFiles(@RequestParam("file") MultipartFile file,Model model,HttpServletRequest request, HttpServletResponse response) {
-
+    @RequestMapping(value = "/add",method = RequestMethod.POST)
+    public String uploadFiles(@RequestParam("file") MultipartFile file,String columnd,Model model,HttpServletRequest request, HttpServletResponse response) {
         try {
             request.setCharacterEncoding( "utf-8" );
             response.setHeader( "Content-Type" , "text/html" );
             String rootPath = request.getSession().getServletContext().getRealPath("/")+itweetProperties.getUploadSuffix();
-            storageService.store(file,rootPath);
+            storageService.store(file,rootPath,columnd);
         } catch (SystemException e) {
             e.printStackTrace();
         } catch (UnsupportedEncodingException e) {
