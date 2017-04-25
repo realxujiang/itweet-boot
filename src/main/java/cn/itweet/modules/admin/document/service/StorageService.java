@@ -3,6 +3,7 @@ package cn.itweet.modules.admin.document.service;
 import cn.itweet.common.exception.SystemException;
 import cn.itweet.modules.admin.document.entiry.Document;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -29,6 +30,10 @@ public interface StorageService {
     String store(MultipartFile file, String path,String columnd) throws SystemException;
 
     Page<Document> loadAll(Integer page);
+
+    Page<Document> list(Pageable pageable);
+
+    Page<Document> selectByColumnd(Pageable pageable, String columnd);
 
     Document loadById(Integer id);
 

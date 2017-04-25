@@ -1,9 +1,12 @@
 package cn.itweet.modules.admin.document.repository;
 
 import cn.itweet.modules.admin.document.entiry.Document;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,4 +23,7 @@ public interface DocumentRepository extends JpaRepository<Document,Integer> {
     @Query(value = "delete from document where rule_filename=?1",nativeQuery = true)
     @Modifying
     void deleteByRuleFilename(String ruleFilename);
+
+    @Query("select d from Document d where d.columnd like %:columnd%")
+    Page<Document> selectByColumnd(@Param("pageable") Pageable pageable, @Param("columnd") String columnd);
 }

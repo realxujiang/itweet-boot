@@ -2,10 +2,12 @@ package cn.itweet.modules.admin.document.web;
 
 import cn.itweet.common.config.ItweetProperties;
 import cn.itweet.common.exception.SystemException;
+import cn.itweet.common.utils.PageUtils;
 import cn.itweet.modules.admin.document.entiry.Document;
 import cn.itweet.modules.admin.document.service.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -57,9 +59,16 @@ public class DocumentController {
     }
 
     @RequestMapping(value = "/list",method = RequestMethod.GET)
-    public String list(Model model,Integer page) {
-        Page<Document> documentPage = storageService.loadAll(0);
-        model.addAttribute("documentList",documentPage.getContent());
+    public String list(@RequestParam(value = "page", defaultValue = "0") Integer page, @RequestParam(value = "pageSize", defaultValue = "10") Integer pageSize, Model model) {
+
+        if(page !=0)page = page -1;
+
+        Page<Document> documentList = storageService.list(new PageRequest(page, pageSize));
+        model.addAttribute("documentList",documentList);
+
+        PageUtils pageUtils = new PageUtils("/admin/document/list?",page,documentList.getTotalPages(),documentList.getTotalElements(),pageSize);
+        model.addAttribute("pb",pageUtils);
+
         return "admin/document/d_list";
     }
 
@@ -76,5 +85,33 @@ public class DocumentController {
         storageService.deleteById(id,rootPath);
         return "redirect:/admin/document/list";
     }
+
+    @RequestMapping(value = "/select",method = RequestMethod.GET)
+    public String select(@RequestParam(value = "columnd") String columnd, @RequestParam(value = "page", defaultValue = "0") Integer page, @RequestParam(value = "pageSize", defaultValue = "10") Integer pageSize,Model model) {
+        if(page !=0)page = page -1;
+        Page<Document> documentList = storageService.selectByColumnd(new PageRequest(page, pageSize),columnd);
+        model.addAttribute("documentList",documentList);
+
+        PageUtils pageUtils = new PageUtils("/admin/document/select?name="+ columnd+"&",page,documentList.getTotalPages(),documentList.getTotalElements(),pageSize);
+        model.addAttribute("pb",pageUtils);
+
+        model.addAttribute("columnd",columnd);
+        return "admin/document/d_list";
+    }
+
+    @RequestMapping(value = "/edit/{id}",method = RequestMethod.GET)
+    public String edit(Model model,@PathVariable Integer id) {
+        Document document = storageService.loadById(id);
+        model.addAttribute("form",document);
+        return "admin/document/d_edit";
+    }
+
+    @RequestMapping(value = "/edit",method = RequestMethod.POST)
+    public String edit(Model model,HttpServletRequest request,Document document) {
+
+        return "redirect:/admin/document/d_list";
+    }
+
+
 
 }

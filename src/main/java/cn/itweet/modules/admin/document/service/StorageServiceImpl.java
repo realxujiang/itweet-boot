@@ -8,6 +8,7 @@ import cn.itweet.modules.admin.document.repository.DocumentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.FileSystemUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -27,6 +28,16 @@ public class StorageServiceImpl implements StorageService {
 
     @Autowired
     private DocumentRepository documentRepository;
+
+    @Override
+    public Page<Document> list(Pageable pageable) {
+        return documentRepository.findAll(pageable);
+    }
+
+    @Override
+    public Page<Document> selectByColumnd(Pageable pageable, String columnd) {
+        return documentRepository.selectByColumnd(pageable,columnd);
+    }
 
     @Override
     public String store(MultipartFile file,String filePath) throws SystemException {
