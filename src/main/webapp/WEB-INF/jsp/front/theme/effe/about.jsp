@@ -46,6 +46,7 @@
 	</div>
 </div>
 <!--END of header-->
+
 <!--This is the START of the menu-->
 <div id="menu-wrapper">
 	<div id="main-menu">
@@ -78,6 +79,7 @@
 	<!--END of footer-->
 </div>
 <!--END of menu-->
+
 <!--This is the START of the content-->
 <div id="content">
 	<div class="spacer"></div>

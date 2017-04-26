@@ -36,10 +36,10 @@
 <div id="topcontrol" style="position: fixed; bottom: 5px; left: 960px; opacity: 1; cursor: pointer;" title="Go to Top"></div>
 <div id="header-wrapper">
 	<div id="header">
-		<div id="logo"> <a href="index.html"><img src="<%=basePath%>style/front/images/logo.png" width="100" height="80" alt="logo" /></a> </div>
+		<div id="logo"> <a href="/"><img src="<%=basePath%>style/front/images/logo.png" width="100" height="80" alt="logo" /></a> </div>
 		<div id="header-text">
 			<h4>We make a bunch of cool stuff, have a look around!</h4>
-			<h6><a href="index.html">Home</a></h6>
+			<h6><a href="/">Home</a></h6>
 		</div>
 	</div>
 </div>
@@ -50,10 +50,10 @@
 		<ul>
 			<li><a class="selected" href="/">Home →</a></li>
 			<li><a href="/about">About</a></li>
-			<li><a href="<%=basePath%>style/front/portfolio.html">Portfolio</a></li>
-			<li><a href="<%=basePath%>style/front/blog.html">Blog</a></li>
-			<li><a href="<%=basePath%>style/front/contact.html">Contact</a></li>
-			<li><a href="<%=basePath%>style/front/features.html">Features</a></li>
+			<li><a href="/portfolio">Portfolio</a></li>
+			<li><a href="/blog">Blog</a></li>
+			<li><a href="/contact">Contact</a></li>
+			<li><a href="/features">Features</a></li>
 		</ul>
 	</div>
 	<!--This is the START of the footer-->
@@ -76,7 +76,7 @@
 	<!--END of footer-->
 </div>
 <!--END of menu-->
-<div class="copyrights">Collect from <a href="http://www.itweet.cn/" >个人推文</a></div>
+
 <!--This is the START of the content-->
 	<div id="content">
 	<!--This is the START of the NIVO slider-->
