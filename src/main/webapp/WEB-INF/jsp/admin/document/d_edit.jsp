@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Add</title>
+    <title>Edit</title>
     <jsp:include page="../../tools/style/admin_style.jsp"></jsp:include>
     <link href="<%=basePath%>style/admin/makedown/css/bootstrap.min.css" rel="stylesheet">
 
