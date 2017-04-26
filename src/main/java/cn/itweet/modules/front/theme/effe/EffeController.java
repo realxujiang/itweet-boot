@@ -11,7 +11,12 @@ public class EffeController {
 
     @GetMapping(value = "/")
     public String home() {
-        return "front/home";
+        return "front/theme/effe/home";
+    }
+
+    @GetMapping(value = "/about")
+    public String about() {
+        return "front/theme/effe/about";
     }
 
 }

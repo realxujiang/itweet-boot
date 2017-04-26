@@ -48,8 +48,8 @@
 <div id="menu-wrapper">
 	<div id="main-menu">
 		<ul>
-			<li><a class="selected" href="<%=basePath%>style/front/index.html">Home →</a></li>
-			<li><a href="<%=basePath%>style/front/about.html">About</a></li>
+			<li><a class="selected" href="/">Home →</a></li>
+			<li><a href="/about">About</a></li>
 			<li><a href="<%=basePath%>style/front/portfolio.html">Portfolio</a></li>
 			<li><a href="<%=basePath%>style/front/blog.html">Blog</a></li>
 			<li><a href="<%=basePath%>style/front/contact.html">Contact</a></li>
@@ -71,13 +71,14 @@
 				</li>
 			</ul>
 		</div>
+		<h6>Copyright © 2017 - effe.theme by <a href="https://github.com/itweet/itweet-boot" target="_blank" title="个人推文">Itweet</a></h6>
 	</div>
 	<!--END of footer-->
 </div>
 <!--END of menu-->
-
+<div class="copyrights">Collect from <a href="http://www.itweet.cn/" >个人推文</a></div>
 <!--This is the START of the content-->
-<div id="content">
+	<div id="content">
 	<!--This is the START of the NIVO slider-->
 	<div class="slider-wrapper theme-effe">
 		<div id="slider" class="nivoSlider"> <img src="<%=basePath%>style/front/images/slider/slide1.jpg" alt="" title="#img1" /> <img src="<%=basePath%>style/front/images/slider/slide2.jpg" alt="" title="#img2" /> <img src="<%=basePath%>style/front/images/slider/slide3.jpg" alt="" title="#img3" /> <img src="<%=basePath%>style/front/images/slider/slide4.jpg" alt="" title="#img4" /> </div>
