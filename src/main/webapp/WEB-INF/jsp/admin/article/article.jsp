@@ -8,10 +8,13 @@
 <html>
 <head>
     <title>Article</title>
+    <jsp:include page="../../tools/style/admin_common.jsp"></jsp:include>
     <jsp:include page="../../tools/style/admin_style.jsp"></jsp:include>
 
     <link href="<%=basePath%>style/admin/makedown/css/editormd.min.css" rel="stylesheet">
     <script src="<%=basePath%>style/admin/makedown/js/editormd.min.js"></script>
+
+    <link href="<%=basePath%>style/admin/backstage/css/style.css" rel="stylesheet">
 
 </head>
 <body>

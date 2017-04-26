@@ -7,9 +7,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Edit</title>
+    <title>Add</title>
     <jsp:include page="../../tools/style/admin_style.jsp"></jsp:include>
-    <link href="<%=basePath%>style/admin/backstage/css/style.css" rel="stylesheet">
+    <link href="<%=basePath%>style/admin/makedown/css/bootstrap.min.css" rel="stylesheet">
+
+    <script src="<%=basePath%>style/admin/makedown/js/jquery-3.2.1.min.js"></script>
+    <script src="<%=basePath%>style/admin/makedown/js/bootstrap.min.js"></script>
+
 
     <script>
         $(function() {
@@ -20,70 +24,154 @@
     </script>
 
     <style>
-        .a-upload {
-            padding: 5px 15px;
-            height: 32px;
-            line-height: 20px;
-            position: relative;
-            cursor: pointer;
-            color: #888;
-            background: #fafafa;
-            border: 1px solid #ddd;
-
-            overflow: hidden;
-            display: inline-block;
-            *display: inline;
-            *zoom: 1
+        .container {
+            margin-top: 20px;
         }
 
-        .a-upload  input {
+        .image-preview-input {
+            position: relative;
+            overflow: hidden;
+            margin: 0px;
+            color: #333;
+            background-color: #fff;
+            border-color: #ccc;
+        }
+
+        .image-preview-input input[type=file] {
             position: absolute;
-            font-size: 100px;
-            right: 0;
             top: 0;
+            right: 0;
+            margin: 0;
+            padding: 0;
+            font-size: 20px;
+            cursor: pointer;
             opacity: 0;
             filter: alpha(opacity=0);
-            cursor: pointer
         }
 
-        .a-upload:hover {
-            color: #444;
-            background: #eee;
-            border-color: #ccc;
-            text-decoration: none
+        .image-preview-input-title {
+            margin-left: 2px;
         }
     </style>
 
 </head>
 <body>
 
-<div class="formbody">
-    <div id="usual1" class="usual">
-        <div id="tab1" class="tabson">
-            <ul class="forminfo">
-                <form action="<%=basePath%>/admin/document/add" enctype="multipart/form-data" method="post">
-                    <li style="color: red;">${message}</li>
-                    <li>
-                        <label>所属栏目<b>*</b></label>
-                        <select id="columnd" name="columnd" style="width:160px;border-radius: 5px;" class="chosen-select-no-results" tabindex="10">
+<form action="<%=basePath%>/admin/document/edit" enctype="multipart/form-data" method="post">
 
-                            <option value="cover" selected="selected">封面</option>
-                            <option value="article">文章</option>
-                            <option value="index">首页</option>
-                        </select>
-                    </li>
-                    <li>
-                        <label>上传文件<b>*</b></label>
-                        <span class="a-upload"><input name="file" type="file" />点击这里上传文件</span>
-                    </li>
+    <div class="container" style="float: left;">
+        ${message}
 
-                    <li><label>&nbsp;</label><input type="submit" class="btn" value="确定" /></li>
-                </form>
-            </ul>
+        <div class="row">
+            <div class="col-xs-6 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+
+                <select id="columnd" name="columnd" value="${form.columnd}" style="width:360px;height:35px;border-radius: 5px;" class="chosen-select-no-results" tabindex="10">
+                    <option value="cover">封面</option>
+                    <option value="article">文章</option>
+                    <option value="index">首页</option>
+                </select>
+
+            </div>
+            <br/>
+            <br/>
+            <br/>
+            <div class="col-xs-6 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                <!-- image-preview-filename input [CUT FROM HERE]-->
+                <div class="input-group image-preview">
+                    <input type="text" class="form-control image-preview-filename" disabled="disabled">
+                    <!-- don't give a name === doesn't send on POST/GET -->
+                    <span class="input-group-btn">
+                    <!-- image-preview-button button -->
+                    <button type="button" class="btn btn-default image-preview-button" style="display:none;">
+                        <span class="glyphicon glyphicon-picture"></span> Preview
+						</button>
+
+                        <!-- image-preview-clear button -->
+						<button type="button" class="btn btn-default image-preview-clear" style="display:none;">
+                        <span class="glyphicon glyphicon-remove"></span> Clear
+                    </button>
+
+                        <!-- image-preview-input -->
+						<div class="btn btn-default image-preview-input">
+							<span class="glyphicon glyphicon-folder-open"></span>
+							<span class="image-preview-input-title">Browse</span>
+							<input type="file" accept="image/png, image/jpeg, image/gif" name="file" value="${form.ruleFilename}" />
+						</div>
+                </span>
+                </div>
+                <!-- /input-group image-preview [TO HERE]-->
+            </div>
+
+            <br/>
+            <br/>
+            <br/>
+            <div class="col-xs-6 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                <input type="submit" class="btn" value="确定" />
+            </div>
         </div>
     </div>
-</div>
+</form>
 
+<script>
+    function closePreview() {
+        $('.image-preview').popover('hide');
+    }
 
+    $(document).ready(function() {
+        // Set the close button
+        var closebtn = $('<button/>', {
+            type: "button",
+            text: 'x',
+            id: 'close-preview',
+            style: 'font-size: initial;',
+        });
+        closebtn.attr("class", "close pull-right");
+        closebtn.attr("onclick", "closePreview();");
+        // Set the popover default content
+        $('.image-preview').popover({
+            trigger: 'manual',
+            html: true,
+            title: "<strong>Preview</strong>" + $(closebtn)[0].outerHTML,
+            content: 'Loading...',
+            placement: 'bottom'
+        });
+        // Set the clear onclick function
+        $('.image-preview-clear').click(function() {
+            $('.image-preview').popover('hide');
+            $('.image-preview-filename').val("");
+            $('.image-preview-clear').hide();
+            $('.image-preview-button').hide();
+            $('.image-preview-input input:file').val("");
+            $(".image-preview-input-title").text("Browse");
+        });
+
+        $('.image-preview-button').on('click', function() {
+            $('.image-preview').popover('toggle');
+        });
+    });
+
+    $(function() {
+        $(".image-preview-input input:file").change(function() {
+            // Create the preview image
+            var img = $('<img/>', {
+                id: 'dynamic',
+                width: 250,
+                height: 230
+            });
+            var file = this.files[0];
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $(".image-preview-input-title").text("Change");
+                $(".image-preview-clear").show();
+                $(".image-preview-button").show();
+                $(".image-preview-filename").val(file.name);
+                // Set preview image into the popover data-content
+                img.attr('src', e.target.result);
+                $(".image-preview").attr("data-content", $(img)[0].outerHTML).popover("show");
+            }
+            reader.readAsDataURL(file);
+        });
+    });
+</script>
 </body>
 </html>

@@ -7,13 +7,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
     <title>后台管理系统</title>
-    <link href="<%=basePath%>style/admin/backstage/css/pintuer.css" rel="stylesheet">
-    <link href="<%=basePath%>style/admin/backstage/css/admin.css" rel="stylesheet">
+    <jsp:include page="../tools/style/admin_common.jsp"></jsp:include>
 
-    <script src="<%=basePath%>style/admin/backstage/js/jquery.js"></script>
-    <script src="<%=basePath%>style/admin/backstage/js/pintuer.js"></script>
     <script>
         function escapeFrame(){
             if (window.top.location.href != window.location.href) {
@@ -21,7 +17,6 @@
             }
         }
     </script>
-
 </head>
 
 <body onload="escapeFrame()">
@@ -49,13 +44,6 @@
                                 <span class="icon icon-key margin-small"></span>
                             </div>
                         </div>
-                        <%--<div class="form-group">
-                            <div class="field">
-                                <input type="text" class="input input-big" name="code" placeholder="填写右侧的验证码" data-validate="required:请填写右侧的验证码" />
-                                <img src="<%=basePath%>style/admin/backstage/images/passcode.jpg" alt="" width="100" height="32" class="passcode" style="height:43px;cursor:pointer;" onclick="this.src=this.src+'?'">
-
-                            </div>
-                        </div>--%>
                     </div>
                     <div style="padding:30px;"><input type="submit" class="button button-block bg-main text-big input-big" value="登录"></div>
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
