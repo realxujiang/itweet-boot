@@ -101,9 +101,9 @@
 </div>
 <!--END of content-->
 
+
 <!--This is the START of the follow section-->
 <jsp:include page="tools/panel.jsp"></jsp:include>
-
 
 </body>
 

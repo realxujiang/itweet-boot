@@ -11,7 +11,7 @@
     <div id="main-menu">
         <ul>
             <li>
-                <a class="${home}" href="<%=basePath%>/">Home</a>
+                <a class="${home}" href="<%=basePath%>/">Home →</a>
             </li>
             <li>
                 <a class="${about}" href="<%=basePath%>/about">About</a>
