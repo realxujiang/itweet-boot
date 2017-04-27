@@ -8,7 +8,7 @@
 <html>
 
 <head>
-	<title>About</title>
+	<title>Index</title>
 	<meta charset="UTF-8">
 
 	<link rel="stylesheet" type="text/css" href="<%=basePath%>/css/style.css" />
@@ -34,11 +34,11 @@
 <div id="header-wrapper">
 	<div id="header">
 		<div id="logo">
-			<a href="index.html"><img src="<%=basePath%>/images/logo.png" width="100" height="80" alt="logo" /></a>
+			<a href="/"><img src="<%=basePath%>/images/logo.png" width="100" height="80" alt="logo" /></a>
 		</div>
 		<div id="header-text">
-			<h4>So want to know more about our creative team?</h4>
-			<h6><a href="index.html">Home</a> → About</h6>
+			<h4>We make a bunch of cool stuff, have a look around!</h4>
+			<h6><a href="/">Home</a></h6>
 		</div>
 	</div>
 </div>
@@ -48,22 +48,22 @@
 	<div id="main-menu">
 		<ul>
 			<li>
-				<a href="index.html">Home</a>
+				<a class="selected" href="/">Home →</a>
 			</li>
 			<li>
-				<a class="selected" href="about.html">About →</a>
+				<a href="/about">About</a>
 			</li>
 			<li>
-				<a href="portfolio.html">Portfolio</a>
+				<a href="/portfolio">Portfolio</a>
 			</li>
 			<li>
-				<a href="blog.html">Blog</a>
+				<a href="/blog">Blog</a>
 			</li>
 			<li>
-				<a href="contact.html">Contact</a>
+				<a href="/contact">Contact</a>
 			</li>
 			<li>
-				<a href="features.html">Features</a>
+				<a href="/features">Features</a>
 			</li>
 		</ul>
 	</div>
@@ -92,26 +92,74 @@
 	<!--END of footer-->
 </div>
 <!--END of menu-->
+
 <!--This is the START of the content-->
 <div id="content">
+	<!--This is the START of the NIVO slider-->
+	<div class="slider-wrapper theme-effe">
+		<div id="slider" class="nivoSlider"> <img src="<%=basePath%>/images/slider/slide1.jpg" alt="" title="#img1" /> <img src="<%=basePath%>/images/slider/slide2.jpg" alt="" title="#img2" /> <img src="<%=basePath%>/images/slider/slide3.jpg" alt="" title="#img3" /> <img src="<%=basePath%>/images/slider/slide4.jpg" alt="" title="#img4" /> </div>
+	</div>
+	<!--END of NIVO Slider-->
+	<!--This is the START of the recent posts-->
 	<div class="spacer"></div>
-	<div class="team-text">
-		<h2>This is a bit about me...</h2>
+	<div id="recent-text">
+		<h2>These are some of our latest posts...</h2>
 		<div class="star-divider"></div>
-		<h5>You can check me out via my social links!</h5>
-	</div>
-	<div class="spacer"></div>
-	<div class="about">
-		<h5>I make some sweet designs.</h5>
-		<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel Dapibus id, mattis vel, nisi. Sed pretium, ligula sollici tudin ot justo. Suspendisse potenti.Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor liber sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti.Sed egestas, ante et vulputate volutpat</p>
+		<h5>You can check them out in our blog section!</h5>
 		<div class="spacer"></div>
-		<h5>And I offer design packages for you!</h5>
-		<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel Dapibus id, mattis vel, nisi. Sed pretium, ligula sollici tudin ot justo. Suspendisse potenti.Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
-		<a class="single_image" href="<%=basePath%>/images/about/large/pricing-table.jpg"><img src="<%=basePath%>/images/about/large/pricing-table.jpg" width="720" height="500" alt="pricing" /></a>
 	</div>
-	<div class="spacer"></div>
+	<div id="recent-posts-container">
+		<div class="section-description">
+			<h5>Recent posts</h5>
+			<p>Here you can find some of our most recent and fresh content...</p>
+		</div>
+		<div class="recent-summary">
+			<div class="recent-item">
+				<a class="single_image" href="<%=basePath%>/images/blog/large/recent1.jpg"><img src="<%=basePath%>/images/blog/thumbs/recent1.jpg" width="250" height="150" alt="recent1" /></a>
+				<h6>NYC</h6>
+				<p>On a scooter?
+					<a class="readmore" href="blog.html">read more →</a>
+				</p>
+			</div>
+			<div class="recent-item-last">
+				<a class="single_image" href="<%=basePath%>/images/blog/large/recent2.jpg"><img src="<%=basePath%>/images/blog/thumbs/recent2.jpg" width="250" height="150" alt="recent2" /></a>
+				<h6>Feathers</h6>
+				<p>Could drop some lorem here.
+					<a class="readmore" href="blog.html">read more →</a>
+				</p>
+			</div>
+		</div>
+		<!--END of recent posts-->
+		<!--This is the START of the recent projects-->
+		<div id="recent-projects-container">
+			<div class="section-description">
+				<h5>Recent projects</h5>
+				<p>These are some of our latest projects, some nice stuff in here...</p>
+			</div>
+			<div class="recent-summary">
+				<div class="recent-item">
+					<a class="single_image" href="<%=basePath%>/images/portfolio/thumbs/recent1.jpg"><img src="<%=basePath%>/images/portfolio/thumbs/recent1.jpg" width="250" height="150" alt="recent1" /></a>
+					<h6>Moo Minicards</h6>
+					<p>Kinda sweet huh?
+						<a class="readmore" href="portfolio.html">read more →</a>
+					</p>
+				</div>
+				<div class="recent-item-last">
+					<a class="single_image" href="<%=basePath%>/images/portfolio/thumbs/recent2.jpg"><img src="<%=basePath%>/images/portfolio/thumbs/recent2.jpg" width="250" height="150" alt="recent2" /></a>
+					<h6>Right off the press!</h6>
+					<p>Could drop some lorem here.
+						<a class="readmore" href="portfolio.html">read more →</a>
+					</p>
+				</div>
+			</div>
+			<!--END of recent projects-->
+			<div class="spacer"></div>
+			<!--END of content-->
+		</div>
+	</div>
 </div>
 <!--END of content-->
+
 <p class="slide">
 	<a href="#" class="btn-slide"></a>
 </p>

@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class EffeController {
 
     @GetMapping(value = "/")
-    public String home() {
-        return "front/theme/effe/home";
+    public String index() {
+        return "front/theme/effe/index";
     }
 
     @GetMapping(value = "/about")
