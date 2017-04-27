@@ -66,9 +66,9 @@
             <div class="col-xs-6 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
 
                 <select id="columnd" name="columnd" value="${form.columnd}" style="width:360px;height:35px;border-radius: 5px;" class="chosen-select-no-results" tabindex="10">
-                    <option value="cover">封面</option>
-                    <option value="article">文章</option>
-                    <option value="index">首页</option>
+                    <option value="cover" <c:if test="${form.columnd eq 'cover'}">selected="selected"</c:if>>封面</option>
+                    <option value="article"  <c:if test="${form.columnd eq 'article'}">selected="selected"</c:if>>文章</option>
+                    <option value="index" <c:if test="${form.columnd eq 'index'}">selected="selected"</c:if>>首页</option>
                 </select>
 
             </div>

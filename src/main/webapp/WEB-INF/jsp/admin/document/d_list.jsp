@@ -28,9 +28,9 @@
                     <li>
                         <label>栏目查询</label>
                         <select id="columnd" name="columnd" style="width:65px;border-radius: 5px;" class="chosen-select-no-results" tabindex="10">
-                            <option value="cover">封面</option>
-                            <option value="article">文章</option>
-                            <option value="index">首页</option>
+                            <option value="cover" <c:if test="${columnd eq 'cover'}">selected="selected"</c:if>>封面</option>
+                            <option value="article"  <c:if test="${columnd eq 'article'}">selected="selected"</c:if>>文章</option>
+                            <option value="index" <c:if test="${columnd eq 'index'}">selected="selected"</c:if>>首页</option>
                         </select>
                     </li>
                     <li><label>&nbsp;</label><input type="submit" class="scbtn" value="查询" /></li>

@@ -27,7 +27,7 @@
                     <th>菜单名称</th>
                     <th>链接</th>
                     <th>描述</th>
-                    <th>操作</th>
+                    <%--<th>操作</th>--%>
                 </tr>
                 </thead>
                 <tbody>
@@ -38,10 +38,10 @@
                         <td>${permission.name}</td>
                         <td>${permission.url}</td>
                         <td>${permission.descritpion}</td>
-                        <td>
+                       <%-- <td>
                             <a href="<%=basePath%>/admin/permission/edit/${permission.id}" class="tablelink">修改</a>
                             <a href="<%=basePath%>/admin/permission/delete/${permission.id}" class="tablelink" onclick="return del()"> 删除</a>
-                        </td>
+                        </td>--%>
                     </tr>
                 </c:forEach>
                 </tbody>
