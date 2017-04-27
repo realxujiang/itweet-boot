@@ -76,7 +76,7 @@
     });
 </script>
 <ul class="bread">
-	<li><a href="{:U('Index/info')}" target="right" class="icon-home"> 首页</a></li>
+	<li><a href="<%=basePath%>admin/system/body" target="right" class="icon-home"> 首页</a></li>
 	<li><a href="##" id="a_leader_txt">网站信息</a></li>
 </ul>
 <div class="admin">

@@ -65,7 +65,7 @@
     <div class="row">
         <div class="col-xs-6 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
 
-            <select id="columnd" name="columnd" style="width:360px;height:35px;border-radius: 5px;" class="chosen-select-no-results" tabindex="10">
+            <select id="columnd" name="columnd" style="width:100%;height:35px;min-width: 120px; border-radius: 5px;" class="chosen-select-no-results" tabindex="10">
                 <option value="cover" selected="selected">封面</option>
                 <option value="article">文章</option>
                 <option value="index">首页</option>
