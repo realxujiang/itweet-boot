@@ -12,7 +12,6 @@
 	<title>Home</title>
 	<jsp:include page="tools/style.jsp"></jsp:include>
 </head>
-
 <body>
 <!--This is the START of the header-->
 <div id="topcontrol" style="position: fixed; bottom: 5px; left: 960px; opacity: 1; cursor: pointer;" title="Go to Top"></div>
@@ -22,13 +21,12 @@
 			<a href="<%=URL%>/"><img src="<%=basePath%>/images/logo.png" width="100" height="80" alt="logo" /></a>
 		</div>
 		<div id="header-text">
-			<h4>We make a bunch of cool stuff, have a look around!</h4>
+			<h4>You are already naked. There is no reason not to follow your heart!</h4>
 			<h6><a href="<%=URL%>/">Home</a></h6>
 		</div>
 	</div>
 </div>
 <!--END of header-->
-
 
 <!--This is the START of the menu-->
 <jsp:include page="tools/menu.jsp"></jsp:include>
@@ -36,71 +34,78 @@
 
 <!--This is the START of the content-->
 <div id="content">
+
 	<!--This is the START of the NIVO slider-->
 	<div class="slider-wrapper theme-effe">
-		<div id="slider" class="nivoSlider"> <img src="<%=basePath%>/images/slider/slide1.jpg" alt="" title="#img1" /> <img src="<%=basePath%>/images/slider/slide2.jpg" alt="" title="#img2" /> <img src="<%=basePath%>/images/slider/slide3.jpg" alt="" title="#img3" /> <img src="<%=basePath%>/images/slider/slide4.jpg" alt="" title="#img4" /> </div>
+		<div id="slider" class="nivoSlider">
+			<c:forEach items="${documentList}" var="document">
+				<img src="<%=URL%>/upload/files/${document.ruleFilename}" alt="" title="#img1" />
+			</c:forEach>
+		</div>
 	</div>
 	<!--END of NIVO Slider-->
+
 	<!--This is the START of the recent posts-->
 	<div class="spacer"></div>
 	<div id="recent-text">
-		<h2>These are some of our latest posts...</h2>
+		<h2 style="font-family: 'Xingkai TC'">我最近的一些作品 . . .</h2>
 		<div class="star-divider"></div>
-		<h5>You can check them out in our blog section!</h5>
+		<h5 style="font-family: STXingkai">跟踪我的最新动态！</h5>
 		<div class="spacer"></div>
 	</div>
 	<div id="recent-posts-container">
 		<div class="section-description">
-			<h5>Recent posts</h5>
-			<p>Here you can find some of our most recent and fresh content...</p>
+			<h5 style="font-family: 'Xingkai TC'">最近的帖子</h5>
+			<p>这里你可以学习到有关云计算、大数据、行业最新技术以及我们生产环境的使用经验 . . . </p>
 		</div>
 		<div class="recent-summary">
 			<div class="recent-item">
-				<a class="single_image" href="<%=basePath%>/images/blog/large/recent1.jpg"><img src="<%=basePath%>/images/blog/thumbs/recent1.jpg" width="250" height="150" alt="recent1" /></a>
-				<h6>NYC</h6>
-				<p>On a scooter?
-					<a class="readmore" href="blog.html">read more →</a>
+				<a class="single_image" href="<%=URL%>/upload/files/${articleFirst.coverPicture}"><img src="<%=URL%>/upload/files/${articleFirst.coverPicture}" width="250" height="150" alt="recent1" /></a>
+				<h6 style="font-family: 'Xingkai TC'">${articleFirst.title}</h6>
+				<p>${articleFirst.description}
+					<a class="readmore" href="/blog">阅读更多 →</a>
 				</p>
 			</div>
 			<div class="recent-item-last">
-				<a class="single_image" href="<%=basePath%>/images/blog/large/recent2.jpg"><img src="<%=basePath%>/images/blog/thumbs/recent2.jpg" width="250" height="150" alt="recent2" /></a>
-				<h6>Feathers</h6>
-				<p>Could drop some lorem here.
-					<a class="readmore" href="blog.html">read more →</a>
+				<a class="single_image" href="<%=URL%>/upload/files/${articleLast.coverPicture}"><img src="<%=URL%>/upload/files/${articleLast.coverPicture}" width="250" height="150" alt="recent2" /></a>
+				<h6 style="font-family: 'Xingkai TC'">${articleLast.title}</h6>
+				<p>${articleLast.description}
+					<a class="readmore" href="/blog">阅读更多 →</a>
 				</p>
 			</div>
 		</div>
 		<!--END of recent posts-->
+
 		<!--This is the START of the recent projects-->
 		<div id="recent-projects-container">
 			<div class="section-description">
-				<h5>Recent projects</h5>
-				<p>These are some of our latest projects, some nice stuff in here...</p>
+				<h5 style="font-family: 'Xingkai TC'">最近的项目</h5>
+				<p>关于我们做的一些最新的开源项目，主要包括云计算、大数据、JavaWeb相关的内容，以及文档、视频教程 . . . </p>
 			</div>
 			<div class="recent-summary">
 				<div class="recent-item">
 					<a class="single_image" href="<%=basePath%>/images/portfolio/thumbs/recent1.jpg"><img src="<%=basePath%>/images/portfolio/thumbs/recent1.jpg" width="250" height="150" alt="recent1" /></a>
-					<h6>Moo Minicards</h6>
-					<p>Kinda sweet huh?
-						<a class="readmore" href="portfolio.html">read more →</a>
+					<h6 style="font-family: 'Xingkai TC'">个人博客</h6>
+					<p>艺术感十足?
+						<a class="readmore" href="/portfolio">阅读更多 →</a>
 					</p>
 				</div>
 				<div class="recent-item-last">
 					<a class="single_image" href="<%=basePath%>/images/portfolio/thumbs/recent2.jpg"><img src="<%=basePath%>/images/portfolio/thumbs/recent2.jpg" width="250" height="150" alt="recent2" /></a>
-					<h6>Right off the press!</h6>
-					<p>Could drop some lorem here.
-						<a class="readmore" href="portfolio.html">read more →</a>
+					<h6 style="font-family: 'Xingkai TC'">ENTERPRISE_HADOOP_SOLUTIONS</h6>
+					<p>[视频]企业级Hadoop解决方案教程.
+						<a class="readmore" href="/portfolio">阅读更多 →</a>
 					</p>
 				</div>
 			</div>
 			<!--END of recent projects-->
+
 			<div class="spacer"></div>
 			<!--END of content-->
 		</div>
 	</div>
 </div>
 <!--END of content-->
-
 
 <!--This is the START of the follow section-->
 <jsp:include page="tools/panel.jsp"></jsp:include>

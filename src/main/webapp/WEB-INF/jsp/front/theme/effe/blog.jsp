@@ -38,66 +38,24 @@
 <div id="content">
     <!--This is the START of the blog section-->
     <div id="blog">
-        <div class="blog-item">
-            <a href="blog-single.html"><img class="single_image" src="<%=basePath%>/images/blog/thumbs/blog1.jpg" width="280" height="180" alt="blog1" /></a>
-            <div class="blog-item-info">
-                <div class="user">admin</div>
-                <div class="comments">6 comments</div>
-                <div class="tags">psd news blog post</div>
-            </div>
-            <div class="blog-item-content">
-                <a href="blog-single.html">
-                    <h5>This is our first juicy tidbit</h5>
-                </a>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                <a class="readmore" href="blog-single.html">read more →</a> <br />
-            </div>
-        </div>
-        <div class="blog-item">
-            <a href="blog-single.html"><img class="single_image" src="<%=basePath%>/images/blog/thumbs/blog2.jpg" width="280" height="180" alt="blog2" /></a>
-            <div class="blog-item-content">
+        <c:forEach items="${listArticle.content}" var="article">
+            <div class="blog-item">
+                <a href="/blogSingle"><img class="single_image" src="<%=URL%>/upload/files/${article.coverPicture}" width="280" height="180" alt="blog1" /></a>
                 <div class="blog-item-info">
-                    <div class="user">admin</div>
+                    <div class="user">${article.author}</div>
                     <div class="comments">6 comments</div>
                     <div class="tags">psd news blog post</div>
                 </div>
-                <a href="blog-single.html">
-                    <h5>Another one is here</h5>
-                </a>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                <a class="readmore" href="blog-single.html">read more →</a> <br />
+                <div class="blog-item-content">
+                    <a href="/blogSingle">
+                        <h5>${article.title}</h5>
+                    </a>
+                    <p>${article.description}</p>
+                    <a class="readmore" href="/blogSingle">阅读更多 →</a> <br />
+                </div>
             </div>
-        </div>
-        <div class="blog-item">
-            <a href="blog-single.html"><img class="single_image" src="<%=basePath%>/images/blog/thumbs/blog3.jpg" width="280" height="180" alt="blog3" /></a>
-            <div class="blog-item-info">
-                <div class="user">admin</div>
-                <div class="comments">6 comments</div>
-                <div class="tags">psd news blog post</div>
-            </div>
-            <div class="blog-item-content">
-                <a href="blog-single.html">
-                    <h5>And this is the last of our blog</h5>
-                </a>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                <a class="readmore" href="blog-single.html">read more →</a> <br />
-            </div>
-        </div>
-        <div class="blog-item">
-            <a href="blog-single.html"><img class="single_image" src="<%=basePath%>/images/blog/thumbs/blog4.jpg" width="280" height="180" alt="blog4" /></a>
-            <div class="blog-item-info">
-                <div class="user">admin</div>
-                <div class="comments">3 comments</div>
-                <div class="tags">psd news blog post</div>
-            </div>
-            <div class="blog-item-content">
-                <a href="blog-single.html">
-                    <h5>Captain we need more power!</h5>
-                </a>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                <a class="readmore" href="blog-single.html">read more →</a> <br />
-            </div>
-        </div>
+        </c:forEach>
+
         <div id="pagination">
             <a class="active" href="#">1</a>
             <a href="#">2</a>

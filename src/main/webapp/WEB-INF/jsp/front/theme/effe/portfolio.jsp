@@ -43,59 +43,59 @@
     <div id="container">
         <ul id="stage">
             <li data-tags="Print Design">
-                <a href="project-sample.html"><img src="<%=basePath%>/images/portfolio/thumbs/image(1).jpg" alt="Illustration" /></a>
+                <a href="/projectSample"><img src="<%=basePath%>/images/portfolio/thumbs/image(1).jpg" alt="Illustration" /></a>
                 <h6>Helvetica</h6>
                 <p>Kinda sweet huh?
-                    <a class="readmore" href="project-sample.html">view →</a>
+                    <a class="readmore" href="/projectSample">view →</a>
                 </p>
             </li>
             <li data-tags="Logo Design,Print Design">
-                <a href="project-sample.html"><img src="<%=basePath%>/images/portfolio/thumbs/image(2).jpg" alt="Illustration" /></a>
+                <a href="/projectSample"><img src="<%=basePath%>/images/portfolio/thumbs/image(2).jpg" alt="Illustration" /></a>
                 <h6>Typography</h6>
                 <p>Lorem ipsum here.
-                    <a class="readmore" href="project-sample.html">view →</a>
+                    <a class="readmore" href="/projectSample">view →</a>
                 </p>
             </li>
             <li data-tags="Web Design,Logo Design">
-                <a href="project-sample.html"><img src="<%=basePath%>/images/portfolio/thumbs/image(3).jpg" alt="Illustration" /></a>
+                <a href="/projectSample"><img src="<%=basePath%>/images/portfolio/thumbs/image(3).jpg" alt="Illustration" /></a>
                 <h6>Ideas</h6>
                 <p>A light bulb!
-                    <a class="readmore" href="project-sample.html">view →</a>
+                    <a class="readmore" href="/projectSample">view →</a>
                 </p>
             </li>
             <li data-tags="Web Design,Print Design">
-                <a href="project-sample.html"><img src="<%=basePath%>/images/portfolio/thumbs/image(4).jpg" alt="Illustration" /></a>
+                <a href="/projectSample"><img src="<%=basePath%>/images/portfolio/thumbs/image(4).jpg" alt="Illustration" /></a>
                 <h6>Rockable press</h6>
                 <p>Best books around.
-                    <a class="readmore" href="project-sample.html">view →</a>
+                    <a class="readmore" href="/projectSample">view →</a>
                 </p>
             </li>
             <li data-tags="Logo Design">
-                <a href="project-sample.html"><img src="<%=basePath%>/images/portfolio/thumbs/image(5).jpg" alt="Illustration" /></a>
+                <a href="/projectSample"><img src="<%=basePath%>/images/portfolio/thumbs/image(5).jpg" alt="Illustration" /></a>
                 <h6>Moo Cards</h6>
                 <p>Gotta lovem'.
-                    <a class="readmore" href="project-sample.html">view →</a>
+                    <a class="readmore" href="/projectSample">view →</a>
                 </p>
             </li>
             <li data-tags="Web Design,Logo Design,Print Design">
-                <a href="project-sample.html"><img src="<%=basePath%>/images/portfolio/thumbs/image(6).jpg" alt="Illustration" /></a>
+                <a href="/projectSample"><img src="<%=basePath%>/images/portfolio/thumbs/image(6).jpg" alt="Illustration" /></a>
                 <h6>Moo Minicards</h6>
                 <p>So small and cool.
-                    <a class="readmore" href="project-sample.html">view →</a>
+                    <a class="readmore" href="/projectSample">view →</a>
                 </p>
             </li>
             <li data-tags="Logo Design,Print Design">
-                <a href="project-sample.html"><img src="<%=basePath%>/images/portfolio/thumbs/image(7).jpg" alt="Illustration" /></a>
+                <a href="/projectSample"><img src="<%=basePath%>/images/portfolio/thumbs/image(7).jpg" alt="Illustration" /></a>
                 <h6>Moo Printing</h6>
                 <p>Is inside.
-                    <a class="readmore" href="project-sample.html">view →</a>
+                    <a class="readmore" href="/projectSample">view →</a>
                 </p>
             </li>
             <li data-tags="Web Design">
-                <a href="project-sample.html"><img src="<%=basePath%>/images/portfolio/thumbs/image(8).jpg" alt="Illustration" /></a>
+                <a href="/projectSample"><img src="<%=basePath%>/images/portfolio/thumbs/image(8).jpg" alt="Illustration" /></a>
                 <h6>Just say it!</h6>
                 <p>Printed.
-                    <a class="readmore" href="project-sample.html">view →</a>
+                    <a class="readmore" href="/projectSample">view →</a>
                 </p>
             </li>
         </ul>

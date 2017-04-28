@@ -20,7 +20,7 @@
                 <a class="${portfolio}" href="<%=basePath%>/portfolio">Portfolio</a>
             </li>
             <li>
-                <a class="${blog}" href="<%=basePath%>/blogArticle">Blog</a>
+                <a class="${blog}" href="<%=basePath%>/blog">Blog</a>
             </li>
             <li>
                 <a class="${contact}" href="<%=basePath%>/contact">Contact</a>
@@ -51,6 +51,7 @@
                 </li>
             </ul>
         </div>
+        <h6>Copyright © 2017 - effe</h6>
     </div>
     <!--END of footer-->
 </div>

@@ -12,7 +12,7 @@ import java.util.Map;
  * Created by whoami on 17/04/2017.
  */
 public interface ArticleService {
-    Page<Article> list(Pageable pageable);
+    Page<Article> list(Integer page);
 
     Page<Article> searchByTitle(Pageable pageable, String title);
 

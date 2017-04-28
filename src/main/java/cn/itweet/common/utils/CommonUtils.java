@@ -56,13 +56,6 @@ public class CommonUtils {
     public static List<Integer>  getAggrandizeElements(List<Integer> obj,List<Integer> dbElems) {
         List<Integer> intersectionElements = getIntersectionElements(obj, dbElems);
         List<Integer> aggElems = getNoDuplicateElems(obj, intersectionElements);
-//        for (int i=0; i < obj.size(); i++) {
-//            for (int j=0; j<intersectionElements.size(); j++) {
-//                if (obj.get(i) == intersectionElements.get(j)) {
-//                    obj.remove(i);
-//                }
-//            }
-//        }
         return aggElems;
     }
 

@@ -95,7 +95,7 @@
 						<div class="btn btn-default image-preview-input">
 							<span class="glyphicon glyphicon-folder-open"></span>
 							<span class="image-preview-input-title">Browse</span>
-							<input type="file" accept="image/png, image/jpeg, image/gif" name="file" />
+							<input type="file" accept="image/png, image/jpeg, image/gif, image/jpg" name="file" />
 						</div>
                 </span>
             </div>

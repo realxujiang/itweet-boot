@@ -4,12 +4,8 @@
 //** 1) Adds ability to scroll to an absolute position (from top of page) or specific element on the page instead.
 //** 2) Fixes scroll animation not working in Opera. 
 
+
 var scrolltotop={
-
-
-
-
-
 	//startline: Integer. Number of pixels from top of doc scrollbar is scrolled before showing control
 	//scrollto: Keyword (Integer, or "Scroll_to_Element_ID"). How far to scroll document up when control is clicked on (0=top).
 	setting: {startline:100, scrollto: 0, scrollduration:1000, fadeduration:[500, 100]},

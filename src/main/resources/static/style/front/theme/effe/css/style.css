@@ -1,6 +1,14 @@
 /******************************************************************
 *******************************************************************
 
+Template Name: Effe
+Theme URI: http://www.92five.net
+Description: Personal Blog
+Author: 92five
+Author URI: http://www.92five.net
+Version: 1.0
+							
+Designed & Handcrafted by 92five for 92five.net
 									
 *******************************************************************
 ******************************************************************/
@@ -38,7 +46,6 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-.copyrights{text-indent:-9999px;height:0;line-height:0;font-size:0;overflow:hidden;}
 /******************************************************************
 TEXT SELECTION STYLES
 ******************************************************************/
@@ -749,7 +756,7 @@ This CSS is for the project page
 	font-family: 'Droid Serif', Verdana, Arial, sans-serif;
 }
 /******************************************************************
-Article CSS
+Blog CSS
 ******************************************************************/
 
 #blog {

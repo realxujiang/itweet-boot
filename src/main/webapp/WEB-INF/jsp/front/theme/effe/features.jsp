@@ -39,14 +39,14 @@
     <div id="features">
         <div class="spacer"></div>
         <div id="recent-text1">
-            <h2>The little plus sign in the top right corner...</h2>
+            <h2 style="text-align: center">The little plus sign in the top right corner...</h2>
             <img class="star-divider" src="<%=basePath%>/images/subscribe_divider.png" />
-            <h5>It can hold any HTML you want!</h5>
+            <h5 style="text-align: center">It can hold any HTML you want!</h5>
         </div>
         <div class="spacer"></div>
         <div id="recent-text2">
-            <h2>This is a sample fancybox gallery...</h2>
-            <h5>You can add more galleries easily!</h5>
+            <h2 style="text-align: center">This is a sample fancybox gallery...</h2>
+            <h5 style="text-align: center">You can add more galleries easily!</h5>
         </div>
         <div class="recent-gallery">
             <a class="single_image" href="<%=basePath%>/images/gallery/large/img1.jpg"><img src="<%=basePath%>/images/gallery/thumbs/img1.jpg" width="160" height="96" alt="portfolio1" /></a>

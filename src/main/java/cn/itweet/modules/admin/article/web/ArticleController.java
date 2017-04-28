@@ -9,12 +9,15 @@ import cn.itweet.modules.admin.article.entity.Categories;
 import cn.itweet.modules.admin.article.service.article.ArticleService;
 import cn.itweet.modules.admin.article.service.categories.CategoriesService;
 import cn.itweet.modules.admin.article.service.tag.TagService;
+import cn.itweet.modules.admin.document.entiry.Document;
 import cn.itweet.modules.admin.document.service.StorageService;
 import cn.itweet.modules.admin.user.entity.SysUser;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -54,6 +57,7 @@ public class ArticleController {
     @Autowired
     private ItweetProperties itweetProperties;
 
+
     /**
      *文章列表
      * @param page
@@ -63,9 +67,9 @@ public class ArticleController {
      */
     @RequestMapping(value = "/list",method = RequestMethod.GET)
     public String list(@RequestParam(value = "page", defaultValue = "0") Integer page, @RequestParam(value = "pageSize", defaultValue = "10") Integer pageSize, Model model) {
-        if(page !=0)page = page -1;
+        if(page !=0) page = page -1;
 
-        Page<Article> articleList = articleService.list(new PageRequest(page, pageSize));
+        Page<Article> articleList = articleService.list(page);
         model.addAttribute("articleList",articleList);
 
         PageUtils pageUtils = new PageUtils("/admin/article/list?",page,articleList.getTotalPages(),articleList.getTotalElements(),pageSize);
@@ -157,7 +161,6 @@ public class ArticleController {
     @RequestMapping(value = "/edit",method = RequestMethod.POST)
     public String edit(@RequestParam  String tagNames,@RequestParam(value = "categoriesId") Integer categoriesId,Model model,Article article) {
         try {
-            System.out.println(article.getCoverPicture());
             articleService.update(article,tagNames,categoriesId);
         } catch (SystemException e) {
             model.addAttribute("form",article);

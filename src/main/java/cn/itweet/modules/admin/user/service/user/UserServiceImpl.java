@@ -92,7 +92,7 @@ public class UserServiceImpl implements UserService {
         if (user.getId() == null)
             throw new SystemException("更新失败，要更新的用户ID不能为空！");
 
-        if (userRepository.findByUsername(user.getUsername()) == null)
+        if (userRepository.findByUsername(user.getUsername()) != null)
             throw new SystemException("更新失败，要更新的用户名已经存在！");
 
         SysUser u1 = userRepository.findOne(user.getId());

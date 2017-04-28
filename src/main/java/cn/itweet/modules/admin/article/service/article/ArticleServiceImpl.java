@@ -2,6 +2,8 @@ package cn.itweet.modules.admin.article.service.article;
 
 import cn.itweet.common.exception.SystemException;
 import cn.itweet.common.utils.CommonUtils;
+import cn.itweet.common.utils.SimplePageBuilder;
+import cn.itweet.common.utils.SimpleSortBuilder;
 import cn.itweet.modules.admin.article.entity.Article;
 import cn.itweet.modules.admin.article.entity.ArticleCategories;
 import cn.itweet.modules.admin.article.entity.ArticleTag;
@@ -37,8 +39,8 @@ public class ArticleServiceImpl implements ArticleService {
     private TagRepository tagRepository;
 
     @Override
-    public Page<Article> list(Pageable pageable) {
-        return articleRepository.findAll(pageable);
+    public Page<Article> list(Integer page) {
+        return articleRepository.findAll(SimplePageBuilder.generate(page, SimpleSortBuilder.generateSort("createDate_d")));
     }
 
     @Override
@@ -141,7 +143,6 @@ public class ArticleServiceImpl implements ArticleService {
         oldArt.setTitle(article.getTitle());
         oldArt.setDescription(article.getDescription());
         oldArt.setUpdateDate(new Date());
-        System.out.println(article.getCoverPicture());
         oldArt.setCoverPicture(article.getCoverPicture());
         articleRepository.save(oldArt);
     }

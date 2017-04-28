@@ -40,7 +40,7 @@ public class ArticleServiceTests {
         // listTest();
         // searchByTitileTest();
 
-        updateTest();
+        // updateTest();
 
         // deleteByTitleTest();
         // deleteByIdTest();
@@ -70,7 +70,7 @@ public class ArticleServiceTests {
     }
 
     private void listTest() {
-        List<Article> articleList = articleService.list(new PageRequest(0,10)).getContent();
+        List<Article> articleList = articleService.list(0).getContent();
         Assert.assertEquals(1,articleList.size());
     }
 
