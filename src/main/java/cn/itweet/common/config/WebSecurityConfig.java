@@ -36,7 +36,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         web
                 .ignoring()
                 // Spring Security should completely ignore URLs starting with /resources/
-                .antMatchers("/resources/*","/style/**","/blog/**");
+                .antMatchers("/resources/*","/style/**","/blog/*","/blog/**","/upload/**");
     }
 
     @Override
@@ -50,7 +50,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 csrf().disable().headers().frameOptions().disable();
         http
                 .authorizeRequests()
-                .antMatchers("/admin/login", "/blog/**","/*").permitAll()
+                .antMatchers("/admin/login","/*","/blog/*").permitAll()
                 .anyRequest().authenticated() //任何请求,登录后可以访问
                 .and()
                 .formLogin()

@@ -891,6 +891,10 @@ Blog CSS
 	text-align: left;
 	padding-bottom: 20px;
 }
+.blog-item-single-content img{
+	width: 720px;
+	height: auto;
+}
 .social-blog-buttons {
 	display: inline;
 	float: left;

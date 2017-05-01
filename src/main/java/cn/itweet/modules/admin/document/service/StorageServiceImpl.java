@@ -19,6 +19,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by whoami on 22/04/2017.
@@ -154,6 +155,11 @@ public class StorageServiceImpl implements StorageService {
     public void deleteAll(String filePath) {
         FileSystemUtils.deleteRecursively(new File(filePath));
         documentRepository.deleteAll();
+    }
+
+    @Override
+    public List<Document> getNewDocumentTopN(String columd, Integer topN) {
+        return documentRepository.getNewDocumentTopN(columd,topN);
     }
 
 }

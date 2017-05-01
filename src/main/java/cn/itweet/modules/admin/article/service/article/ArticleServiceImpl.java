@@ -12,10 +12,10 @@ import cn.itweet.modules.admin.article.repository.ArticleCategoriesRepository;
 import cn.itweet.modules.admin.article.repository.ArticleRepository;
 import cn.itweet.modules.admin.article.repository.ArticleTagRepository;
 import cn.itweet.modules.admin.article.repository.TagRepository;
+import cn.itweet.modules.admin.article.utils.ArticleDto;
 import cn.itweet.modules.admin.article.utils.ArticleUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -39,8 +39,13 @@ public class ArticleServiceImpl implements ArticleService {
     private TagRepository tagRepository;
 
     @Override
-    public Page<Article> list(Integer page) {
-        return articleRepository.findAll(SimplePageBuilder.generate(page, SimpleSortBuilder.generateSort("createDate_d")));
+    public Page<ArticleDto> list(Integer page) {
+        return articleRepository.list(SimplePageBuilder.generate(page, SimpleSortBuilder.generateSort("createDate_d")));
+    }
+
+    @Override
+    public Page<ArticleDto> list(Integer page,Integer state) {
+        return articleRepository.list(SimplePageBuilder.generate(page, SimpleSortBuilder.generateSort("createDate_d")),state);
     }
 
     @Override
@@ -148,8 +153,30 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public Page<Article> searchByTitle(Pageable pageable, String title) {
-        return articleRepository.searchByTitle(pageable,title);
+    public Page<ArticleDto> searchByTitle(Integer page, String title) {
+        return articleRepository.searchByTitle(SimplePageBuilder.generate(page, SimpleSortBuilder.generateSort("createDate_d")),title);
+    }
+
+    @Override
+    public List<String> getArticleTagsByArticleId(Integer articleId) {
+        return articleRepository.getArticleTagsByArticleId(articleId);
+    }
+
+    @Override
+    public List<ArticleDto> getArticleRecentPostsTopN(Integer topNum) {
+        String sql = "select cover_picture,title,SUBSTRING(description,1,20),create_date from article where state=1 order by create_date desc limit "+topNum;
+        List<Object[]> list = articleRepository.listBySQL(sql);
+        List<ArticleDto> articleDtoList = new ArrayList<>();
+        for (int i=0; i<list.size(); i++) {
+            Object[] obj = list.get(i);
+            ArticleDto articleDto = new ArticleDto();
+            articleDto.setCoverPicture((String) obj[0]);
+            articleDto.setTitle((String) obj[1]);
+            articleDto.setDescription((String) obj[2]);
+            articleDto.setCreateDate((Date) obj[3]);
+            articleDtoList.add(articleDto);
+        }
+        return articleDtoList;
     }
 
     @Override

@@ -2,8 +2,8 @@ package cn.itweet.modules.admin.article.service.article;
 
 import cn.itweet.common.exception.SystemException;
 import cn.itweet.modules.admin.article.entity.Article;
+import cn.itweet.modules.admin.article.utils.ArticleDto;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 import java.util.Map;
@@ -12,9 +12,16 @@ import java.util.Map;
  * Created by whoami on 17/04/2017.
  */
 public interface ArticleService {
-    Page<Article> list(Integer page);
 
-    Page<Article> searchByTitle(Pageable pageable, String title);
+    Page<ArticleDto> list(Integer page);
+
+    Page<ArticleDto> list(Integer page,Integer state);
+
+    Page<ArticleDto> searchByTitle(Integer page, String title);
+
+    List<String> getArticleTagsByArticleId(Integer articleId);
+
+    List<ArticleDto> getArticleRecentPostsTopN(Integer topNum);
 
     Article getArticleByTitle(String title);
 

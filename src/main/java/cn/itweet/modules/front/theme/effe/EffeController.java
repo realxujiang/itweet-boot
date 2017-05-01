@@ -1,8 +1,11 @@
 package cn.itweet.modules.front.theme.effe;
 
+import cn.itweet.common.config.ItweetProperties;
 import cn.itweet.common.utils.PageUtils;
 import cn.itweet.modules.admin.article.entity.Article;
 import cn.itweet.modules.admin.article.service.article.ArticleService;
+import cn.itweet.modules.admin.article.utils.ArticleDto;
+import cn.itweet.modules.admin.article.utils.State;
 import cn.itweet.modules.admin.document.entiry.Document;
 import cn.itweet.modules.admin.document.service.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +14,10 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.websocket.server.PathParam;
 import java.util.List;
 
 /**
@@ -27,27 +32,27 @@ public class EffeController {
     @Autowired
     private StorageService storageService;
 
+    @Autowired
+    private ItweetProperties itweetProperties;
+
     @GetMapping(value = "/")
     public String index(Model model) {
         model.addAttribute("home","selected");
 
-        Page<Article> listArticle = articleService.list(0);
+        List<ArticleDto> listArticle = articleService.getArticleRecentPostsTopN(2);
+        model.addAttribute("articleFirst",listArticle.get(0));
+        model.addAttribute("articleLast",listArticle.get(1));
 
-        Article articleLast = listArticle.getContent().get(1);
-
-        model.addAttribute("articleFirst",listArticle.getContent().get(0));
-        model.addAttribute("articleLast",listArticle.getContent().get(1));
-
-        List<Document> documentList = storageService.selectByColumnd(new PageRequest(0,4),"index").getContent();
+        List<Document> documentList = storageService.getNewDocumentTopN("index",4);
         model.addAttribute("documentList",documentList);
 
-        return "/front/theme/effe/home";
+        return "front/theme/effe/home";
     }
 
     @GetMapping(value = "/about")
     public String about(Model model) {
         model.addAttribute("about","selected");
-        return "/front/theme/effe/about";
+        return "front/theme/effe/about";
     }
 
     @GetMapping(value = "/blog")
@@ -55,43 +60,47 @@ public class EffeController {
         if(page != 0) page = page -1;
 
         model.addAttribute("blog","selected");
-        Page<Article> listArticle = articleService.list(page);
+        Page<ArticleDto> listArticle = articleService.list(page, State.getIsPublished());
         model.addAttribute("listArticle",listArticle);
 
-        PageUtils pageUtils = new PageUtils("/bolg?",page,listArticle.getTotalPages(),listArticle.getTotalElements(),10);
+        PageUtils pageUtils = new PageUtils("/bolg?",page,listArticle.getTotalPages(),listArticle.getTotalElements(),itweetProperties.getPagSize());
         model.addAttribute("pb",pageUtils);
 
-        return "/front/theme/effe/blog";
+        return "front/theme/effe/blog";
     }
 
-    @GetMapping(value = "/blogSingle")
-    public String blogSingle(Model model) {
+    @GetMapping(value = "/blog/{year}/{month}/{day}/{title}")
+    public String blogSingle(@PathVariable("year") Integer year,@PathVariable("month") Integer month,@PathVariable("day") Integer day,@PathVariable("title") String title, Model model) {
         model.addAttribute("blog","selected");
-        return "/front/theme/effe/blogSingle";
+        Article article = articleService.getArticleByTitle(title);
+        List<String> tagsList = articleService.getArticleTagsByArticleId(article.getId());
+        model.addAttribute("article",article);
+        model.addAttribute("tagsList",tagsList.toString());
+        return "front/theme/effe/blogSingle";
     }
 
     @GetMapping(value = "/contact")
     public String contact(Model model) {
         model.addAttribute("contact","selected");
-        return "/front/theme/effe/contact";
+        return "front/theme/effe/contact";
     }
 
     @GetMapping(value = "/features")
     public String features(Model model) {
         model.addAttribute("features","selected");
-        return "/front/theme/effe/features";
+        return "front/theme/effe/features";
     }
 
     @GetMapping(value = "/portfolio")
     public String portfolio(Model model) {
         model.addAttribute("portfolio","selected");
-        return "/front/theme/effe/portfolio";
+        return "front/theme/effe/portfolio";
     }
 
     @GetMapping(value = "/projectSample")
     public String projectSample(Model model) {
         model.addAttribute("projectSample","selected");
-        return "/front/theme/effe/projectSample";
+        return "front/theme/effe/projectSample";
     }
 
 }

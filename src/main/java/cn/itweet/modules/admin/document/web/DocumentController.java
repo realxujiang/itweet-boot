@@ -61,7 +61,7 @@ public class DocumentController {
     @RequestMapping(value = "/list",method = RequestMethod.GET)
     public String list(@RequestParam(value = "page", defaultValue = "0") Integer page, @RequestParam(value = "pageSize", defaultValue = "10") Integer pageSize, Model model) {
 
-        if(page !=0)page = page -1;
+        if(page !=0) page = page -1;
 
         Page<Document> documentList = storageService.list(new PageRequest(page, pageSize));
         model.addAttribute("documentList",documentList);

@@ -9,6 +9,7 @@ import cn.itweet.modules.admin.article.entity.Categories;
 import cn.itweet.modules.admin.article.service.article.ArticleService;
 import cn.itweet.modules.admin.article.service.categories.CategoriesService;
 import cn.itweet.modules.admin.article.service.tag.TagService;
+import cn.itweet.modules.admin.article.utils.ArticleDto;
 import cn.itweet.modules.admin.document.entiry.Document;
 import cn.itweet.modules.admin.document.service.StorageService;
 import cn.itweet.modules.admin.user.entity.SysUser;
@@ -69,7 +70,7 @@ public class ArticleController {
     public String list(@RequestParam(value = "page", defaultValue = "0") Integer page, @RequestParam(value = "pageSize", defaultValue = "10") Integer pageSize, Model model) {
         if(page !=0) page = page -1;
 
-        Page<Article> articleList = articleService.list(page);
+        Page<ArticleDto> articleList = articleService.list(page);
         model.addAttribute("articleList",articleList);
 
         PageUtils pageUtils = new PageUtils("/admin/article/list?",page,articleList.getTotalPages(),articleList.getTotalElements(),pageSize);
@@ -81,17 +82,18 @@ public class ArticleController {
     /**
      * 文章按Title查询
      * @param page
-     * @param pageSize
      * @param model
      * @return
      */
     @RequestMapping(value = "/select",method = RequestMethod.GET)
-    public String select(@RequestParam(value = "title") String title, @RequestParam(value = "page", defaultValue = "0") Integer page, @RequestParam(value = "pageSize", defaultValue = "10") Integer pageSize,Model model) {
-        if(page !=0)page = page -1;
-        Page<Article> articleList = articleService.searchByTitle(new PageRequest(page, pageSize),title);
+    public String select(@RequestParam(value = "title") String title, @RequestParam(value = "page", defaultValue = "0") Integer page,Model model) {
+        if(page !=0) page = page -1;
+
+        Page<ArticleDto> articleList = articleService.searchByTitle(page,title);
+
         model.addAttribute("articleList",articleList);
 
-        PageUtils pageUtils = new PageUtils("/admin/article/select?title="+ title+"&",page,articleList.getTotalPages(),articleList.getTotalElements(),pageSize);
+        PageUtils pageUtils = new PageUtils("/admin/article/select?title="+ title+"&",page,articleList.getTotalPages(),articleList.getTotalElements(),itweetProperties.getPagSize());
         model.addAttribute("pb",pageUtils);
 
         model.addAttribute("title",title);

@@ -5,6 +5,7 @@ import cn.itweet.common.exception.SystemException;
 import cn.itweet.modules.admin.article.entity.Article;
 import cn.itweet.modules.admin.article.service.categories.CategoriesService;
 import cn.itweet.modules.admin.article.service.tag.TagService;
+import cn.itweet.modules.admin.article.utils.ArticleDto;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -44,6 +45,11 @@ public class ArticleServiceTests {
 
         // deleteByTitleTest();
         // deleteByIdTest();
+        // getArticleRecentPostsTopNTest();
+    }
+
+    private void getArticleRecentPostsTopNTest() {
+        articleService.getArticleRecentPostsTopN(10);
     }
 
     private void deleteByIdTest() throws SystemException {
@@ -70,7 +76,7 @@ public class ArticleServiceTests {
     }
 
     private void listTest() {
-        List<Article> articleList = articleService.list(0).getContent();
+        List<ArticleDto> articleList = articleService.list(0).getContent();
         Assert.assertEquals(1,articleList.size());
     }
 

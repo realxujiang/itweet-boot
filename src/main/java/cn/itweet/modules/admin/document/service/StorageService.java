@@ -6,6 +6,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
+
 /**
  * Created by whoami on 22/04/2017.
  */
@@ -44,4 +46,12 @@ public interface StorageService {
     void deleteByRuleFilename(String ruleFilename, String filePath);
 
     void deleteAll(String filePath);
+
+    /**
+     * 通过栏目获取最新的TopN的文件集合
+     * @param columd
+     * @param topN
+     * @return
+     */
+    List<Document> getNewDocumentTopN(String columd, Integer topN);
 }

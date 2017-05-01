@@ -18,6 +18,9 @@ public class ItweetProperties {
     @Value("${application.upload.type.files}")
     private String uploadTypeFiles;
 
+    @Value("${application.page.size}")
+    private Integer pagSize;
+
     public String getUploadSuffix() {
         return uploadSuffix;
     }
@@ -40,5 +43,13 @@ public class ItweetProperties {
 
     public void setUploadTypeFiles(String uploadTypeFiles) {
         this.uploadTypeFiles = uploadTypeFiles;
+    }
+
+    public Integer getPagSize() {
+        return pagSize;
+    }
+
+    public void setPagSize(Integer pagSize) {
+        this.pagSize = pagSize;
     }
 }

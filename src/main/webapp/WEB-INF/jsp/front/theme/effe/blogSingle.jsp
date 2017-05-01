@@ -10,6 +10,25 @@
 <head>
     <title>BlogSingle</title>
     <jsp:include page="tools/style.jsp"></jsp:include>
+    <style>
+        .blog-item-single-content pre {
+            display: block;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-size: 1.3rem;
+            line-height: 1.6;
+            word-break: break-all;
+            word-wrap: break-word;
+            color: #555;
+            background-color: #f8f8f8;
+            border: 1px solid #dedede;
+            border-radius: 0;
+            width: 720px;
+        }
+        .blog-item-single-content p {
+            font-size: 11px;
+        }
+    </style>
 </head>
 
 <body>
@@ -37,22 +56,17 @@
     <!--This is the START of the blog section-->
     <div id="blog">
         <div class="blog-item-single">
-            <h3>This is our first juicy tidbit</h3>
+            <h3>${article.title}</h3>
             <div class="blog-item-single-info">
-                <div class="user">admin</div>
+                <div class="user">${article.author}</div>
                 <div class="comments">6 comments</div>
-                <div class="tags">psd news blog post</div>
+                <div class="tags">${tagsList}</div>
             </div>
+
             <div class="blog-item-single-content">
-                <a class="single_image" href="<%=basePath%>/images/blog/large/blog1.jpg"><img src="<%=basePath%>/images/blog/single/blog1.jpg" width="720" height="280" alt="blog1" /></a>
-                <p>Aenean porttitor sem est. Donec at risus lacus. Sed id ligula ipsum, non placerat turpis. Donec interdum egestas ante. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ullamcorper sagittis faucibus. Pellentesque convallis erat in leo pellentesque dapibus. Suspendisse non dui dolor, at tempor est. Phasellus adipiscing nisi sed ante consequat posuere. Etiam mollis, est eu vestibulum eleifend, dolor risus egestas tortor, vestibulum fringilla urna libero eget est. Sed a erat justo, eu suscipit nunc. In faucibus adipiscing quam, id gravida libero fringilla in. Cras consectetur porttitor lorem, sed egestas elit laoreet ac. Proin at sapien at velit scelerisque auctor quis eget purus. Cras nec arcu eleifend quam condimentum feugiat.</p>
-                <p>Fusce quis nibh eu erat pellentesque eleifend. Nunc tempus iaculis interdum. Aenean felis nisi, tempus ullamcorper ullamcorper sit amet, sodales eu nibh. Curabitur porta porta egestas. Nulla porta diam at augue facilisis ultricies posuere felis ultrices. Phasellus bibendum, orci facilisis ultrices scelerisque, risus arcu tristique turpis, sit amet viverra neque velit eu ligula. Aliquam erat volutpat. Phasellus in vulputate urna. Vestibulum est erat, pretium ac suscipit et, blandit id enim. Pellentesque hendrerit suscipit tortor, vel euismod elit euismod at. Mauris arcu dolor, rutrum ac convallis eget, porta ac quam. Maecenas id sem urna. Nunc dignissim est non libero vehicula vel faucibus tellus congue. </p>
+                ${article.htmlContent}
             </div>
-            <div class="social-blog-buttons">
-                <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="92_Five">Tweet</a>
-                <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-                <iframe src="http://www.facebook.com/plugins/like.php?app_id=108550772584353&amp;href=http%3A%2F%2Fwww.92five.net&amp;send=false&amp;layout=button_count&amp;width=450&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:21px;"></iframe>
-            </div>
+
             <div class="comments-block">
                 <h3 class="comments-title">Comments (2)</h3>
                 <div class="spacer"></div>

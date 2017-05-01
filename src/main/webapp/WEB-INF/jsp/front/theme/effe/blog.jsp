@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path+"/style/front/theme/effe";
@@ -40,18 +41,18 @@
     <div id="blog">
         <c:forEach items="${listArticle.content}" var="article">
             <div class="blog-item">
-                <a href="/blogSingle"><img class="single_image" src="<%=URL%>/upload/files/${article.coverPicture}" width="280" height="180" alt="blog1" /></a>
+                <a href="/blog/<fmt:formatDate pattern="yyyy/MM/dd" value="${article.createDate}"/>/${article.title}"><img class="single_image" src="<%=URL%>/upload/files/${article.coverPicture}" width="280" height="180" alt="blog1" /></a>
                 <div class="blog-item-info">
                     <div class="user">${article.author}</div>
                     <div class="comments">6 comments</div>
-                    <div class="tags">psd news blog post</div>
+                    <div class="tags"><fmt:formatDate pattern="yyyy-MM-dd hh:mm:ss" value="${article.createDate}"/></div>
                 </div>
                 <div class="blog-item-content">
-                    <a href="/blogSingle">
+                    <a href="/blog/<fmt:formatDate pattern="yyyy/MM/dd" value="${article.createDate}"/>/${article.title}">
                         <h5>${article.title}</h5>
                     </a>
-                    <p>${article.description}</p>
-                    <a class="readmore" href="/blogSingle">阅读更多 →</a> <br />
+                    <p>${article.fullDescription}</p>
+                    <a class="readmore" href="/blog/<fmt:formatDate pattern="yyyy/MM/dd" value="${article.createDate}"/>/${article.title}">阅读更多 →</a> <br />
                 </div>
             </div>
         </c:forEach>

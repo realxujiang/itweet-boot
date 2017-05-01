@@ -39,7 +39,7 @@
 	<div class="slider-wrapper theme-effe">
 		<div id="slider" class="nivoSlider">
 			<c:forEach items="${documentList}" var="document">
-				<img src="<%=URL%>/upload/files/${document.ruleFilename}" alt="" title="#img1" />
+				<a href="/portfolio"><img src="<%=URL%>/upload/files/${document.ruleFilename}" alt="" title="#${document.filename}" /></a>
 			</c:forEach>
 		</div>
 	</div>

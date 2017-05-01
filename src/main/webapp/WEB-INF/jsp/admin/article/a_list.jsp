@@ -49,7 +49,7 @@
                     <td>${article.author}</td>
                     <td>${article.createDate}</td>
                     <td>${article.updateDate}</td>
-                    <td>${article.description}</td>
+                    <td>${article.description}...</td>
                     <td>
                         <a href="<%=basePath%>/admin/article/addContent/${article.id}" class="tablelink">编辑正文</a>
                         <a href="<%=basePath%>/admin/article/view/${article.id}" target="right" class="tablelink">预览</a>

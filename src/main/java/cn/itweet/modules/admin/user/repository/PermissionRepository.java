@@ -1,10 +1,9 @@
 package cn.itweet.modules.admin.user.repository;
 
+import cn.itweet.common.repository.BaseRepository;
 import cn.itweet.modules.admin.user.entity.SysPermission;
-import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,7 +14,7 @@ import java.util.List;
  */
 @Repository
 @Transactional
-public interface PermissionRepository extends PagingAndSortingRepository<SysPermission,Integer> {
+public interface PermissionRepository extends BaseRepository<SysPermission,Integer> {
 
     /**
      * 获取所有的权限信息

@@ -16,6 +16,9 @@ public class Article {
 
     private String title;
 
+    /**
+     * 是否已经发布文章，0为未发布，1为已发布
+     */
     private Integer state;
 
     /**
