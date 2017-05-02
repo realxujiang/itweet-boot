@@ -21,7 +21,7 @@
 		<h1><img src="<%=basePath%>style/admin/backstage/images/y.jpg" class="radius-circle rotate-hover" height="50" alt="" />Itweet管理中心</h1>
 	</div>
 	<div class="head-l">
-		<a class="button button-little bg-green" href="http://www.itweet.cn" target="_blank"><span class="icon-home"></span> 前台首页</a> &nbsp;&nbsp;
+		<a class="button button-little bg-green" href="/" target="_blank"><span class="icon-home"></span> 前台首页</a> &nbsp;&nbsp;
 		<a class="button button-little bg-red" href="<%=basePath%>admin/logout"><span class="icon-power-off"></span> 退出登录</a>
 	</div>
 </div>

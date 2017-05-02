@@ -19,8 +19,6 @@
 </div>
 <!--END of header-->
 
-<%--<a class="selected" href="<%=basePath%>/front/theme/effe/about">About</a>--%>
-
 <!--This is the START of the menu-->
 <div id="menu-wrapper">
     <div id="main-menu">

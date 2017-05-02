@@ -14,10 +14,8 @@
 </head>
 <body>
 
-
 <!--This is the START of the menu-->
 <jsp:include page="tools/menu.jsp"></jsp:include>
-
 
 <!--This is the START of the content-->
 <div id="content">
