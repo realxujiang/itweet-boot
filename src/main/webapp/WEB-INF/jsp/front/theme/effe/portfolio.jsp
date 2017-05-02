@@ -42,59 +42,59 @@
     <img class="star-divider" src="<%=basePath%>/images/subscribe_divider.png" />
     <div id="container">
         <ul id="stage">
-            <li data-tags="Print Design">
+            <li data-tags="Big Data Architecture">
                 <a href="/projectSample"><img src="<%=basePath%>/images/portfolio/thumbs/image(1).jpg" alt="Illustration" /></a>
-                <h6>Helvetica</h6>
-                <p>Kinda sweet huh?
+                <h6>Hadoop</h6>
+                <p>企业级Hadoop解决方案?
                     <a class="readmore" href="/projectSample">view →</a>
                 </p>
             </li>
-            <li data-tags="Logo Design,Print Design">
+            <li data-tags="Cloud,Big Data Architecture">
                 <a href="/projectSample"><img src="<%=basePath%>/images/portfolio/thumbs/image(2).jpg" alt="Illustration" /></a>
-                <h6>Typography</h6>
-                <p>Lorem ipsum here.
+                <h6>Openstack</h6>
+                <p>企业级私有云解决方案.
                     <a class="readmore" href="/projectSample">view →</a>
                 </p>
             </li>
-            <li data-tags="Web Design,Logo Design">
+            <li data-tags="Web Design,Cloud">
                 <a href="/projectSample"><img src="<%=basePath%>/images/portfolio/thumbs/image(3).jpg" alt="Illustration" /></a>
-                <h6>Ideas</h6>
-                <p>A light bulb!
+                <h6>skynet</h6>
+                <p>大型分布式监控系统!
                     <a class="readmore" href="/projectSample">view →</a>
                 </p>
             </li>
-            <li data-tags="Web Design,Print Design">
+            <li data-tags="Web Design,Big Data Architecture">
                 <a href="/projectSample"><img src="<%=basePath%>/images/portfolio/thumbs/image(4).jpg" alt="Illustration" /></a>
-                <h6>Rockable press</h6>
-                <p>Best books around.
+                <h6>Spark</h6>
+                <p>企业级数据分析利器.
                     <a class="readmore" href="/projectSample">view →</a>
                 </p>
             </li>
-            <li data-tags="Logo Design">
+            <li data-tags="Cloud">
                 <a href="/projectSample"><img src="<%=basePath%>/images/portfolio/thumbs/image(5).jpg" alt="Illustration" /></a>
-                <h6>Moo Cards</h6>
-                <p>Gotta lovem'.
+                <h6>Docker</h6>
+                <p>快速部署应用.
                     <a class="readmore" href="/projectSample">view →</a>
                 </p>
             </li>
-            <li data-tags="Web Design,Logo Design,Print Design">
+            <li data-tags="Web Design,Cloud,Big Data Architecture">
                 <a href="/projectSample"><img src="<%=basePath%>/images/portfolio/thumbs/image(6).jpg" alt="Illustration" /></a>
-                <h6>Moo Minicards</h6>
-                <p>So small and cool.
+                <h6>StreamSQL</h6>
+                <p>企业流式数据分析解决方案.
                     <a class="readmore" href="/projectSample">view →</a>
                 </p>
             </li>
-            <li data-tags="Logo Design,Print Design">
+            <li data-tags="Cloud,Big Data Architecture">
                 <a href="/projectSample"><img src="<%=basePath%>/images/portfolio/thumbs/image(7).jpg" alt="Illustration" /></a>
-                <h6>Moo Printing</h6>
-                <p>Is inside.
+                <h6>Sahara</h6>
+                <p>云端大数据解决方案.
                     <a class="readmore" href="/projectSample">view →</a>
                 </p>
             </li>
             <li data-tags="Web Design">
                 <a href="/projectSample"><img src="<%=basePath%>/images/portfolio/thumbs/image(8).jpg" alt="Illustration" /></a>
-                <h6>Just say it!</h6>
-                <p>Printed.
+                <h6>itweet-boot</h6>
+                <p>个人博客开源项目.
                     <a class="readmore" href="/projectSample">view →</a>
                 </p>
             </li>

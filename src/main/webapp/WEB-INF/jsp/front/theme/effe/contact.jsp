@@ -47,20 +47,6 @@
 </head>
 
 <body>
-<!--This is the START of the header-->
-<div id="topcontrol" style="position: fixed; bottom: 5px; left: 960px; opacity: 1; cursor: pointer;" title="Go to Top"></div>
-<div id="header-wrapper">
-    <div id="header">
-        <div id="logo">
-            <a href="<%=URL%>/"><img src="<%=basePath%>/images/logo.png" width="100" height="80" alt="logo" /></a>
-        </div>
-        <div id="header-text">
-            <h4>Drop us a line, we don't bite!</h4>
-            <h6><a href="<%=URL%>/">Home</a> → Contact Us</h6>
-        </div>
-    </div>
-</div>
-<!--END of header-->
 
 <!--This is the START of the menu-->
 <jsp:include page="tools/menu.jsp"></jsp:include>
@@ -94,23 +80,23 @@
     </div>
     <div id="contactinfo">
         <h5>Our adress is:</h5>
-        <p>Imaginary street 14</p>
-        <p>The windy City</p>
-        <p>1345 Post code</p>
+        <p>Haidian district Xierqi</p>
+        <p>The Beijin City</p>
+        <p>100000 Post code</p>
         <br />
         <h5>Our contact info is:</h5>
-        <p>E: info@effe.com</p>
-        <p>T: (012) 345 678</p>
-        <p>F: (456) 847 854</p>
+        <p>E: skynet199@foxmail.com</p>
+        <p>QQ Group: 457710636</p>
+        <p>QQ Group: 288396468</p>
         <br />
         <div class="dribbble">
-            <a href="#">Dribbble</a>
+            <a href="http://weibo.com/sparkjvm">weibo</a>
         </div>
         <div class="forrst">
-            <a href="#">mail@effe.com</a>
+            <a href="#">skynet199@foxmail.com</a>
         </div>
         <div class="google">
-            <a href="#">Google +</a>
+            <a href="http://www.tudou.com/home/sparkjvm">Tudou +</a>
         </div>
         <div class="twitter_small">
             <a href="http://www.twitter.com">Follow on twitter</a>
@@ -124,7 +110,7 @@
 <!--END of content-->
 
 <!--This is the START of the follow section-->
-<jsp:include page="tools/panel.jsp"></jsp:include>
+<%--<jsp:include page="tools/panel.jsp"></jsp:include>--%>
 
 </body>
 

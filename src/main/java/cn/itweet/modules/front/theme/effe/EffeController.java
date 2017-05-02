@@ -76,7 +76,7 @@ public class EffeController {
         List<String> tagsList = articleService.getArticleTagsByArticleId(article.getId());
         model.addAttribute("article",article);
         model.addAttribute("tagsList",tagsList.toString());
-        return "front/theme/effe/blogSingle";
+        return "front/theme/effe/si";
     }
 
     @GetMapping(value = "/contact")

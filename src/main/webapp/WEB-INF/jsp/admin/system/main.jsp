@@ -80,7 +80,7 @@
 	<li><a href="##" id="a_leader_txt">网站信息</a></li>
 </ul>
 <div class="admin">
-	<iframe scrolling="auto" rameborder="0" src="<%=basePath%>admin/system/body" name="right" width="100%" height="100%"></iframe>
+	<iframe scrolling="auto" frameborder="0" src="<%=basePath%>admin/system/body" name="right" width="100%" height="100%"></iframe>
 </div>
 
 </body>

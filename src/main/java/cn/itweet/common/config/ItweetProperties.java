@@ -21,6 +21,9 @@ public class ItweetProperties {
     @Value("${application.page.size}")
     private Integer pagSize;
 
+    @Value("${application.theme}")
+    private String theme;
+
     public String getUploadSuffix() {
         return uploadSuffix;
     }
@@ -51,5 +54,13 @@ public class ItweetProperties {
 
     public void setPagSize(Integer pagSize) {
         this.pagSize = pagSize;
+    }
+
+    public String getTheme() {
+        return theme;
+    }
+
+    public void setTheme(String theme) {
+        this.theme = theme;
     }
 }

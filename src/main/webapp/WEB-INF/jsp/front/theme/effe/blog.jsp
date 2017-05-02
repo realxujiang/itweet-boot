@@ -15,21 +15,6 @@
 </head>
 
 <body>
-<!--This is the START of the header-->
-<div id="topcontrol" style="position: fixed; bottom: 5px; left: 960px; opacity: 1; cursor: pointer;" title="Go to Top"></div>
-<div id="header-wrapper">
-    <div id="header">
-        <div id="logo">
-            <a href="<%=URL%>/"><img src="<%=basePath%>/images/logo.png" width="100" height="80" alt="logo" /></a>
-        </div>
-        <div id="header-text">
-            <h4>This is our blog, check out our latest posts!</h4>
-            <h6><a href="<%=URL%>/">Home</a> → Blog</h6>
-        </div>
-    </div>
-</div>
-<!--END of header-->
-
 
 <!--This is the START of the menu-->
 <jsp:include page="tools/menu.jsp"></jsp:include>
@@ -70,7 +55,7 @@
 <!--END of content-->
 
 <!--This is the START of the follow section-->
-<jsp:include page="tools/panel.jsp"></jsp:include>
+<%--<jsp:include page="tools/panel.jsp"></jsp:include>--%>
 
 </body>
 </html>

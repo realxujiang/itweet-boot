@@ -5,8 +5,23 @@
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path;
 %>
 
+<!--This is the START of the header-->
+<div id="topcontrol" style="position: fixed; bottom: 5px; left: 960px; opacity: 1; cursor: pointer;" title="Go to Top"></div>
+<div id="header-wrapper">
+    <div id="header">
+        <div id="logo">
+            <a href="<%=basePath%>/"><img src="<%=basePath%>/style/front/theme/effe/images/logo.png" width="100" height="80" alt="logo" /></a>
+        </div>
+        <div id="header-text">
+            <h4>You are already naked. There is no reason not to follow your heart!</h4>
+        </div>
+    </div>
+</div>
+<!--END of header-->
+
 <%--<a class="selected" href="<%=basePath%>/front/theme/effe/about">About</a>--%>
 
+<!--This is the START of the menu-->
 <div id="menu-wrapper">
     <div id="main-menu">
         <ul>
@@ -55,3 +70,4 @@
     </div>
     <!--END of footer-->
 </div>
+<!--This is the End of the menu-->
