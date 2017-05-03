@@ -16,7 +16,7 @@ public interface CategoriesService {
 
     Categories getCategoriesByName(String name);
 
-    void deleteById(Integer id);
+    void deleteById(Integer id) throws SystemException;
 
     void update(Categories categories) throws SystemException;
 

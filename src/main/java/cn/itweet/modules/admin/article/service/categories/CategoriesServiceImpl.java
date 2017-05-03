@@ -41,7 +41,10 @@ public class CategoriesServiceImpl implements CategoriesService {
     }
 
     @Override
-    public void deleteById(Integer id) {
+    public void deleteById(Integer id) throws SystemException {
+        System.out.println("=====>"+articleCategoriesRepository.findByCategoriesId(id).toString());
+        if (articleCategoriesRepository.findByCategoriesId(id).size()>0)
+            throw new SystemException("分类删除失败，要删除的分类中还有文章存在！");
         articleCategoriesRepository.deleteByCategoriesId(id);
         categoriesRepository.delete(id);
     }

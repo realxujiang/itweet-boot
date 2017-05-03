@@ -7,31 +7,16 @@
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path+"/style/front/theme/twts";
-    String URL = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path;
 %>
 <!DOCTYPE html>
 <html>
 <head>
     <title>Itweet &amp; Boot</title>
-
-    <!-- meta -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- css -->
-    <link rel="stylesheet" href="<%=basePath%>/css/bootstrap.min.css">
-    <link rel="stylesheet" href="<%=basePath%>/css/ionicons.min.css">
-    <link rel="stylesheet" href="<%=basePath%>/css/pace.css">
-    <link rel="stylesheet" href="<%=basePath%>/css/custom.css">
-
-    <!-- js -->
-    <script src="<%=basePath%>/js/jquery-2.1.3.min.js"></script>
-    <script src="<%=basePath%>/js/bootstrap.min.js"></script>
-    <script src="<%=basePath%>/js/pace.min.js"></script>
-    <script src="<%=basePath%>/js/modernizr.custom.js"></script>
+    <jsp:include page="tools/style.jsp"></jsp:include>
     <style>
         img {
             width: 720px;
@@ -40,44 +25,9 @@
 </head>
 
 <body id="single">
-<div class="container">
-    <header id="site-header">
-        <div class="row">
-            <div class="col-md-4 col-sm-5 col-xs-8">
-                <div class="logo">
-                    <h1><a href="/"><b>Itweet</b> &amp; Boot</a></h1>
-                </div>
-            </div><!-- col-md-4 -->
-            <div class="col-md-8 col-sm-7 col-xs-4">
-                <nav class="main-nav" role="navigation">
-                    <div class="navbar-header">
-                        <button type="button" id="trigger-overlay" class="navbar-toggle">
-                            <span class="ion-navicon"></span>
-                        </button>
-                    </div>
 
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav navbar-right">
-                            <li class="cl-effect-11"><a href="/" data-hover="Home">Home</a></li>
-                            <li class="cl-effect-11"><a href="/blog" data-hover="Blog">Blog</a></li>
-                            <li class="cl-effect-11"><a href="/about" data-hover="About">About</a></li>
-                            <li class="cl-effect-11"><a href="/contact" data-hover="Contact">Contact</a></li>
-                        </ul>
-                    </div><!-- /.navbar-collapse -->
-                </nav>
-                <div id="header-search-box">
-                    <a id="search-menu" href="#"><span id="search-icon" class="ion-ios-search-strong"></span></a>
-                    <div id="search-form" class="search-form">
-                        <form role="search" method="get" id="searchform" action="#">
-                            <input type="search" placeholder="Search" required>
-                            <button type="submit"><span class="ion-ios-search-strong"></span></button>
-                        </form>
-                    </div>
-                </div>
-            </div><!-- col-md-8 -->
-        </div>
-    </header>
-</div>
+<%--Nav Menu--%>
+<jsp:include page="tools/navbar.jsp"></jsp:include>
 
 <div class="content-body">
     <div class="container">
@@ -87,13 +37,13 @@
                     <header class="entry-header">
                         <h1 class="entry-title">${article.title}</h1>
                         <div class="entry-meta">
-                            <span class="post-category"><a href="#">${tagsList}</a></span>
+                            <span class="post-category"><a href="#">标签：${tagsList}</a></span>
 
-                            <span class="post-date"><a href="#"><time class="entry-date" datetime="2012-11-09T23:15:57+00:00">${article.createDate}</time></a></span>
+                            <span class="post-date"><a href="#"><time class="entry-date">日期：<fmt:formatDate pattern="yyyy-MM-dd hh:mm:ss" value="${article.createDate}"/></time></a></span>
 
-                            <span class="post-author"><a href="#">${article.author}</a></span>
+                            <span class="post-author"><a href="#">作者：${article.author}</a></span>
 
-                            <span class="comments-link"><a href="#">4 Comments</a></span>
+                            <span class="comments-link"><a href="#">评论：4 Comments</a></span>
                         </div>
                     </header>
                     <div class="entry-content clearfix">
@@ -149,28 +99,19 @@
         </div>
     </div>
 </div>
+
 <footer id="site-footer">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <p class="copyright">&copy; 2019 itweet.cn</p>
+                <p class="copyright">&copy; 2017 itweet.cn</p>
             </div>
         </div>
     </div>
 </footer>
 
 <!-- Mobile Menu -->
-<div class="overlay overlay-hugeinc">
-    <button type="button" class="overlay-close"><span class="ion-ios-close-empty"></span></button>
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="full-width.html">Blog</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </nav>
-</div>
+<jsp:include page="tools/mobile-menu.jsp"></jsp:include>
 
 <script src="<%=basePath%>/js/script.js"></script>
 

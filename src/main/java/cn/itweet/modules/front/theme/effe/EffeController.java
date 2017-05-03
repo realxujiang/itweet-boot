@@ -55,28 +55,28 @@ public class EffeController {
         return "front/theme/effe/about";
     }
 
-    @GetMapping(value = "/blog")
-    public String blog(@RequestParam(value = "page", defaultValue = "0") Integer page,Model model) {
+    @GetMapping(value = "/tweet")
+    public String tweet(@RequestParam(value = "page", defaultValue = "0") Integer page,Model model) {
         if(page != 0) page = page -1;
 
-        model.addAttribute("blog","selected");
+        model.addAttribute("tweet","selected");
         Page<ArticleDto> listArticle = articleService.list(page, State.getIsPublished());
         model.addAttribute("listArticle",listArticle);
 
         PageUtils pageUtils = new PageUtils("/bolg?",page,listArticle.getTotalPages(),listArticle.getTotalElements(),itweetProperties.getPagSize());
         model.addAttribute("pb",pageUtils);
 
-        return "front/theme/effe/blog";
+        return "front/theme/effe/tweet";
     }
 
-    @GetMapping(value = "/blog/{year}/{month}/{day}/{title}")
-    public String blogSingle(@PathVariable("year") Integer year,@PathVariable("month") Integer month,@PathVariable("day") Integer day,@PathVariable("title") String title, Model model) {
-        model.addAttribute("blog","selected");
+    @GetMapping(value = "/tweet/{year}/{month}/{day}/{title}")
+    public String tweetSingle(@PathVariable("year") Integer year,@PathVariable("month") Integer month,@PathVariable("day") Integer day,@PathVariable("title") String title, Model model) {
+        model.addAttribute("tweet","selected");
         Article article = articleService.getArticleByTitle(title);
         List<String> tagsList = articleService.getArticleTagsByArticleId(article.getId());
         model.addAttribute("article",article);
         model.addAttribute("tagsList",tagsList.toString());
-        return "front/theme/effe/si";
+        return "front/theme/effe/tweetSingle";
     }
 
     @GetMapping(value = "/contact")

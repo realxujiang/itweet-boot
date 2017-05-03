@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
@@ -127,8 +128,14 @@ public class CategoriesController {
      * @return
      */
     @RequestMapping(value = "/delete/{id}",method = RequestMethod.GET)
-    public String delete(Model model,@PathVariable Integer id) {
-        categoriesService.deleteById(id);
+    public String delete(Model model,@PathVariable Integer id,RedirectAttributes redirectAttributes) {
+        try {
+            categoriesService.deleteById(id);
+        } catch (SystemException e) {
+            redirectAttributes.addFlashAttribute("message","<script>toastr.error(\"" + e.getMessage() + "\")</script>");
+            e.printStackTrace();
+            return "redirect:/admin/categories/list";
+        }
         return "redirect:/admin/categories/list";
     }
 }

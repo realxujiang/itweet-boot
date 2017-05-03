@@ -35,7 +35,11 @@ public class CategoriesServiceTests {
     }
 
     private void deleteByIdTest() {
-        categoriesService.deleteById(categoriesService.getCategoriesByName("cloudera").getId());
+        try {
+            categoriesService.deleteById(categoriesService.getCategoriesByName("cloudera").getId());
+        } catch (SystemException e) {
+            e.printStackTrace();
+        }
     }
 
     private void updateTest() throws SystemException {

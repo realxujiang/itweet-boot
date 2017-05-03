@@ -25,4 +25,6 @@ public interface ArticleCategoriesRepository extends JpaRepository<ArticleCatego
 
     @Query("select categoriesId from ArticleCategories where articleId=?1")
     Integer getCategoriesIdByArticleId(Integer articleId);
+
+    List<ArticleCategories> findByCategoriesId(Integer categoriesId);
 }

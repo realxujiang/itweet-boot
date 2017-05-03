@@ -12,6 +12,7 @@
     <link href="<%=basePath%>style/admin/backstage/css/style.css" rel="stylesheet">
 </head>
 <body>
+${message}
 <div class="formbody">
     <div id="usual1" class="usual">
         <div id="tab2" class="tabson">

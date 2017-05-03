@@ -5,7 +5,6 @@
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path;
 %>
 
-
 <p class="slide">
     <a href="#" class="btn-slide"></a>
 </p>

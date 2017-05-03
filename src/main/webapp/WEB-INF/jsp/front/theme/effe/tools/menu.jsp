@@ -33,6 +33,9 @@
                 <a class="${portfolio}" href="<%=basePath%>/portfolio">Portfolio</a>
             </li>
             <li>
+                <a class="${tweet}" href="<%=basePath%>/tweet">Tweets</a>
+            </li>
+            <li>
                 <a class="${blog}" href="<%=basePath%>/blog">Blog</a>
             </li>
             <li>
