@@ -10,9 +10,9 @@ import org.springframework.data.domain.Pageable;
  */
 public interface TagService {
 
-    Page<Tag> list(Pageable pageable);
+    Page<Tag> list(Integer page);
 
-    Page<Tag> selectByName(Pageable pageable, String name);
+    Page<Tag> selectByName(Integer page, String name);
 
     Tag addTag(Tag tag) throws SystemException;
 

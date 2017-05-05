@@ -22,6 +22,12 @@ public class Article {
     private Integer state;
 
     /**
+     * 文章类型，目前只有两种类型，博客类型：0，推文类型：1
+     */
+    @Column(name = "type_article")
+    private Integer typeArticle;
+
+    /**
      * 博客文章描述，一般截取文章正文的前15个字段
      */
     private String description;
@@ -126,6 +132,14 @@ public class Article {
 
     public void setCoverPicture(String coverPicture) {
         this.coverPicture = coverPicture;
+    }
+
+    public Integer getTypeArticle() {
+        return typeArticle;
+    }
+
+    public void setTypeArticle(Integer typeArticle) {
+        this.typeArticle = typeArticle;
     }
 
     @Override

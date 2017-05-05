@@ -5,19 +5,17 @@ import cn.itweet.common.utils.PageUtils;
 import cn.itweet.modules.admin.article.entity.Article;
 import cn.itweet.modules.admin.article.service.article.ArticleService;
 import cn.itweet.modules.admin.article.utils.ArticleDto;
-import cn.itweet.modules.admin.article.utils.State;
+import cn.itweet.modules.admin.article.utils.ArticleUtils;
 import cn.itweet.modules.admin.document.entiry.Document;
 import cn.itweet.modules.admin.document.service.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.websocket.server.PathParam;
 import java.util.List;
 
 /**
@@ -60,10 +58,10 @@ public class EffeController {
         if(page != 0) page = page -1;
 
         model.addAttribute("tweet","selected");
-        Page<ArticleDto> listArticle = articleService.list(page, State.getIsPublished());
+        Page<ArticleDto> listArticle = articleService.list(page, ArticleUtils.getIsPublished(),ArticleUtils.getIsTweet());
         model.addAttribute("listArticle",listArticle);
 
-        PageUtils pageUtils = new PageUtils("/bolg?",page,listArticle.getTotalPages(),listArticle.getTotalElements(),itweetProperties.getPagSize());
+        PageUtils pageUtils = new PageUtils("/tweet",page,listArticle.getTotalPages(),listArticle.getTotalElements(),itweetProperties.getPagSize());
         model.addAttribute("pb",pageUtils);
 
         return "front/theme/effe/tweet";
@@ -72,10 +70,13 @@ public class EffeController {
     @GetMapping(value = "/tweet/{year}/{month}/{day}/{title}")
     public String tweetSingle(@PathVariable("year") Integer year,@PathVariable("month") Integer month,@PathVariable("day") Integer day,@PathVariable("title") String title, Model model) {
         model.addAttribute("tweet","selected");
+
         Article article = articleService.getArticleByTitle(title);
-        List<String> tagsList = articleService.getArticleTagsByArticleId(article.getId());
         model.addAttribute("article",article);
+
+        List<String> tagsList = articleService.getArticleTagsByArticleId(article.getId());
         model.addAttribute("tagsList",tagsList.toString());
+
         return "front/theme/effe/tweetSingle";
     }
 

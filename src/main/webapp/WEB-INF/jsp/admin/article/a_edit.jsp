@@ -18,6 +18,12 @@
                 no_results_text: '木有找到匹配的项！'
             });
         });
+
+        $(function() {
+            $('#type').chosen({
+                no_results_text: '木有找到匹配的项！'
+            });
+        });
     </script>
 
 </head>
@@ -30,10 +36,19 @@
                 <form action="<%=basePath%>/admin/article/edit" method="post">
                     <input type="hidden" name="id" value="${form.id}">
                     <li style="color: red;">${message}</li>
-                    <li><label>文章标题<b>*</b></label><input name="title" type="text" class="dfinput" value="${form.title}" placeholder="标题" style="width:618px;" /></li>
+                    <li><label>文章标题<b>*</b></label><input name="title" type="text" class="dfinput" value="${form.title}" placeholder="标题" style="width:618px;" />
+                    </li>
                     <li>
                         <label>文章描述<b>*</b></label>
-                        <input name="description" type="text" class="dfinput" value="${form.description}" placeholder="描述" style="width:618px;" /></li>
+                        <input name="description" type="text" class="dfinput" value="${form.description}" placeholder="描述" style="width:618px;" />
+                    </li>
+                    <li>
+                        <label>文章类型<b>*</b></label>
+                        <select id="type" name="typeArticle" style="width:618px;" class="chosen-select-no-results" tabindex="10">
+                            <option value="0" <c:if test="${form.typeArticle eq 0}">selected="selected"</c:if> >博客</option>
+                            <option value="1" <c:if test="${form.typeArticle eq 1}">selected="selected"</c:if>>推文</option>
+                        </select>
+                    </li>
                     <li>
                         <label>封面<b>*</b></label>
                         <input name="coverPicture" type="text" class="dfinput" value="${form.coverPicture}" placeholder="选择图片" style="width:618px;" />

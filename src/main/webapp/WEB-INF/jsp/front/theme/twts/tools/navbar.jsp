@@ -27,6 +27,7 @@
                             <li class="cl-effect-11"><a href="/blog/archive" data-hover="Archive">Archive</a></li>
                             <li class="cl-effect-11"><a href="/blog/about" data-hover="About">About</a></li>
                             <li class="cl-effect-11"><a href="/blog/contact" data-hover="Contact">Contact</a></li>
+                            <li class="cl-effect-11"><a href="/blog/history" data-hover="History">History</a></li>
                         </ul>
                     </div><!-- /.navbar-collapse -->
                 </nav>

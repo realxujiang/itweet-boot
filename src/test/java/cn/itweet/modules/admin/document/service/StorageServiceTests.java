@@ -52,7 +52,4 @@ public class StorageServiceTests {
         System.out.println(ruleFilename);
     }
 
-    private void loadAllTest() {
-        System.out.println(storageService.loadAll(0).getContent().toString());
-    }
 }

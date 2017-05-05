@@ -33,7 +33,7 @@
                 <a class="${portfolio}" href="<%=basePath%>/portfolio">Portfolio</a>
             </li>
             <li>
-                <a class="${tweet}" href="<%=basePath%>/tweet">Tweets</a>
+                <a class="${tweet}" href="<%=basePath%>/tweet">Tweet</a>
             </li>
             <li>
                 <a class="${blog}" href="<%=basePath%>/blog">Blog</a>
@@ -46,18 +46,19 @@
             </li>
         </ul>
     </div>
+
     <!--This is the START of the footer-->
     <div id="footer">
         <div id="social-box">
             <ul>
                 <li>
                     <div class="facebook">
-                        <a href="#"></a>
+                        <a href="http://weibo.com/sparkjvm"></a>
                     </div>
                 </li>
                 <li>
                     <div class="twitter">
-                        <a href="#"></a>
+                        <a href="https://github.com/itweet"></a>
                     </div>
                 </li>
                 <li>
@@ -67,8 +68,9 @@
                 </li>
             </ul>
         </div>
-        <h6>Copyright © 2017 - effe</h6>
+        <h6>Copyright © 2017 - itweet</h6>
     </div>
     <!--END of footer-->
+
 </div>
 <!--This is the End of the menu-->

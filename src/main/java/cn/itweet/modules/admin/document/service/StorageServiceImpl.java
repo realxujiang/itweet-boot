@@ -1,7 +1,10 @@
 package cn.itweet.modules.admin.document.service;
 
+import cn.itweet.common.config.ItweetProperties;
 import cn.itweet.common.exception.SystemException;
 import cn.itweet.common.utils.CommonUtils;
+import cn.itweet.common.utils.SimplePageBuilder;
+import cn.itweet.common.utils.SimpleSortBuilder;
 import cn.itweet.common.utils.TimeMillisUtils;
 import cn.itweet.modules.admin.document.entiry.Document;
 import cn.itweet.modules.admin.document.repository.DocumentRepository;
@@ -30,14 +33,17 @@ public class StorageServiceImpl implements StorageService {
     @Autowired
     private DocumentRepository documentRepository;
 
+    @Autowired
+    private ItweetProperties itweetProperties;
+
     @Override
-    public Page<Document> list(Pageable pageable) {
-        return documentRepository.findAll(pageable);
+    public Page<Document> list(Integer page) {
+        return documentRepository.findAll(SimplePageBuilder.generate(page,itweetProperties.getPagSize(), SimpleSortBuilder.generateSort("date_d")));
     }
 
     @Override
-    public Page<Document> selectByColumnd(Pageable pageable, String columnd) {
-        return documentRepository.selectByColumnd(pageable,columnd);
+    public Page<Document> selectByColumnd(Integer page, String columnd) {
+        return documentRepository.selectByColumnd(SimplePageBuilder.generate(page,itweetProperties.getPagSize(), SimpleSortBuilder.generateSort("date_d")),columnd);
     }
 
     @Override
@@ -111,11 +117,6 @@ public class StorageServiceImpl implements StorageService {
         documentRepository.save(document);
 
         return ruleFilename;
-    }
-
-    @Override
-    public Page<Document> loadAll(Integer page) {
-        return documentRepository.findAll(new PageRequest(page,10));
     }
 
     @Override

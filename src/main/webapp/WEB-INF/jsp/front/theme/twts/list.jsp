@@ -11,7 +11,6 @@
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path+"/style/front/theme/twts";
-    String URL = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path;
 %>
 <!DOCTYPE html>
 <html>
@@ -31,7 +30,6 @@
                 <c:forEach items="${listArticle}" var="article">
                     <article class="post post-1">
                         <header class="entry-header">
-
                             <h1 class="entry-title">
                                 <a href="/blog/<fmt:formatDate pattern="yyyy/MM/dd" value="${article.createDate}"/>/${article.title}">
                                     <c:if test="${article.typeArticle eq 1}">
@@ -42,7 +40,6 @@
                                     </c:if>
                                 </a>
                             </h1>
-
                             <div class="entry-meta">
                                 <span class="post-category"><a href="#">Web Design</a></span>
 
@@ -55,7 +52,7 @@
                         </header>
 
                         <div class="entry-content clearfix">
-                            <p>${article.fullDescription}</p>
+                            <p>${article.description}</p>
                             <div class="read-more cl-effect-14">
                                 <a href="/blog/<fmt:formatDate pattern="yyyy/MM/dd" value="${article.createDate}"/>/${article.title}" class="more-link">继续阅读 <span class="meta-nav">→</span></a>
                             </div>
@@ -63,53 +60,6 @@
 
                     </article>
                 </c:forEach>
-
-                <div class="entry-meta" style="margin-top: 100px;">
-                    <a href="<%=URL%>${pb.url}page=1">首页</a>&emsp;
-
-                    <c:if test="${pb.currentPage > 1}">
-                        <a href="<%=URL%>/${pb.url}page=${pb.currentPage-1}">上一页</a>&emsp;
-                    </c:if>
-
-                    <c:choose>
-                        <c:when test="${pb.totalPages<=10}">
-                            <c:set var="begin" value="1"/>
-                            <c:set var="end" value="${pb.totalPages}"/>
-                        </c:when>
-                        <c:otherwise>
-                            <c:set var="begin" value="${pb.currentPage-5}"/>
-                            <c:set var="end" value="${pb.currentPage+4}"/>
-
-                            <c:if test="${begin < 1}">
-                                <c:set var="begin" value="1"/>
-                                <c:set var="end" value="10"/>
-                            </c:if>
-
-                            <c:if test="${end > pb.totalPages}">
-                                <c:set var="begin" value="${pb.totalPages-9}"/>
-                                <c:set var="end" value="${pb.totalPages}"/>
-                            </c:if>
-                        </c:otherwise>
-                    </c:choose>
-
-                    <c:forEach var="i" begin="${begin}" end="${end}">
-                        <c:choose>
-                            <c:when test="${i eq pb.currentPage}">
-                                <a style="text-decoration:underline;">${i}</a>&nbsp;
-                            </c:when>
-                            <c:otherwise>
-                                <a href="<%=URL%>${pb.url}page=${i}">${i}</a>&nbsp;
-                            </c:otherwise>
-                        </c:choose>
-                    </c:forEach>
-
-                    <c:if test="${pb.currentPage < pb.totalPages}">
-                        &emsp;<a href="<%=URL%>${pb.url}page=${pb.currentPage+1}">下一页</a>
-                    </c:if>
-
-                    &emsp;<a href="<%=URL%>${pb.url}page=${pb.totalPages}">尾页</a>
-                </div>
-
             </main>
 
             <%-- Left Menu --%>

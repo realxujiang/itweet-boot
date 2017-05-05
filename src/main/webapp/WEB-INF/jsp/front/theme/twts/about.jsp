@@ -28,14 +28,14 @@
     <div class="container">
         <div class="row">
             <main class="col-md-12">
-                <h1 class="page-title">About Me</h1>
+                <h1 class="page-title" style="font-family: STXingkai">关于我</h1>
                 <article class="post">
                     <div class="entry-content clearfix">
                         <figure class="img-responsive-center">
                             <img class="img-responsive" src="<%=basePath%>/img/me.jpg" alt="Developer Image">
                         </figure>
                         <p>
-                            工作大多和技术有关,沉迷于计算机世界；越来越感觉自己知识浅薄，需要寻找真相，一切的故事、电影到此也该出现未知力量指引迷途中人，又或者出现上师启示在蜿蜒无边之路上，光明或黑暗之路该如何抉择；生活中如何？有人选择去流浪，有人跟着自己的直觉和好奇心走，哪怕离经叛道也决不止步；每个人都在寻找真相，我呢？
+                            小码农一枚,终日沉迷于计算机世界,始终坚信技术能改变世界；越深入了解，越感觉自己知识浅薄，跟着好奇心走，故事到这时候应该出现未知力量指引迷途中的人，又或在蜿蜒无边的道路上寻求上师的启示，光明或黑暗之路该如何抉择；有人选择去流浪，有人跟着自己的直觉和好奇心走，哪怕离经叛道也决不止步；每个人都在寻找真相，我呢？
                         </p>
                         <p>
                             有些东西是超越日常忙碌琐碎的生活的，生活不仅仅是工作、家庭、财产、职业。它更丰富，就像硬币还有另一面，虽然大家嘴上不说，但在生活的间隙，尤其是在不如意的时候，我们都能感受到某种冲动，许多人想找回生活的意义，有人去流浪，有人在印度神秘仪式里寻找答案。他们想寻找生活的真相。生活不应该是父母过的那样，正因为这种精神，有人宁愿当诗人也不愿做银行家。
@@ -55,12 +55,12 @@
                             05.We Steal Secrets: The Story of WikiLeaks (2013)
                         </p>
                         <div class="height-40px"></div>
-                        <h2 class="title text-center">follow me</h2>
+                        <h2 class="title text-center" style="font-family: STXingkai">关注我</h2>
                         <ul class="social">
                             <li class="facebook"><a href="#"><span class="ion-social-facebook"></span></a></li>
                             <li class="twitter"><a href="#"><span class="ion-social-twitter"></span></a></li>
                             <li class="google-plus"><a href="#"><span class="ion-social-googleplus"></span></a></li>
-                            <li class="tumblr"><a href="#"><span class="ion-social-tumblr"></span></a></li>
+                            <li class="tumblr"><a href="https://github.com/itweet"><span class="ion-social-github"></span></a></li>
                         </ul>
                     </div>
                 </article>

@@ -48,14 +48,14 @@
 				<a class="single_image" href="<%=URL%>/upload/files/${articleFirst.coverPicture}"><img src="<%=URL%>/upload/files/${articleFirst.coverPicture}" width="250" height="150" alt="recent1" /></a>
 				<h6 style="font-family: 'Xingkai TC'">${articleFirst.title}</h6>
 				<p>${articleFirst.description}
-					<a class="readmore" href="/blog">阅读更多 →</a>
+					<a class="readmore" href="/tweet">阅读更多 →</a>
 				</p>
 			</div>
 			<div class="recent-item-last">
 				<a class="single_image" href="<%=URL%>/upload/files/${articleLast.coverPicture}"><img src="<%=URL%>/upload/files/${articleLast.coverPicture}" width="250" height="150" alt="recent2" /></a>
 				<h6 style="font-family: 'Xingkai TC'">${articleLast.title}</h6>
 				<p>${articleLast.description}
-					<a class="readmore" href="/blog">阅读更多 →</a>
+					<a class="readmore" href="/tweet">阅读更多 →</a>
 				</p>
 			</div>
 		</div>

@@ -21,7 +21,7 @@ public class ItweetProperties {
     @Value("${application.page.size}")
     private Integer pagSize;
 
-    @Value("${application.theme}")
+    @Value("${application.front.theme}")
     private String theme;
 
     public String getUploadSuffix() {

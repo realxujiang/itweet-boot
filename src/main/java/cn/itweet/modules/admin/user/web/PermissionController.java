@@ -1,5 +1,6 @@
 package cn.itweet.modules.admin.user.web;
 
+import cn.itweet.common.config.ItweetProperties;
 import cn.itweet.common.utils.LeftMenu;
 import cn.itweet.common.utils.PageUtils;
 import cn.itweet.modules.admin.user.entity.SysPermission;
@@ -30,6 +31,9 @@ public class PermissionController {
     @Autowired
     private PermissionService permissionService;
 
+    @Autowired
+    private ItweetProperties itweetProperties;
+
     /**
      * 资源列表
      * @param model
@@ -37,14 +41,14 @@ public class PermissionController {
      */
     @LeftMenu(name = "资源列表",descritpion = "admin_permission_list",pname = "资源管理",url = "/admin/permission/list",operation = "list")
     @RequestMapping(value = "/list",method = RequestMethod.GET)
-    public String list(@RequestParam(value = "page", defaultValue = "0") Integer page,@RequestParam(value = "pageSize", defaultValue = "10") Integer pageSize,Model model) {
+    public String list(@RequestParam(value = "page", defaultValue = "0") Integer page,Model model) {
 
-        if(page !=0)page = page -1;
+        if(page !=0) page = page -1;
 
-        Page<SysPermission> permissionList = permissionService.list(new PageRequest(page, pageSize));
+        Page<SysPermission> permissionList = permissionService.list(page);
         model.addAttribute("permissionList",permissionList);
 
-        PageUtils pageUtils = new PageUtils("/admin/permission/list?",page,permissionList.getTotalPages(),permissionList.getTotalElements(),pageSize);
+        PageUtils pageUtils = new PageUtils("/admin/permission/list?",page,permissionList.getTotalPages(),permissionList.getTotalElements(),itweetProperties.getPagSize());
         model.addAttribute("pb",pageUtils);
 
         return "admin/user/p_list";

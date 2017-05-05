@@ -1,6 +1,9 @@
 package cn.itweet.modules.admin.article.service.tag;
 
+import cn.itweet.common.config.ItweetProperties;
 import cn.itweet.common.exception.SystemException;
+import cn.itweet.common.utils.SimplePageBuilder;
+import cn.itweet.common.utils.SimpleSortBuilder;
 import cn.itweet.modules.admin.article.entity.Tag;
 import cn.itweet.modules.admin.article.repository.ArticleTagRepository;
 import cn.itweet.modules.admin.article.repository.TagRepository;
@@ -23,14 +26,17 @@ public class TagServiceImpl implements TagService {
     @Autowired
     private ArticleTagRepository articleTagRepository;
 
+    @Autowired
+    private ItweetProperties itweetProperties;
+
     @Override
-    public Page<Tag> selectByName(Pageable pageable, String name) {
-        return tagRepository.selectByName(pageable,name);
+    public Page<Tag> selectByName(Integer page, String name) {
+        return tagRepository.selectByName(SimplePageBuilder.generate(page,itweetProperties.getPagSize(), SimpleSortBuilder.generateSort("date_d")),name);
     }
 
     @Override
-    public Page<Tag> list(Pageable pageable) {
-        return tagRepository.findAll(pageable);
+    public Page<Tag> list(Integer page) {
+        return tagRepository.findAll(SimplePageBuilder.generate(page,itweetProperties.getPagSize(), SimpleSortBuilder.generateSort("date_d")));
     }
 
     @Override

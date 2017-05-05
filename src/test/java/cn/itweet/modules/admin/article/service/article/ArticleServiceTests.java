@@ -17,6 +17,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by whoami on 20/04/2017.
@@ -46,6 +47,8 @@ public class ArticleServiceTests {
         // deleteByTitleTest();
         // deleteByIdTest();
         // getArticleRecentPostsTopNTest();
+        Map<String,List<ArticleDto>> map = articleService.archive();
+        System.out.println(map.toString());
     }
 
     private void getArticleRecentPostsTopNTest() {

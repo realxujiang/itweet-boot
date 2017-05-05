@@ -32,6 +32,7 @@
                     <th width="60px;">编号</th>
                     <th width="100px;">缩略图</th>
                     <th>标题</th>
+                    <th>类型</th>
                     <th>作者</th>
                     <th>创建时间</th>
                     <th>修改时间</th>
@@ -46,10 +47,12 @@
                     <td>${article.id}</td>
                     <td class="imgtd"><img src="<%=basePath%>/upload/files/${article.coverPicture}" width="80" height="60"/></td>
                     <td>${article.title}</td>
+                    <c:if test="${article.typeArticle eq 0}"><td>博客</td></c:if>
+                    <c:if test="${article.typeArticle eq 1}"><td>推文</td></c:if>
                     <td>${article.author}</td>
                     <td>${article.createDate}</td>
                     <td>${article.updateDate}</td>
-                    <td>${article.description}...</td>
+                    <td>${article.description}</td>
                     <td>
                         <a href="<%=basePath%>/admin/article/addContent/${article.id}" class="tablelink">编辑正文</a>
                         <a href="<%=basePath%>/admin/article/view/${article.id}" target="right" class="tablelink">预览</a>

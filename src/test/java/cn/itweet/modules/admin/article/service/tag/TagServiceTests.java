@@ -48,7 +48,7 @@ public class TagServiceTests {
     }
 
     private void listTest() {
-        Page<Tag> tags = tagService.list(new PageRequest(0,10));
+        Page<Tag> tags = tagService.list(0);
         Assert.assertEquals(1,tags.getContent().size());
     }
 

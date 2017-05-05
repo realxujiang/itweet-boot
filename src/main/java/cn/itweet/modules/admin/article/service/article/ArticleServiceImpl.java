@@ -1,5 +1,6 @@
 package cn.itweet.modules.admin.article.service.article;
 
+import cn.itweet.common.config.ItweetProperties;
 import cn.itweet.common.exception.SystemException;
 import cn.itweet.common.utils.CommonUtils;
 import cn.itweet.common.utils.SimplePageBuilder;
@@ -38,14 +39,44 @@ public class ArticleServiceImpl implements ArticleService {
     @Autowired
     private TagRepository tagRepository;
 
+    @Autowired
+    private ItweetProperties itweetProperties;
+
     @Override
     public Page<ArticleDto> list(Integer page) {
-        return articleRepository.list(SimplePageBuilder.generate(page, SimpleSortBuilder.generateSort("createDate_d")));
+        return articleRepository.list(SimplePageBuilder.generate(page,itweetProperties.getPagSize(), SimpleSortBuilder.generateSort("createDate_d")));
     }
 
     @Override
     public Page<ArticleDto> list(Integer page,Integer state) {
-        return articleRepository.list(SimplePageBuilder.generate(page, SimpleSortBuilder.generateSort("createDate_d")),state);
+        return articleRepository.list(SimplePageBuilder.generate(page,itweetProperties.getPagSize(), SimpleSortBuilder.generateSort("createDate_d")),state);
+    }
+
+    @Override
+    public Page<ArticleDto> list(Integer page, Integer state, Integer articleType) {
+        return articleRepository.list(SimplePageBuilder.generate(page, itweetProperties.getPagSize(),SimpleSortBuilder.generateSort("createDate_d")),state,articleType);
+    }
+
+    @Override
+    public Map<String, List<ArticleDto>> archive() {
+        String sql = "select distinct DATE_FORMAT(a.create_date,'%Y'),\"test\" from article a where a.state=1";
+        List<Object[]> list = articleRepository.listBySQL(sql);
+        Map<String, List<ArticleDto>> listMap = new HashMap<>();
+        for (int i=0; i<list.size(); i++) {
+            Object[] obj = list.get(i);
+            String year = obj[0].toString();
+            List<Object[]> articleList = articleRepository.listBySQL("select a.create_date,a.title from article a where a.state=1 and DATE_FORMAT(a.create_date,'%Y')="+year);
+            List<ArticleDto> articleDtoList = new ArrayList<>();
+            for (int j=0; j< articleList.size(); j++) {
+                Object[] article = articleList.get(j);
+                ArticleDto articleDto = new ArticleDto();
+                articleDto.setCreateDate((Date) article[0]);
+                articleDto.setTitle((String) article[1]);
+                articleDtoList.add(articleDto);
+            }
+            listMap.put(year,articleDtoList);
+        }
+        return listMap;
     }
 
     @Override
@@ -91,7 +122,7 @@ public class ArticleServiceImpl implements ArticleService {
     private List<Integer> getTagIds(String tagNames) {
 
         if (tagNames == null || "".equals(tagNames))
-            return null;
+            return new ArrayList<>();
 
         List<Integer> tagIds = new ArrayList<>();
 
@@ -124,13 +155,18 @@ public class ArticleServiceImpl implements ArticleService {
         articleCategoriesRepository.save(new ArticleCategories(categoriesId, oldArt.getId()));
     }
 
-    private void updateArticleTagInfo(List<Integer> tagIds, Article oldArt) {
+    private void updateArticleTagInfo(List<Integer> tagIds, Article oldArt){
         List<Integer> tagIdsDB =articleTagRepository.getTagIdsByArticleId(oldArt.getId());
-        if (tagIds == null && tagIdsDB.size() > 0) {
+
+        if (tagIds.isEmpty() && tagIdsDB.isEmpty()) {
+            return;
+        }
+
+        if (tagIds.isEmpty() && tagIdsDB.size() > 0) {
             for (Integer tagId : tagIdsDB) {
                 articleTagRepository.deleteByArticleIdAndTagId(oldArt.getId(),tagId);
             }
-        } else if (tagIdsDB == null && tagIds != null) {
+        } else if (tagIdsDB.isEmpty() && tagIds != null) {
             addArticleTag(tagIds, oldArt.getId());
         } else if (!CommonUtils.compare(tagIds,tagIdsDB)) {
             List<Integer> delTags = CommonUtils.getDeleteElements(tagIds,tagIdsDB);
@@ -148,13 +184,14 @@ public class ArticleServiceImpl implements ArticleService {
         oldArt.setTitle(article.getTitle());
         oldArt.setDescription(article.getDescription());
         oldArt.setUpdateDate(new Date());
+        oldArt.setTypeArticle(article.getTypeArticle());
         oldArt.setCoverPicture(article.getCoverPicture());
         articleRepository.save(oldArt);
     }
 
     @Override
     public Page<ArticleDto> searchByTitle(Integer page, String title) {
-        return articleRepository.searchByTitle(SimplePageBuilder.generate(page, SimpleSortBuilder.generateSort("createDate_d")),title);
+        return articleRepository.searchByTitle(SimplePageBuilder.generate(page,itweetProperties.getPagSize(),SimpleSortBuilder.generateSort("createDate_d")),title);
     }
 
     @Override
@@ -212,12 +249,8 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public Map<String, Article> archives() {
-        List<Article> articles = (List<Article>) articleRepository.findAll();
-        Map<String,Article> articleMap = new HashMap<>();
-        for (Article article:articles) {
-            articleMap.put(ArticleUtils.parseToTime(article.getCreateDate()),article);
-        }
-        return articleMap;
+    public List<Article> listByCategoriesIdAndState(Integer state, Integer categoriesId) {
+        return articleRepository.listByCategoriesIdAndState(state,categoriesId);
     }
+
 }

@@ -25,6 +25,7 @@ public class CategoriesServiceTests {
 
     @Test
     public void test() throws SystemException {
+        // getCategoriesArticleCountTest();
         // addCategoriesTest();
         // getCategoriesByNameTest();
         // listTest();
@@ -32,6 +33,10 @@ public class CategoriesServiceTests {
         // updateTest();
 
         // deleteByIdTest();
+    }
+
+    private void getCategoriesArticleCountTest() {
+        categoriesService.getCategoriesArticleCount();
     }
 
     private void deleteByIdTest() {

@@ -70,53 +70,50 @@
 <div id="content">
     <!--This is the START of the contact section-->
     <div id="contact">
-        <h5 style="margin-top:10px;">Contact us</h5>
-        <p>If you would like to contact us use this form, and we will get back to you shortly!</p>
+        <h5 style="margin-top:10px;font-family: STXingkai">联系我们</h5>
+        <p>你可以通过以下方式联系我们，我们收到邮件会回复你!</p>
         <form name="contact" action="scripts/contact.php" id="contactform" method="post">
             <div class="boxes">
-                <h6>name<span class="required">*</span></h6>
+                <h6>名称<span class="required">*</span></h6>
                 <div class="box">
                     <input name="name" type="text" class="input" id="sender_name" />
                 </div>
-                <h6>email<span class="required">*</span></h6>
+                <h6>邮箱<span class="required">*</span></h6>
                 <div class="box">
                     <input name="email" type="text" class="input" id="sender_email" />
                 </div>
-                <h6>message</h6>
+                <h6>消息</h6>
                 <div class="msgbox">
                     <textarea name="cf_message" rows="50" cols="30" class="message" id="cf_message"></textarea>
                 </div>
                 <div class="submitbtn">
-                    <input type="submit" class="button btncolor" onClick="MM_validateForm('sender_name','','R');MM_validateForm('sender_email','','RisEmail');return document.MM_returnValue" value="Send Message" />
+                    <input type="submit" class="button btncolor" onClick="MM_validateForm('sender_name','','R');MM_validateForm('sender_email','','RisEmail');return document.MM_returnValue" value="发送邮件" />
                 </div>
             </div>
         </form>
     </div>
     <div id="contactinfo">
-        <h5>Our adress is:</h5>
-        <p>Haidian district Xierqi</p>
-        <p>The Beijin City</p>
-        <p>100000 Post code</p>
+        <h5 style="font-family: STXingkai">我们的地址:</h5>
+        <p>中国&北京</p>
+        <p>海淀区西二旗</p>
+        <p>邮政编码100000</p>
         <br />
-        <h5>Our contact info is:</h5>
-        <p>E: skynet199@foxmail.com</p>
-        <p>QQ Group: 457710636</p>
-        <p>QQ Group: 288396468</p>
+        <h5 style="font-family: STXingkai">我们的联系信息</h5>
+        <p>QQ 群1: 457710636</p>
+        <p>QQ 群2: 288396468</p>
         <br />
+        <h5 style="font-family: STXingkai">我们的网络ID</h5>
         <div class="dribbble">
-            <a href="http://weibo.com/sparkjvm">weibo</a>
-        </div>
-        <div class="forrst">
-            <a href="#">skynet199@foxmail.com</a>
+            <a href="http://weibo.com/sparkjvm">微博</a>
         </div>
         <div class="google">
-            <a href="http://www.tudou.com/home/sparkjvm">Tudou +</a>
+            <a href="http://www.tudou.com/home/sparkjvm">土豆视频</a>
         </div>
         <div class="twitter_small">
-            <a href="http://www.twitter.com">Follow on twitter</a>
+            <a href="https://github.com/itweet">Follow on Github</a>
         </div>
         <div class="facebook_small">
-            <a href="http://www.facebook.com">Follow on facebook</a>
+            <a href="http://www.itweet.cn">Follow on Itweet-Boot</a>
         </div>
     </div>
     <!--END of contact section-->

@@ -17,6 +17,10 @@ public interface ArticleService {
 
     Page<ArticleDto> list(Integer page,Integer state);
 
+    Page<ArticleDto> list(Integer page,Integer state,Integer articleType);
+
+    Map<String, List<ArticleDto>> archive();
+
     Page<ArticleDto> searchByTitle(Integer page, String title);
 
     List<String> getArticleTagsByArticleId(Integer articleId);
@@ -37,5 +41,5 @@ public interface ArticleService {
 
     Article addArticle(Article article, String tagNames, Integer categoriesId) throws SystemException;
 
-    Map<String,Article> archives();
+    List<Article> listByCategoriesIdAndState(Integer state, Integer categoriesId);
 }

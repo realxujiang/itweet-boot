@@ -7,10 +7,10 @@
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path+"/style/front/theme/twts";
-    String URL = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path;
 %>
 <!DOCTYPE html>
 <html>
@@ -30,94 +30,17 @@
             <main class="col-md-12">
                 <article class="post post-1">
                     <header class="entry-header">
-                        <h1 class="entry-title">
-                            <a href="single.html">Adaptive Vs. Responsive Layouts And Optimal Text Readability</a>
-                        </h1>
-                        <div class="entry-meta">
-                            <span class="post-category"><a href="#">Web Design</a></span>
-
-                            <span class="post-date"><a href="#"><time class="entry-date" datetime="2012-11-09T23:15:57+00:00">February 2, 2013</time></a></span>
-
-                            <span class="post-author"><a href="#">Albert Einstein</a></span>
-
-                            <span class="comments-link"><a href="">4 Comments</a></span>
-                        </div>
+                        <c:forEach items="${mapArticle}" var="articles">
+                            <h1 class="entry-title" style="text-align: left">
+                                <a href="/blog/${articles.key}">${articles.key}</a>
+                            </h1>
+                            <c:forEach items="${articles.value}" var="article">
+                                <div class="entry-meta" style="text-align: left;margin-left: 80px;">
+                                    <span class="post-category"></span><a href="/blog/<fmt:formatDate pattern="yyyy/MM/dd" value="${article.createDate}"/>/${article.title}"> &ensp; <fmt:formatDate pattern="yyyy/MM/dd" value="${article.createDate}"/> &ensp; ${article.title}</a>
+                                </div>
+                            </c:forEach>
+                        </c:forEach>
                     </header>
-                    <div class="entry-content clearfix">
-                        <p>Responsive web design offers us a way forward, finally allowing us to design for the ebb and flow of things. There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don’t look even slightly.</p>
-                        <div class="read-more cl-effect-14">
-                            <a href="#" class="more-link">Continue reading <span class="meta-nav">→</span></a>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="post post-2">
-                    <header class="entry-header">
-                        <h1 class="entry-title">
-                            <a href="single.html">Adaptive Vs. Responsive Layouts And Optimal Text Readability</a>
-                        </h1>
-                        <div class="entry-meta">
-                            <span class="post-category"><a href="#">Web Design</a></span>
-
-                            <span class="post-date"><a href="#"><time class="entry-date" datetime="2012-11-09T23:15:57+00:00">February 2, 2013</time></a></span>
-
-                            <span class="post-author"><a href="#">Albert Einstein</a></span>
-
-                            <span class="comments-link"><a href="#">4 Comments</a></span>
-                        </div>
-                    </header>
-                    <div class="entry-content clearfix">
-                        <p>Responsive web design offers us a way forward, finally allowing us to design for the ebb and flow of things. There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don’t look even slightly.</p>
-                        <div class="read-more cl-effect-14">
-                            <a href="#" class="more-link">Continue reading <span class="meta-nav">→</span></a>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="post post-3">
-                    <header class="entry-header">
-                        <h1 class="entry-title">
-                            <a href="single.html">Adaptive Vs. Responsive Layouts And Optimal Text Readability</a>
-                        </h1>
-                        <div class="entry-meta">
-                            <span class="post-category"><a href="#" rel="category tag">Web Design</a></span>
-
-                            <span class="post-date"><a href="#"><time class="entry-date" datetime="2012-11-09T23:15:57+00:00">February 2, 2013</time></a></span>
-
-                            <span class="post-author"><a href="#">Albert Einstein</a></span>
-
-                            <span class="comments-link"><a href="#">4 Comments</a></span>
-                        </div>
-                    </header>
-                    <div class="entry-content clearfix">
-                        <p>Responsive web design offers us a way forward, finally allowing us to design for the ebb and flow of things. There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don’t look even slightly.</p>
-                        <div class="read-more cl-effect-14">
-                            <a href="#" class="more-link">Continue reading <span class="meta-nav">→</span></a>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="post post-4">
-                    <header class="entry-header">
-                        <h1 class="entry-title">
-                            <a href="single.html">Adaptive Vs. Responsive Layouts And Optimal Text Readability</a>
-                        </h1>
-                        <div class="entry-meta">
-                            <span class="post-category"><a href="#" rel="category tag">Web Design</a></span>
-
-                            <span class="post-date"><a href="#"><time class="entry-date" datetime="2012-11-09T23:15:57+00:00">February 2, 2013</time></a></span>
-
-                            <span class="post-author"><a href="#">Albert Einstein</a></span>
-
-                            <span class="comments-link"><a href="#">4 Comments</a></span>
-                        </div>
-                    </header>
-                    <div class="entry-content clearfix">
-                        <p>Responsive web design offers us a way forward, finally allowing us to design for the ebb and flow of things. There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don’t look even slightly.</p>
-                        <div class="read-more cl-effect-14">
-                            <a href="#" class="more-link">Continue reading <span class="meta-nav">→</span></a>
-                        </div>
-                    </div>
                 </article>
             </main>
         </div>

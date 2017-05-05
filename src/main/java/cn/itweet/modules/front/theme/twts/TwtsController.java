@@ -7,9 +7,8 @@ import cn.itweet.modules.admin.article.entity.Categories;
 import cn.itweet.modules.admin.article.service.article.ArticleService;
 import cn.itweet.modules.admin.article.service.categories.CategoriesService;
 import cn.itweet.modules.admin.article.utils.ArticleDto;
-import cn.itweet.modules.admin.article.utils.State;
-import cn.itweet.modules.admin.document.entiry.Document;
-import cn.itweet.modules.admin.document.service.StorageService;
+import cn.itweet.modules.admin.article.utils.ArticleUtils;
+import cn.itweet.modules.admin.article.utils.CategoriesDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -17,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by whoami on 27/04/2017.
@@ -40,13 +40,13 @@ public class TwtsController {
         List<ArticleDto> topArticle = articleService.getArticleRecentPostsTopN(5);
         model.addAttribute("topArticle",topArticle);
 
-        Page<ArticleDto> listArticle = articleService.list(page, State.getIsPublished());
-        model.addAttribute("listArticle",listArticle);
+        Page<ArticleDto> listArticle = articleService.list(page, ArticleUtils.getIsPublished());
+        model.addAttribute("listArticle",listArticle.getContent());
 
-        List<Categories> categoriesList = categoriesService.list();
+        List<CategoriesDto> categoriesList = categoriesService.getCategoriesArticleCount();
         model.addAttribute("categoriesList",categoriesList);
 
-        PageUtils pageUtils = new PageUtils("/bolg?",page,listArticle.getTotalPages(),listArticle.getTotalElements(),itweetProperties.getPagSize());
+        PageUtils pageUtils = new PageUtils("/blog?",page,listArticle.getTotalPages(),listArticle.getTotalElements(),itweetProperties.getPagSize());
         model.addAttribute("pb",pageUtils);
 
         return "front/theme/twts/index";
@@ -58,27 +58,54 @@ public class TwtsController {
     }
 
     @RequestMapping(value = "/blog/archive",method = RequestMethod.GET)
-    public String archive(@RequestParam(value = "page", defaultValue = "0") Integer page,Model model) {
-        if(page != 0) page = page -1;
+    public String archive(Model model) {
 
-        Page<ArticleDto> listArticle = articleService.list(page, State.getIsPublished());
-        model.addAttribute("listArticle",listArticle);
+        Map<String, List<ArticleDto>> mapArticle = articleService.archive();
+        model.addAttribute("mapArticle",mapArticle);
 
         return "front/theme/twts/full-width";
     }
 
     @RequestMapping(value = "/blog/{year}/{month}/{day}/{title}",method = RequestMethod.GET)
     public String single(@PathVariable("year") Integer year,@PathVariable("month") Integer month,@PathVariable("day") Integer day,@PathVariable("title") String title, Model model) {
+
         Article article = articleService.getArticleByTitle(title);
-        List<String> tagsList = articleService.getArticleTagsByArticleId(article.getId());
         model.addAttribute("article",article);
+
+        List<String> tagsList = articleService.getArticleTagsByArticleId(article.getId());
         model.addAttribute("tagsList",tagsList.toString());
+
+        List<ArticleDto> topArticle = articleService.getArticleRecentPostsTopN(5);
+        model.addAttribute("topArticle",topArticle);
+
+        List<CategoriesDto> categoriesList = categoriesService.getCategoriesArticleCount();
+        model.addAttribute("categoriesList",categoriesList);
+
         return "front/theme/twts/single";
     }
 
-    @GetMapping(value = "/blog/contact")
+    @RequestMapping(value = "/blog/contact",method = RequestMethod.GET)
     public String contact(Model model) {
         return "front/theme/twts/contact";
+    }
+
+    @RequestMapping(value = "/blog/history",method = RequestMethod.GET)
+    public String history(Model model) {
+        return "front/theme/twts/history";
+    }
+
+    @RequestMapping(value = "/blog/categories/{id}",method = RequestMethod.GET)
+    public String listByCategoriesId(@PathVariable("id") Integer id,Model model) {
+        List<ArticleDto> topArticle = articleService.getArticleRecentPostsTopN(5);
+        model.addAttribute("topArticle",topArticle);
+
+        List<Article> listArticle = articleService.listByCategoriesIdAndState(ArticleUtils.getIsPublished(),id);
+        model.addAttribute("listArticle",listArticle);
+
+        List<CategoriesDto> categoriesList = categoriesService.getCategoriesArticleCount();
+        model.addAttribute("categoriesList",categoriesList);
+
+        return "front/theme/twts/list";
     }
 
 }

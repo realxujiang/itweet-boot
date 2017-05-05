@@ -14,6 +14,8 @@ public class ArticleDto {
 
     private Integer state;
 
+    private Integer typeArticle;
+
     private String description;
 
     private String fullDescription;
@@ -26,7 +28,7 @@ public class ArticleDto {
 
     private String coverPicture;
 
-    public ArticleDto(Integer id, String title, Integer state, String description, String fullDescription, Date createDate, Date updateDate, String author, String coverPicture) {
+    public ArticleDto(Integer id, String title, Integer state, String description, String fullDescription, Date createDate, Date updateDate, String author, String coverPicture,Integer typeArticle) {
         this.id = id;
         this.title = title;
         this.state = state;
@@ -36,6 +38,7 @@ public class ArticleDto {
         this.updateDate = updateDate;
         this.author = author;
         this.coverPicture = coverPicture;
+        this.typeArticle = typeArticle;
     }
 
     public ArticleDto() {
@@ -112,6 +115,14 @@ public class ArticleDto {
 
     public void setCoverPicture(String coverPicture) {
         this.coverPicture = coverPicture;
+    }
+
+    public Integer getTypeArticle() {
+        return typeArticle;
+    }
+
+    public void setTypeArticle(Integer typeArticle) {
+        this.typeArticle = typeArticle;
     }
 
     @Override

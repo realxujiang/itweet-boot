@@ -1,5 +1,6 @@
 package cn.itweet.modules.admin.user.service.permission;
 
+import cn.itweet.common.config.ItweetProperties;
 import cn.itweet.common.exception.SystemException;
 import cn.itweet.common.utils.*;
 import cn.itweet.modules.admin.system.RootController;
@@ -45,14 +46,12 @@ public class PermissionServiceImpl implements PermissionService{
     @Autowired
     private RoleRepository roleRepository;
 
-    @Override
-    public Page<SysPermission> list(Pageable pageable) {
-        return permissionRepository.findAll(pageable);
-    }
+    @Autowired
+    private ItweetProperties itweetProperties;
 
     @Override
     public Page<SysPermission> list(Integer page) {
-        return permissionRepository.findAll(new PageRequest(page, 10));
+        return permissionRepository.findAll(SimplePageBuilder.generate(page,itweetProperties.getPagSize(), SimpleSortBuilder.generateSort("id")));
     }
 
     @Override

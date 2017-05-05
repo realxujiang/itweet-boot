@@ -31,11 +31,9 @@ public interface StorageService {
      */
     String store(MultipartFile file, String path,String columnd) throws SystemException;
 
-    Page<Document> loadAll(Integer page);
+    Page<Document> list(Integer page);
 
-    Page<Document> list(Pageable pageable);
-
-    Page<Document> selectByColumnd(Pageable pageable, String columnd);
+    Page<Document> selectByColumnd(Integer page, String columnd);
 
     Document loadById(Integer id);
 

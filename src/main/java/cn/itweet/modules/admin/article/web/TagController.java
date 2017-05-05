@@ -1,5 +1,6 @@
 package cn.itweet.modules.admin.article.web;
 
+import cn.itweet.common.config.ItweetProperties;
 import cn.itweet.common.exception.SystemException;
 import cn.itweet.common.utils.PageUtils;
 import cn.itweet.modules.admin.article.entity.Tag;
@@ -31,22 +32,24 @@ public class TagController {
     @Autowired
     private TagService tagService;
 
+    @Autowired
+    private ItweetProperties itweetProperties;
+
     /**
      *文章标签列表
      * @param page
-     * @param pageSize
      * @param model
      * @return
      */
     @RequestMapping(value = "/list",method = RequestMethod.GET)
-    public String list(@RequestParam(value = "page", defaultValue = "0") Integer page, @RequestParam(value = "pageSize", defaultValue = "10") Integer pageSize, Model model) {
+    public String list(@RequestParam(value = "page", defaultValue = "0") Integer page, Model model) {
 
         if(page !=0)page = page -1;
 
-        Page<Tag> tagList = tagService.list(new PageRequest(page, pageSize));
+        Page<Tag> tagList = tagService.list(page);
         model.addAttribute("tagList",tagList);
 
-        PageUtils pageUtils = new PageUtils("/admin/tag/list?",page,tagList.getTotalPages(),tagList.getTotalElements(),pageSize);
+        PageUtils pageUtils = new PageUtils("/admin/tag/list?",page,tagList.getTotalPages(),tagList.getTotalElements(),itweetProperties.getPagSize());
         model.addAttribute("pb",pageUtils);
 
         return "admin/article/t_list";
@@ -55,17 +58,16 @@ public class TagController {
     /**
      * 文章标签按Name查询
      * @param page
-     * @param pageSize
      * @param model
      * @return
      */
     @RequestMapping(value = "/select",method = RequestMethod.GET)
-    public String select(@RequestParam(value = "name") String name, @RequestParam(value = "page", defaultValue = "0") Integer page, @RequestParam(value = "pageSize", defaultValue = "10") Integer pageSize,Model model) {
-        if(page !=0)page = page -1;
-        Page<Tag> tagList = tagService.selectByName(new PageRequest(page, pageSize),name);
+    public String select(@RequestParam(value = "name") String name, @RequestParam(value = "page", defaultValue = "0") Integer page,Model model) {
+        if(page !=0) page = page -1;
+        Page<Tag> tagList = tagService.selectByName(page,name);
         model.addAttribute("tagList",tagList);
 
-        PageUtils pageUtils = new PageUtils("/admin/tag/select?name="+ name+"&",page,tagList.getTotalPages(),tagList.getTotalElements(),pageSize);
+        PageUtils pageUtils = new PageUtils("/admin/tag/select?name="+ name+"&",page,tagList.getTotalPages(),tagList.getTotalElements(),itweetProperties.getPagSize());
         model.addAttribute("pb",pageUtils);
 
         model.addAttribute("name",name);

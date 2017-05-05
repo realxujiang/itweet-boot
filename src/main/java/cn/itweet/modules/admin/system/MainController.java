@@ -34,7 +34,6 @@ public class MainController {
      */
     @GetMapping(value = "/admin/system/body")
     public String body(Map<String, Object> model) {
-        System.out.println("--------------后台Body----------");
         return "admin/system/body";
     }
 

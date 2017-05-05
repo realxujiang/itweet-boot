@@ -12,8 +12,6 @@ import java.util.List;
  */
 public interface PermissionService {
 
-    Page<SysPermission> list(Pageable pageable);
-
     /**
      * 获取所有的权限列表信息，分页
      * @param

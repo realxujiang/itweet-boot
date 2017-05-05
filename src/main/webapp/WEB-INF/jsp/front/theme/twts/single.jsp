@@ -11,6 +11,7 @@
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path+"/style/front/theme/twts";
+    String URL = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path;
 %>
 <!DOCTYPE html>
 <html>
@@ -35,7 +36,14 @@
             <main class="col-md-8">
                 <article class="post post-1">
                     <header class="entry-header">
-                        <h1 class="entry-title">${article.title}</h1>
+                        <h1 class="entry-title">
+                            <c:if test="${article.typeArticle eq 1}">
+                                [Tweet] ${article.title}
+                            </c:if>
+                            <c:if test="${article.typeArticle eq 0}">
+                                ${article.title}
+                            </c:if>
+                        </h1>
                         <div class="entry-meta">
                             <span class="post-category"><a href="#">标签：${tagsList}</a></span>
 
@@ -51,51 +59,10 @@
                     </div>
                 </article>
             </main>
-            <aside class="col-md-4">
-                <div class="widget widget-recent-posts">
-                    <h3 class="widget-title">Recent Posts</h3>
-                    <ul>
-                        <li>
-                            <a href="#">Adaptive Vs. Responsive Layouts And Optimal Text Readability</a>
-                        </li>
-                        <li>
-                            <a href="#">Web Design is 95% Typography</a>
-                        </li>
-                        <li>
-                            <a href="#">Paper by FiftyThree</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="widget widget-archives">
-                    <h3 class="widget-title">Archives</h3>
-                    <ul>
-                        <li>
-                            <a href="#">November 2014</a>
-                        </li>
-                        <li>
-                            <a href="#">September 2014</a>
-                        </li>
-                        <li>
-                            <a href="#">January 2013</a>
-                        </li>
-                    </ul>
-                </div>
 
-                <div class="widget widget-category">
-                    <h3 class="widget-title">Category</h3>
-                    <ul>
-                        <li>
-                            <a href="#">Web Design</a>
-                        </li>
-                        <li>
-                            <a href="#">Web Development</a>
-                        </li>
-                        <li>
-                            <a href="#">SEO</a>
-                        </li>
-                    </ul>
-                </div>
-            </aside>
+            <%-- Left Menu --%>
+            <jsp:include page="tools/left-menu.jsp"></jsp:include>
+
         </div>
     </div>
 </div>

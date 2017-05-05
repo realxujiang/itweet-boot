@@ -59,24 +59,17 @@ public class DocumentController {
     }
 
     @RequestMapping(value = "/list",method = RequestMethod.GET)
-    public String list(@RequestParam(value = "page", defaultValue = "0") Integer page, @RequestParam(value = "pageSize", defaultValue = "10") Integer pageSize, Model model) {
+    public String list(@RequestParam(value = "page", defaultValue = "0") Integer page, Model model) {
 
         if(page !=0) page = page -1;
 
-        Page<Document> documentList = storageService.list(new PageRequest(page, pageSize));
+        Page<Document> documentList = storageService.list(page);
         model.addAttribute("documentList",documentList);
 
-        PageUtils pageUtils = new PageUtils("/admin/document/list?",page,documentList.getTotalPages(),documentList.getTotalElements(),pageSize);
+        PageUtils pageUtils = new PageUtils("/admin/document/list?",page,documentList.getTotalPages(),documentList.getTotalElements(),itweetProperties.getPagSize());
         model.addAttribute("pb",pageUtils);
 
         return "admin/document/d_list";
-    }
-
-    @RequestMapping(value = "/files",method = RequestMethod.GET)
-    @ResponseBody
-    public List<Document> loadAll(Integer page) {
-        Page<Document> documentPage = storageService.loadAll(0);
-        return documentPage.getContent();
     }
 
     @RequestMapping(value = "/delete/{id}",method = RequestMethod.GET)
@@ -87,12 +80,12 @@ public class DocumentController {
     }
 
     @RequestMapping(value = "/select",method = RequestMethod.GET)
-    public String select(@RequestParam(value = "columnd") String columnd, @RequestParam(value = "page", defaultValue = "0") Integer page, @RequestParam(value = "pageSize", defaultValue = "10") Integer pageSize,Model model) {
-        if(page !=0)page = page -1;
-        Page<Document> documentList = storageService.selectByColumnd(new PageRequest(page, pageSize),columnd);
+    public String select(@RequestParam(value = "columnd") String columnd, @RequestParam(value = "page", defaultValue = "0") Integer page,Model model) {
+        if(page !=0) page = page -1;
+        Page<Document> documentList = storageService.selectByColumnd(page,columnd);
         model.addAttribute("documentList",documentList);
 
-        PageUtils pageUtils = new PageUtils("/admin/document/select?name="+ columnd+"&",page,documentList.getTotalPages(),documentList.getTotalElements(),pageSize);
+        PageUtils pageUtils = new PageUtils("/admin/document/select?name="+ columnd+"&",page,documentList.getTotalPages(),documentList.getTotalElements(),itweetProperties.getPagSize());
         model.addAttribute("pb",pageUtils);
 
         model.addAttribute("columnd",columnd);
