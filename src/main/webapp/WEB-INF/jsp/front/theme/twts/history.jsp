@@ -28,6 +28,7 @@
 <%--Nav Menu--%>
 <jsp:include page="tools/navbar.jsp"></jsp:include>
 
+<%--Start Content--%>
 <div class="content-body">
     <div class="container">
         <div class="row">
@@ -94,6 +95,7 @@
         </div>
     </div>
 </div>
+<%--End Content--%>
 
 <footer id="site-footer">
     <div class="container">

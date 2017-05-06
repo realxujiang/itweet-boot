@@ -65,8 +65,6 @@
                 </c:forEach>
 
                 <div class="entry-meta" style="margin-top: 100px;">
-                    <a href="<%=URL%>${pb.url}page=1">首页</a>&emsp;
-
                     <c:if test="${pb.currentPage > 1}">
                         <a href="<%=URL%>/${pb.url}page=${pb.currentPage-1}">上一页</a>&emsp;
                     </c:if>
@@ -106,8 +104,6 @@
                     <c:if test="${pb.currentPage < pb.totalPages}">
                         &emsp;<a href="<%=URL%>${pb.url}page=${pb.currentPage+1}">下一页</a>
                     </c:if>
-
-                    &emsp;<a href="<%=URL%>${pb.url}page=${pb.totalPages}">尾页</a>
                 </div>
 
             </main>

@@ -4,8 +4,7 @@
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/style/front/theme/effe";
 %>
 
-<meta charset="UTF-8">
-
+<meta charset="UTF-8" name="description" content="whoami whoami个人推文 whoami个人博客 itweet.cn itweet ...">
 <!--Load CSS-->
 <link rel="stylesheet" type="text/css" href="<%=basePath%>/css/style.css" />
 <link rel="stylesheet" type="text/css" href="<%=basePath%>/css/nivo-slider.css" />

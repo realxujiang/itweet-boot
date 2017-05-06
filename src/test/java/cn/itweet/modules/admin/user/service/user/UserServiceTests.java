@@ -33,16 +33,15 @@ public class UserServiceTests {
 
     @Test
     public void test() throws SystemException {
-
-        addUserTests();
-
-        deleteUserTests();
-
-        updateUserTests();
-
-        getUserTests();
-
-        getAllUsersTest();
+//        addUserTests();
+//
+//        deleteUserTests();
+//
+//        updateUserTests();
+//
+//        getUserTests();
+//
+//        getAllUsersTest();
     }
 
     private void updateUserTests() throws SystemException {

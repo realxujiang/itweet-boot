@@ -5,7 +5,7 @@
 %>
 
 <!-- meta -->
-<meta charset="UTF-8">
+<meta charset="UTF-8" name="description" content="whoami whoami个人推文 whoami个人博客 itweet.cn itweet ...">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- css -->

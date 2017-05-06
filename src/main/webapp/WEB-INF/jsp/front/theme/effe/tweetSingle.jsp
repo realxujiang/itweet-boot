@@ -2,34 +2,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
     String path = request.getContextPath();
-    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path+"/style/front/theme/effe";
     String URL = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path;
 %>
 <!DOCTYPE html>
 <html>
 <head>
     <title>BlogSingle</title>
-    <link rel="stylesheet" type="text/css" href="<%=basePath%>/css/style.css" />
-
-    <style>
-        .blog-item-single-content pre {
-            display: block;
-            padding: 1rem;
-            margin: 1rem 0;
-            font-size: 1.3rem;
-            line-height: 1.6;
-            word-break: break-all;
-            word-wrap: break-word;
-            color: #555;
-            background-color: #f8f8f8;
-            border: 1px solid #dedede;
-            border-radius: 0;
-            width: 720px;
-        }
-        .blog-item-single-content p {
-            font-size: 11px;
-        }
-    </style>
+    <jsp:include page="tools/style.jsp"></jsp:include>
 </head>
 
 <body>

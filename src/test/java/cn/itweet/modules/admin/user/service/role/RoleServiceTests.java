@@ -34,17 +34,17 @@ public class RoleServiceTests {
 
     @Test
     public void test() throws SystemException {
-        addTest();
-
-        updateTest();
-
-        findTest();
-
-        listTest();
-
-        deleteByIdTest();
-
-        setAuthorizationTest();
+//        addTest();
+//
+//        updateTest();
+//
+//        findTest();
+//
+//        listTest();
+//
+//        deleteByIdTest();
+//
+//        setAuthorizationTest();
     }
 
     private void setAuthorizationTest() {

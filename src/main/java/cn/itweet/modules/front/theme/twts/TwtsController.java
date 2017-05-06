@@ -3,7 +3,6 @@ package cn.itweet.modules.front.theme.twts;
 import cn.itweet.common.config.ItweetProperties;
 import cn.itweet.common.utils.PageUtils;
 import cn.itweet.modules.admin.article.entity.Article;
-import cn.itweet.modules.admin.article.entity.Categories;
 import cn.itweet.modules.admin.article.service.article.ArticleService;
 import cn.itweet.modules.admin.article.service.categories.CategoriesService;
 import cn.itweet.modules.admin.article.utils.ArticleDto;

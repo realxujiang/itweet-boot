@@ -9,7 +9,7 @@
 <html>
 
 <head>
-    <title>Blog</title>
+    <title>Tweet</title>
     <jsp:include page="tools/style.jsp"></jsp:include>
 </head>
 

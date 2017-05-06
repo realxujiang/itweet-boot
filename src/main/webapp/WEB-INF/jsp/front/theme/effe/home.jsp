@@ -33,7 +33,7 @@
 	<!--This is the START of the recent posts-->
 	<div class="spacer"></div>
 	<div id="recent-text">
-		<h2 style="font-family: 'Xingkai TC'">我最近的一些作品 . . .</h2>
+		<h2 style="font-family: 'Xingkai TC';src: url(<%=basePath%>/font/Chinese_Font_Traditional_Chinese_Fonts.ttf)">我最近的一些作品 . . .</h2>
 		<div class="star-divider"></div>
 		<h5 style="font-family: STXingkai">跟踪我的最新动态！</h5>
 		<div class="spacer"></div>

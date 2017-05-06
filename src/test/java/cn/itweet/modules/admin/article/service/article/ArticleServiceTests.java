@@ -47,8 +47,8 @@ public class ArticleServiceTests {
         // deleteByTitleTest();
         // deleteByIdTest();
         // getArticleRecentPostsTopNTest();
-        Map<String,List<ArticleDto>> map = articleService.archive();
-        System.out.println(map.toString());
+        // Map<String,List<ArticleDto>> map = articleService.archive();
+        //System.out.println(map.toString());
     }
 
     private void getArticleRecentPostsTopNTest() {
