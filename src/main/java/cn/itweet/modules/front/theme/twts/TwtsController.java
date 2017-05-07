@@ -14,6 +14,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.util.List;
 import java.util.Map;
 
@@ -67,6 +70,7 @@ public class TwtsController {
 
     @RequestMapping(value = "/blog/{year}/{month}/{day}/{title}",method = RequestMethod.GET)
     public String single(@PathVariable("year") Integer year,@PathVariable("month") Integer month,@PathVariable("day") Integer day,@PathVariable("title") String title, Model model) {
+        //String content= URLDecoder.decode(title,"UTF-8");
 
         Article article = articleService.getArticleByTitle(title);
         model.addAttribute("article",article);

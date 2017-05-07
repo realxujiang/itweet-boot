@@ -4,12 +4,8 @@ import cn.itweet.common.config.ItweetProperties;
 import cn.itweet.common.exception.SystemException;
 import cn.itweet.common.utils.*;
 import cn.itweet.modules.admin.system.RootController;
-import cn.itweet.modules.admin.user.entity.SysPermission;
-import cn.itweet.modules.admin.user.entity.SysPermissionRole;
-import cn.itweet.modules.admin.user.entity.SysRole;
-import cn.itweet.modules.admin.user.repository.PermissionRepository;
-import cn.itweet.modules.admin.user.repository.PermissionRoleRepository;
-import cn.itweet.modules.admin.user.repository.RoleRepository;
+import cn.itweet.modules.admin.user.entity.*;
+import cn.itweet.modules.admin.user.repository.*;
 import cn.itweet.modules.admin.user.service.user.UserServiceImpl;
 import cn.itweet.modules.admin.user.web.RoleController;
 import cn.itweet.modules.admin.user.web.UserController;
@@ -47,6 +43,12 @@ public class PermissionServiceImpl implements PermissionService{
     private RoleRepository roleRepository;
 
     @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private RoleUserRepository roleUserRepository;
+
+    @Autowired
     private ItweetProperties itweetProperties;
 
     @Override
@@ -76,9 +78,12 @@ public class PermissionServiceImpl implements PermissionService{
     private void initRolePermission() {
         List<Integer> permissionIds = permissionRepository.getPermissionIds();
         SysRole sysRole = roleRepository.findByRoleName("ROLE_ADMIN");
+        SysUser sysUser = userRepository.findByUsername("admin");
 
-        if (sysRole == null) {
+        if (sysRole == null && sysUser == null) {
             SysRole sr = roleRepository.save(new SysRole("ROLE_ADMIN","Role admin manager"));
+            SysUser su = userRepository.save(new SysUser("admin","admin@itweet.cn","123456"));
+            roleUserRepository.save(new SysRoleUser(sr.getId(),su.getId()));
             savePermissionRole(permissionIds, sr);
         } else {
             savePermissionRole(permissionIds, sysRole);

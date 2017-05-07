@@ -77,7 +77,7 @@
             <a class="single_image" rel="gallery1" href="<%=basePath%>/images/sample-project/large/project1.jpg"><img src="<%=basePath%>/images/sample-project/thumbs/project1.jpg" width="220" height="132" alt="sample-project1" /></a>
             <a class="single_image" rel="gallery1" href="<%=basePath%>/images/sample-project/large/project2.jpg"></a>
             <a class="single_image" rel="gallery1" href="<%=basePath%>/images/sample-project/large/project3.jpg"></a>
-            <h6>24.5.2009</h6>
+            <h6>2017.10.11</h6>
             <p>Moo cards done.
                 <a class="readmore" href="#">read more →</a>
             </p>
@@ -86,18 +86,18 @@
             <a class="single_image" rel="gallery2" href="<%=basePath%>/images/sample-project/large/project3.jpg"><img src="<%=basePath%>/images/sample-project/thumbs/project3.jpg" width="220" height="132" alt="sample-project3" /></a>
             <a class="single_image" rel="gallery2" href="<%=basePath%>/images/sample-project/large/project2.jpg"></a>
             <a class="single_image" rel="gallery2" href="<%=basePath%>/images/sample-project/large/project1.jpg"></a>
-            <h6>1.6.2009</h6>
+            <h6>2010.10.11</h6>
             <p>Like printing?
-                <a class="readmore" href="#">read more →</a>
+                <a class="readmore" href="#">阅读更多 →</a>
             </p>
         </div>
         <div class="one-third-last">
             <a class="single_image" rel="gallery3" href="<%=basePath%>/images/sample-project/large/project2.jpg"><img src="<%=basePath%>/images/sample-project/thumbs/project2.jpg" width="220" height="132" alt="sample-project2" /></a>
             <a class="single_image" rel="gallery3" href="<%=basePath%>/images/sample-project/large/project3.jpg"></a>
             <a class="single_image" rel="gallery3" href="<%=basePath%>/images/sample-project/large/project1.jpg"></a>
-            <h6>22.7.2009</h6>
+            <h6>2009.10.11</h6>
             <p>Sweeeeeet.
-                <a class="readmore" href="#">read more →</a>
+                <a class="readmore" href="#">阅读更多 →</a>
             </p>
         </div>
     </div>

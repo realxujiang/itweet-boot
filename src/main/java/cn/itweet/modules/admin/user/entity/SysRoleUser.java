@@ -18,6 +18,14 @@ public class SysRoleUser {
     @Column(name = "uid")
     private Integer userId;
 
+    public SysRoleUser() {
+    }
+
+    public SysRoleUser(Integer roleId, Integer userId) {
+        this.roleId = roleId;
+        this.userId = userId;
+    }
+
     public Integer getId() {
         return id;
     }

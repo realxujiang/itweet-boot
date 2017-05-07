@@ -16,6 +16,15 @@ public class SysUser {
     private String email;
     private String password;
 
+    public SysUser() {
+    }
+
+    public SysUser(String username, String email, String password) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+    }
+
     public Integer getId() {
         return id;
     }
