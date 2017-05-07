@@ -10,7 +10,7 @@
 <link href="<%=basePath%>style/admin/backstage/css/toastr.min.css" rel="stylesheet">
 <link href="<%=basePath%>style/admin/backstage/css/amazeui.chosen.css" rel="stylesheet">
 <link href="<%=basePath%>style/admin/backstage/css/amazeui.min.css" rel="stylesheet">
-<link href="<%=basePath%>style/admin/backstage/css/bootstrap.min.css" rel="stylesheet">
+<link href="<%=basePath%>style/admin/makedown/css/bootstrap.min.css" rel="stylesheet">
 
 
 <script src="<%=basePath%>style/admin/backstage/js/pintuer.js"></script>
