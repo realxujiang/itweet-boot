@@ -5,10 +5,7 @@ import cn.itweet.common.exception.SystemException;
 import cn.itweet.common.utils.CommonUtils;
 import cn.itweet.common.utils.SimplePageBuilder;
 import cn.itweet.common.utils.SimpleSortBuilder;
-import cn.itweet.modules.admin.article.entity.Article;
-import cn.itweet.modules.admin.article.entity.ArticleCategories;
-import cn.itweet.modules.admin.article.entity.ArticleTag;
-import cn.itweet.modules.admin.article.entity.Tag;
+import cn.itweet.modules.admin.article.entity.*;
 import cn.itweet.modules.admin.article.repository.ArticleCategoriesRepository;
 import cn.itweet.modules.admin.article.repository.ArticleRepository;
 import cn.itweet.modules.admin.article.repository.ArticleTagRepository;
@@ -151,8 +148,14 @@ public class ArticleServiceImpl implements ArticleService {
         Integer oldCategoriesId = articleCategoriesRepository.getCategoriesIdByArticleId(oldArt.getId());
         if (categoriesId != null && oldCategoriesId.equals(categoriesId))
             return;
-        articleCategoriesRepository.deleteByCategoriesId(oldCategoriesId);
-        articleCategoriesRepository.save(new ArticleCategories(categoriesId, oldArt.getId()));
+
+        //articleCategoriesRepository.deleteByCategoriesId(oldCategoriesId);
+        System.out.println("====>"+oldCategoriesId);
+        System.out.println("====>"+oldArt.getId());
+        ArticleCategories articleCategories = articleCategoriesRepository.findByCategoriesIdAndArticleId(oldCategoriesId,oldArt.getId());
+        articleCategories.setCategoriesId(categoriesId);
+
+        articleCategoriesRepository.save(articleCategories);
     }
 
     private void updateArticleTagInfo(List<Integer> tagIds, Article oldArt){
@@ -227,6 +230,9 @@ public class ArticleServiceImpl implements ArticleService {
             throw new SystemException("添加失败，要添加的文章名称已经存在，不可重复添加！");
 
         article.setCreateDate(new Date());
+        if (article.getCoverPicture() == null || "".equals(article.getCoverPicture())) {
+            article.setCoverPicture("no-images.png");
+        }
         Article a = articleRepository.save(article);
 
         addArticleCategories(categoriesId, a.getId());

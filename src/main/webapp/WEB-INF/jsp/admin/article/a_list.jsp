@@ -35,8 +35,6 @@
                     <th>类型</th>
                     <th>作者</th>
                     <th>创建时间</th>
-                    <th>修改时间</th>
-                    <th>描述</th>
                     <th>操作</th>
                 </tr>
                 </thead>
@@ -51,8 +49,6 @@
                     <c:if test="${article.typeArticle eq 1}"><td>推文</td></c:if>
                     <td>${article.author}</td>
                     <td>${article.createDate}</td>
-                    <td>${article.updateDate}</td>
-                    <td>${article.description}</td>
                     <td>
                         <a href="<%=basePath%>/admin/article/addContent/${article.id}" class="tablelink">编辑正文</a>
                         <a href="<%=basePath%>/admin/article/view/${article.id}" target="right" class="tablelink">预览</a>

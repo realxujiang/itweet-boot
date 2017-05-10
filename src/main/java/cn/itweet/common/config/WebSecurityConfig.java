@@ -50,7 +50,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 csrf().disable().headers().frameOptions().disable();
         http
                 .authorizeRequests()
-                .antMatchers("/admin/login","/","/*","/blog/**","/tweet/**").permitAll()
+                .antMatchers("/admin/login","/","/*","/blog/**","/portfolio/**","/tweet/**").permitAll()
                 .anyRequest().authenticated() //任何请求,登录后可以访问
                 .and()
                 .formLogin()

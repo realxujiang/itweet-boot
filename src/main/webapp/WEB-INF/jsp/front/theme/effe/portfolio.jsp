@@ -28,25 +28,34 @@
     <img class="star-divider" src="<%=basePath%>/images/subscribe_divider.png" />
     <div id="container">
         <ul id="stage">
+            <c:forEach items="${courseList}" var="course">
+                <li data-tags="${course.classify}">
+                    <a href="/portfolio/projectSample/${course.id}"><img src="<%=URL%>/upload/files/${course.coverPicture}" width="200px" height="120px" alt="Illustration" /></a>
+                    <h6>${course.tag}</h6>
+                    <p>${course.description}
+                        <a class="readmore" href="/portfolio/projectSample/${course.id}">预览 →</a>
+                    </p>
+                </li>
+            </c:forEach>
             <li data-tags="Big Data Architecture">
-                <a href="/projectSample"><img src="<%=basePath%>/images/portfolio/thumbs/image(1).jpg" alt="Illustration" /></a>
+                <a href="/portfolio/projectSample"><img src="<%=basePath%>/images/portfolio/thumbs/image(1).jpg" alt="Illustration" /></a>
                 <h6>Hadoop</h6>
                 <p>企业级Hadoop解决方案?
-                    <a class="readmore" href="/projectSample">view →</a>
+                    <a class="readmore" href="/portfolio/projectSample">view →</a>
                 </p>
             </li>
             <li data-tags="Cloud,Big Data Architecture">
-                <a href="/projectSample"><img src="<%=basePath%>/images/portfolio/thumbs/image(2).jpg" alt="Illustration" /></a>
+                <a href="/portfolio/projectSample"><img src="<%=basePath%>/images/portfolio/thumbs/image(2).jpg" alt="Illustration" /></a>
                 <h6>Openstack</h6>
                 <p>企业级私有云解决方案.
-                    <a class="readmore" href="/projectSample">view →</a>
+                    <a class="readmore" href="/portfolio/projectSample">view →</a>
                 </p>
             </li>
             <li data-tags="Web Design,Cloud">
-                <a href="/projectSample"><img src="<%=basePath%>/images/portfolio/thumbs/image(3).jpg" alt="Illustration" /></a>
+                <a href="/portfolio/projectSample"><img src="<%=basePath%>/images/portfolio/thumbs/image(3).jpg" alt="Illustration" /></a>
                 <h6>skynet</h6>
                 <p>大型分布式监控系统!
-                    <a class="readmore" href="/projectSample">view →</a>
+                    <a class="readmore" href="/portfolio/projectSample">view →</a>
                 </p>
             </li>
             <li data-tags="Web Design,Big Data Architecture">

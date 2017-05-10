@@ -27,4 +27,6 @@ public interface ArticleCategoriesRepository extends JpaRepository<ArticleCatego
     Integer getCategoriesIdByArticleId(Integer articleId);
 
     List<ArticleCategories> findByCategoriesId(Integer categoriesId);
+
+    ArticleCategories findByCategoriesIdAndArticleId(Integer CategoriesId,Integer ArticleId);
 }

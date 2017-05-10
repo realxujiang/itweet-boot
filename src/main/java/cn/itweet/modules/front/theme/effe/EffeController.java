@@ -6,6 +6,8 @@ import cn.itweet.modules.admin.article.entity.Article;
 import cn.itweet.modules.admin.article.service.article.ArticleService;
 import cn.itweet.modules.admin.article.utils.ArticleDto;
 import cn.itweet.modules.admin.article.utils.ArticleUtils;
+import cn.itweet.modules.admin.course.entity.Course;
+import cn.itweet.modules.admin.course.service.CourseService;
 import cn.itweet.modules.admin.document.entiry.Document;
 import cn.itweet.modules.admin.document.service.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,15 +33,20 @@ public class EffeController {
     private StorageService storageService;
 
     @Autowired
+    private CourseService courseService;
+
+    @Autowired
     private ItweetProperties itweetProperties;
 
     @GetMapping(value = "/")
     public String index(Model model) {
         model.addAttribute("home","selected");
 
-        List<ArticleDto> listArticle = articleService.getArticleRecentPostsTopN(2);
-        model.addAttribute("articleFirst",listArticle.get(0));
-        model.addAttribute("articleLast",listArticle.get(1));
+        Page<ArticleDto> listArticle = articleService.list(0, ArticleUtils.getIsPublished(),ArticleUtils.getIsTweet());
+        model.addAttribute("articleFirst",listArticle.getContent().get(0));
+        model.addAttribute("articleLast",listArticle.getContent().get(1));
+
+        model.addAttribute("listArticle",listArticle);
 
         List<Document> documentList = storageService.getNewDocumentTopN("index",4);
         model.addAttribute("documentList",documentList);
@@ -95,7 +102,20 @@ public class EffeController {
     @GetMapping(value = "/portfolio")
     public String portfolio(Model model) {
         model.addAttribute("portfolio","selected");
+        List<Course> courseList = courseService.list();
+        model.addAttribute("courseList",courseList);
         return "front/theme/effe/portfolio";
+    }
+
+    @GetMapping(value = "/portfolio/projectSample/{id}")
+    public String ProjectSample(@PathVariable Integer id, Model model) {
+        Course course = courseService.findById(id);
+        model.addAttribute("course",course);
+
+        List<Course> courseList = courseService.getCourseTopN(3);
+        model.addAttribute("courseList",courseList);
+
+        return "front/theme/effe/projectSample";
     }
 
     @GetMapping(value = "/projectSample")

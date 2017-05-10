@@ -104,7 +104,4 @@ public class DocumentController {
 
         return "redirect:/admin/document/d_list";
     }
-
-
-
 }

@@ -42,7 +42,7 @@
                 <tr>
                     <th>编号</th>
                     <th>栏目</th>
-                    <th>图片名称</th>
+                    <th>缩略图</th>
                     <th>图片别名</th>
                     <th>图片类型</th>
                     <th>上传时间</th>
@@ -54,7 +54,7 @@
                     <tr>
                         <td>${document.id}</td>
                         <td>${document.columnd}</td>
-                        <td>${document.filename}</td>
+                        <td class="imgtd"><img src="<%=basePath%>/upload/files/${document.ruleFilename}" width="80" height="60"/></td>
                         <td>${document.ruleFilename}</td>
                         <td>${document.type}</td>
                         <td>${document.date}</td>

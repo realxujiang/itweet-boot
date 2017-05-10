@@ -44,8 +44,8 @@
 
 	<h2><span class="icon-pencil-square-o"></span>教程管理</h2>
 	<ul>
-		<li><a href="<%=basePath%>admin/article/add" target="right"><span class="icon-caret-right"></span>教程发布</a></li>
-		<li><a href="<%=basePath%>admin/article/list" target="right"><span class="icon-caret-right"></span>教程列表</a></li>
+		<li><a href="<%=basePath%>admin/course/add" target="right"><span class="icon-caret-right"></span>教程发布</a></li>
+		<li><a href="<%=basePath%>admin/course/list" target="right"><span class="icon-caret-right"></span>教程列表</a></li>
 	</ul>
 
 	<h2><span class="icon-file-o"></span>素材管理</h2>

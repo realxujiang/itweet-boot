@@ -2,24 +2,24 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
     String path = request.getContextPath();
-    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path;
 %>
 <!DOCTYPE html>
 <html>
 <head>
     <title>Add</title>
     <meta charset="utf-8">
-    <link href="<%=basePath%>style/admin/backstage/css/style.css" rel="stylesheet">
+    <link href="<%=basePath%>/style/admin/backstage/css/style.css" rel="stylesheet">
 
-    <link href="<%=basePath%>style/admin/makedown/css/bootstrap.min.css" rel="stylesheet">
-    <link href="<%=basePath%>style/admin/backstage/css/reveal.css" rel="stylesheet">
+    <link href="<%=basePath%>/style/admin/makedown/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<%=basePath%>/style/admin/backstage/css/reveal.css" rel="stylesheet">
 
-    <link href="<%=basePath%>style/admin/backstage/css/amazeui.chosen.css" rel="stylesheet">
-    <link href="<%=basePath%>style/admin/backstage/css/amazeui.min.css" rel="stylesheet">
+    <link href="<%=basePath%>/style/admin/backstage/css/amazeui.chosen.css" rel="stylesheet">
+    <link href="<%=basePath%>/style/admin/backstage/css/amazeui.min.css" rel="stylesheet">
 
-    <script src="<%=basePath%>style/admin/backstage/js/jquery-3.2.1.min.js"></script>
-    <script src="<%=basePath%>style/admin/makedown/js/bootstrap.min.js"></script>
-    <script src="<%=basePath%>style/admin/backstage/js/amazeui.chosen.js"></script>
+    <script src="<%=basePath%>/style/admin/backstage/js/jquery-3.2.1.min.js"></script>
+    <script src="<%=basePath%>/style/admin/makedown/js/bootstrap.min.js"></script>
+    <script src="<%=basePath%>/style/admin/backstage/js/amazeui.chosen.js"></script>
 
     <script>
         $(function() {
@@ -42,43 +42,50 @@
     <div id="usual1" class="usual">
         <div id="tab1" class="tabson">
             <ul class="forminfo">
-                <form action="<%=basePath%>/admin/article/add" method="post">
+                <form action="<%=basePath%>/admin/course/add" method="post">
                     <li style="color: red;">${message}</li>
                     <li>
-                        <label>文章标题<b>*</b></label>
+                        <label>标题<b>*</b></label>
                         <input name="title" type="text" class="dfinput" value="${form.title}" placeholder="标题" style="width:618px;" />
                     </li>
                     <li>
-                        <label>文章描述<b>*</b></label>
+                        <label>标签<b>*</b></label>
+                        <input name="tag" type="text" class="dfinput" value="${form.tag}" placeholder="标签" style="width:618px;" />
+                    </li>
+                    <li>
+                        <label>描述<b>*</b></label>
                         <input name="description" type="text" class="dfinput" value="${form.description}" placeholder="描述" style="width:618px;" />
                     </li>
                     <li>
-                        <label>文章类型<b>*</b></label>
-                        <select id="type" name="typeArticle" style="width:618px;" class="chosen-select-no-results" tabindex="10">
-                            <option value="0" selected="selected">博客</option>
-                            <option value="1">推文</option>
+                        <label>类别<b>*</b></label>
+                        <select id="type" name="classify" style="width:618px;" class="chosen-select-no-results" tabindex="10">
+                            <option value="Big Data Architecture" selected="selected">Big Data Architecture</option>
+                            <option value="Cloud">Cloud</option>
+                            <option value="Web Desig">Web Design</option>
                         </select>
                     </li>
                     <li>
-                        <label>文章封面<b>*</b></label>
+                        <label>介绍<b>*</b></label>
+                        <input name="content" type="text" class="dfinput" value="${form.content}" placeholder="教程介绍" style="width:618px;" />
+                    </li>
+                    <li>
+                        <label>封面<b>*</b></label>
                         <input name="coverPicture" type="text" class="dfinput" value="${form.coverPicture}" placeholder="选择图片 默认: no-images.png" style="width:618px;" />
                         <%--<input type="text" name="coverPicture" value="${form.coverPicture}" class="dfinput" style="width:618px;" data-toggle="modal" data-target="#myModal" placeholder="选择图片" />--%>
                     </li>
                     <li>
-                        <label>文章类别<b>*</b></label>
-                        <select id="categories" name="categoriesId" style="width:618px;" class="chosen-select-no-results" tabindex="10">
-                            <option value="-1" selected="true">默认</option>
-                            <c:forEach items="${categoriesList}" var="categories">
-                                <option value="${categories.id}">${categories.name}</option>
-                            </c:forEach>
-                        </select>
+                        <label>滚动图1<b>*</b></label>
+                        <input name="slideOne" type="text" class="dfinput" value="${form.slideOne}" placeholder="选择图片 默认: no-images.png" style="width:618px;" />
                     </li>
                     <li>
-                        <label>文章标签<b>*</b></label>
-                        <input name="tagNames" type="text" class="dfinput" value="${tagNames}" placeholder="以英文逗号分隔的标签, 如：A,B" style="width:618px;" />
+                        <label>滚动图2<b>*</b></label>
+                        <input name="slideTwo" type="text" class="dfinput" value="${form.slideTwo}" placeholder="选择图片 默认: no-images.png" style="width:618px;" />
+                    </li>
+                    <li>
+                        <label>特点<b>*</b></label>
+                        <input name="work" type="text" class="dfinput" value="${form.work}" placeholder="特点" style="width:618px;" />
                     </li>
                     <li><label>&nbsp;</label>
-                           <%-- <input type="submit" class="btn" value="确定" />--%>
                         <button type="submit" class="btn btn-primary">
                             确定
                         </button>
@@ -89,10 +96,7 @@
     </div>
 </div>
 
-
-
-
-
+<%--modal frame--%>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content" style="height: 600px;top: 40px;  width: 120%;min-width: 830px;">
