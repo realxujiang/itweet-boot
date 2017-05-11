@@ -29,9 +29,14 @@ public class RootController {
         return "articleManager";
     }
 
-    @RootMenu(pid = "0",name = "文件管理",operation = "manager",pname = "root",descritpion = "document_manager",url = "/admin/document")
+    @RootMenu(pid = "0",name = "素材管理",operation = "manager",pname = "root",descritpion = "document_manager",url = "/admin/document")
     public String documentManager() {
         return "documentManager";
+    }
+
+    @RootMenu(pid = "0",name = "教程管理",operation = "manager",pname = "root",descritpion = "course_manager",url = "/admin/course")
+    public String courseManager() {
+        return "courseManager";
     }
 
     @RootMenu(pid = "0",name = "标签管理",operation = "manager",pname = "root",descritpion = "tag_manager",url = "/admin/tag")

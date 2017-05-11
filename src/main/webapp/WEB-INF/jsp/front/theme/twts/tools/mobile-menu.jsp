@@ -11,7 +11,7 @@
     <nav>
         <ul>
             <li><a href="/blog">Home</a></li>
-            <li><a href="/blog/archive">Blog</a></li>
+            <li><a href="/blog/archive">Archive</a></li>
             <li><a href="/blog/about">About</a></li>
             <li><a href="/blog/contact">Contact</a></li>
         </ul>

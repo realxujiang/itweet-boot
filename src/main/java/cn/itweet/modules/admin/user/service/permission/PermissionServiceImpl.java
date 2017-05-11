@@ -7,6 +7,7 @@ import cn.itweet.modules.admin.system.RootController;
 import cn.itweet.modules.admin.user.entity.*;
 import cn.itweet.modules.admin.user.repository.*;
 import cn.itweet.modules.admin.user.service.user.UserServiceImpl;
+import cn.itweet.modules.admin.user.web.PermissionController;
 import cn.itweet.modules.admin.user.web.RoleController;
 import cn.itweet.modules.admin.user.web.UserController;
 import org.slf4j.Logger;
@@ -59,9 +60,21 @@ public class PermissionServiceImpl implements PermissionService{
     @Override
     public Integer refreshPermission() throws SystemException{
         try {
+            /**
+             * 初始化一级菜单
+             */
             RootMenu(RootController.class);
+
+            /**
+             * 初始化二级菜单
+             */
             addLeftMenu(UserController.class);
             addLeftMenu(RoleController.class);
+            addLeftMenu(PermissionController.class);
+
+            /**
+             * 初始化二级菜单下的所有字菜单
+             */
             initRolePermission();
         } catch (Exception e) {
             e.printStackTrace();

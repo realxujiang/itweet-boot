@@ -1,2 +1,45 @@
-# itweet-boot
-itweet.cn by manager system
+## itweet-boot
+itweet.cn 个人网站系统
+
+![Itweet-boot](https://github.com/itweet/itweet-boot/doc/image/Itweet-boot.png)
+
+> Itweet-boot 英文含义推文，博客,我很早就以itweet.cn写博客，使用过hexo等很多优秀的静态博客系统，但是始终
+> 找不到一款我自己合心意的博客系统，所以就诞生了***Itweet-boot***项目。
+
+`Itweet-boot`使用高效率Web开发框架spring boot开发，默认支持多主题，可以随便扩展新的主题，后台暂时不支持多主题，如果觉得项
+目不错，请献出你的[Star](https://github.com/itweet/itweet-boot/stargazers)以示支持.
+
+整个网站系统，使用非常简洁的设计元素，黑白灰三色构成，艺术感十足。
+
+演示站点：http://www.skynetx.org
+
+## 特性
+
++ 大道至简,设计感十足
++ Markdown 文章发布
++ 支持多主题，方便扩展
++ 支持图片上传
++ 支持完整的权限管理
++ 支持文章管理
++ 支持教程管理
++ 支持素材管理
++ 支持标签管理
++ 支持类别管理
++ 功能模块化可插拔
++ 简洁高效扩展模块
+
+## 少废话，先看东西
+
+![Itweet-boot.png](https://github.com/itweet/itweet-boot/doc/image/Itweet-boot.png)
+![itweet1.png](https://github.com/itweet/itweet-boot/doc/image/itweet1.png)
+![itweet2.png](https://github.com/itweet/itweet-boot/doc/image/itweet2.png)
+![itweet.png](https://github.com/itweet/itweet-boot/doc/image/itweet.png)
+![blog1.png](https://github.com/itweet/itweet-boot/doc/image/blog1.png)
+![blog2.png](https://github.com/itweet/itweet-boot/doc/image/blog2.png)
+![Itweet-manager.png](https://github.com/itweet/itweet-boot/doc/image/Itweet-manager.png)
+![Itweet-manager2.png](https://github.com/itweet/itweet-boot/doc/image/Itweet-manager2.png)
+
+
+## 感谢
+
++ [spring-boot](https://projects.spring.io/spring-boot)
