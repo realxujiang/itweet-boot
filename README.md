@@ -1,7 +1,7 @@
-## itweet-boot
+## Itweet-boot
 itweet.cn 个人网站系统
 
-![Itweet-boot](https://github.com/itweet/itweet-boot/doc/image/Itweet-boot.png)
+![itweet-boot](https://github.com/itweet/itweet-boot/doc/image/Itweet-boot.png)
 
 > Itweet-boot 英文含义推文，博客,我很早就以itweet.cn写博客，使用过hexo等很多优秀的静态博客系统，但是始终
 > 找不到一款我自己合心意的博客系统，所以就诞生了***Itweet-boot***项目。
@@ -34,6 +34,7 @@ itweet.cn 个人网站系统
 ![itweet2.png](https://github.com/itweet/itweet-boot/raw/master/images/itweet2.png)
 ![itweet3.png](https://github.com/itweet/itweet-boot/raw/master/images/itweet3.png)
 ![itweet4.png](https://github.com/itweet/itweet-boot/raw/master/images/itweet4.png)
+![itweet5.png](https://github.com/itweet/itweet-boot/raw/master/images/itweet5.png)
 ![blog1.png](https://github.com/itweet/itweet-boot/raw/master/images/blog1.png)
 ![blog2.png](https://github.com/itweet/itweet-boot/raw/master/images/blog2.png)
 
