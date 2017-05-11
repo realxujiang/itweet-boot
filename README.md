@@ -30,15 +30,15 @@ itweet.cn 个人网站系统
 
 ## 少废话，先看东西
 
-![itweet1.png](https://github.com/itweet/itweet-boot/doc/image/itweet1.png)
-![itweet2.png](https://github.com/itweet/itweet-boot/doc/image/itweet2.png)
-![itweet3.png](https://github.com/itweet/itweet-boot/doc/image/itweet3.png)
-![itweet4.png](https://github.com/itweet/itweet-boot/doc/image/itweet4.png)
-![blog1.png](https://github.com/itweet/itweet-boot/doc/image/blog1.png)
-![blog2.png](https://github.com/itweet/itweet-boot/doc/image/blog2.png)
+![itweet1.png](https://github.com/itweet/itweet-boot/raw/master/images/itweet1.png)
+![itweet2.png](https://github.com/itweet/itweet-boot/raw/master/images/itweet2.png)
+![itweet3.png](https://github.com/itweet/itweet-boot/raw/master/images/itweet3.png)
+![itweet4.png](https://github.com/itweet/itweet-boot/raw/master/images/itweet4.png)
+![blog1.png](https://github.com/itweet/itweet-boot/raw/master/images/blog1.png)
+![blog2.png](https://github.com/itweet/itweet-boot/raw/master/images/blog2.png)
 
-![m1.png](https://github.com/itweet/itweet-boot/doc/image/m1.png)
-![m2.png](https://github.com/itweet/itweet-boot/doc/image/m2.png)
+![m1.png](https://github.com/itweet/itweet-boot/raw/master/images/m1.png)
+![m2.png](https://github.com/itweet/itweet-boot/raw/master/images/m2.png)
 
 
 ## 感谢
