@@ -1,7 +1,7 @@
 ## Itweet-boot
 itweet.cn 个人网站系统
 
-![itweet-boot](https://github.com/itweet/itweet-boot/images/dribbble.gif)
+![itweet-boot](https://github.com/itweet/itweet-boot/raw/master/images/dribbble.gif)
 
 > Itweet-boot 英文含义推文，博客,我很早就以itweet.cn写博客，使用过hexo等很多优秀的静态博客系统，但是始终
 > 找不到一款我自己合心意的博客系统，所以就诞生了itweet-boot项目。
