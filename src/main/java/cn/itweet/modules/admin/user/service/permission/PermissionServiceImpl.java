@@ -59,30 +59,38 @@ public class PermissionServiceImpl implements PermissionService{
 
     @Override
     public Integer refreshPermission() throws SystemException{
-        try {
-            /**
-             * 初始化一级菜单
-             */
-            RootMenu(RootController.class);
+        List<SysPermission> sysPermissionList = permissionRepository.findAll();
+        List<SysRole> sysRoleList = roleRepository.findAll();
+        List<SysUser> userList = userRepository.findAll();
 
-            /**
-             * 初始化二级菜单
-             */
-            addLeftMenu(UserController.class);
-            addLeftMenu(RoleController.class);
-            addLeftMenu(PermissionController.class);
+        if (sysPermissionList.size()<=0 && sysRoleList.size()<=0 && userList.size()<=0) {
+            try {
+                /**
+                 * 初始化一级菜单
+                 */
+                RootMenu(RootController.class);
 
-            /**
-             * 初始化二级菜单下的所有字菜单
-             */
-            initRolePermission();
-        } catch (Exception e) {
-            e.printStackTrace();
-            LOGGER.error("权限初始化失败!");
+                /**
+                 * 初始化二级菜单
+                 */
+                addLeftMenu(UserController.class);
+                addLeftMenu(RoleController.class);
+                addLeftMenu(PermissionController.class);
+
+                /**
+                 * 初始化二级菜单下的所有字菜单
+                 */
+                initRolePermission();
+            } catch (Exception e) {
+                e.printStackTrace();
+                LOGGER.error("权限初始化失败!");
+                return 1;
+            }
+            LOGGER.info("权限初始化成功!");
+            return 0;
+        } else {
             return 1;
         }
-        LOGGER.info("权限初始化成功!");
-        return 0;
     }
 
     /**

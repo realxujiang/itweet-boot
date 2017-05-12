@@ -26,7 +26,6 @@ public class LoginController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth != null){
             new SecurityContextLogoutHandler().logout(request, response, auth);
-            //persistentTokenBasedRememberMeServices.logout(request, response, auth);
             SecurityContextHolder.getContext().setAuthentication(null);
         }
         return "redirect:/admin/login";

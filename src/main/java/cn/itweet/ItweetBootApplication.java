@@ -1,6 +1,10 @@
 package cn.itweet;
 
+import cn.itweet.common.config.ApplicationStartup;
+import cn.itweet.common.exception.SystemException;
 import cn.itweet.common.repository.BaseRepositoryFactoryBean;
+import cn.itweet.modules.admin.user.service.permission.PermissionService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -17,7 +21,10 @@ public class ItweetBootApplication extends SpringBootServletInitializer {
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.run(ItweetBootApplication.class, args);
+		//SpringApplication.run(ItweetBootApplication.class, args);
+		SpringApplication springApplication =new SpringApplication(ItweetBootApplication.class);
+		springApplication.addListeners(new ApplicationStartup());
+		springApplication.run(args);
 	}
 
 }

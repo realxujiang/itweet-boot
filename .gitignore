@@ -39,3 +39,6 @@ hs_err_pid*
 
 # Upload File
 *.jpg
+
+# Ignore
+src/resources/application.properties
