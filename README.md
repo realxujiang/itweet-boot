@@ -13,6 +13,8 @@ itweet.cn 个人网站系统
 
 演示站点：http://www.skynetx.org
 
+[开始使用](https://github.com/itweet/itweet-boot/wiki)&nbsp; | &nbsp;[参与贡献](contribution.md)&nbsp; | &nbsp;[微信](weixin.md)&nbsp; | &nbsp;[视频教程](video.md)&nbsp; | &nbsp;[English](README.md)
+
 ## 特性
 
 + 大道至简,设计感十足
