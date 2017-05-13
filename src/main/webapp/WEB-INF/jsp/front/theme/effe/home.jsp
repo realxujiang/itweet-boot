@@ -67,21 +67,28 @@
 				<h5 style="font-family: 'Xingkai TC'">最近的项目</h5>
 				<p>关于我们做的一些最新的开源项目，主要包括云计算、大数据、JavaWeb相关的内容，以及文档、视频教程 . . . </p>
 			</div>
+
 			<div class="recent-summary">
-				<div class="recent-item">
-					<a class="single_image" href="<%=basePath%>/images/portfolio/thumbs/recent1.jpg"><img src="<%=basePath%>/images/portfolio/thumbs/recent1.jpg" width="250" height="150" alt="recent1" /></a>
-					<h6 style="font-family: 'Xingkai TC'">个人博客</h6>
-					<p>艺术感十足?
-						<a class="readmore" href="/portfolio">阅读更多 →</a>
-					</p>
-				</div>
-				<div class="recent-item-last">
-					<a class="single_image" href="<%=basePath%>/images/portfolio/thumbs/recent2.jpg"><img src="<%=basePath%>/images/portfolio/thumbs/recent2.jpg" width="250" height="150" alt="recent2" /></a>
-					<h6 style="font-family: 'Xingkai TC'">ENTERPRISE_HADOOP_SOLUTIONS</h6>
-					<p>[视频]企业级Hadoop解决方案教程.
-						<a class="readmore" href="/portfolio">阅读更多 →</a>
-					</p>
-				</div>
+				<c:forEach items="${courseList}" var="course" varStatus="stat">
+					<c:if test="${!stat.last}">
+						<div class="recent-item">
+							<a class="single_image" href="<%=URL%>/upload/files/${course.coverPicture}"><img src="<%=URL%>/upload/files/${course.coverPicture}" width="250" height="150" alt="recent1" /></a>
+							<h6 style="font-family: 'Xingkai TC'">${course.title}</h6>
+							<p>${course.description}
+								<a class="readmore" href="/portfolio">阅读更多 →</a>
+							</p>
+						</div>
+					</c:if>
+					<c:if test="${stat.last}">
+						<div class="recent-item-last">
+							<a class="single_image" href="<%=URL%>/upload/files/${course.coverPicture}"><img src="<%=URL%>/upload/files/${course.coverPicture}" width="250" height="150" alt="recent1" /></a>
+							<h6 style="font-family: 'Xingkai TC'">${course.title}</h6>
+							<p>${course.description}
+								<a class="readmore" href="/portfolio">阅读更多 →</a>
+							</p>
+						</div>
+					</c:if>
+				</c:forEach>
 			</div>
 			<!--END of recent projects-->
 

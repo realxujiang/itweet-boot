@@ -41,4 +41,4 @@ hs_err_pid*
 *.jpg
 
 # Ignore
-src/resources/application.properties
+*.properties

@@ -37,17 +37,17 @@
                 </form>
                 <li><label>&nbsp;</label><a href="<%=basePath%>/admin/document/add"><input name="" type="button" class="scbtn" value="上传图片" /></a></li>
             </ul>
-            <table class="tablelist">
+            <table class="imgtable">
                 <thead>
-                <tr>
-                    <th>编号</th>
-                    <th>栏目</th>
-                    <th>缩略图</th>
-                    <th>图片别名</th>
-                    <th>图片类型</th>
-                    <th>上传时间</th>
-                    <th>操作</th>
-                </tr>
+                    <tr>
+                        <th>编号</th>
+                        <th>栏目</th>
+                        <th>缩略图</th>
+                        <th>图片别名</th>
+                        <th>图片类型</th>
+                        <th>上传时间</th>
+                        <th>操作</th>
+                    </tr>
                 </thead>
                 <tbody>
                 <c:forEach items="${documentList.content}" var="document">

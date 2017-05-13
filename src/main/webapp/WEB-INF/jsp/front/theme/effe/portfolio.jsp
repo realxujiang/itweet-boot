@@ -37,62 +37,6 @@
                     </p>
                 </li>
             </c:forEach>
-            <li data-tags="Big Data Architecture">
-                <a href="/portfolio/projectSample"><img src="<%=basePath%>/images/portfolio/thumbs/image(1).jpg" alt="Illustration" /></a>
-                <h6>Hadoop</h6>
-                <p>企业级Hadoop解决方案?
-                    <a class="readmore" href="/portfolio/projectSample">view →</a>
-                </p>
-            </li>
-            <li data-tags="Cloud,Big Data Architecture">
-                <a href="/portfolio/projectSample"><img src="<%=basePath%>/images/portfolio/thumbs/image(2).jpg" alt="Illustration" /></a>
-                <h6>Openstack</h6>
-                <p>企业级私有云解决方案.
-                    <a class="readmore" href="/portfolio/projectSample">view →</a>
-                </p>
-            </li>
-            <li data-tags="Web Design,Cloud">
-                <a href="/portfolio/projectSample"><img src="<%=basePath%>/images/portfolio/thumbs/image(3).jpg" alt="Illustration" /></a>
-                <h6>skynet</h6>
-                <p>大型分布式监控系统!
-                    <a class="readmore" href="/portfolio/projectSample">view →</a>
-                </p>
-            </li>
-            <li data-tags="Web Design,Big Data Architecture">
-                <a href="/projectSample"><img src="<%=basePath%>/images/portfolio/thumbs/image(4).jpg" alt="Illustration" /></a>
-                <h6>Spark</h6>
-                <p>企业级数据分析利器.
-                    <a class="readmore" href="/projectSample">view →</a>
-                </p>
-            </li>
-            <li data-tags="Cloud">
-                <a href="/projectSample"><img src="<%=basePath%>/images/portfolio/thumbs/image(5).jpg" alt="Illustration" /></a>
-                <h6>Docker</h6>
-                <p>快速部署应用.
-                    <a class="readmore" href="/projectSample">view →</a>
-                </p>
-            </li>
-            <li data-tags="Web Design,Cloud,Big Data Architecture">
-                <a href="/projectSample"><img src="<%=basePath%>/images/portfolio/thumbs/image(6).jpg" alt="Illustration" /></a>
-                <h6>StreamSQL</h6>
-                <p>企业流式数据分析解决方案.
-                    <a class="readmore" href="/projectSample">view →</a>
-                </p>
-            </li>
-            <li data-tags="Cloud,Big Data Architecture">
-                <a href="/projectSample"><img src="<%=basePath%>/images/portfolio/thumbs/image(7).jpg" alt="Illustration" /></a>
-                <h6>Sahara</h6>
-                <p>云端大数据解决方案.
-                    <a class="readmore" href="/projectSample">view →</a>
-                </p>
-            </li>
-            <li data-tags="Web Design">
-                <a href="/projectSample"><img src="<%=basePath%>/images/portfolio/thumbs/image(8).jpg" alt="Illustration" /></a>
-                <h6>itweet-boot</h6>
-                <p>个人博客开源项目.
-                    <a class="readmore" href="/projectSample">view →</a>
-                </p>
-            </li>
         </ul>
     </div>
     <!--END of portfolio section-->

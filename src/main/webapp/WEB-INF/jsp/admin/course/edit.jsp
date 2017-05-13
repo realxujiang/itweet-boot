@@ -60,9 +60,9 @@
                     <li>
                         <label>类别<b>*</b></label>
                         <select id="type" name="classify" style="width:618px;" class="chosen-select-no-results" tabindex="10">
-                            <option value="Big Data Architecture" selected="selected">Big Data Architecture</option>
-                            <option value="Cloud">Cloud</option>
-                            <option value="Web Desig">Web Design</option>
+                            <option value="Big Data Architecture" <c:if test="${form.classify eq 'Big Data Architecture'}">selected="selected"</c:if>>Big Data Architecture</option>
+                            <option value="Cloud" <c:if test="${form.classify eq 'Cloud'}">selected="selected"</c:if>>Cloud</option>
+                            <option value="Web Desig" <c:if test="${form.classify eq 'Web Desig'}">selected="selected"</c:if>>Web Design</option>
                         </select>
                     </li>
                     <li>

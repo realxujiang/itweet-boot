@@ -48,6 +48,9 @@ public class EffeController {
 
         model.addAttribute("listArticle",listArticle);
 
+        List<Course> courseList = courseService.getCourseTopN(2);
+        model.addAttribute("courseList",courseList);
+
         List<Document> documentList = storageService.getNewDocumentTopN("index",4);
         model.addAttribute("documentList",documentList);
 
