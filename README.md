@@ -49,7 +49,8 @@ itweet.cn 个人网站系统
 + [spring-boot](https://projects.spring.io/spring-boot)
 + [itdeer](https://github.com/itdeer)
 
-版权
----
- - 原创文章，转载请注明： 转载自[whoami](http://www.itweet.cn)的博客 
- - `本博客的文章集合:` http://www.itweet.cn/archives/
+
+# 版权
+ - 原创文章，转载请注明： 转载自[Itweet](http://www.itweet.cn)的博客
+ - `本博客的文章集合:` http://www.itweet.cn/blog/archive/
+ 
