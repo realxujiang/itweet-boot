@@ -23,3 +23,7 @@ git clone git@github.com:itweet/itweet-boot.git
 # Issues
 如果你有任何使用问题，可以通过[Issues](https://github.com/itweet/itweet-boot/issues)反馈Itweet-boot，我们会尽快修复问题。
 
+
+# 版权
+ - 原创文章，转载请注明： 转载自[Itweet](http://www.itweet.cn)的博客
+ - `本博客的文章集合:` http://www.itweet.cn/blog/archive/
