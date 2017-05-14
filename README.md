@@ -11,9 +11,9 @@ itweet.cn 个人网站系统
 
 整个网站系统，使用非常简洁的设计元素，黑白灰三色构成，艺术感十足。
 
-演示站点：http://www.skynetx.org
+演示站点：http://www.itweet.cn
 
-[开始使用](https://github.com/itweet/itweet-boot/wiki)&nbsp; | &nbsp;[参与贡献](contribution.md)&nbsp; | &nbsp;[微信](weixin.md)&nbsp; | &nbsp;[视频教程](video.md)&nbsp; | &nbsp;[English](README.md)
+[开始使用](quickstart.md)&nbsp; | &nbsp;[参与贡献](contribution.md)&nbsp; | &nbsp;[微信](weixin.md)&nbsp; | &nbsp;[视频教程](video.md)&nbsp; | &nbsp;[English](README.md)
 
 ## 特性
 

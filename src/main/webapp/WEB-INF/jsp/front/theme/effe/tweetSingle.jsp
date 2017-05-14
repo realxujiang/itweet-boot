@@ -9,6 +9,11 @@
 <head>
     <title>BlogSingle</title>
     <jsp:include page="tools/style.jsp"></jsp:include>
+    <style>
+        .blog-item-single-content img {
+            width: 720px;
+        }
+    </style>
 </head>
 
 <body>

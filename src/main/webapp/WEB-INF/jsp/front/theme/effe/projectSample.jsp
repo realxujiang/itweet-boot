@@ -12,6 +12,11 @@
 <head>
     <title>Project-Sample</title>
     <jsp:include page="tools/style.jsp"></jsp:include>
+    <style>
+        .project img {
+            width: 500px;
+        }
+    </style>
 </head>
 
 <body>

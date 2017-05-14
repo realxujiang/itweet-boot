@@ -40,7 +40,7 @@
                             <i class="fa fa-file-text-o"></i>
                         </div>
                         <div class="vertical-timeline-content">
-                            <h2>2017/05/04 博客迁移私有云主机，Itweet-boot项目正试上线</h2>
+                            <h2>2017/05/04 迁移阿里云，网站大改版，Itweet-boot项目首发</h2>
                         </div>
                     </div>
 

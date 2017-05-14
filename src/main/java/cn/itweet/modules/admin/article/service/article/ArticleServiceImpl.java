@@ -56,9 +56,9 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public Map<String, List<ArticleDto>> archive() {
-        String sql = "select distinct DATE_FORMAT(a.create_date,'%Y'),\"test\" from article a where a.state=1";
+        String sql = "select * from (select distinct DATE_FORMAT(a.create_date,'%Y') as create_date,\"test\" from article a where a.state=1) b order by b.create_date desc";
         List<Object[]> list = articleRepository.listBySQL(sql);
-        Map<String, List<ArticleDto>> listMap = new HashMap<>();
+        Map<String, List<ArticleDto>> listMap = new LinkedHashMap<>();
         for (int i=0; i<list.size(); i++) {
             Object[] obj = list.get(i);
             String year = obj[0].toString();
