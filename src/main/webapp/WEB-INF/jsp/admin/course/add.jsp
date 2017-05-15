@@ -21,6 +21,8 @@
     <script src="<%=basePath%>/style/admin/makedown/js/bootstrap.min.js"></script>
     <script src="<%=basePath%>/style/admin/backstage/js/amazeui.chosen.js"></script>
 
+    <script src="<%=basePath%>/style/admin/backstage/editor/kindeditor.js"></script>
+
     <script>
         $(function() {
             $('#categories').chosen({
@@ -32,6 +34,13 @@
             $('#type').chosen({
                 no_results_text: '木有找到匹配的项！'
             });
+        });
+    </script>
+
+    <script type="text/javascript">
+        KE.show({
+            id: 'content7',
+            cssPath: './index.css'
         });
     </script>
 
@@ -66,7 +75,7 @@
                     </li>
                     <li>
                         <label>介绍<b>*</b></label>
-                        <input name="content" type="text" class="dfinput" value="${form.content}" placeholder="教程介绍" style="width:618px;" />
+                        <textarea id="content7" name="content" style="width:618px;height:250px;visibility:hidden;">${form.content}</textarea>
                     </li>
                     <li>
                         <label>封面<b>*</b></label>
