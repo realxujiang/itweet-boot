@@ -76,7 +76,7 @@
                     </li>
                     <li>
                         <label>介绍<b>*</b></label>
-                        <textarea id="content7" name="content" value="${form.content}" style="width:618px;height:250px;visibility:hidden;">${form.content}</textarea>
+                        <textarea id="content7" name="content" style="width:618px;height:250px;visibility:hidden;">${form.content}</textarea>
                     </li>
                     <li>
                         <label>封面<b>*</b></label>
