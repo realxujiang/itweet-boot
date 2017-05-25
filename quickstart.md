@@ -22,7 +22,7 @@ git clone git@github.com:itweet/itweet-boot.git
 进入项目后，需要完成以下操作：
    + `shift+command+o`快捷键，键入`application.properties`关键词，Enter进入,修改db配置为你的数据库连接。
    + `command+o`快捷键，键入`ItweetBootApplication`关键词，Enter进入，`shift+control+r`启动Itweet-boot应用。
-   + 应用启动后，访问http://localhost:8080/admin/system/main，登录页面，输入默认超级管理员用户名密码：admin/123456
+   + 应用启动后，访问http://localhost:8080/admin/system/main 登录页面，输入默认超级管理员用户名密码：admin/123456
 
 登录进入后台之后，完成以下操作：
    + 添加4篇以上博客类型的文章，并且处于`发布`状态
