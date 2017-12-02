@@ -47,15 +47,8 @@
     </div>
 </div>
 
-<footer id="site-footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <p class="copyright">&copy; 2017 itweet.cn</p>
-            </div>
-        </div>
-    </div>
-</footer>
+<%--site footer--%>
+<jsp:include page="tools/site-footer.jsp"></jsp:include>
 
 <!-- Mobile Menu -->
 <jsp:include page="tools/mobile-menu.jsp"></jsp:include>

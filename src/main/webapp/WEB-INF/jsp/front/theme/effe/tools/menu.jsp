@@ -68,7 +68,7 @@
                 </li>
             </ul>
         </div>
-        <h6>Copyright © 2017 - itweet</h6>
+        <h6>© 2017 京ICP备17030501号</h6>
     </div>
     <!--END of footer-->
 

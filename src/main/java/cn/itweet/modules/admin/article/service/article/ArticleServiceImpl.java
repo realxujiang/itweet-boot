@@ -62,7 +62,7 @@ public class ArticleServiceImpl implements ArticleService {
         for (int i=0; i<list.size(); i++) {
             Object[] obj = list.get(i);
             String year = obj[0].toString();
-            List<Object[]> articleList = articleRepository.listBySQL("select a.create_date,a.title from article a where a.state=1 and DATE_FORMAT(a.create_date,'%Y')="+year);
+            List<Object[]> articleList = articleRepository.listBySQL("select a.create_date,a.title from article a where a.state=1 and DATE_FORMAT(a.create_date,'%Y')="+year+" order by a.create_date desc");
             List<ArticleDto> articleDtoList = new ArrayList<>();
             for (int j=0; j< articleList.size(); j++) {
                 Object[] article = articleList.get(j);
@@ -255,8 +255,13 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public List<Article> listByCategoriesIdAndState(Integer state, Integer categoriesId) {
-        return articleRepository.listByCategoriesIdAndState(state,categoriesId);
+    public List<Article> listByCategoriesIdAndStatePage(Integer state, Integer categoriesId,Integer page,Integer pageSize) {
+        Integer pageOffset = page*pageSize;
+        return articleRepository.listByCategoriesIdAndStatePage(state,categoriesId,pageOffset,pageSize);
     }
 
+    @Override
+    public Integer listByCategoriesIdAndStateCount(Integer state, Integer categoriesId) {
+        return articleRepository.listByCategoriesIdAndStateCount(state,categoriesId);
+    }
 }

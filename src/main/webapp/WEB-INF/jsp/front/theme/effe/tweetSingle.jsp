@@ -11,9 +11,17 @@
     <jsp:include page="tools/style.jsp"></jsp:include>
     <style>
         .blog-item-single-content img {
-            width: 720px;
+            width: 100%;
         }
     </style>
+    <script type="text/javascript">
+        (function(){
+            var appid = 'cyt1SoANh';
+            var conf = 'prod_f1122db7ae1d42036c646ea61c3ae363';
+            var width = window.innerWidth || document.documentElement.clientWidth;
+            if (width < 960) {
+                window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })();
+    </script>
 </head>
 
 <body>
@@ -27,6 +35,7 @@
     <!--This is the START of the blog section-->
     <div id="blog">
         <div class="blog-item-single">
+
             <h3>${article.title}</h3>
             <div class="blog-item-single-info">
                 <div class="user">${article.author}</div>
@@ -38,60 +47,11 @@
                 <div class="blog-item-single-content"> <a class="single_image" href="<%=URL%>/upload/files/${article.coverPicture}"><img src="<%=URL%>/upload/files/${article.coverPicture}" width="720" height="280" alt="blog1" /></a>
                     ${article.htmlContent}
                 </div>
-
             </div>
 
-            <div class="comments-block">
-                <h3 class="comments-title">Comments (2)</h3>
-                <div class="spacer"></div>
-                <div class="comment"> <img class="avatar" alt="" src="http://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm" width="50" height="35" />
-                    <div class="comment-info">
-                        <a class="post-author">John Doe</a>
-                        <p>January 21, 2011</p>
-                    </div>
-                    <div class="comment-body">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In in vestibulum eros. Praesent at cursus orci. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vitae sagittis dolor. Proin iaculis suscipit quam non suscipit. Vestibulum vestibulum semper tortor...</p>
-                        <a class="reply" href="#">Reply</a>
-                    </div>
-                </div>
-                <div class="spacer"></div>
-                <div class="comment"><img class="avatar" alt="" src="http://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm" width="50" height="35" />
-                    <div class="comment-info">
-                        <a class="post-author">Jane Doe</a>
-                        <p>January 21, 2011</p>
-                    </div>
-                    <div class="comment-body">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In in vestibulum eros. Praesent at cursus orci. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vitae sagittis dolor. Proin iaculis suscipit quam non suscipit. Vestibulum vestibulum semper tortor...</p>
-                        <a class="reply" href="#">Reply</a>
-                    </div>
-                </div>
-                <div class="spacer"></div>
-            </div>
-            <div class="response">
-                <h3>Leave a Comment</h3>
-                <h6 class="required-comment">* required</h6>
-                <div id="comment-form" class="form">
-                    <div class="input-block">
-                        <h6 class="short-label">Name*</h6>
-                        <input class="short-field" id="name" type="text" name="name" value="" />
-                    </div>
-                    <div class="input-block">
-                        <h6 class="short-label">Email*</h6>
-                        <input class="short-field" id="email" type="text" name="email" value="" />
-                    </div>
-                    <div class="input-block-long">
-                        <h6 class="short-label">Web</h6>
-                        <input class="long-field" id="url" type="text" placeholder="http://" name="url" value="" />
-                    </div>
-                    <div class="textarea-block">
-                        <h6>Comments*</h6>
-                        <textarea id="comment" rows="10" cols="70" name="comment"></textarea>
-                    </div>
-                    <div class="clear"></div>
-                    <input id="comment-button" type="submit" value="Submit" name="submit" />
-                </div>
-                <div class="spacer"></div>
-            </div>
+            <!--PC和WAP自适应版-->
+            <div id="SOHUCS" sid="${article.id}"></div>
+
         </div>
     </div>
     <!--END of blog section-->

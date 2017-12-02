@@ -34,8 +34,8 @@
                 <div id="header-search-box">
                     <a id="search-menu" href="#"><span id="search-icon" class="ion-ios-search-strong"></span></a>
                     <div id="search-form" class="search-form">
-                        <form role="search" method="get" id="searchform" action="#">
-                            <input type="search" placeholder="Search" required>
+                        <form role="search" method="get" id="searchform" action="/blog/select">
+                            <input name="title" type="search" placeholder="Search" value="${title}" required>
                             <button type="submit"><span class="ion-ios-search-strong"></span></button>
                         </form>
                     </div>

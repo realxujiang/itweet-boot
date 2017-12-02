@@ -11,6 +11,7 @@
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path+"/style/front/theme/twts";
+    String URL = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path;
 %>
 <!DOCTYPE html>
 <html>
@@ -60,6 +61,49 @@
 
                     </article>
                 </c:forEach>
+
+                <div class="entry-meta" style="margin-top: 100px;">
+                    <c:if test="${pb.currentPage > 1}">
+                        <a href="<%=URL%>/${pb.url}page=${pb.currentPage-1}">上一页</a>&emsp;
+                    </c:if>
+
+                    <c:choose>
+                        <c:when test="${pb.totalPages<=10}">
+                            <c:set var="begin" value="1"/>
+                            <c:set var="end" value="${pb.totalPages}"/>
+                        </c:when>
+                        <c:otherwise>
+                            <c:set var="begin" value="${pb.currentPage-5}"/>
+                            <c:set var="end" value="${pb.currentPage+4}"/>
+
+                            <c:if test="${begin < 1}">
+                                <c:set var="begin" value="1"/>
+                                <c:set var="end" value="10"/>
+                            </c:if>
+
+                            <c:if test="${end > pb.totalPages}">
+                                <c:set var="begin" value="${pb.totalPages-9}"/>
+                                <c:set var="end" value="${pb.totalPages}"/>
+                            </c:if>
+                        </c:otherwise>
+                    </c:choose>
+
+                    <c:forEach var="i" begin="${begin}" end="${end}">
+                        <c:choose>
+                            <c:when test="${i eq pb.currentPage}">
+                                <a style="text-decoration:underline;">${i}</a>&nbsp;
+                            </c:when>
+                            <c:otherwise>
+                                <a href="<%=URL%>${pb.url}page=${i}">${i}</a>&nbsp;
+                            </c:otherwise>
+                        </c:choose>
+                    </c:forEach>
+
+                    <c:if test="${pb.currentPage < pb.totalPages}">
+                        &emsp;<a href="<%=URL%>${pb.url}page=${pb.currentPage+1}">下一页</a>
+                    </c:if>
+                </div>
+
             </main>
 
             <%-- Left Menu --%>
@@ -69,15 +113,8 @@
     </div>
 </div>
 
-<footer id="site-footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <p class="copyright">&copy; 2017 itweet.cn</p>
-            </div>
-        </div>
-    </div>
-</footer>
+<%--site footer--%>
+<jsp:include page="tools/site-footer.jsp"></jsp:include>
 
 <!-- Mobile Menu -->
 <jsp:include page="tools/mobile-menu.jsp"></jsp:include>

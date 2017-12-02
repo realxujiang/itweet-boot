@@ -41,5 +41,7 @@ public interface ArticleService {
 
     Article addArticle(Article article, String tagNames, Integer categoriesId) throws SystemException;
 
-    List<Article> listByCategoriesIdAndState(Integer state, Integer categoriesId);
+    List<Article> listByCategoriesIdAndStatePage(Integer state, Integer categoriesId,Integer page,Integer pageSize);
+
+    Integer listByCategoriesIdAndStateCount(Integer state,Integer categoriesId);
 }

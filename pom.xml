@@ -43,7 +43,7 @@
 		<java.version>1.7</java.version>
 		<mysql.version>5.1.21</mysql.version>
 		<tomcat.version>7.0.59</tomcat.version>
-		<scope.provided>compile</scope.provided>
+		<scope.provided>provided</scope.provided>
 	</properties>
 
 	<dependencies>

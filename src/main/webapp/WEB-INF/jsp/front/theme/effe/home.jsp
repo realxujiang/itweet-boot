@@ -9,7 +9,7 @@
 <html>
 
 <head>
-	<title>Home</title>
+	<title>ITweet个人网站 - Home</title>
 	<jsp:include page="tools/style.jsp"></jsp:include>
 </head>
 <body>
@@ -24,7 +24,7 @@
 	<div class="slider-wrapper theme-effe">
 		<div id="slider" class="nivoSlider">
 			<c:forEach items="${documentList}" var="document">
-				<a href="/portfolio"><img src="<%=URL%>/upload/files/${document.ruleFilename}" alt="" title="#${document.filename}" /></a>
+				<a href="/portfolio"><img src="<%=URL%>/upload/files/${document.ruleFilename}" width="100%" height="100%" alt="img" title="#${document.filename}" /></a>
 			</c:forEach>
 		</div>
 	</div>

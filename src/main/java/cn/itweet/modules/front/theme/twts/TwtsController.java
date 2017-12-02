@@ -54,6 +54,25 @@ public class TwtsController {
         return "front/theme/twts/index";
     }
 
+    @GetMapping(value = "/blog/select")
+    public String select(@RequestParam(value = "title") String title,@RequestParam(value = "page", defaultValue = "0") Integer page,Model model) {
+        if(page != 0) { page = page-1; }
+
+        List<ArticleDto> topArticle = articleService.getArticleRecentPostsTopN(5);
+        model.addAttribute("topArticle",topArticle);
+
+        Page<ArticleDto> listArticle = articleService.searchByTitle(page,title);
+        model.addAttribute("listArticle",listArticle.getContent());
+
+        List<CategoriesDto> categoriesList = categoriesService.getCategoriesArticleCount();
+        model.addAttribute("categoriesList",categoriesList);
+
+        PageUtils pageUtils = new PageUtils("/blog/select?title="+title+"&",page,listArticle.getTotalPages(),listArticle.getTotalElements(),itweetProperties.getPagSize());
+        model.addAttribute("pb",pageUtils);
+
+        return "front/theme/twts/index";
+    }
+
     @RequestMapping(value = "/blog/about",method = RequestMethod.GET)
     public String about(Model model) {
         return "front/theme/twts/about";
@@ -98,15 +117,27 @@ public class TwtsController {
     }
 
     @RequestMapping(value = "/blog/categories/{id}",method = RequestMethod.GET)
-    public String listByCategoriesId(@PathVariable("id") Integer id,Model model) {
+    public String listByCategoriesId(@PathVariable("id") Integer id,@RequestParam(value = "page", defaultValue = "0") Integer page, Model model) {
+
+        if(page != 0) { page = page-1; }
+
         List<ArticleDto> topArticle = articleService.getArticleRecentPostsTopN(5);
         model.addAttribute("topArticle",topArticle);
 
-        List<Article> listArticle = articleService.listByCategoriesIdAndState(ArticleUtils.getIsPublished(),id);
+        Integer totalCounts = articleService.listByCategoriesIdAndStateCount(ArticleUtils.getIsPublished(),id);
+
+        Integer pageSize = itweetProperties.getPagSize();
+
+        Integer getTotalPages = (int)Math.ceil(totalCounts/pageSize);
+
+        List<Article> listArticle = articleService.listByCategoriesIdAndStatePage(ArticleUtils.getIsPublished(),id,page,pageSize);
         model.addAttribute("listArticle",listArticle);
 
         List<CategoriesDto> categoriesList = categoriesService.getCategoriesArticleCount();
         model.addAttribute("categoriesList",categoriesList);
+
+        PageUtils pageUtils = new PageUtils("/blog/categories/"+id+"?",page,getTotalPages,listArticle.size(),pageSize);
+        model.addAttribute("pb",pageUtils);
 
         return "front/theme/twts/list";
     }

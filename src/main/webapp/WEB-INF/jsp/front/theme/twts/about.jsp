@@ -17,6 +17,16 @@
     <title>Itweet &amp; Boot</title>
     <%--style--%>
     <jsp:include page="tools/style.jsp"></jsp:include>
+
+    <%--畅言--%>
+    <script type="text/javascript">
+        (function(){
+            var appid = 'cyt1SoANh';
+            var conf = 'prod_f1122db7ae1d42036c646ea61c3ae363';
+            var width = window.innerWidth || document.documentElement.clientWidth;
+            if (width < 960) {
+                window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })();
+    </script>
 </head>
 
 <body id="page">
@@ -66,18 +76,14 @@
                 </article>
             </main>
         </div>
+
     </div>
+    <!--PC和WAP自适应版-->
+    <div id="SOHUCS" sid="twts-about"></div>
 </div>
 
-<footer id="site-footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <p class="copyright">&copy; 2017 itweet.cn</p>
-            </div>
-        </div>
-    </div>
-</footer>
+<%--site footer--%>
+<jsp:include page="tools/site-footer.jsp"></jsp:include>
 
 <!-- Mobile Menu -->
 <jsp:include page="tools/mobile-menu.jsp"></jsp:include>

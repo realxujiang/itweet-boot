@@ -13,8 +13,8 @@
     <title>Project-Sample</title>
     <jsp:include page="tools/style.jsp"></jsp:include>
     <style>
-        .project img {
-            width: 500px;
+        #description img {
+            width: 100%;
         }
     </style>
 </head>
@@ -31,8 +31,8 @@
     <!--This is the START of the NIVO slider-->
     <div class="slider-wrapper theme-effe">
         <div id="slider" class="nivoSlider">
-            <img src="<%=URL%>/upload/files/${course.slideOne}" alt="" title="#img1" />
-            <img src="<%=URL%>/upload/files/${course.slideTwo}" alt="" title="#img2" />
+            <img src="<%=URL%>/upload/files/${course.slideOne}" width="100%" height="100%" alt="slideOne" title="#img1" />
+            <img src="<%=URL%>/upload/files/${course.slideTwo}" width="100%" height="100%" alt="slideTwo" title="#img2" />
         </div>
         <div id="slider-shadow"></div>
     </div>

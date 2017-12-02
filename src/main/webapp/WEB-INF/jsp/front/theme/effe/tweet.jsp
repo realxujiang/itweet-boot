@@ -36,7 +36,7 @@
                         <h5>${article.title}</h5>
                     </a>
                     <p>${article.fullDescription}</p>
-                    <a class="readmore" href="/blog/<fmt:formatDate pattern="yyyy/MM/dd" value="${article.createDate}"/>/${article.title}">阅读更多 →</a> <br />
+                    <a class="readmore" href="/tweet/<fmt:formatDate pattern="yyyy/MM/dd" value="${article.createDate}"/>/${article.title}">阅读更多 →</a> <br />
                 </div>
             </div>
         </c:forEach>
