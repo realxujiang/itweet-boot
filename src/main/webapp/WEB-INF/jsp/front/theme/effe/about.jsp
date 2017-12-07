@@ -43,7 +43,7 @@
 			一些自由的软件，做为一个有品位的人，当然是设计给自己用啦：<br>
 			&nbsp;&nbsp; 1.大型分布式监控系统skynet 	<br>
 			&nbsp;&nbsp; 2.个人博客系统itweet-boot		<br>
-			&nbsp;&nbsp; 3.我的GitHub地址：https://github.com/itweet	<br>
+			&nbsp;&nbsp; 3.我的GitHub地址：https://github.com/realxujiang	<br>
 		</p>
 		<div class="spacer"></div>
 		<h5 style="font-family: STXingkai">我们的社交网络ID.</h5>
