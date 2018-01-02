@@ -1,10 +1,7 @@
 package cn.itweet;
 
 import cn.itweet.common.config.ApplicationStartup;
-import cn.itweet.common.exception.SystemException;
 import cn.itweet.common.repository.BaseRepositoryFactoryBean;
-import cn.itweet.modules.admin.user.service.permission.PermissionService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
